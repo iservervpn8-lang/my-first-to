@@ -44,7 +44,7 @@
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 8px;
+      margin: 0 7px;
       font-size: 14px;
     }
 
@@ -53,18 +53,14 @@
     }
 
     .theme-btn {
-      background: white;
-      color: black;
       border: none;
-      padding: 8px 12px;
       border-radius: 8px;
+      padding: 8px 12px;
       cursor: pointer;
-      margin-left: 8px;
     }
 
     .hero {
       padding: 100px 20px 80px;
-      animation: fadeIn 1.2s ease;
     }
 
     .hero h1 {
@@ -83,8 +79,8 @@
 
     .button {
       display: inline-block;
-      margin: 15px 5px;
-      padding: 13px 25px;
+      margin: 10px 5px;
+      padding: 13px 24px;
       background: white;
       color: black;
       text-decoration: none;
@@ -98,11 +94,6 @@
       background: #151515;
       color: white;
       border: 1px solid #444;
-    }
-
-    body.light .button.dark {
-      background: #222;
-      color: white;
     }
 
     section {
@@ -130,7 +121,7 @@
     body.light .contact-box,
     body.light .skill-box {
       background: white;
-      border: 1px solid #ddd;
+      border-color: #ddd;
     }
 
     .about {
@@ -139,23 +130,10 @@
       line-height: 1.7;
     }
 
-    body.light .about {
-      color: #555;
-    }
-
     .project-card {
       padding: 25px;
       margin: 18px 0;
       text-align: left;
-      transition: 0.3s;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .project-card h3 {
-      margin-top: 0;
     }
 
     .project-card p {
@@ -163,6 +141,7 @@
       line-height: 1.6;
     }
 
+    body.light .about,
     body.light .project-card p {
       color: #555;
     }
@@ -180,8 +159,8 @@
 
     .progress {
       background: #333;
-      border-radius: 20px;
       height: 10px;
+      border-radius: 20px;
       overflow: hidden;
     }
 
@@ -201,8 +180,8 @@
 
     .social a {
       display: inline-block;
-      margin: 8px;
-      padding: 10px 15px;
+      margin: 7px;
+      padding: 11px 16px;
       background: #151515;
       border: 1px solid #333;
       border-radius: 8px;
@@ -213,7 +192,7 @@
     body.light .social a {
       background: white;
       color: #111;
-      border: 1px solid #ddd;
+      border-color: #ddd;
     }
 
     .contact-box {
@@ -224,19 +203,6 @@
       border-top: 1px solid #333;
       padding: 25px;
       color: #777;
-      font-size: 14px;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     @media (max-width: 600px) {
@@ -246,7 +212,7 @@
 
       nav a {
         font-size: 12px;
-        margin: 0 4px;
+        margin: 0 3px;
       }
     }
   </style>
@@ -261,9 +227,7 @@
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
 
-    <button class="theme-btn" onclick="toggleTheme()">
-      🌙
-    </button>
+    <button class="theme-btn" onclick="toggleTheme()">🌙</button>
   </nav>
 
 
@@ -273,13 +237,9 @@
 
     <p>Learning Coding • Trading • Building My Future</p>
 
-    <a class="button" href="#projects">
-      🚀 My Projects
-    </a>
+    <a class="button" href="#projects">🚀 My Projects</a>
 
-    <a class="button dark" href="#contact">
-      📩 Contact Me
-    </a>
+    <a class="button dark" href="#contact">📩 Contact Me</a>
 
     <br>
 
@@ -310,23 +270,23 @@
 
     <div class="project-card">
       <h3>🚀 My First Website</h3>
-      <p>
-        My first website built using HTML and CSS.
-      </p>
+      <p>My first website built using HTML and CSS.</p>
+
+      <a class="button" href="#home">View Project</a>
     </div>
 
     <div class="project-card">
-      <h3>💻 Learning Coding</h3>
-      <p>
-        Currently learning web development and creating new projects.
-      </p>
+      <h3>💻 Coding Journey</h3>
+      <p>Learning web development and creating new projects.</p>
+
+      <a class="button" href="#skills">My Skills</a>
     </div>
 
     <div class="project-card">
       <h3>📈 Trading Learning</h3>
-      <p>
-        Learning market concepts, analysis and trading education.
-      </p>
+      <p>Learning market concepts and trading education.</p>
+
+      <a class="button" href="#about">About Me</a>
     </div>
 
   </section>
@@ -339,28 +299,28 @@
     <div class="skill-box">
       <div class="skill-name">HTML</div>
       <div class="progress">
-        <div class="progress-bar" style="width: 70%;"></div>
+        <div class="progress-bar" style="width:70%;"></div>
       </div>
     </div>
 
     <div class="skill-box">
       <div class="skill-name">CSS</div>
       <div class="progress">
-        <div class="progress-bar" style="width: 60%;"></div>
+        <div class="progress-bar" style="width:60%;"></div>
       </div>
     </div>
 
     <div class="skill-box">
       <div class="skill-name">JavaScript</div>
       <div class="progress">
-        <div class="progress-bar" style="width: 30%;"></div>
+        <div class="progress-bar" style="width:30%;"></div>
       </div>
     </div>
 
     <div class="skill-box">
       <div class="skill-name">Trading Basics</div>
       <div class="progress">
-        <div class="progress-bar" style="width: 45%;"></div>
+        <div class="progress-bar" style="width:45%;"></div>
       </div>
     </div>
 
@@ -372,9 +332,19 @@
     <h2>Connect With Me</h2>
 
     <div class="social">
-      <a href="#">📸 Instagram</a>
-      <a href="#">▶️ YouTube</a>
-      <a href="#">💻 GitHub</a>
+
+      <a href="https://github.com/" target="_blank">
+        💻 GitHub
+      </a>
+
+      <a href="https://youtube.com/" target="_blank">
+        ▶️ YouTube
+      </a>
+
+      <a href="https://instagram.com/" target="_blank">
+        📸 Instagram
+      </a>
+
     </div>
 
   </section>
@@ -387,7 +357,7 @@
     <div class="contact-box">
 
       <p>
-        Interested in my work or want to connect?
+        Want to connect with me?
       </p>
 
       <a class="button" href="mailto:your@email.com">
