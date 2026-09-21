@@ -2,1857 +2,1210 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Himanshu Shekhar - Personal Developer Portfolio">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#0b1020">
+<meta name="description" content="Himanshu Shekhar - Developer Portfolio">
 <title>Himanshu Shekhar | Developer Portfolio</title>
 
 <style>
 :root{
-  --accent:#00d4ff;
-  --accent2:#7c3aed;
-  --bg:#07111f;
-  --bg2:#0c1728;
+  --bg:#080b14;
   --card:rgba(255,255,255,.07);
-  --card2:rgba(255,255,255,.04);
+  --card2:rgba(255,255,255,.11);
   --text:#f5f7ff;
-  --muted:#9aa8bd;
+  --muted:#aab2c5;
+  --accent:#6c63ff;
+  --accent2:#00d4ff;
   --border:rgba(255,255,255,.12);
-  --success:#22c55e;
-  --danger:#ef4444;
-  --warning:#f59e0b;
-  --shadow:0 20px 60px rgba(0,0,0,.25);
+  --success:#35e68b;
+  --danger:#ff5f6d;
+  --shadow:0 20px 60px rgba(0,0,0,.35);
 }
-
-[data-theme="light"]{
-  --bg:#eef5ff;
-  --bg2:#ffffff;
-  --card:rgba(255,255,255,.78);
-  --card2:rgba(255,255,255,.6);
-  --text:#111827;
-  --muted:#64748b;
-  --border:rgba(15,23,42,.12);
-  --shadow:0 20px 50px rgba(30,64,175,.12);
+body.light{
+  --bg:#f4f7fb;
+  --card:rgba(255,255,255,.8);
+  --card2:#fff;
+  --text:#101522;
+  --muted:#5d6678;
+  --border:rgba(0,0,0,.1);
+  --shadow:0 15px 45px rgba(0,0,0,.12);
 }
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  scroll-behavior:smooth;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:
-    radial-gradient(circle at 10% 10%,rgba(0,212,255,.12),transparent 25%),
-    radial-gradient(circle at 90% 20%,rgba(124,58,237,.13),transparent 25%),
-    var(--bg);
+  background:var(--bg);
   color:var(--text);
   line-height:1.6;
   overflow-x:hidden;
 }
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-button,input,textarea,select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.container{
-  width:min(1150px,92%);
-  margin:auto;
-}
-
-section{
-  padding:90px 0;
-}
-
+a{text-decoration:none;color:inherit}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.container{width:min(1150px,92%);margin:auto}
+section{padding:85px 0}
 .section-title{
   text-align:center;
-  font-size:clamp(28px,5vw,42px);
-  margin-bottom:12px;
+  font-size:34px;
+  margin-bottom:45px;
 }
-
-.section-subtitle{
-  text-align:center;
-  color:var(--muted);
-  max-width:650px;
-  margin:0 auto 45px;
-}
-
+.section-title span{color:var(--accent)}
+.muted{color:var(--muted)}
 .glass{
   background:var(--card);
   border:1px solid var(--border);
   backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
   box-shadow:var(--shadow);
 }
-
 .btn{
   border:0;
   padding:12px 18px;
-  border-radius:14px;
+  border-radius:12px;
   background:linear-gradient(135deg,var(--accent),var(--accent2));
   color:white;
-  font-weight:bold;
-  transition:.3s;
+  font-weight:700;
+  transition:.25s;
 }
-
-.btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 10px 30px rgba(0,212,255,.2);
-}
-
+.btn:hover{transform:translateY(-3px);filter:brightness(1.1)}
 .btn.secondary{
-  background:var(--card);
-  border:1px solid var(--border);
-  color:var(--text);
-}
-
-.small-btn{
-  padding:8px 12px;
-  border-radius:10px;
-  border:1px solid var(--border);
   background:var(--card2);
+  border:1px solid var(--border);
   color:var(--text);
 }
-
-/* Loader */
-#loader{
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:var(--bg);
-  transition:.6s;
-}
-
-.loader-box{
-  text-align:center;
-}
-
-.loader-logo{
-  width:75px;
-  height:75px;
-  margin:auto auto 15px;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  font-size:25px;
-  font-weight:900;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  animation:pulse 1.2s infinite;
-}
-
-.loader-bar{
-  width:180px;
-  height:5px;
+.grid{display:grid;gap:20px}
+.card{
+  padding:24px;
+  border-radius:22px;
   background:var(--card);
-  border-radius:20px;
-  overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
+.card:hover{transform:translateY(-5px);transition:.25s}
+
+/* LOADER */
+#loader{
+  position:fixed;inset:0;background:var(--bg);
+  display:grid;place-items:center;z-index:9999;
+}
+.loader-box{text-align:center}
+.loader-ring{
+  width:65px;height:65px;border:5px solid var(--border);
+  border-top-color:var(--accent);border-radius:50%;
+  animation:spin 1s linear infinite;margin:auto auto 15px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* PROGRESS */
+#progress{
+  position:fixed;top:0;left:0;width:0;height:4px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  z-index:9998;
 }
 
-.loader-bar span{
-  display:block;
-  width:0;
-  height:100%;
-  background:var(--accent);
-  animation:load 1.7s forwards;
+/* BACKGROUND */
+.bg-orb{
+  position:fixed;width:300px;height:300px;border-radius:50%;
+  filter:blur(90px);opacity:.18;z-index:-1;pointer-events:none;
 }
-
-@keyframes load{to{width:100%}}
-@keyframes pulse{
-  50%{transform:scale(1.08);box-shadow:0 0 35px var(--accent)}
-}
-
-/* Background */
-.orb{
-  position:fixed;
-  width:250px;
-  height:250px;
-  border-radius:50%;
-  filter:blur(80px);
-  opacity:.12;
-  pointer-events:none;
-  z-index:-1;
-}
-
 .orb1{background:var(--accent);top:10%;left:-100px}
 .orb2{background:var(--accent2);right:-100px;top:45%}
-.orb3{background:#22c55e;left:35%;bottom:-120px}
+.orb3{background:#ff3cac;left:30%;bottom:-150px}
 
-/* Navbar */
-.navbar{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:1000;
-  padding:14px 0;
-  background:rgba(7,17,31,.7);
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(8,11,20,.75);
   backdrop-filter:blur(18px);
   border-bottom:1px solid var(--border);
 }
-
-[data-theme="light"] .navbar{
-  background:rgba(255,255,255,.75);
-}
-
+body.light nav{background:rgba(255,255,255,.78)}
 .nav-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
+  min-height:70px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px;
 }
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:900;
-  font-size:20px;
-}
-
-.logo-mark{
-  width:40px;
-  height:40px;
-  display:grid;
-  place-items:center;
-  border-radius:12px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:white;
-}
-
-.nav-links{
-  display:flex;
-  gap:8px;
-  align-items:center;
-}
-
+.logo{font-size:25px;font-weight:900;color:var(--accent)}
+.nav-links{display:flex;gap:18px;align-items:center}
 .nav-links a{
-  padding:9px 12px;
-  border-radius:10px;
-  color:var(--muted);
-  transition:.25s;
+  color:var(--muted);font-weight:700;font-size:14px;
 }
-
-.nav-links a:hover,
-.nav-links a.active{
-  color:var(--text);
-  background:var(--card);
-}
-
-.nav-actions{
-  display:flex;
-  gap:7px;
-}
-
+.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+.nav-actions{display:flex;gap:8px}
 .icon-btn{
-  width:40px;
-  height:40px;
+  width:42px;height:42px;border-radius:12px;
   border:1px solid var(--border);
-  border-radius:11px;
-  background:var(--card);
-  color:var(--text);
+  background:var(--card);color:var(--text);
 }
+.menu-btn{display:none}
 
-.menu-btn{
-  display:none;
-}
-
-/* Hero */
+/* HERO */
 .hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  padding-top:120px;
+  min-height:90vh;display:flex;align-items:center;
+  text-align:center;
 }
-
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  align-items:center;
-  gap:60px;
-}
-
-.badge{
-  display:inline-flex;
-  padding:7px 13px;
-  border-radius:30px;
-  background:var(--card);
-  border:1px solid var(--border);
-  color:var(--accent);
-  margin-bottom:18px;
-}
-
-.hero h1{
-  font-size:clamp(45px,8vw,82px);
-  line-height:1;
-  margin-bottom:20px;
-}
-
-.gradient-text{
-  background:linear-gradient(90deg,var(--accent),#fff,var(--accent2));
-  -webkit-background-clip:text;
-  color:transparent;
-  background-size:200%;
-  animation:gradient 5s infinite linear;
-}
-
-@keyframes gradient{
-  to{background-position:200%}
-}
-
-.hero p{
-  color:var(--muted);
-  font-size:18px;
-  max-width:650px;
-}
-
-.typing{
-  color:var(--accent);
-  font-weight:bold;
-  min-height:30px;
-  margin:15px 0;
-}
-
-.hero-buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:25px;
-}
-
+.hero-inner{width:100%}
 .profile-wrap{
-  position:relative;
-  width:min(350px,80vw);
-  aspect-ratio:1;
-  margin:auto;
-  display:grid;
-  place-items:center;
+  width:190px;height:190px;margin:0 auto 25px;
+  padding:6px;border-radius:50%;
+  background:conic-gradient(var(--accent),var(--accent2),#ff3cac,var(--accent));
+  animation:rotate 7s linear infinite;
 }
-
-.profile-ring{
-  position:absolute;
-  inset:0;
-  border-radius:50%;
-  background:conic-gradient(var(--accent),var(--accent2),var(--accent),transparent,var(--accent));
-  animation:spin 8s linear infinite;
-}
-
-.profile-ring:after{
-  content:"";
-  position:absolute;
-  inset:7px;
-  border-radius:50%;
-  background:var(--bg);
-}
-
-@keyframes spin{to{transform:rotate(360deg)}}
-
-.profile-img{
-  position:relative;
-  width:88%;
-  height:88%;
-  object-fit:cover;
-  border-radius:50%;
+.profile-wrap img{
+  width:100%;height:100%;object-fit:cover;border-radius:50%;
   border:5px solid var(--bg);
-  z-index:2;
+  animation:counterrotate 7s linear infinite;
 }
-
-/* Search */
-.search-box{
-  max-width:700px;
-  margin:0 auto 25px;
-  position:relative;
+@keyframes rotate{to{transform:rotate(360deg)}}
+@keyframes counterrotate{to{transform:rotate(-360deg)}}
+.hero h1{font-size:clamp(42px,8vw,80px);line-height:1.05}
+.gradient-text{
+  background:linear-gradient(90deg,var(--accent),var(--accent2),#ff3cac);
+  -webkit-background-clip:text;color:transparent;
 }
+.typing{
+  color:var(--accent2);font-size:22px;font-weight:800;
+  min-height:35px;margin:15px 0;
+}
+.hero-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:25px 0}
+.date-box{color:var(--muted)}
 
-.search-box input{
-  width:100%;
-  padding:16px 20px;
-  border-radius:16px;
+/* SEARCH */
+.search-box{display:flex;gap:10px;max-width:650px;margin:0 auto 25px}
+.search-box input,.field,.notes{
+  width:100%;padding:13px 15px;border-radius:12px;
   border:1px solid var(--border);
-  background:var(--card);
-  color:var(--text);
-  outline:none;
+  background:var(--card);color:var(--text);outline:none;
 }
-
 .search-results{
-  position:absolute;
-  left:0;
-  right:0;
-  top:60px;
-  z-index:20;
-  max-height:280px;
-  overflow:auto;
-  border-radius:15px;
+  max-width:650px;margin:auto;
   display:none;
 }
-
-.search-results.show{display:block}
-
 .search-result{
-  padding:12px 15px;
-  border-bottom:1px solid var(--border);
-  background:var(--bg2);
+  padding:12px;border-bottom:1px solid var(--border);
   cursor:pointer;
 }
 
-.search-result:hover{
-  background:var(--card);
+/* ABOUT */
+.about-grid{grid-template-columns:1.2fr .8fr}
+.profile-card{text-align:center}
+.mini-avatar{
+  width:90px;height:90px;border-radius:50%;object-fit:cover;
+  margin-bottom:12px;
 }
 
-/* Cards */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
+/* STATS */
+.stats-grid{grid-template-columns:repeat(4,1fr)}
+.stat{text-align:center}
+.stat b{font-size:35px;color:var(--accent)}
+.stat small{display:block;color:var(--muted)}
+
+/* DASHBOARD */
+.dashboard-grid{grid-template-columns:repeat(4,1fr)}
+.dash-value{font-size:30px;font-weight:900;color:var(--accent)}
+.progress-track{
+  height:10px;background:var(--card2);
+  border-radius:20px;overflow:hidden;margin-top:10px;
 }
-
-.card{
-  border-radius:22px;
-  padding:24px;
-  transition:.35s;
-}
-
-.card:hover{
-  transform:translateY(-7px);
-  border-color:rgba(0,212,255,.35);
-}
-
-.card h3{
-  margin-bottom:8px;
-}
-
-.muted{
-  color:var(--muted);
-}
-
-.center{text-align:center}
-
-/* Stats */
-.stats-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-}
-
-.stat{
-  text-align:center;
-  padding:25px 15px;
-  border-radius:20px;
-}
-
-.stat-number{
-  font-size:35px;
-  font-weight:900;
-  color:var(--accent);
-}
-
-/* Projects */
-.filter-row{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-bottom:25px;
-}
-
-.filter-btn{
-  padding:9px 14px;
-  border-radius:12px;
-  border:1px solid var(--border);
-  background:var(--card);
-  color:var(--text);
-}
-
-.filter-btn.active{
-  background:var(--accent);
-  color:#001018;
-}
-
-.project-window{
-  border:1px solid var(--border);
-  border-radius:15px;
-  overflow:hidden;
-  margin-bottom:18px;
-  background:#080f1c;
-}
-
-.window-top{
-  display:flex;
-  gap:5px;
-  padding:10px;
-  border-bottom:1px solid var(--border);
-}
-
-.dot{
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:#64748b;
-}
-
-.window-body{
-  min-height:130px;
-  padding:20px;
-  background:linear-gradient(135deg,#0b1628,#111d32);
-}
-
-.code-line{
-  height:7px;
-  width:80%;
-  margin:10px 0;
-  border-radius:10px;
-  background:rgba(0,212,255,.4);
-}
-
-.code-line:nth-child(2){width:60%}
-.code-line:nth-child(3){width:72%}
-
-.tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-  margin:15px 0;
-}
-
-.tag{
-  padding:5px 9px;
-  border-radius:8px;
-  font-size:12px;
-  background:rgba(0,212,255,.1);
-  color:var(--accent);
-}
-
-/* Progress */
-.progress{
-  height:9px;
-  border-radius:20px;
-  background:var(--card);
-  overflow:hidden;
-}
-
-.progress span{
-  display:block;
-  height:100%;
-  width:0;
+.progress-fill{
+  height:100%;width:0;
   background:linear-gradient(90deg,var(--accent),var(--accent2));
-  border-radius:20px;
   transition:1s;
 }
 
-/* Dashboard */
-.dashboard-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
+/* PROJECTS */
+.filters{
+  display:flex;justify-content:center;gap:8px;
+  flex-wrap:wrap;margin-bottom:25px;
+}
+.projects-grid{grid-template-columns:repeat(3,1fr)}
+.project-preview{
+  height:150px;border-radius:16px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:grid;place-items:center;font-size:40px;margin-bottom:18px;
+}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
+.tag{
+  font-size:12px;padding:5px 9px;border-radius:20px;
+  background:var(--card2);color:var(--accent2);
 }
 
-.dashboard-card{
-  padding:20px;
-  border-radius:20px;
+/* SKILLS */
+.skills-grid{grid-template-columns:repeat(2,1fr)}
+.skill-row{margin:18px 0}
+.skill-head{display:flex;justify-content:space-between}
+.skill-track{
+  height:12px;background:var(--card2);
+  border-radius:20px;overflow:hidden;margin-top:8px;
+}
+.skill-bar{
+  height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));
 }
 
-.big-number{
-  font-size:30px;
-  font-weight:900;
-}
-
-.level{
-  color:var(--accent);
-}
-
-/* Forms */
-.form{
-  display:grid;
-  gap:12px;
-}
-
-.form input,
-.form textarea,
-.form select{
-  width:100%;
-  padding:13px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  outline:none;
-  background:var(--card2);
-  color:var(--text);
-}
-
-.form textarea{
-  min-height:150px;
-  resize:vertical;
-}
-
-/* Tasks */
-.task-list{
-  display:grid;
-  gap:9px;
-  margin-top:15px;
-}
-
-.task{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:12px;
-  border:1px solid var(--border);
-  border-radius:13px;
-  background:var(--card2);
-}
-
-.task.done span{
-  text-decoration:line-through;
-  opacity:.5;
-}
-
-.priority{
-  margin-left:auto;
-  font-size:11px;
-  padding:4px 7px;
-  border-radius:6px;
-}
-
-.high{background:rgba(239,68,68,.15);color:#ef4444}
-.medium{background:rgba(245,158,11,.15);color:#f59e0b}
-.low{background:rgba(34,197,94,.15);color:#22c55e}
-
-/* Planner */
-.plan-item{
-  display:grid;
-  grid-template-columns:90px 1fr auto;
-  gap:10px;
-  padding:12px;
-  border-bottom:1px solid var(--border);
-}
-
-/* Timer */
-.timer{
-  text-align:center;
-}
-
-.timer-display{
-  font-size:55px;
-  font-weight:900;
-  margin:15px 0;
-  letter-spacing:2px;
-}
-
-.timer-buttons{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:8px;
-}
-
-/* Skills */
-.skill-card{
-  cursor:pointer;
-}
-
-.skill-head{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:8px;
-}
-
-/* Timeline */
-.timeline{
-  position:relative;
-  max-width:750px;
-  margin:auto;
-}
-
-.timeline:before{
-  content:"";
-  position:absolute;
-  left:15px;
-  top:0;
-  bottom:0;
-  width:2px;
-  background:var(--border);
-}
-
+/* LEARNING */
+.learning-grid{grid-template-columns:repeat(3,1fr)}
+.timeline{position:relative;max-width:850px;margin:auto}
 .timeline-item{
-  position:relative;
-  padding:0 0 30px 50px;
+  padding:20px;margin:20px 0;
+  border-left:3px solid var(--accent);
 }
 
-.timeline-dot{
-  position:absolute;
-  left:8px;
-  top:5px;
-  width:16px;
-  height:16px;
-  border-radius:50%;
-  background:var(--accent);
-  box-shadow:0 0 15px var(--accent);
+/* TOOLS */
+.tools-grid{grid-template-columns:repeat(2,1fr)}
+.timer{
+  font-size:48px;font-weight:900;text-align:center;
+  color:var(--accent2);margin:15px 0;
+}
+.tool-buttons{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+
+/* TASKS */
+.task-form{display:grid;grid-template-columns:2fr 1fr auto;gap:10px}
+.task{
+  display:flex;align-items:center;gap:10px;
+  padding:13px;margin-top:10px;border-radius:12px;
+  background:var(--card2);
+}
+.task.done{text-decoration:line-through;opacity:.55}
+.task-priority{font-size:11px;padding:4px 7px;border-radius:10px}
+.high{background:#ff5f6d;color:white}
+.medium{background:#ffbd4a;color:#111}
+.low{background:#35e68b;color:#062}
+
+/* PLANNER */
+.plan-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px}
+.plan-item{
+  display:flex;justify-content:space-between;
+  padding:13px;margin-top:10px;background:var(--card2);
+  border-radius:12px;
 }
 
-/* Achievements */
-.achievement{
-  text-align:center;
-  padding:22px;
-  opacity:.4;
+/* NOTES */
+.notes{min-height:220px;resize:vertical}
+
+/* QUOTE */
+.quote{
+  font-size:22px;text-align:center;
+  padding:35px;font-style:italic;
 }
 
-.achievement.unlocked{
-  opacity:1;
-  border-color:rgba(34,197,94,.4);
+/* ACHIEVEMENTS */
+.badges{grid-template-columns:repeat(4,1fr)}
+.badge{text-align:center}
+.badge-icon{font-size:42px}
+.badge.locked{filter:grayscale(1);opacity:.45}
+
+/* ROADMAP */
+.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.road-step{
+  text-align:center;padding:20px;border-radius:18px;
+  border:1px solid var(--border);background:var(--card);
 }
 
-.achievement-icon{
-  font-size:35px;
-  margin-bottom:8px;
-}
+/* RESOURCES */
+.resources{grid-template-columns:repeat(3,1fr)}
+.resource a{display:block;margin-top:10px;color:var(--accent2)}
 
-/* Notes */
-.notes-status{
-  color:var(--success);
-  min-height:24px;
+/* SETTINGS */
+.settings-grid{grid-template-columns:repeat(2,1fr)}
+.color-row{display:flex;gap:10px;flex-wrap:wrap}
+.color{
+  width:34px;height:34px;border-radius:50%;
+  border:3px solid transparent;cursor:pointer;
 }
+.color:hover{transform:scale(1.1)}
 
-/* Modal */
+/* MODAL */
 .modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.7);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:5000;
-  padding:20px;
+  position:fixed;inset:0;background:rgba(0,0,0,.7);
+  display:none;place-items:center;padding:20px;z-index:3000;
 }
-
-.modal.show{
-  display:flex;
-}
-
 .modal-box{
-  width:min(600px,100%);
-  max-height:90vh;
-  overflow:auto;
-  padding:28px;
-  border-radius:25px;
-  position:relative;
+  width:min(600px,100%);padding:28px;border-radius:25px;
+  max-height:85vh;overflow:auto;
 }
-
 .close{
-  position:absolute;
-  right:15px;
-  top:15px;
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  border:1px solid var(--border);
-  background:var(--card);
-  color:var(--text);
+  float:right;background:none;border:0;
+  color:var(--text);font-size:25px;
 }
 
-/* Toast */
+/* TOAST */
 #toast{
-  position:fixed;
-  right:20px;
-  bottom:25px;
-  z-index:8000;
-  padding:13px 18px;
-  border-radius:14px;
-  background:var(--bg2);
-  border:1px solid var(--border);
-  transform:translateY(120px);
-  opacity:0;
-  transition:.3s;
+  position:fixed;right:20px;bottom:20px;
+  padding:14px 18px;background:var(--card2);
+  border:1px solid var(--border);border-radius:14px;
+  transform:translateY(120px);opacity:0;
+  transition:.3s;z-index:5000;
 }
+#toast.show{transform:translateY(0);opacity:1}
 
-#toast.show{
-  transform:translateY(0);
-  opacity:1;
-}
-
-/* Notifications */
-.notification{
-  padding:12px;
-  border-bottom:1px solid var(--border);
-}
-
-/* Accent */
-.accent-options{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
-.accent-option{
-  width:30px;
-  height:30px;
-  border-radius:50%;
-  border:3px solid transparent;
-}
-
-.accent-option.active{
-  border-color:var(--text);
-}
-
-/* Export */
-.export-box{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-/* Footer */
-footer{
-  padding:40px 0 100px;
-  border-top:1px solid var(--border);
-  text-align:center;
-  color:var(--muted);
-}
-
-/* Mobile bottom */
+/* MOBILE NAV */
 .mobile-bottom{
-  display:none;
+  display:none;position:fixed;bottom:0;left:0;right:0;
+  background:var(--card2);backdrop-filter:blur(20px);
+  border-top:1px solid var(--border);z-index:2000;
+}
+.mobile-bottom div{
+  display:flex;justify-content:space-around;padding:10px;
+}
+.mobile-bottom button{
+  background:none;border:0;color:var(--muted);
+  font-size:12px;
 }
 
-/* Reveal */
-.reveal{
-  opacity:0;
-  transform:translateY(25px);
-  transition:.7s;
+/* CURSOR */
+.cursor-dot{
+  position:fixed;width:9px;height:9px;border-radius:50%;
+  background:var(--accent);pointer-events:none;
+  z-index:10000;display:none;
 }
 
-.reveal.visible{
-  opacity:1;
-  transform:none;
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(25px);transition:.7s}
+.reveal.show{opacity:1;transform:none}
+
+/* FOOTER */
+footer{
+  text-align:center;padding:50px 0 90px;
+  color:var(--muted);border-top:1px solid var(--border);
 }
 
-/* Reading progress */
-#readingProgress{
-  position:fixed;
-  top:0;
-  left:0;
-  height:3px;
-  width:0;
-  background:var(--accent);
-  z-index:9999;
-}
-
-/* Responsive */
+/* RESPONSIVE */
 @media(max-width:900px){
-  .hero-grid{
-    grid-template-columns:1fr;
-    text-align:center;
-  }
-
-  .hero-buttons{
-    justify-content:center;
-  }
-
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .stats-grid,
-  .dashboard-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
-
-@media(max-width:700px){
-  section{
-    padding:65px 0;
-  }
-
+  .about-grid,.projects-grid,.learning-grid,.resources,
+  .stats-grid,.dashboard-grid,.badges,.roadmap{grid-template-columns:repeat(2,1fr)}
   .nav-links{
-    position:absolute;
-    top:70px;
-    left:4%;
-    right:4%;
-    display:none;
-    flex-direction:column;
-    padding:15px;
-    border-radius:18px;
-    background:var(--bg2);
-    border:1px solid var(--border);
+    display:none;position:absolute;top:70px;left:0;right:0;
+    padding:20px;background:var(--bg);flex-direction:column;
   }
-
-  .nav-links.open{
-    display:flex;
-  }
-
-  .nav-links a{
-    width:100%;
-    text-align:center;
-  }
-
-  .menu-btn{
-    display:block;
-  }
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .stats-grid,
-  .dashboard-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .hero h1{
-    font-size:48px;
-  }
-
-  .mobile-bottom{
-    display:flex;
-    position:fixed;
-    bottom:10px;
-    left:4%;
-    right:4%;
-    z-index:2000;
-    padding:8px;
-    border-radius:18px;
-    justify-content:space-around;
-  }
-
-  .mobile-bottom a{
-    padding:7px 10px;
-    font-size:12px;
-    text-align:center;
-  }
-
-  .mobile-bottom span{
-    display:block;
-    font-size:18px;
-  }
+  .nav-links.open{display:flex}
+  .menu-btn{display:block}
 }
-
-@media(max-width:450px){
-  .stats-grid,
-  .dashboard-grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero h1{
-    font-size:42px;
-  }
-
-  .profile-wrap{
-    width:270px;
-  }
-
-  .plan-item{
-    grid-template-columns:1fr;
-  }
+@media(max-width:650px){
+  section{padding:65px 0}
+  .about-grid,.projects-grid,.learning-grid,.skills-grid,
+  .tools-grid,.settings-grid,.stats-grid,.dashboard-grid,
+  .badges,.roadmap,.resources{grid-template-columns:1fr}
+  .task-form,.plan-form{grid-template-columns:1fr}
+  .mobile-bottom{display:block}
+  footer{padding-bottom:110px}
+  .cursor-dot{display:none}
+  .hero{min-height:80vh}
+  .profile-wrap{width:155px;height:155px}
+  .section-title{font-size:29px}
 }
 </style>
 </head>
 
 <body>
 
-<div id="readingProgress"></div>
-
 <div id="loader">
   <div class="loader-box">
-    <div class="loader-logo">HS</div>
-    <h3>Loading Portfolio...</h3>
-    <div class="loader-bar"><span></span></div>
+    <div class="loader-ring"></div>
+    <h2>Loading Portfolio...</h2>
   </div>
 </div>
 
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<div class="orb orb3"></div>
+<div id="progress"></div>
 
-<!-- NAVBAR -->
-<header class="navbar">
-  <div class="container nav-inner">
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<div class="bg-orb orb3"></div>
 
-    <a href="#home" class="logo">
-      <span class="logo-mark">HS</span>
-      <span>Himanshu</span>
-    </a>
+<div class="cursor-dot" id="cursor"></div>
 
-    <nav class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#dashboard">Dashboard</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#learning">Learning</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<nav>
+<div class="container nav-inner">
 
-    <div class="nav-actions">
-      <button class="icon-btn" onclick="toggleTheme()" title="Theme">🌙</button>
-      <button class="icon-btn menu-btn" onclick="toggleMenu()">☰</button>
-    </div>
+  <div class="logo">HS.</div>
 
+  <div class="nav-links" id="navLinks">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#learning">Learning</a>
+    <a href="#tools">Tools</a>
+    <a href="#contact">Contact</a>
   </div>
-</header>
+
+  <div class="nav-actions">
+    <button class="icon-btn" onclick="toggleTheme()" title="Theme">🌙</button>
+    <button class="icon-btn" onclick="openSettings()" title="Settings">⚙️</button>
+    <button class="icon-btn menu-btn" onclick="toggleMenu()">☰</button>
+  </div>
+
+</div>
+</nav>
+
+<main>
 
 <!-- HERO -->
-<section class="hero" id="home">
-  <div class="container hero-grid">
+<section id="home" class="hero">
+<div class="container hero-inner reveal">
 
-    <div class="reveal">
-      <span class="badge">🚀 Personal Developer Portfolio</span>
-
-      <h1>
-        Hi, I'm<br>
-        <span class="gradient-text">Himanshu Shekhar</span>
-      </h1>
-
-      <div class="typing" id="typing"></div>
-
-      <p>
-        I am learning coding, web development and building my future
-        one project at a time.
-      </p>
-
-      <div class="hero-buttons">
-        <a class="btn" href="#projects">View Projects</a>
-        <a class="btn secondary" href="#dashboard">My Dashboard</a>
-      </div>
-
-      <p style="margin-top:18px;font-size:14px">
-        📅 <span id="currentDate"></span>
-      </p>
-    </div>
-
-    <div class="reveal">
-      <div class="profile-wrap">
-        <div class="profile-ring"></div>
-
-        <img
-          class="profile-img"
-          src="IMG_20260218_125513_403.webp"
-          alt="Himanshu Shekhar"
-          loading="eager">
-      </div>
-    </div>
-
+  <div class="profile-wrap">
+    <img
+      class="profile-img"
+      src="IMG_20260218_125513_403.webp"
+      alt="Himanshu Shekhar">
   </div>
+
+  <p class="muted">Hello, I'm</p>
+
+  <h1>
+    <span class="gradient-text">Himanshu Shekhar</span>
+  </h1>
+
+  <div class="typing" id="typing"></div>
+
+  <p class="muted">
+    Learning coding, building projects and creating my future.
+  </p>
+
+  <div class="hero-buttons">
+    <a class="btn" href="#projects">View Projects</a>
+    <a class="btn secondary" href="#dashboard">Open Dashboard</a>
+  </div>
+
+  <p class="date-box" id="today"></p>
+
+</div>
 </section>
+
 
 <!-- GLOBAL SEARCH -->
-<section id="searchSection">
-  <div class="container reveal">
+<section>
+<div class="container reveal">
 
-    <h2 class="section-title">🔎 Search</h2>
+<h2 class="section-title">🔎 Global <span>Search</span></h2>
 
-    <div class="search-box">
-      <input
-        id="globalSearch"
-        type="search"
-        placeholder="Search projects, skills, topics, roadmap..."
-        oninput="globalSearch()">
+<div class="search-box">
+<input id="globalInput"
+       class="field"
+       placeholder="Search projects, skills, learning..."
+       oninput="globalSearch()">
+</div>
 
-      <div id="searchResults" class="search-results glass"></div>
-    </div>
+<div id="searchResults" class="card search-results"></div>
 
-  </div>
+</div>
 </section>
+
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="container reveal">
+<div class="container reveal">
 
-    <h2 class="section-title">👨‍💻 About Me</h2>
+<h2 class="section-title">About <span>Me</span></h2>
 
-    <p class="section-subtitle">
-      A beginner developer building skills through practice,
-      experiments and real projects.
-    </p>
+<div class="grid about-grid">
 
-    <div class="grid">
+<div class="card">
+<h2>👋 Hi!</h2>
+<br>
+<p>
+I'm <b>Himanshu Shekhar</b>, a coding learner interested in
+web development and building useful digital projects.
+</p>
+<br>
+<p class="muted">
+My goal is to continuously learn, practice and create better
+projects step by step.
+</p>
+<br>
 
-      <div class="card glass">
-        <h3>💻 Coding</h3>
-        <p class="muted">
-          Learning HTML, CSS and JavaScript by creating real websites.
-        </p>
-      </div>
+<div class="tags">
+<span class="tag">HTML</span>
+<span class="tag">CSS</span>
+<span class="tag">JavaScript</span>
+<span class="tag">Web Development</span>
+</div>
+</div>
 
-      <div class="card glass">
-        <h3>🌐 Web Development</h3>
-        <p class="muted">
-          Exploring responsive design, UI, animations and JavaScript.
-        </p>
-      </div>
+<div class="card profile-card">
+<img class="mini-avatar"
+src="IMG_20260218_125513_403.webp"
+alt="Himanshu">
+<h3>Himanshu Shekhar</h3>
+<p class="muted">Coding Learner</p>
+<br>
+<p>🚀 Building</p>
+<p>📚 Learning</p>
+<p>🧠 Improving</p>
+</div>
 
-      <div class="card glass">
-        <h3>🚀 Future Builder</h3>
-        <p class="muted">
-          Building projects today for bigger goals tomorrow.
-        </p>
-      </div>
-
-    </div>
-  </div>
+</div>
+</div>
 </section>
+
+
+<!-- STATS -->
+<section>
+<div class="container reveal">
+
+<h2 class="section-title">Portfolio <span>Statistics</span></h2>
+
+<div class="grid stats-grid">
+
+<div class="card stat">
+<b id="statProjects">0</b>
+<small>Projects</small>
+</div>
+
+<div class="card stat">
+<b id="statSkills">4</b>
+<small>Core Skills</small>
+</div>
+
+<div class="card stat">
+<b id="statTasks">0</b>
+<small>Tasks Done</small>
+</div>
+
+<div class="card stat">
+<b id="statXP">0</b>
+<small>XP Earned</small>
+</div>
+
+</div>
+</div>
+</section>
+
 
 <!-- DASHBOARD -->
 <section id="dashboard">
-  <div class="container reveal">
+<div class="container reveal">
 
-    <h2 class="section-title">📊 Personal Dashboard</h2>
+<h2 class="section-title">Personal <span>Dashboard</span></h2>
 
-    <p class="section-subtitle">
-      Your productivity data is stored locally in this browser.
-    </p>
+<div class="grid dashboard-grid">
 
-    <div class="dashboard-grid">
+<div class="card">
+<p class="muted">🔥 Learning Streak</p>
+<div class="dash-value"><span id="streak">0</span> days</div>
+</div>
 
-      <div class="dashboard-card glass">
-        <span class="muted">🔥 Streak</span>
-        <div class="big-number">
-          <span id="streak">0</span> days
-        </div>
-      </div>
+<div class="card">
+<p class="muted">⭐ XP</p>
+<div class="dash-value"><span id="xp">0</span></div>
+</div>
 
-      <div class="dashboard-card glass">
-        <span class="muted">⭐ XP</span>
-        <div class="big-number">
-          <span id="xp">0</span>
-        </div>
-      </div>
+<div class="card">
+<p class="muted">🏅 Level</p>
+<div class="dash-value"><span id="level">1</span></div>
+</div>
 
-      <div class="dashboard-card glass">
-        <span class="muted">🏆 Level</span>
-        <div class="big-number level">
-          <span id="level">1</span>
-        </div>
-      </div>
+<div class="card">
+<p class="muted">🎯 Daily Goal</p>
+<div class="dash-value"><span id="goalPercent">0</span>%</div>
+<div class="progress-track">
+<div class="progress-fill" id="goalBar"></div>
+</div>
+</div>
 
-      <div class="dashboard-card glass">
-        <span class="muted">⏱️ Learning</span>
-        <div class="big-number">
-          <span id="learningMinutes">0</span>m
-        </div>
-      </div>
+</div>
 
-    </div>
+<br>
 
-    <div style="height:20px"></div>
+<div class="card">
+<h3>📈 Weekly Progress</h3>
+<br>
+<div class="grid stats-grid">
+<div class="stat">
+<b id="weekSessions">0</b>
+<small>Sessions</small>
+</div>
+<div class="stat">
+<b id="weekMinutes">0</b>
+<small>Minutes</small>
+</div>
+<div class="stat">
+<b id="weekTasks">0</b>
+<small>Tasks</small>
+</div>
+<div class="stat">
+<b id="weekXP">0</b>
+<small>XP</small>
+</div>
+</div>
+</div>
 
-    <div class="card glass">
-
-      <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
-        <div>
-          <h3>🎯 Daily Goal</h3>
-          <p class="muted">
-            <span id="goalProgress">0</span> / <span id="goalTarget">30</span> minutes
-          </p>
-        </div>
-
-        <button class="small-btn" onclick="setDailyGoal()">
-          Change Goal
-        </button>
-      </div>
-
-      <div class="progress" style="margin-top:15px">
-        <span id="goalBar"></span>
-      </div>
-
-    </div>
-
-    <div style="height:20px"></div>
-
-    <div class="stats-grid">
-
-      <div class="stat glass">
-        <div class="stat-number" id="statProjects">0</div>
-        <div class="muted">Projects</div>
-      </div>
-
-      <div class="stat glass">
-        <div class="stat-number" id="statTasks">0</div>
-        <div class="muted">Completed Tasks</div>
-      </div>
-
-      <div class="stat glass">
-        <div class="stat-number" id="statPlans">0</div>
-        <div class="muted">Plans</div>
-      </div>
-
-      <div class="stat glass">
-        <div class="stat-number" id="statGoals">0</div>
-        <div class="muted">Goals Completed</div>
-      </div>
-
-    </div>
-
-    <div style="height:20px"></div>
-
-    <div class="card glass">
-      <h3>📈 Progress Dashboard</h3>
-
-      <div style="margin-top:20px">
-        <div class="skill-head">
-          <span>Level Progress</span>
-          <span id="levelProgressText">0%</span>
-        </div>
-        <div class="progress">
-          <span id="levelProgress"></span>
-        </div>
-      </div>
-
-      <div style="margin-top:20px">
-        <div class="skill-head">
-          <span>Daily Goal</span>
-          <span id="goalPercent">0%</span>
-        </div>
-        <div class="progress">
-          <span id="goalProgressBar"></span>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
+</div>
 </section>
+
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="container reveal">
+<div class="container reveal">
 
-    <h2 class="section-title">🚀 Projects</h2>
+<h2 class="section-title">My <span>Projects</span></h2>
 
-    <p class="section-subtitle">
-      Things I have built and projects I want to build.
-    </p>
+<div class="filters">
+<button class="btn secondary" onclick="filterProjects('all',this)">All</button>
+<button class="btn secondary" onclick="filterProjects('HTML',this)">HTML</button>
+<button class="btn secondary" onclick="filterProjects('CSS',this)">CSS</button>
+<button class="btn secondary" onclick="filterProjects('JavaScript',this)">JavaScript</button>
+<button class="btn secondary" onclick="filterProjects('favorite',this)">⭐ Favorites</button>
+</div>
 
-    <div class="filter-row">
-      <button class="filter-btn active" onclick="filterProjects('all',this)">All</button>
-      <button class="filter-btn" onclick="filterProjects('html',this)">HTML</button>
-      <button class="filter-btn" onclick="filterProjects('css',this)">CSS</button>
-      <button class="filter-btn" onclick="filterProjects('js',this)">JavaScript</button>
-      <button class="filter-btn" onclick="filterProjects('future',this)">Future</button>
-    </div>
+<div class="grid projects-grid" id="projectGrid">
 
-    <div class="grid" id="projectGrid">
+<div class="card project" data-category="HTML CSS" data-title="My First Website">
+<div class="project-preview">🌐</div>
+<h3>My First Website</h3>
+<div class="tags">
+<span class="tag">HTML</span>
+<span class="tag">CSS</span>
+</div>
+<p class="muted">My first published web project.</p>
+<br>
+<button class="btn" onclick="openProject('My First Website','A beginner-friendly website created while learning HTML and CSS.')">Details</button>
+<button class="btn secondary favorite-btn" onclick="favoriteProject(this)">☆</button>
+</div>
 
-      <article class="card glass project" data-category="html css" data-search="my first website html css beginner">
-        <div class="project-window">
-          <div class="window-top">
-            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          </div>
-          <div class="window-body">
-            <div class="code-line"></div>
-            <div class="code-line"></div>
-            <div class="code-line"></div>
-          </div>
-        </div>
+<div class="card project" data-category="HTML CSS JavaScript" data-title="Portfolio Website">
+<div class="project-preview">👨‍💻</div>
+<h3>Portfolio Website</h3>
+<div class="tags">
+<span class="tag">HTML</span>
+<span class="tag">CSS</span>
+<span class="tag">JavaScript</span>
+</div>
+<p class="muted">This advanced portfolio project.</p>
+<br>
+<button class="btn" onclick="openProject('Portfolio Website','A responsive portfolio with dashboard, projects, tools and learning features.')">Details</button>
+<button class="btn secondary favorite-btn" onclick="favoriteProject(this)">☆</button>
+</div>
 
-        <h3>🌐 My First Website</h3>
+<div class="card project" data-category="JavaScript" data-title="Future Web Project">
+<div class="project-preview">🚀</div>
+<h3>Future Web Project</h3>
+<div class="tags">
+<span class="tag">JavaScript</span>
+<span class="tag">Future</span>
+</div>
+<p class="muted">A future project for practicing JavaScript.</p>
+<br>
+<button class="btn" onclick="openProject('Future Web Project','A space reserved for a future JavaScript project.')">Details</button>
+<button class="btn secondary favorite-btn" onclick="favoriteProject(this)">☆</button>
+</div>
 
-        <p class="muted">
-          My first step into web development.
-        </p>
+</div>
 
-        <div class="tags">
-          <span class="tag">HTML</span>
-          <span class="tag">CSS</span>
-        </div>
+<br>
 
-        <button class="btn" onclick="openProject('My First Website','A beginner website created while learning HTML and CSS.')">
-          Details
-        </button>
+<div class="card">
+<h3>🚀 Project Progress</h3>
+<div class="progress-track">
+<div class="progress-fill" style="width:65%"></div>
+</div>
+<p class="muted">Portfolio development progress: 65%</p>
+</div>
 
-        <button class="small-btn" onclick="pinProject(this,'My First Website')">
-          📌 Pin
-        </button>
-      </article>
-
-      <article class="card glass project" data-category="html css js" data-search="portfolio website html css javascript">
-        <div class="project-window">
-          <div class="window-top">
-            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          </div>
-          <div class="window-body">
-            <div class="code-line"></div>
-            <div class="code-line"></div>
-            <div class="code-line"></div>
-          </div>
-        </div>
-
-        <h3>💼 Portfolio Website</h3>
-
-        <p class="muted">
-          This advanced personal portfolio.
-        </p>
-
-        <div class="tags">
-          <span class="tag">HTML</span>
-          <span class="tag">CSS</span>
-          <span class="tag">JavaScript</span>
-        </div>
-
-        <button class="btn" onclick="openProject('Portfolio Website','A responsive personal portfolio with productivity tools and local storage.')">
-          Details
-        </button>
-
-        <button class="small-btn" onclick="pinProject(this,'Portfolio Website')">
-          📌 Pin
-        </button>
-      </article>
-
-      <article class="card glass project" data-category="future" data-search="future web project application">
-        <div class="project-window">
-          <div class="window-top">
-            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          </div>
-          <div class="window-body">
-            <div class="code-line"></div>
-            <div class="code-line"></div>
-            <div class="code-line"></div>
-          </div>
-        </div>
-
-        <h3>🚀 Future Web Project</h3>
-
-        <p class="muted">
-          A future project currently on the roadmap.
-        </p>
-
-        <div class="tags">
-          <span class="tag">JavaScript</span>
-          <span class="tag">Future</span>
-        </div>
-
-        <button class="btn" onclick="openProject('Future Web Project','A future application to be developed after improving JavaScript skills.')">
-          Details
-        </button>
-
-        <button class="small-btn" onclick="pinProject(this,'Future Web Project')">
-          📌 Pin
-        </button>
-      </article>
-
-    </div>
-
-    <div class="card glass" style="margin-top:25px">
-      <h3>📌 Pinned Project</h3>
-      <p class="muted" id="pinnedProject">No project pinned yet.</p>
-    </div>
-
-  </div>
+</div>
 </section>
+
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="container reveal">
+<div class="container reveal">
 
-    <h2 class="section-title">🧠 Skills</h2>
+<h2 class="section-title">My <span>Skills</span></h2>
 
-    <p class="section-subtitle">
-      Click a skill to learn more about it.
-    </p>
+<div class="grid skills-grid">
 
-    <div class="grid">
+<div class="card">
+<div class="skill-row">
+<div class="skill-head"><b>HTML</b><b>70%</b></div>
+<div class="skill-track"><div class="skill-bar" style="width:70%"></div></div>
+</div>
 
-      <div class="card glass skill-card" onclick="skillInfo('HTML','HTML is used to structure webpages.')">
-        <div class="skill-head">
-          <b>HTML</b><span>70%</span>
-        </div>
-        <div class="progress"><span style="width:70%"></span></div>
-      </div>
+<div class="skill-row">
+<div class="skill-head"><b>CSS</b><b>60%</b></div>
+<div class="skill-track"><div class="skill-bar" style="width:60%"></div></div>
+</div>
 
-      <div class="card glass skill-card" onclick="skillInfo('CSS','CSS controls layout, colors, responsive design and animations.')">
-        <div class="skill-head">
-          <b>CSS</b><span>60%</span>
-        </div>
-        <div class="progress"><span style="width:60%"></span></div>
-      </div>
+<div class="skill-row">
+<div class="skill-head"><b>JavaScript</b><b>30%</b></div>
+<div class="skill-track"><div class="skill-bar" style="width:30%"></div></div>
+</div>
 
-      <div class="card glass skill-card" onclick="skillInfo('JavaScript','JavaScript adds logic and interactivity to websites.')">
-        <div class="skill-head">
-          <b>JavaScript</b><span>30%</span>
-        </div>
-        <div class="progress"><span style="width:30%"></span></div>
-      </div>
+<div class="skill-row">
+<div class="skill-head"><b>Web Development</b><b>40%</b></div>
+<div class="skill-track"><div class="skill-bar" style="width:40%"></div></div>
+</div>
+</div>
 
-      <div class="card glass skill-card" onclick="skillInfo('Web Development','Combining HTML, CSS and JavaScript to build websites.')">
-        <div class="skill-head">
-          <b>Web Development</b><span>40%</span>
-        </div>
-        <div class="progress"><span style="width:40%"></span></div>
-      </div>
+<div class="card">
+<h3>🧩 Interactive Skills</h3>
+<br>
+<button class="btn" onclick="skillInfo('HTML','HTML creates the structure of web pages.')">HTML</button>
+<button class="btn" onclick="skillInfo('CSS','CSS controls design, layout, colors and responsive UI.')">CSS</button>
+<button class="btn" onclick="skillInfo('JavaScript','JavaScript adds interactivity and logic.')">JavaScript</button>
+<button class="btn" onclick="skillInfo('Web Development','Combines frontend technologies to build websites.')">Web Dev</button>
+</div>
 
-    </div>
-
-  </div>
+</div>
+</div>
 </section>
+
 
 <!-- LEARNING -->
 <section id="learning">
-  <div class="container reveal">
+<div class="container reveal">
 
-    <h2 class="section-title">📚 Learning Center</h2>
+<h2 class="section-title">Learning <span>Center</span></h2>
 
-    <p class="section-subtitle">
-      Learn, practice and track your progress.
-    </p>
+<div class="grid learning-grid">
 
-    <div class="grid">
+<div class="card">
+<h3>📚 Currently Learning</h3>
+<br>
+<p>HTML → CSS → JavaScript → Advanced Web Development</p>
+<br>
+<div class="progress-track">
+<div class="progress-fill" style="width:45%"></div>
+</div>
+<p class="muted">Current learning progress: 45%</p>
+</div>
 
-      <div class="card glass">
-        <h3>📖 Currently Learning</h3>
-        <div class="tags">
-          <span class="tag">JavaScript</span>
-          <span class="tag">DOM</span>
-          <span class="tag">Responsive Design</span>
-          <span class="tag">GitHub</span>
-        </div>
-      </div>
+<div class="card">
+<h3>🧠 Coding Topics</h3>
+<br>
+<p>• HTML structure</p>
+<p>• CSS layouts</p>
+<p>• JavaScript basics</p>
+<p>• DOM</p>
+<p>• Local Storage</p>
+<p>• Responsive design</p>
+</div>
 
-      <div class="card glass">
-        <h3>💻 Coding Topics</h3>
-        <p class="muted">Variables → Functions → DOM → Events → APIs</p>
-      </div>
+<div class="card">
+<h3>🗺️ Future Roadmap</h3>
+<br>
+<p>HTML ✓</p>
+<p>CSS →</p>
+<p>JavaScript →</p>
+<p>Git/GitHub →</p>
+<p>Advanced Projects →</p>
+</div>
 
-      <div class="card glass">
-        <h3>🗺️ Future Roadmap</h3>
-        <p class="muted">
-          HTML → CSS → JavaScript → GitHub → Projects → Advanced Web Development
-        </p>
-      </div>
+</div>
 
-    </div>
+<br>
 
-    <div style="height:25px"></div>
+<div class="timeline">
 
-    <!-- CODING TIMER -->
-    <div class="card glass timer">
-      <h3>⏱️ Coding Learning Timer</h3>
+<div class="timeline-item glass">
+<h3>01 — HTML</h3>
+<p class="muted">Learn website structure.</p>
+</div>
 
-      <div class="timer-display" id="learningTimer">00:00:00</div>
+<div class="timeline-item glass">
+<h3>02 — CSS</h3>
+<p class="muted">Learn design and responsive layouts.</p>
+</div>
 
-      <div class="timer-buttons">
-        <button class="btn" onclick="startLearningTimer()">Start</button>
-        <button class="small-btn" onclick="pauseLearningTimer()">Pause</button>
-        <button class="small-btn" onclick="resetLearningTimer()">Reset</button>
-      </div>
-    </div>
+<div class="timeline-item glass">
+<h3>03 — JavaScript</h3>
+<p class="muted">Learn logic and interaction.</p>
+</div>
 
-    <div style="height:25px"></div>
+<div class="timeline-item glass">
+<h3>04 — Projects</h3>
+<p class="muted">Build real projects.</p>
+</div>
 
-    <!-- POMODORO -->
-    <div class="card glass timer">
-      <h3>🍅 Pomodoro</h3>
+</div>
 
-      <p class="muted" id="pomodoroMode">Focus</p>
-
-      <div class="timer-display" id="pomodoroTimer">25:00</div>
-
-      <div class="timer-buttons">
-        <button class="btn" onclick="startPomodoro()">Start</button>
-        <button class="small-btn" onclick="pausePomodoro()">Pause</button>
-        <button class="small-btn" onclick="resetPomodoro()">Reset</button>
-        <button class="small-btn" onclick="switchPomodoro()">Switch</button>
-      </div>
-    </div>
-
-  </div>
+</div>
 </section>
+
+
+<!-- TOOLS -->
+<section id="tools">
+<div class="container reveal">
+
+<h2 class="section-title">Productivity <span>Tools</span></h2>
+
+<div class="grid tools-grid">
+
+<!-- CODING TIMER -->
+<div class="card">
+<h3>💻 Coding Timer</h3>
+<div class="timer" id="codingTimer">00:00:00</div>
+<div class="tool-buttons">
+<button class="btn" onclick="startCoding()">Start</button>
+<button class="btn secondary" onclick="pauseCoding()">Pause</button>
+<button class="btn secondary" onclick="resetCoding()">Reset</button>
+</div>
+</div>
+
+<!-- POMODORO -->
+<div class="card">
+<h3>🍅 Pomodoro</h3>
+<div class="timer" id="pomodoro">25:00</div>
+<div class="tool-buttons">
+<button class="btn" onclick="startPomodoro()">Start</button>
+<button class="btn secondary" onclick="pausePomodoro()">Pause</button>
+<button class="btn secondary" onclick="resetPomodoro()">Reset</button>
+</div>
+<p class="muted" id="pomoMode">Study Session</p>
+</div>
+
+</div>
+
+<br>
+
+<!-- DAILY GOAL -->
+<div class="card">
+<h3>🎯 Daily Learning Goal</h3>
+<br>
+<p class="muted">Goal in minutes</p>
+<br>
+<div class="tool-buttons">
+<input class="field" style="max-width:180px" type="number"
+id="goalInput" value="60" min="1">
+<button class="btn" onclick="setGoal()">Set Goal</button>
+<button class="btn secondary" onclick="completeGoal()">+10 Minutes</button>
+</div>
+</div>
+
+</div>
+</section>
+
 
 <!-- TASK MANAGER -->
-<section id="tasks">
-  <div class="container reveal">
+<section>
+<div class="container reveal">
 
-    <h2 class="section-title">✅ Task Manager</h2>
+<h2 class="section-title">Smart <span>Task Manager</span></h2>
 
-    <p class="section-subtitle">
-      Complete tasks to earn XP and build your streak.
-    </p>
+<div class="card">
 
-    <div class="card glass">
+<div class="task-form">
+<input id="taskInput" class="field" placeholder="Enter task...">
 
-      <div class="form">
-        <input id="taskInput" placeholder="Enter a task...">
+<select id="taskPriority" class="field">
+<option value="low">Low Priority</option>
+<option value="medium">Medium Priority</option>
+<option value="high">High Priority</option>
+</select>
 
-        <select id="taskPriority">
-          <option value="high">High Priority</option>
-          <option value="medium" selected>Medium Priority</option>
-          <option value="low">Low Priority</option>
-        </select>
+<button class="btn" onclick="addTask()">Add</button>
+</div>
 
-        <button class="btn" onclick="addTask()">Add Task</button>
-      </div>
+<br>
 
-      <div id="taskList" class="task-list"></div>
+<div class="tool-buttons">
+<button class="btn secondary" onclick="sortTasks()">↕ Sort</button>
+<button class="btn secondary" onclick="clearCompleted()">🧹 Clear Completed</button>
+</div>
 
-      <div style="margin-top:15px">
-        <button class="small-btn" onclick="clearCompletedTasks()">
-          Clear Completed
-        </button>
-      </div>
+<div id="taskList"></div>
 
-    </div>
-
-  </div>
+</div>
+</div>
 </section>
+
 
 <!-- STUDY PLANNER -->
-<section id="planner">
-  <div class="container reveal">
+<section>
+<div class="container reveal">
 
-    <h2 class="section-title">📅 Study Planner</h2>
+<h2 class="section-title">📅 Study <span>Planner</span></h2>
 
-    <div class="card glass">
+<div class="card">
 
-      <div class="form">
+<div class="plan-form">
+<input id="planDate" class="field" type="date">
+<input id="planSubject" class="field" placeholder="Subject / Topic">
+<input id="planTime" class="field" type="time">
+<button class="btn" onclick="addPlan()">Add</button>
+</div>
 
-        <select id="planDay">
-          <option>Monday</option>
-          <option>Tuesday</option>
-          <option>Wednesday</option>
-          <option>Thursday</option>
-          <option>Friday</option>
-          <option>Saturday</option>
-          <option>Sunday</option>
-        </select>
+<div id="planList"></div>
 
-        <input id="planTime" type="time">
-
-        <input id="planTopic" placeholder="Topic / Subject">
-
-        <button class="btn" onclick="addPlan()">Add Plan</button>
-
-      </div>
-
-      <div id="planList" style="margin-top:20px"></div>
-
-    </div>
-
-  </div>
+</div>
+</div>
 </section>
+
 
 <!-- NOTES -->
-<section id="notes">
-  <div class="container reveal">
+<section>
+<div class="container reveal">
 
-    <h2 class="section-title">📝 Personal Notes</h2>
+<h2 class="section-title">📝 Personal <span>Notes</span></h2>
 
-    <div class="card glass">
+<div class="card">
+<textarea id="notes" class="notes"
+placeholder="Write your coding or study notes here..."></textarea>
 
-      <textarea
-        id="notesArea"
-        class="form"
-        style="min-height:250px"
-        placeholder="Write your coding or study notes here..."></textarea>
+<br><br>
 
-      <div class="notes-status" id="notesStatus"></div>
+<div class="tool-buttons">
+<button class="btn" onclick="saveNotes()">Save Notes</button>
+<button class="btn secondary" onclick="clearNotes()">Clear</button>
+<button class="btn secondary" onclick="downloadNotes()">Download</button>
+</div>
 
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
-        <button class="small-btn" onclick="downloadNotes()">Download Notes</button>
-        <button class="small-btn" onclick="clearNotes()">Clear Notes</button>
-      </div>
+<p class="muted" id="noteStatus">Auto-save enabled</p>
+</div>
 
-    </div>
-
-  </div>
+</div>
 </section>
 
-<!-- TIMELINE -->
-<section id="roadmap">
-  <div class="container reveal">
 
-    <h2 class="section-title">🗺️ Learning Roadmap</h2>
+<!-- QUOTE -->
+<section>
+<div class="container reveal">
 
-    <div class="timeline">
+<h2 class="section-title">💡 Daily <span>Quote</span></h2>
 
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="card glass">
-          <h3>01 — HTML</h3>
-          <p class="muted">Learn webpage structure and semantic elements.</p>
-        </div>
-      </div>
+<div class="card quote" id="quote">
+"Small progress every day becomes big progress over time."
+</div>
 
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="card glass">
-          <h3>02 — CSS</h3>
-          <p class="muted">Learn layouts, responsive design and animations.</p>
-        </div>
-      </div>
+<br>
 
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="card glass">
-          <h3>03 — JavaScript</h3>
-          <p class="muted">Learn programming logic and website interaction.</p>
-        </div>
-      </div>
+<div style="text-align:center">
+<button class="btn" onclick="newQuote()">New Quote</button>
+</div>
 
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="card glass">
-          <h3>04 — Real Projects</h3>
-          <p class="muted">Build increasingly useful applications.</p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
+</div>
 </section>
 
-<!-- RESOURCES -->
-<section id="resources">
-  <div class="container reveal">
-
-    <h2 class="section-title">📚 Resources</h2>
-
-    <div class="grid">
-
-      <a class="card glass" href="https://developer.mozilla.org/" target="_blank">
-        <h3>🌐 MDN Web Docs</h3>
-        <p class="muted">HTML, CSS and JavaScript documentation.</p>
-      </a>
-
-      <a class="card glass" href="https://docs.github.com/" target="_blank">
-        <h3>🐙 GitHub Docs</h3>
-        <p class="muted">Learn GitHub and repository workflows.</p>
-      </a>
-
-      <a class="card glass" href="https://javascript.info/" target="_blank">
-        <h3>🟨 JavaScript.info</h3>
-        <p class="muted">JavaScript learning material.</p>
-      </a>
-
-    </div>
-
-  </div>
-</section>
 
 <!-- ACHIEVEMENTS -->
-<section id="achievements">
-  <div class="container reveal">
+<section>
+<div class="container reveal">
 
-    <h2 class="section-title">🏆 Achievements</h2>
+<h2 class="section-title">🏆 <span>Achievements</span></h2>
 
-    <div class="grid" id="achievementGrid">
+<div class="grid badges">
 
-      <div class="card glass achievement" id="ach-first-task">
-        <div class="achievement-icon">🎯</div>
-        <h3>First Task</h3>
-        <p class="muted">Complete your first task.</p>
-      </div>
+<div class="card badge" id="badge1">
+<div class="badge-icon">🚀</div>
+<h3>Starter</h3>
+<p class="muted">Create your first activity</p>
+</div>
 
-      <div class="card glass achievement" id="ach-five-task">
-        <div class="achievement-icon">🔥</div>
-        <h3>Task Master</h3>
-        <p class="muted">Complete 5 tasks.</p>
-      </div>
+<div class="card badge" id="badge2">
+<div class="badge-icon">🔥</div>
+<h3>Streak</h3>
+<p class="muted">Reach 3-day streak</p>
+</div>
 
-      <div class="card glass achievement" id="ach-learning">
-        <div class="achievement-icon">⏱️</div>
-        <h3>30 Minutes</h3>
-        <p class="muted">Learn for 30 minutes.</p>
-      </div>
+<div class="card badge" id="badge3">
+<div class="badge-icon">⭐</div>
+<h3>XP Hunter</h3>
+<p class="muted">Reach 100 XP</p>
+</div>
 
-      <div class="card glass achievement" id="ach-goal">
-        <div class="achievement-icon">🎯</div>
-        <h3>Goal Crusher</h3>
-        <p class="muted">Complete a daily goal.</p>
-      </div>
+<div class="card badge" id="badge4">
+<div class="badge-icon">🏆</div>
+<h3>Level Up</h3>
+<p class="muted">Reach Level 5</p>
+</div>
 
-      <div class="card glass achievement" id="ach-level">
-        <div class="achievement-icon">⭐</div>
-        <h3>Level 2</h3>
-        <p class="muted">Reach level 2.</p>
-      </div>
+</div>
 
-      <div class="card glass achievement" id="ach-streak">
-        <div class="achievement-icon">🔥</div>
-        <h3>7 Day Streak</h3>
-        <p class="muted">Build a 7-day learning streak.</p>
-      </div>
-
-    </div>
-
-  </div>
+</div>
 </section>
 
-<!-- THEMES -->
+
+<!-- RESOURCES -->
+<section>
+<div class="container reveal">
+
+<h2 class="section-title">📚 Learning <span>Resources</span></h2>
+
+<div class="grid resources">
+
+<div class="card resource">
+<h3>MDN Web Docs</h3>
+<p class="muted">Web development documentation.</p>
+<a href="https://developer.mozilla.org/" target="_blank">Open →</a>
+</div>
+
+<div class="card resource">
+<h3>GitHub Docs</h3>
+<p class="muted">Learn GitHub and repositories.</p>
+<a href="https://docs.github.com/" target="_blank">Open →</a>
+</div>
+
+<div class="card resource">
+<h3>JavaScript.info</h3>
+<p class="muted">JavaScript learning resource.</p>
+<a href="https://javascript.info/" target="_blank">Open →</a>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- SETTINGS -->
 <section id="settings">
-  <div class="container reveal">
+<div class="container reveal">
 
-    <h2 class="section-title">🎨 Customization</h2>
+<h2 class="section-title">⚙️ Personal <span>Settings</span></h2>
 
-    <div class="card glass">
+<div class="grid settings-grid">
 
-      <h3>Accent Color</h3>
+<div class="card">
+<h3>🌈 Accent Color</h3>
+<br>
 
-      <div class="accent-options" style="margin-top:15px">
+<div class="color-row">
+<div class="color" style="background:#6c63ff"
+onclick="setAccent('#6c63ff')"></div>
 
-        <button class="accent-option"
-          style="background:#00d4ff"
-          onclick="setAccent('#00d4ff')"></button>
+<div class="color" style="background:#00d4ff"
+onclick="setAccent('#00d4ff')"></div>
 
-        <button class="accent-option"
-          style="background:#a855f7"
-          onclick="setAccent('#a855f7')"></button>
+<div class="color" style="background:#ff3cac"
+onclick="setAccent('#ff3cac')"></div>
 
-        <button class="accent-option"
-          style="background:#22c55e"
-          onclick="setAccent('#22c55e')"></button>
+<div class="color" style="background:#00c853"
+onclick="setAccent('#00c853')"></div>
 
-        <button class="accent-option"
-          style="background:#f97316"
-          onclick="setAccent('#f97316')"></button>
+<div class="color" style="background:#ff9800"
+onclick="setAccent('#ff9800')"></div>
 
-        <button class="accent-option"
-          style="background:#ec4899"
-          onclick="setAccent('#ec4899')"></button>
+<div class="color" style="background:#e91e63"
+onclick="setAccent('#e91e63')"></div>
+</div>
+</div>
 
-      </div>
+<div class="card">
+<h3>🔊 Interface Sound</h3>
+<br>
+<button class="btn" onclick="toggleSound()" id="soundBtn">
+Sound: OFF
+</button>
+</div>
 
-      <hr style="margin:25px 0;border-color:var(--border)">
+<div class="card">
+<h3>📱 Layout</h3>
+<br>
+<button class="btn secondary" onclick="toast('Responsive mobile + desktop mode is active.')">
+Responsive Mode ✓
+</button>
+</div>
 
-      <h3>🔊 UI Sounds</h3>
+<div class="card">
+<h3>🔒 Privacy</h3>
+<br>
+<p class="muted">
+Your dashboard data is stored locally in this browser.
+No login system or private server is used.
+</p>
+</div>
 
-      <label style="display:flex;gap:10px;margin-top:12px">
-        <input type="checkbox" id="soundToggle" onchange="toggleSound()">
-        Enable small UI sounds
-      </label>
+</div>
 
-      <hr style="margin:25px 0;border-color:var(--border)">
-
-      <button class="btn" onclick="openDashboard()">
-        🔐 Private Local Dashboard
-      </button>
-
-      <p class="muted" style="margin-top:12px;font-size:13px">
-        Privacy: this website uses local browser storage only.
-        It does not include trackers or analytics.
-      </p>
-
-    </div>
-
-  </div>
+</div>
 </section>
+
 
 <!-- EXPORT -->
-<section id="export">
-  <div class="container reveal">
+<section>
+<div class="container reveal">
 
-    <h2 class="section-title">📥 Portfolio Export</h2>
+<h2 class="section-title">📦 Portfolio <span>Export</span></h2>
 
-    <div class="card glass">
+<div class="card" style="text-align:center">
 
-      <p class="muted">
-        Generate a local copy of your profile information.
-      </p>
+<p class="muted">
+Create a downloadable copy of your profile and local progress.
+</p>
 
-      <div class="export-box" style="margin-top:18px">
-        <button class="btn" onclick="downloadProfile()">
-          Download Profile TXT
-        </button>
+<br>
 
-        <button class="small-btn" onclick="downloadPortfolioHTML()">
-          Download Portfolio HTML
-        </button>
-      </div>
+<div class="tool-buttons">
+<button class="btn" onclick="downloadProfile()">📄 Download Profile</button>
+<button class="btn" onclick="downloadPortfolio()">🌐 Export HTML</button>
+<button class="btn secondary" onclick="backupData()">💾 Backup Data</button>
+</div>
 
-    </div>
+<br>
 
-  </div>
+<input type="file" id="restoreFile" accept=".json"
+style="display:none" onchange="restoreData(event)">
+
+<button class="btn secondary" onclick="document.getElementById('restoreFile').click()">
+📥 Restore Backup
+</button>
+
+</div>
+
+</div>
 </section>
 
-<!-- NOTIFICATIONS -->
-<section id="notifications">
-  <div class="container reveal">
-
-    <h2 class="section-title">🔔 Notification Center</h2>
-
-    <div class="card glass">
-
-      <div id="notificationList">
-        <p class="muted">No notifications yet.</p>
-      </div>
-
-      <button class="small-btn" onclick="clearNotifications()" style="margin-top:15px">
-        Clear Notifications
-      </button>
-
-    </div>
-
-  </div>
-</section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="container reveal">
+<div class="container reveal">
 
-    <h2 class="section-title">📩 Contact</h2>
+<h2 class="section-title">Contact <span>Me</span></h2>
 
-    <p class="section-subtitle">
-      A simple contact area for the portfolio.
-    </p>
+<div class="card" style="text-align:center">
 
-    <div class="card glass center">
+<p class="muted">
+For project-related contact:
+</p>
 
-      <h3>Himanshu Shekhar</h3>
+<h3 id="emailText">your@email.com</h3>
 
-      <p class="muted" style="margin:10px 0">
-        Developer • Learner • Future Builder
-      </p>
+<br>
 
-      <p id="emailText" style="margin:15px 0">
-        your@email.com
-      </p>
+<button class="btn" onclick="copyEmail()">📋 Copy Email</button>
 
-      <button class="btn" onclick="copyEmail()">
-        📋 Copy Email
-      </button>
+</div>
 
-    </div>
-
-  </div>
+</div>
 </section>
 
-<!-- FOOTER -->
+</main>
+
+
 <footer>
-  <div class="container">
-    <p>© <span id="year"></span> Himanshu Shekhar</p>
-    <p style="margin-top:6px">Built with HTML • CSS • JavaScript</p>
-    <p style="margin-top:8px;font-size:12px">
-      Local-first • No trackers • No external analytics
-    </p>
-  </div>
+<div class="container">
+<p>© <span id="year"></span> Himanshu Shekhar</p>
+<p>Built with HTML • CSS • JavaScript</p>
+</div>
 </footer>
 
+
 <!-- MOBILE NAV -->
-<div class="mobile-bottom glass">
-  <a href="#home"><span>🏠</span>Home</a>
-  <a href="#dashboard"><span>📊</span>Stats</a>
-  <a href="#projects"><span>🚀</span>Projects</a>
-  <a href="#tasks"><span>✅</span>Tasks</a>
-  <a href="#settings"><span>⚙️</span>Settings</a>
+<div class="mobile-bottom">
+<div>
+<button onclick="goTo('home')">🏠<br>Home</button>
+<button onclick="goTo('dashboard')">📊<br>Dashboard</button>
+<button onclick="goTo('projects')">💻<br>Projects</button>
+<button onclick="goTo('learning')">📚<br>Learn</button>
+<button onclick="goTo('settings')">⚙️<br>Settings</button>
+</div>
 </div>
 
-<!-- MODAL -->
-<div class="modal" id="modal" onclick="closeOutside(event)">
-  <div class="modal-box glass">
-    <button class="close" onclick="closeModal()">×</button>
-    <div id="modalContent"></div>
-  </div>
+
+<!-- PROJECT MODAL -->
+<div class="modal" id="projectModal" onclick="closeOutside(event)">
+<div class="modal-box glass">
+<button class="close" onclick="closeModal()">×</button>
+<h2 id="modalTitle"></h2>
+<br>
+<p class="muted" id="modalText"></p>
+<br>
+<button class="btn" onclick="closeModal()">Close</button>
 </div>
+</div>
+
 
 <!-- TOAST -->
 <div id="toast"></div>
+
 
 <script>
 
@@ -1860,103 +1213,41 @@ footer{
    STORAGE HELPERS
 ========================= */
 
-const get = (key, fallback) => {
+function get(key,fallback){
   try{
-    const value = localStorage.getItem(key);
-    return value === null ? fallback : JSON.parse(value);
+    const value=localStorage.getItem(key);
+    return value===null?fallback:JSON.parse(value);
   }catch{
     return fallback;
   }
-};
+}
 
-const save = (key,value) => {
+function save(key,value){
   localStorage.setItem(key,JSON.stringify(value));
-};
-
-
-/* =========================
-   INITIAL SETTINGS
-========================= */
-
-let state = {
-  theme:get("theme","dark"),
-  accent:get("accent","#00d4ff"),
-  sound:get("sound",false),
-  xp:get("xp",0),
-  streak:get("streak",0),
-  lastActive:get("lastActive",""),
-  learningSeconds:get("learningSeconds",0),
-  goalMinutes:get("goalMinutes",30),
-  goalDate:get("goalDate",""),
-  goalProgress:get("goalProgress",0),
-  goalCompleted:get("goalCompleted",0),
-  tasks:get("tasks",[]),
-  plans:get("plans",[]),
-  notes:get("notes",""),
-  pinned:get("pinned",""),
-  notifications:get("notifications",[])
-};
-
-
-/* =========================
-   THEME
-========================= */
-
-document.documentElement.setAttribute("data-theme",state.theme);
-document.documentElement.style.setProperty("--accent",state.accent);
-
-function toggleTheme(){
-  state.theme = state.theme === "dark" ? "light" : "dark";
-  document.documentElement.setAttribute("data-theme",state.theme);
-  save("theme",state.theme);
-  beep();
-  addNotification("Theme changed");
-}
-
-function setAccent(color){
-  state.accent=color;
-  document.documentElement.style.setProperty("--accent",color);
-  save("accent",color);
-  beep();
-  toast("Accent color updated");
 }
 
 
 /* =========================
-   SOUND
+   INITIAL DATA
 ========================= */
 
-function toggleSound(){
-  state.sound=document.getElementById("soundToggle").checked;
-  save("sound",state.sound);
+let xp=get("xp",0);
+let streak=get("streak",0);
+let lastActive=get("lastActive","");
+let goalMinutes=get("goalMinutes",60);
+let goalProgress=get("goalProgress",0);
 
-  if(state.sound){
-    beep();
-    toast("UI sounds enabled");
-  }else{
-    toast("UI sounds disabled");
-  }
-}
+let tasks=get("tasks",[]);
+let plans=get("plans",[]);
+let favoriteProjects=get("favorites",[]);
 
-function beep(){
-  if(!state.sound)return;
+let codingSeconds=get("codingSeconds",0);
+let codingInterval=null;
 
-  try{
-    const AudioContext=window.AudioContext||window.webkitAudioContext;
-    const ctx=new AudioContext();
-    const osc=ctx.createOscillator();
-    const gain=ctx.createGain();
+let pomoSeconds=get("pomoSeconds",1500);
+let pomoInterval=null;
 
-    osc.frequency.value=520;
-    gain.gain.value=.04;
-
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-
-    osc.start();
-    osc.stop(ctx.currentTime+.06);
-  }catch(e){}
-}
+let sound=get("sound",false);
 
 
 /* =========================
@@ -1965,36 +1256,61 @@ function beep(){
 
 window.addEventListener("load",()=>{
   setTimeout(()=>{
-    document.getElementById("loader").style.opacity="0";
+    document.getElementById("loader").style.display="none";
+  },700);
 
-    setTimeout(()=>{
-      document.getElementById("loader").style.display="none";
-    },600);
-
-  },900);
+  init();
 });
+
+
+function init(){
+
+  applyTheme();
+  applyAccent();
+
+  document.getElementById("year").textContent=
+    new Date().getFullYear();
+
+  updateDate();
+  typeEffect();
+
+  document.getElementById("goalInput").value=goalMinutes;
+
+  renderTasks();
+  renderPlans();
+  loadNotes();
+  updateDashboard();
+  updateCodingTimer();
+  updatePomodoro();
+  checkAchievements();
+
+  setInterval(updateDate,60000);
+}
 
 
 /* =========================
-   NAV
+   DATE
 ========================= */
 
-function toggleMenu(){
-  document.getElementById("navLinks").classList.toggle("open");
-}
+function updateDate(){
 
-document.querySelectorAll(".nav-links a").forEach(link=>{
-  link.addEventListener("click",()=>{
-    document.getElementById("navLinks").classList.remove("open");
-  });
-});
+  const now=new Date();
+
+  document.getElementById("today").textContent=
+    now.toLocaleDateString("en-IN",{
+      weekday:"long",
+      year:"numeric",
+      month:"long",
+      day:"numeric"
+    });
+}
 
 
 /* =========================
    TYPING
 ========================= */
 
-const typingWords=[
+const words=[
   "💻 Coding Learner",
   "🌐 Web Developer",
   "🚀 Future Builder",
@@ -2008,118 +1324,128 @@ let deleting=false;
 function typeEffect(){
 
   const el=document.getElementById("typing");
-  const word=typingWords[wordIndex];
-
-  el.textContent=word.substring(0,charIndex);
+  const word=words[wordIndex];
 
   if(!deleting){
-
-    charIndex++;
-
+    el.textContent=word.substring(0,charIndex++);
     if(charIndex>word.length){
       deleting=true;
       setTimeout(typeEffect,1200);
       return;
     }
-
   }else{
-
-    charIndex--;
-
-    if(charIndex===0){
+    el.textContent=word.substring(0,charIndex--);
+    if(charIndex<0){
       deleting=false;
-      wordIndex=(wordIndex+1)%typingWords.length;
+      wordIndex=(wordIndex+1)%words.length;
     }
   }
 
-  setTimeout(typeEffect,deleting?45:75);
+  setTimeout(typeEffect,deleting?45:80);
 }
-
-typeEffect();
 
 
 /* =========================
-   DATE
+   THEME
 ========================= */
 
-function updateDate(){
-  const now=new Date();
+function toggleTheme(){
 
-  document.getElementById("currentDate").textContent=
-    now.toLocaleDateString(undefined,{
-      weekday:"long",
-      year:"numeric",
-      month:"long",
-      day:"numeric"
-    });
+  const light=document.body.classList.toggle("light");
 
-  document.getElementById("year").textContent=now.getFullYear();
-}
-
-updateDate();
-
-
-/* =========================
-   GLOBAL SEARCH
-========================= */
-
-const searchItems=[
-  {name:"My First Website",type:"Project",id:"projects"},
-  {name:"Portfolio Website",type:"Project",id:"projects"},
-  {name:"Future Web Project",type:"Project",id:"projects"},
-  {name:"HTML",type:"Skill",id:"skills"},
-  {name:"CSS",type:"Skill",id:"skills"},
-  {name:"JavaScript",type:"Skill",id:"skills"},
-  {name:"Web Development",type:"Skill",id:"skills"},
-  {name:"JavaScript Learning",type:"Topic",id:"learning"},
-  {name:"Study Planner",type:"Productivity",id:"planner"},
-  {name:"Task Manager",type:"Productivity",id:"tasks"},
-  {name:"Pomodoro",type:"Productivity",id:"learning"},
-  {name:"Learning Roadmap",type:"Roadmap",id:"roadmap"},
-  {name:"Resources",type:"Resources",id:"resources"},
-  {name:"Achievements",type:"Achievements",id:"achievements"}
-];
-
-function globalSearch(){
-
-  const q=document.getElementById("globalSearch").value
-    .toLowerCase()
-    .trim();
-
-  const box=document.getElementById("searchResults");
-
-  if(!q){
-    box.classList.remove("show");
-    box.innerHTML="";
-    return;
-  }
-
-  const results=searchItems.filter(item=>
-    item.name.toLowerCase().includes(q) ||
-    item.type.toLowerCase().includes(q)
+  localStorage.setItem(
+    "theme",
+    light?"light":"dark"
   );
 
-  if(!results.length){
-    box.innerHTML='<div class="search-result">No results found.</div>';
-  }else{
-    box.innerHTML=results.map(item=>`
-      <div class="search-result"
-        onclick="jumpTo('${item.id}')">
-        <b>${item.name}</b>
-        <small class="muted"> • ${item.type}</small>
-      </div>
-    `).join("");
-  }
-
-  box.classList.add("show");
+  toast(light?"Light theme enabled":"Dark theme enabled");
 }
 
-function jumpTo(id){
-  document.getElementById(id)?.scrollIntoView({
+function applyTheme(){
+
+  if(localStorage.getItem("theme")==="light"){
+    document.body.classList.add("light");
+  }
+}
+
+
+/* =========================
+   ACCENT
+========================= */
+
+function setAccent(color){
+
+  document.documentElement.style.setProperty(
+    "--accent",color
+  );
+
+  localStorage.setItem("accent",color);
+
+  toast("Accent color changed");
+}
+
+function applyAccent(){
+
+  const color=localStorage.getItem("accent");
+
+  if(color){
+    document.documentElement.style.setProperty(
+      "--accent",color
+    );
+  }
+}
+
+
+/* =========================
+   SOUND
+========================= */
+
+function toggleSound(){
+
+  sound=!sound;
+  save("sound",sound);
+
+  document.getElementById("soundBtn").textContent=
+    "Sound: "+(sound?"ON":"OFF");
+
+  beep();
+}
+
+function beep(){
+
+  if(!sound)return;
+
+  try{
+    const ctx=new AudioContext();
+    const osc=ctx.createOscillator();
+    const gain=ctx.createGain();
+
+    osc.frequency.value=600;
+    gain.gain.value=.04;
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start();
+    osc.stop(ctx.currentTime+.08);
+  }catch{}
+}
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("open");
+}
+
+function goTo(id){
+  document.getElementById(id).scrollIntoView({
     behavior:"smooth"
   });
 
-  document.getElementById("searchResults").classList.remove("show");
+  document.getElementById("navLinks").classList.remove("open");
 }
 
 
@@ -2129,58 +1455,84 @@ function jumpTo(id){
 
 function filterProjects(category,button){
 
-  document.querySelectorAll(".filter-btn")
-    .forEach(b=>b.classList.remove("active"));
-
-  button.classList.add("active");
-
   document.querySelectorAll(".project").forEach(project=>{
 
     const categories=project.dataset.category;
+    const title=project.dataset.title;
 
-    project.style.display=
-      category==="all" || categories.includes(category)
-      ? ""
-      : "none";
+    let show=false;
+
+    if(category==="all"){
+      show=true;
+    }else if(category==="favorite"){
+      show=favoriteProjects.includes(title);
+    }else{
+      show=categories.includes(category);
+    }
+
+    project.style.display=show?"block":"none";
   });
 
-  beep();
+  document.querySelectorAll(".filters .btn")
+    .forEach(b=>b.style.opacity=".6");
+
+  if(button)button.style.opacity="1";
 }
 
 
 /* =========================
-   MODAL
+   FAVORITES
+========================= */
+
+function favoriteProject(button){
+
+  const project=button.closest(".project");
+  const title=project.dataset.title;
+
+  if(favoriteProjects.includes(title)){
+
+    favoriteProjects=
+      favoriteProjects.filter(x=>x!==title);
+
+    button.textContent="☆";
+
+    toast("Removed from favorites");
+
+  }else{
+
+    favoriteProjects.push(title);
+
+    button.textContent="★";
+
+    toast("Project added to favorites");
+  }
+
+  save("favorites",favoriteProjects);
+}
+
+
+/* =========================
+   PROJECT MODAL
 ========================= */
 
 function openProject(title,text){
-  document.getElementById("modalContent").innerHTML=`
-    <h2>${title}</h2>
-    <p class="muted" style="margin-top:12px">${text}</p>
-    <div class="tags" style="margin-top:20px">
-      <span class="tag">Project</span>
-      <span class="tag">Web Development</span>
-    </div>
-  `;
 
-  document.getElementById("modal").classList.add("show");
-  beep();
-}
+  document.getElementById("modalTitle").textContent=title;
+  document.getElementById("modalText").textContent=text;
 
-function skillInfo(title,text){
-  document.getElementById("modalContent").innerHTML=`
-    <h2>🧠 ${title}</h2>
-    <p class="muted" style="margin-top:15px">${text}</p>
-  `;
-
-  document.getElementById("modal").classList.add("show");
+  document.getElementById("projectModal").style.display="grid";
 }
 
 function closeModal(){
-  document.getElementById("modal").classList.remove("show");
+  document.getElementById("projectModal").style.display="none";
 }
 
 function closeOutside(e){
-  if(e.target.id==="modal")closeModal();
+  if(e.target.id==="projectModal")closeModal();
+}
+
+function skillInfo(title,text){
+  openProject(title,text);
 }
 
 
@@ -2192,340 +1544,105 @@ let toastTimer;
 
 function toast(message){
 
-  const el=document.getElementById("toast");
+  const box=document.getElementById("toast");
 
-  el.textContent=message;
-  el.classList.add("show");
+  box.textContent=message;
+  box.classList.add("show");
 
   clearTimeout(toastTimer);
 
   toastTimer=setTimeout(()=>{
-    el.classList.remove("show");
+    box.classList.remove("show");
   },2500);
 }
 
 
 /* =========================
-   NOTIFICATIONS
+   CODING TIMER
 ========================= */
 
-function addNotification(message){
+function startCoding(){
 
-  const item={
-    message,
-    time:new Date().toLocaleString()
-  };
+  if(codingInterval)return;
 
-  state.notifications.unshift(item);
+  activity();
 
-  state.notifications=state.notifications.slice(0,30);
+  codingInterval=setInterval(()=>{
 
-  save("notifications",state.notifications);
+    codingSeconds++;
 
-  renderNotifications();
-}
+    localStorage.setItem(
+      "codingSeconds",
+      codingSeconds
+    );
 
-function renderNotifications(){
-
-  const box=document.getElementById("notificationList");
-
-  if(!state.notifications.length){
-    box.innerHTML='<p class="muted">No notifications yet.</p>';
-    return;
-  }
-
-  box.innerHTML=state.notifications.map(n=>`
-    <div class="notification">
-      <b>🔔 ${n.message}</b>
-      <br>
-      <small class="muted">${n.time}</small>
-    </div>
-  `).join("");
-}
-
-function clearNotifications(){
-  state.notifications=[];
-  save("notifications",state.notifications);
-  renderNotifications();
-  toast("Notifications cleared");
-}
-
-renderNotifications();
-
-
-/* =========================
-   XP + LEVEL
-========================= */
-
-function addXP(amount){
-
-  state.xp+=amount;
-
-  save("xp",state.xp);
-
-  updateDashboard();
-  checkAchievements();
-
-  toast(`+${amount} XP earned ⭐`);
-  addNotification(`Earned ${amount} XP`);
-}
-
-function updateDashboard(){
-
-  const level=Math.floor(state.xp/100)+1;
-
-  const levelXP=state.xp%100;
-
-  document.getElementById("xp").textContent=state.xp;
-  document.getElementById("level").textContent=level;
-
-  document.getElementById("levelProgress").style.width=
-    levelXP+"%";
-
-  document.getElementById("levelProgressText").textContent=
-    levelXP+"%";
-
-  document.getElementById("learningMinutes").textContent=
-    Math.floor(state.learningSeconds/60);
-
-  document.getElementById("streak").textContent=state.streak;
-
-  document.getElementById("goalTarget").textContent=
-    state.goalMinutes;
-
-  document.getElementById("goalProgress").textContent=
-    state.goalProgress;
-
-  const percent=Math.min(
-    100,
-    Math.round(
-      state.goalProgress/state.goalMinutes*100
-    )
-  );
-
-  document.getElementById("goalBar").style.width=percent+"%";
-  document.getElementById("goalProgressBar").style.width=percent+"%";
-  document.getElementById("goalPercent").textContent=percent+"%";
-
-  document.getElementById("statProjects").textContent=3;
-
-  document.getElementById("statTasks").textContent=
-    state.tasks.filter(t=>t.done).length;
-
-  document.getElementById("statPlans").textContent=
-    state.plans.length;
-
-  document.getElementById("statGoals").textContent=
-    state.goalCompleted;
-
-  document.getElementById("pinnedProject").textContent=
-    state.pinned || "No project pinned yet.";
-
-  checkAchievements();
-}
-
-
-/* =========================
-   REAL STREAK
-========================= */
-
-function activity(){
-
-  const today=new Date();
-  const todayString=today.toISOString().slice(0,10);
-
-  if(state.lastActive===todayString){
-    return;
-  }
-
-  if(state.lastActive){
-
-    const last=new Date(state.lastActive);
-    const yesterday=new Date(today);
-    yesterday.setDate(today.getDate()-1);
-
-    const yesterdayString=
-      yesterday.toISOString().slice(0,10);
-
-    if(state.lastActive===yesterdayString){
-      state.streak++;
-    }else{
-      state.streak=1;
+    if(codingSeconds%60===0){
+      goalProgress++;
+      xp++;
+      save("goalProgress",goalProgress);
+      save("xp",xp);
+      updateDashboard();
+      checkAchievements();
     }
 
-  }else{
-    state.streak=1;
-  }
-
-  state.lastActive=todayString;
-
-  save("streak",state.streak);
-  save("lastActive",state.lastActive);
-
-  updateDashboard();
-
-  addNotification(`🔥 Learning streak: ${state.streak} day(s)`);
-}
-
-
-/* =========================
-   DAILY GOAL
-========================= */
-
-function setDailyGoal(){
-
-  const value=prompt(
-    "Daily learning goal in minutes:",
-    state.goalMinutes
-  );
-
-  const minutes=parseInt(value);
-
-  if(!minutes || minutes<1)return;
-
-  state.goalMinutes=minutes;
-
-  save("goalMinutes",minutes);
-
-  updateDashboard();
-
-  toast("Daily goal updated 🎯");
-}
-
-function completeDailyGoal(){
-
-  if(state.goalProgress>=state.goalMinutes &&
-     state.goalDate===new Date().toISOString().slice(0,10)){
-    return;
-  }
-
-  if(state.goalProgress>=state.goalMinutes){
-
-    state.goalCompleted++;
-
-    state.goalDate=
-      new Date().toISOString().slice(0,10);
-
-    save("goalCompleted",state.goalCompleted);
-    save("goalDate",state.goalDate);
-
-    addXP(20);
-    activity();
-
-    toast("Daily goal completed 🎯");
-  }
-}
-
-
-/* =========================
-   LEARNING TIMER
-========================= */
-
-let learningInterval=null;
-
-function startLearningTimer(){
-
-  if(learningInterval)return;
-
-  learningInterval=setInterval(()=>{
-
-    state.learningSeconds++;
-
-    if(state.learningSeconds%60===0){
-
-      state.goalProgress++;
-      save("goalProgress",state.goalProgress);
-
-      addXP(1);
-
-      activity();
-
-      if(state.goalProgress>=state.goalMinutes){
-        completeDailyGoal();
-      }
-    }
-
-    save("learningSeconds",state.learningSeconds);
-
-    updateLearningTimer();
-    updateDashboard();
+    updateCodingTimer();
 
   },1000);
 
-  toast("Learning timer started ⏱️");
+  toast("Coding timer started");
 }
 
-function pauseLearningTimer(){
+function pauseCoding(){
 
-  clearInterval(learningInterval);
-  learningInterval=null;
+  clearInterval(codingInterval);
+  codingInterval=null;
 
-  toast("Learning timer paused");
+  toast("Coding timer paused");
 }
 
-function resetLearningTimer(){
+function resetCoding(){
 
-  pauseLearningTimer();
+  pauseCoding();
 
-  state.learningSeconds=0;
-  save("learningSeconds",0);
+  codingSeconds=0;
 
-  updateLearningTimer();
-  updateDashboard();
+  localStorage.setItem("codingSeconds",0);
+
+  updateCodingTimer();
 }
 
-function updateLearningTimer(){
+function updateCodingTimer(){
 
-  const total=state.learningSeconds;
+  const h=Math.floor(codingSeconds/3600);
+  const m=Math.floor((codingSeconds%3600)/60);
+  const s=codingSeconds%60;
 
-  const h=Math.floor(total/3600);
-  const m=Math.floor((total%3600)/60);
-  const s=total%60;
-
-  document.getElementById("learningTimer").textContent=
-    `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+  document.getElementById("codingTimer").textContent=
+    String(h).padStart(2,"0")+":"+
+    String(m).padStart(2,"0")+":"+
+    String(s).padStart(2,"0");
 }
-
-updateLearningTimer();
 
 
 /* =========================
    POMODORO
 ========================= */
 
-let pomodoroSeconds=1500;
-let pomodoroInterval=null;
-let pomodoroFocus=true;
-
-function updatePomodoro(){
-
-  const m=Math.floor(pomodoroSeconds/60);
-  const s=pomodoroSeconds%60;
-
-  document.getElementById("pomodoroTimer").textContent=
-    `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
-
-  document.getElementById("pomodoroMode").textContent=
-    pomodoroFocus ? "Focus" : "Break";
-}
-
 function startPomodoro(){
 
-  if(pomodoroInterval)return;
+  if(pomoInterval)return;
 
-  pomodoroInterval=setInterval(()=>{
+  pomoInterval=setInterval(()=>{
 
-    pomodoroSeconds--;
+    pomoSeconds--;
 
-    if(pomodoroSeconds<=0){
+    if(pomoSeconds<=0){
 
-      clearInterval(pomodoroInterval);
-      pomodoroInterval=null;
+      pausePomodoro();
+      toast("🍅 Pomodoro session complete!");
+      beep();
 
-      switchPomodoro();
-
-      toast("Pomodoro finished 🔔");
-      addNotification("Pomodoro session finished");
+      pomoSeconds=1500;
     }
 
     updatePomodoro();
@@ -2534,31 +1651,70 @@ function startPomodoro(){
 }
 
 function pausePomodoro(){
-  clearInterval(pomodoroInterval);
-  pomodoroInterval=null;
+
+  clearInterval(pomoInterval);
+  pomoInterval=null;
 }
 
 function resetPomodoro(){
 
   pausePomodoro();
 
-  pomodoroSeconds=pomodoroFocus?1500:300;
+  pomoSeconds=1500;
 
   updatePomodoro();
 }
 
-function switchPomodoro(){
+function updatePomodoro(){
 
-  pausePomodoro();
+  const min=Math.floor(pomoSeconds/60);
+  const sec=pomoSeconds%60;
 
-  pomodoroFocus=!pomodoroFocus;
-
-  pomodoroSeconds=pomodoroFocus?1500:300;
-
-  updatePomodoro();
+  document.getElementById("pomodoro").textContent=
+    String(min).padStart(2,"0")+":"+
+    String(sec).padStart(2,"0");
 }
 
-updatePomodoro();
+
+/* =========================
+   DAILY GOAL
+========================= */
+
+function setGoal(){
+
+  const value=
+    parseInt(document.getElementById("goalInput").value);
+
+  if(!value || value<1){
+    toast("Enter a valid goal");
+    return;
+  }
+
+  goalMinutes=value;
+
+  save("goalMinutes",goalMinutes);
+
+  toast("Daily goal updated");
+
+  updateDashboard();
+}
+
+function completeGoal(){
+
+  goalProgress+=10;
+
+  xp+=10;
+
+  save("goalProgress",goalProgress);
+  save("xp",xp);
+
+  activity();
+
+  updateDashboard();
+  checkAchievements();
+
+  toast("+10 minutes added 🎯");
+}
 
 
 /* =========================
@@ -2573,116 +1729,129 @@ function addTask(){
   const text=input.value.trim();
 
   if(!text){
-    toast("Enter a task first");
+    toast("Enter a task");
     return;
   }
 
-  state.tasks.push({
+  tasks.push({
     text,
     priority:priority.value,
     done:false,
     created:new Date().toISOString()
   });
 
-  save("tasks",state.tasks);
+  save("tasks",tasks);
 
   input.value="";
 
   renderTasks();
+  updateDashboard();
 
-  addNotification("New task added");
-  toast("Task added ✅");
+  activity();
+
+  toast("Task added ✓");
 }
 
 function renderTasks(){
 
   const box=document.getElementById("taskList");
 
-  if(!state.tasks.length){
-    box.innerHTML='<p class="muted">No tasks yet.</p>';
-    updateDashboard();
-    return;
-  }
+  box.innerHTML="";
 
-  box.innerHTML=state.tasks.map((task,index)=>`
+  tasks.forEach((task,index)=>{
 
-    <div class="task ${task.done?"done":""}">
+    const row=document.createElement("div");
 
-      <input
-        type="checkbox"
+    row.className="task "+(task.done?"done":"");
+
+    row.innerHTML=`
+      <input type="checkbox"
         ${task.done?"checked":""}
         onchange="toggleTask(${index})">
 
-      <span>${escapeHTML(task.text)}</span>
+      <span style="flex:1">${escapeHTML(task.text)}</span>
 
-      <small class="priority ${task.priority}">
+      <span class="task-priority ${task.priority}">
         ${task.priority}
-      </small>
+      </span>
 
-      <button
-        class="small-btn"
-        onclick="deleteTask(${index})">
-        ×
-      </button>
+      <button class="icon-btn"
+        onclick="deleteTask(${index})">×</button>
+    `;
 
-    </div>
-
-  `).join("");
-
-  updateDashboard();
+    box.appendChild(row);
+  });
 }
 
 function toggleTask(index){
 
-  const task=state.tasks[index];
+  tasks[index].done=!tasks[index].done;
 
-  task.done=!task.done;
+  save("tasks",tasks);
 
-  if(task.done){
+  if(tasks[index].done){
 
-    addXP(10);
+    xp+=5;
+
+    save("xp",xp);
+
     activity();
 
-    addNotification(`Completed task: ${task.text}`);
+    toast("+5 XP");
   }
 
-  save("tasks",state.tasks);
-
   renderTasks();
+  updateDashboard();
+  checkAchievements();
 }
 
 function deleteTask(index){
 
-  state.tasks.splice(index,1);
+  tasks.splice(index,1);
 
-  save("tasks",state.tasks);
+  save("tasks",tasks);
 
   renderTasks();
-  toast("Task deleted");
+  updateDashboard();
 }
 
-function clearCompletedTasks(){
+function clearCompleted(){
 
-  state.tasks=state.tasks.filter(task=>!task.done);
+  tasks=tasks.filter(t=>!t.done);
 
-  save("tasks",state.tasks);
+  save("tasks",tasks);
 
   renderTasks();
+  updateDashboard();
+
   toast("Completed tasks cleared");
+}
+
+function sortTasks(){
+
+  const order={
+    high:1,
+    medium:2,
+    low:3
+  };
+
+  tasks.sort(
+    (a,b)=>order[a.priority]-order[b.priority]
+  );
+
+  save("tasks",tasks);
+
+  renderTasks();
 }
 
 function escapeHTML(text){
 
-  return text.replace(/[&<>"']/g,char=>({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#039;"
-  }[char]));
-}
+  const div=document.createElement("div");
 
-renderTasks();
+  div.textContent=text;
+
+  return div.innerHTML;
+}
 
 
 /* =========================
@@ -2691,114 +1860,118 @@ renderTasks();
 
 function addPlan(){
 
-  const day=document.getElementById("planDay").value;
+  const date=document.getElementById("planDate").value;
+  const subject=document.getElementById("planSubject").value.trim();
   const time=document.getElementById("planTime").value;
-  const topic=document.getElementById("planTopic").value.trim();
 
-  if(!time || !topic){
-    toast("Enter time and topic");
+  if(!date || !subject){
+    toast("Enter date and topic");
     return;
   }
 
-  state.plans.push({
-    day,
-    time,
-    topic
+  plans.push({
+    date,
+    subject,
+    time
   });
 
-  save("plans",state.plans);
+  save("plans",plans);
 
-  document.getElementById("planTopic").value="";
+  document.getElementById("planSubject").value="";
 
   renderPlans();
 
-  addNotification(`Study plan added: ${topic}`);
+  toast("Study plan added");
 }
 
 function renderPlans(){
 
   const box=document.getElementById("planList");
 
-  if(!state.plans.length){
-    box.innerHTML='<p class="muted">No study plans yet.</p>';
-    updateDashboard();
-    return;
-  }
+  box.innerHTML="";
 
-  box.innerHTML=state.plans.map((plan,index)=>`
-    <div class="plan-item">
-      <b>${plan.day}</b>
-      <span>${escapeHTML(plan.topic)}</span>
-      <span>${plan.time}
-        <button
-          class="small-btn"
+  plans
+    .sort((a,b)=>
+      (a.date+a.time).localeCompare(b.date+b.time)
+    )
+    .forEach((plan,index)=>{
+
+      const row=document.createElement("div");
+
+      row.className="plan-item";
+
+      row.innerHTML=`
+        <span>
+          📅 ${escapeHTML(plan.date)}
+          ${plan.time?" • "+escapeHTML(plan.time):""}
+          <br>
+          📚 ${escapeHTML(plan.subject)}
+        </span>
+
+        <button class="icon-btn"
           onclick="deletePlan(${index})">×</button>
-      </span>
-    </div>
-  `).join("");
+      `;
 
-  updateDashboard();
+      box.appendChild(row);
+    });
 }
 
 function deletePlan(index){
 
-  state.plans.splice(index,1);
+  plans.splice(index,1);
 
-  save("plans",state.plans);
+  save("plans",plans);
 
   renderPlans();
 }
 
-renderPlans();
-
 
 /* =========================
-   NOTES AUTO SAVE
+   NOTES
 ========================= */
 
-const notesArea=document.getElementById("notesArea");
+function loadNotes(){
 
-notesArea.value=state.notes;
+  document.getElementById("notes").value=
+    localStorage.getItem("notes")||"";
+}
 
-let notesTimeout;
+function saveNotes(){
 
-notesArea.addEventListener("input",()=>{
+  const value=document.getElementById("notes").value;
 
-  document.getElementById("notesStatus").textContent=
-    "Saving...";
+  localStorage.setItem("notes",value);
 
-  clearTimeout(notesTimeout);
+  document.getElementById("noteStatus").textContent=
+    "Saved at "+new Date().toLocaleTimeString();
 
-  notesTimeout=setTimeout(()=>{
+  toast("Notes saved ✓");
+}
 
-    state.notes=notesArea.value;
-
-    save("notes",state.notes);
-
-    document.getElementById("notesStatus").textContent=
-      "✓ Saved locally";
-
-  },500);
-});
+document.getElementById("notes").addEventListener(
+  "input",
+  ()=>{
+    localStorage.setItem(
+      "notes",
+      document.getElementById("notes").value
+    );
+  }
+);
 
 function clearNotes(){
 
-  if(!confirm("Clear your notes?"))return;
+  if(!confirm("Clear all notes?"))return;
 
-  notesArea.value="";
-  state.notes="";
-
-  save("notes","");
-
-  document.getElementById("notesStatus").textContent=
-    "Notes cleared";
+  document.getElementById("notes").value="";
+  localStorage.removeItem("notes");
 
   toast("Notes cleared");
 }
 
 function downloadNotes(){
 
-  const text=notesArea.value || "No notes.";
+  const text=
+    document.getElementById("notes").value;
 
   downloadFile(
     "Himanshu-Notes.txt",
@@ -2809,27 +1982,104 @@ function downloadNotes(){
 
 
 /* =========================
-   PINNED PROJECT
+   QUOTES
 ========================= */
 
-function pinProject(button,name){
+const quotes=[
+"Small progress every day becomes big progress over time.",
+"Learn → Build → Improve → Repeat.",
+"Consistency beats perfection.",
+"Every expert was once a beginner.",
+"Your future is built by what you do today.",
+"Code today. Improve tomorrow.",
+"Keep learning. Keep building."
+];
 
-  if(state.pinned===name){
-    state.pinned="";
-    button.textContent="📌 Pin";
-    toast("Project unpinned");
+function newQuote(){
+
+  const q=
+    quotes[Math.floor(Math.random()*quotes.length)];
+
+  document.getElementById("quote").textContent=
+    '"'+q+'"';
+
+  toast("New quote ✨");
+}
+
+
+/* =========================
+   XP / LEVEL / DASHBOARD
+========================= */
+
+function updateDashboard(){
+
+  const level=
+    Math.floor(xp/100)+1;
+
+  const percent=Math.min(
+    100,
+    Math.round(
+      (goalProgress/goalMinutes)*100
+    )
+  );
+
+  document.getElementById("xp").textContent=xp;
+  document.getElementById("level").textContent=level;
+  document.getElementById("streak").textContent=streak;
+  document.getElementById("goalPercent").textContent=percent;
+
+  document.getElementById("goalBar").style.width=
+    percent+"%";
+
+  document.getElementById("statXP").textContent=xp;
+
+  document.getElementById("statTasks").textContent=
+    tasks.filter(t=>t.done).length;
+
+  document.getElementById("weekMinutes").textContent=
+    Math.floor(codingSeconds/60);
+
+  document.getElementById("weekTasks").textContent=
+    tasks.filter(t=>t.done).length;
+
+  document.getElementById("weekXP").textContent=xp;
+
+  document.getElementById("weekSessions") .textContent=
+    codingSeconds>0?1:0;
+}
+
+
+/* =========================
+   STREAK
+========================= */
+
+function activity(){
+
+  const today=
+    new Date().toISOString().slice(0,10);
+
+  if(lastActive===today)return;
+
+  const previous=
+    new Date();
+
+  previous.setDate(
+    previous.getDate()-1
+  );
+
+  const yesterday=
+    previous.toISOString().slice(0,10);
+
+  if(lastActive===yesterday){
+    streak++;
   }else{
-    state.pinned=name;
-
-    document.querySelectorAll(".project .small-btn")
-      .forEach(b=>b.textContent="📌 Pin");
-
-    button.textContent="📌 Pinned";
-
-    toast(`${name} pinned`);
+    streak=1;
   }
 
-  save("pinned",state.pinned);
+  lastActive=today;
+
+  save("streak",streak);
+  save("lastActive",lastActive);
 
   updateDashboard();
 }
@@ -2839,112 +2089,98 @@ function pinProject(button,name){
    ACHIEVEMENTS
 ========================= */
 
-function unlock(id){
-
-  const el=document.getElementById(id);
-
-  if(el)el.classList.add("unlocked");
-}
-
 function checkAchievements(){
 
-  const completed=state.tasks.filter(t=>t.done).length;
-  const minutes=Math.floor(state.learningSeconds/60);
-  const level=Math.floor(state.xp/100)+1;
+  if(lastActive){
+    document.getElementById("badge1")
+      .classList.remove("locked");
+  }
 
-  if(completed>=1)unlock("ach-first-task");
-  if(completed>=5)unlock("ach-five-task");
-  if(minutes>=30)unlock("ach-learning");
-  if(state.goalCompleted>=1)unlock("ach-goal");
-  if(level>=2)unlock("ach-level");
-  if(state.streak>=7)unlock("ach-streak");
+  if(streak>=3){
+    document.getElementById("badge2")
+      .classList.remove("locked");
+  }
+
+  if(xp>=100){
+    document.getElementById("badge3")
+      .classList.remove("locked");
+  }
+
+  if(Math.floor(xp/100)+1>=5){
+    document.getElementById("badge4")
+      .classList.remove("locked");
+  }
 }
-
-checkAchievements();
 
 
 /* =========================
-   PRIVATE DASHBOARD
+   GLOBAL SEARCH
 ========================= */
 
-function openDashboard(){
+function globalSearch(){
 
-  document.getElementById("modalContent").innerHTML=`
+  const query=
+    document.getElementById("globalInput")
+      .value.toLowerCase().trim();
 
-    <h2>🔐 Private Local Dashboard</h2>
+  const box=
+    document.getElementById("searchResults");
 
-    <p class="muted" style="margin:12px 0">
-      This is a local productivity dashboard.
-      Your information is saved only in this browser's local storage.
-      It is not a secure login system.
-    </p>
+  if(!query){
 
-    <div class="grid">
+    box.style.display="none";
+    box.innerHTML="";
+    return;
+  }
 
-      <div class="card glass">
-        <h3>${state.xp}</h3>
-        <p class="muted">XP</p>
-      </div>
+  const data=[
+    ["About","about"],
+    ["Dashboard","dashboard"],
+    ["Projects","projects"],
+    ["Skills","skills"],
+    ["Learning","learning"],
+    ["Tools","tools"],
+    ["Study Planner","learning"],
+    ["Notes","learning"],
+    ["Achievements","learning"],
+    ["Resources","learning"],
+    ["Settings","settings"],
+    ["Contact","contact"]
+  ];
 
-      <div class="card glass">
-        <h3>${state.streak}</h3>
-        <p class="muted">Streak</p>
-      </div>
+  const results=data.filter(x=>
+    x[0].toLowerCase().includes(query)
+  );
 
-      <div class="card glass">
-        <h3>${state.tasks.length}</h3>
-        <p class="muted">Tasks</p>
-      </div>
+  box.style.display="block";
 
-      <div class="card glass">
-        <h3>${Math.floor(state.learningSeconds/60)}</h3>
-        <p class="muted">Learning Minutes</p>
-      </div>
+  if(!results.length){
 
+    box.innerHTML=
+      `<p class="muted">No results found.</p>`;
+
+    return;
+  }
+
+  box.innerHTML=results.map(x=>`
+    <div class="search-result"
+      onclick="goTo('${x[1]}')">
+      🔎 ${x[0]}
     </div>
-
-    <button class="btn"
-      style="margin-top:20px"
-      onclick="resetLocalData()">
-      Reset Local Data
-    </button>
-
-  `;
-
-  document.getElementById("modal").classList.add("show");
-}
-
-function resetLocalData(){
-
-  if(!confirm("Reset all local productivity data?"))return;
-
-  [
-    "xp",
-    "streak",
-    "lastActive",
-    "learningSeconds",
-    "goalMinutes",
-    "goalDate",
-    "goalProgress",
-    "goalCompleted",
-    "tasks",
-    "plans",
-    "notes",
-    "pinned",
-    "notifications"
-  ].forEach(k=>localStorage.removeItem(k));
-
-  location.reload();
+  `).join("");
 }
 
 
 /* =========================
-   EXPORT PROFILE
+   EXPORT
 ========================= */
 
 function downloadFile(filename,content,type){
 
-  const blob=new Blob([content],{type});
+  const blob=new Blob(
+    [content],
+    {type}
+  );
 
   const url=URL.createObjectURL(blob);
 
@@ -2964,25 +2200,21 @@ function downloadProfile(){
 
   const text=`
 HIMANSHU SHEKHAR
-Developer Portfolio
+================
 
-Role:
 Coding Learner
 Web Developer
 Future Builder
 
-Skills:
-HTML
-CSS
-JavaScript
-Web Development
+Level: ${Math.floor(xp/100)+1}
+XP: ${xp}
+Streak: ${streak}
 
-Statistics:
-XP: ${state.xp}
-Level: ${Math.floor(state.xp/100)+1}
-Streak: ${state.streak} days
-Learning: ${Math.floor(state.learningSeconds/60)} minutes
-Completed Tasks: ${state.tasks.filter(t=>t.done).length}
+Skills:
+HTML - 70%
+CSS - 60%
+JavaScript - 30%
+Web Development - 40%
 
 Projects:
 My First Website
@@ -2996,38 +2228,45 @@ Future Web Project
     "text/plain"
   );
 
-  toast("Profile downloaded 📥");
+  toast("Profile downloaded");
 }
 
-function downloadPortfolioHTML(){
+function downloadPortfolio(){
 
   const html=`
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Himanshu Shekhar</title>
+<title>Himanshu Shekhar Portfolio</title>
+<style>
+body{
+font-family:Arial;
+max-width:800px;
+margin:50px auto;
+padding:20px;
+line-height:1.7;
+}
+h1{color:#6c63ff}
+</style>
 </head>
 <body>
 <h1>Himanshu Shekhar</h1>
 <h2>Coding Learner • Web Developer • Future Builder</h2>
-<p>Personal developer portfolio.</p>
-
-<h3>Skills</h3>
+<p>Learning coding and building web projects.</p>
+<h2>Skills</h2>
 <ul>
-<li>HTML</li>
-<li>CSS</li>
-<li>JavaScript</li>
-<li>Web Development</li>
+<li>HTML - 70%</li>
+<li>CSS - 60%</li>
+<li>JavaScript - 30%</li>
+<li>Web Development - 40%</li>
 </ul>
-
-<h3>Projects</h3>
+<h2>Projects</h2>
 <ul>
 <li>My First Website</li>
 <li>Portfolio Website</li>
 <li>Future Web Project</li>
 </ul>
-
 </body>
 </html>
 `;
@@ -3038,7 +2277,81 @@ function downloadPortfolioHTML(){
     "text/html"
   );
 
-  toast("Portfolio HTML downloaded");
+  toast("Portfolio exported");
+}
+
+
+/* =========================
+   BACKUP / RESTORE
+========================= */
+
+function backupData(){
+
+  const data={
+    theme:localStorage.getItem("theme"),
+    accent:localStorage.getItem("accent"),
+    sound,
+    xp,
+    streak,
+    lastActive,
+    goalMinutes,
+    goalProgress,
+    tasks,
+    plans,
+    favorites:favoriteProjects,
+    notes:localStorage.getItem("notes"),
+    codingSeconds
+  };
+
+  downloadFile(
+    "Himanshu-Portfolio-Backup.json",
+    JSON.stringify(data,null,2),
+    "application/json"
+  );
+
+  toast("Backup created 💾");
+}
+
+function restoreData(event){
+
+  const file=event.target.files[0];
+
+  if(!file)return;
+
+  const reader=new FileReader();
+
+  reader.onload=function(){
+
+    try{
+
+      const data=
+        JSON.parse(reader.result);
+
+      Object.keys(data).forEach(key=>{
+
+        if(key==="notes"){
+          localStorage.setItem("notes",data[key]||"");
+        }else{
+          localStorage.setItem(
+            key,
+            JSON.stringify(data[key])
+          );
+        }
+
+      });
+
+      toast("Backup restored. Reloading...");
+
+      setTimeout(()=>{
+        location.reload();
+      },1000);
+
+    }catch{
+      toast("Invalid backup file");
+    }
+  };
+
+  reader.readAsText(file);
 }
 
 
@@ -3048,11 +2361,29 @@ function downloadPortfolioHTML(){
 
 function copyEmail(){
 
-  const email=document.getElementById("emailText").textContent.trim();
+  const email=
+    document.getElementById("emailText").textContent;
 
-  navigator.clipboard?.writeText(email);
+  navigator.clipboard.writeText(email)
+    .then(()=>{
+      toast("Email copied 📋");
+    })
+    .catch(()=>{
+      toast("Copy failed");
+    });
+}
 
-  toast("Email copied 📋");
+
+/* =========================
+   SETTINGS
+========================= */
+
+function openSettings(){
+
+  document.getElementById("settings")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
 }
 
 
@@ -3063,17 +2394,37 @@ function copyEmail(){
 window.addEventListener("scroll",()=>{
 
   const scrollTop=
-    window.scrollY;
+    document.documentElement.scrollTop;
 
   const height=
     document.documentElement.scrollHeight-
     document.documentElement.clientHeight;
 
   const percent=
-    height>0 ? scrollTop/height*100 : 0;
+    height>0?(scrollTop/height)*100:0;
 
-  document.getElementById("readingProgress")
+  document.getElementById("progress")
     .style.width=percent+"%";
+
+  document.querySelectorAll("section[id]")
+    .forEach(section=>{
+
+      const top=section.offsetTop-120;
+      const bottom=top+section.offsetHeight;
+
+      if(scrollTop>=top && scrollTop<bottom){
+
+        document.querySelectorAll(".nav-links a")
+          .forEach(a=>a.classList.remove("active"));
+
+        const link=
+          document.querySelector(
+            `.nav-links a[href="#${section.id}"]`
+          );
+
+        if(link)link.classList.add("active");
+      }
+    });
 });
 
 
@@ -3081,32 +2432,68 @@ window.addEventListener("scroll",()=>{
    REVEAL ANIMATION
 ========================= */
 
-const observer=new IntersectionObserver(entries=>{
-
-  entries.forEach(entry=>{
-
-    if(entry.isIntersecting){
-      entry.target.classList.add("visible");
-    }
-
-  });
-
-},{threshold:.08});
+const observer=
+  new IntersectionObserver(
+    entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+        }
+      });
+    },
+    {threshold:.08}
+  );
 
 document.querySelectorAll(".reveal")
   .forEach(el=>observer.observe(el));
 
 
 /* =========================
-   INITIAL UPDATE
+   CURSOR
 ========================= */
 
-document.getElementById("soundToggle").checked=
-  state.sound;
+document.addEventListener("mousemove",e=>{
 
-updateDashboard();
+  const cursor=
+    document.getElementById("cursor");
+
+  if(window.innerWidth<900)return;
+
+  cursor.style.display="block";
+  cursor.style.left=e.clientX+"px";
+  cursor.style.top=e.clientY+"px";
+});
+
+
+/* =========================
+   KEYBOARD SHORTCUTS
+========================= */
+
+document.addEventListener("keydown",e=>{
+
+  if(e.key==="/" &&
+     document.activeElement.tagName!=="INPUT" &&
+     document.activeElement.tagName!=="TEXTAREA"){
+
+    e.preventDefault();
+
+    document.getElementById("globalInput").focus();
+  }
+
+  if(e.key==="Escape"){
+    closeModal();
+  }
+});
+
+
+/* =========================
+   INITIAL UI
+========================= */
+
+document.getElementById("soundBtn").textContent=
+  "Sound: "+(sound?"ON":"OFF");
 
 </script>
 
 </body>
- </html>
+  </html>
