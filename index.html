@@ -2,589 +2,665 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Himanshu Shekhar | Portfolio</title>
+<title>Himanshu Shekhar | Portfolio</title>
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
+<style>
 
-    * {
-      box-sizing: border-box;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0b0b;
-      color: white;
-      text-align: center;
-      transition: 0.4s;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    body.light {
-      background: #f5f5f5;
-      color: #111;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #080808;
+  color: white;
+  transition: 0.4s;
+}
 
-    nav {
-      position: sticky;
-      top: 0;
-      background: #111;
-      padding: 15px;
-      border-bottom: 1px solid #333;
-      z-index: 100;
-    }
+body.light {
+  background: #f4f4f4;
+  color: #111;
+}
 
-    body.light nav {
-      background: white;
-      border-bottom: 1px solid #ddd;
-    }
+/* NAVBAR */
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 7px;
-      font-size: 14px;
-    }
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 15px;
+  background: rgba(10,10,10,0.95);
+  border-bottom: 1px solid #333;
+  text-align: center;
+}
 
-    body.light nav a {
-      color: #111;
-    }
+body.light nav {
+  background: rgba(255,255,255,0.95);
+  border-color: #ddd;
+}
 
-    .theme-btn {
-      border: none;
-      border-radius: 8px;
-      padding: 8px 12px;
-      cursor: pointer;
-    }
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 8px;
+  font-size: 14px;
+}
 
-    .hero {
-      padding: 90px 20px 80px;
-      animation: fadeIn 1.2s ease;
-    }
+body.light nav a {
+  color: #111;
+}
 
-    .profile-img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid white;
-      margin-bottom: 20px;
-    }
+.theme-btn {
+  margin-left: 8px;
+  padding: 7px 11px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
-    .hero h1 {
-      font-size: 45px;
-      margin: 10px 0;
-    }
+/* HERO */
 
-    .hero p {
-      color: #aaa;
-      font-size: 18px;
-      line-height: 1.6;
-    }
+.hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 50px 20px;
+  animation: fadeIn 1.2s ease;
+}
 
-    body.light .hero p {
-      color: #555;
-    }
+.profile-img {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  padding: 3px;
+  margin-bottom: 20px;
+}
 
-    .button {
-      display: inline-block;
-      margin: 10px 5px;
-      padding: 13px 24px;
-      background: white;
-      color: black;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+.hero h1 {
+  font-size: 48px;
+  margin: 10px 0;
+}
 
-    .button:hover {
-      transform: translateY(-3px);
-    }
+.hero h2 {
+  font-size: 22px;
+  color: #aaa;
+  font-weight: normal;
+}
 
-    .button.dark {
-      background: #151515;
-      color: white;
-      border: 1px solid #444;
-    }
+.hero p {
+  max-width: 600px;
+  color: #999;
+  line-height: 1.7;
+}
 
-    section {
-      padding: 70px 20px;
-      max-width: 800px;
-      margin: auto;
-    }
+/* BUTTON */
 
-    h2 {
-      font-size: 30px;
-      margin-bottom: 30px;
-    }
+.button {
+  display: inline-block;
+  margin: 10px 5px;
+  padding: 13px 22px;
+  background: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 9px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-    .about,
-    .project-card,
-    .contact-box,
-    .skill-box {
-      background: #151515;
-      border: 1px solid #333;
-      border-radius: 15px;
-    }
+.button:hover {
+  transform: translateY(-4px);
+}
 
-    body.light .about,
-    body.light .project-card,
-    body.light .contact-box,
-    body.light .skill-box {
-      background: white;
-      border-color: #ddd;
-    }
+.button.dark {
+  background: #151515;
+  color: white;
+  border: 1px solid #444;
+}
 
-    .about {
-      padding: 30px;
-      color: #aaa;
-      line-height: 1.8;
-    }
+body.light .button.dark {
+  background: #111;
+  color: white;
+}
 
-    body.light .about {
-      color: #555;
-    }
+/* SECTIONS */
 
-    .project-card {
-      padding: 25px;
-      margin: 18px 0;
-      text-align: left;
-      transition: 0.3s;
-    }
+section {
+  max-width: 850px;
+  margin: auto;
+  padding: 80px 20px;
+}
 
-    .project-card:hover {
-      transform: translateY(-6px);
-    }
+section h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 35px;
+}
 
-    .project-card h3 {
-      margin-top: 0;
-    }
+/* ABOUT */
 
-    .project-card p {
-      color: #aaa;
-      line-height: 1.6;
-    }
+.about-box {
+  background: #151515;
+  border: 1px solid #333;
+  border-radius: 16px;
+  padding: 30px;
+  line-height: 1.8;
+  color: #aaa;
+}
 
-    body.light .project-card p {
-      color: #555;
-    }
+body.light .about-box {
+  background: white;
+  border-color: #ddd;
+  color: #555;
+}
 
-    .skill-box {
-      padding: 20px;
-      margin: 15px 0;
-      text-align: left;
-    }
+/* PROJECTS */
 
-    .skill-name {
-      margin-bottom: 8px;
-      font-weight: bold;
-    }
+.project-card {
+  background: #151515;
+  border: 1px solid #333;
+  border-radius: 16px;
+  padding: 25px;
+  margin: 20px 0;
+  transition: 0.3s;
+}
 
-    .progress {
-      background: #333;
-      height: 10px;
-      border-radius: 20px;
-      overflow: hidden;
-    }
+.project-card:hover {
+  transform: translateY(-8px);
+}
 
-    .progress-bar {
-      height: 100%;
-      background: white;
-      border-radius: 20px;
-    }
+body.light .project-card {
+  background: white;
+  border-color: #ddd;
+}
 
-    body.light .progress {
-      background: #ddd;
-    }
+.project-card h3 {
+  margin-top: 0;
+}
 
-    body.light .progress-bar {
-      background: #111;
-    }
+.project-card p {
+  color: #aaa;
+  line-height: 1.6;
+}
 
-    .social a {
-      display: inline-block;
-      margin: 7px;
-      padding: 11px 16px;
-      background: #151515;
-      border: 1px solid #333;
-      border-radius: 8px;
-      color: white;
-      text-decoration: none;
-    }
+body.light .project-card p {
+  color: #555;
+}
 
-    body.light .social a {
-      background: white;
-      color: #111;
-      border-color: #ddd;
-    }
+/* SKILLS */
 
-    .contact-box {
-      padding: 30px;
-    }
+.skill {
+  margin: 25px 0;
+}
 
-    footer {
-      border-top: 1px solid #333;
-      padding: 25px;
-      color: #777;
-    }
+.skill-name {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-      }
+.progress {
+  height: 10px;
+  background: #333;
+  border-radius: 20px;
+  overflow: hidden;
+}
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.progress-bar {
+  height: 100%;
+  background: white;
+  border-radius: 20px;
+}
 
-    @media (max-width: 600px) {
+body.light .progress {
+  background: #ddd;
+}
 
-      .hero h1 {
-        font-size: 35px;
-      }
+body.light .progress-bar {
+  background: #111;
+}
 
-      .profile-img {
-        width: 125px;
-        height: 125px;
-      }
+/* SOCIAL */
 
-      nav a {
-        font-size: 12px;
-        margin: 0 3px;
-      }
-    }
-  </style>
+.social {
+  text-align: center;
+}
+
+.social a {
+  display: inline-block;
+  margin: 7px;
+  padding: 12px 18px;
+  background: #151515;
+  border: 1px solid #333;
+  border-radius: 9px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.social a:hover {
+  transform: translateY(-4px);
+}
+
+body.light .social a {
+  background: white;
+  color: #111;
+  border-color: #ddd;
+}
+
+/* CONTACT */
+
+.contact-box {
+  text-align: center;
+  background: #151515;
+  border: 1px solid #333;
+  border-radius: 16px;
+  padding: 35px;
+}
+
+body.light .contact-box {
+  background: white;
+  border-color: #ddd;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  padding: 30px;
+  border-top: 1px solid #333;
+  color: #777;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn {
+
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  nav a {
+    font-size: 12px;
+    margin: 0 3px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero h2 {
+    font-size: 18px;
+  }
+
+  .profile-img {
+    width: 135px;
+    height: 135px;
+  }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-  <!-- NAVIGATION -->
 
-  <nav>
+<!-- NAVIGATION -->
 
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
+<nav>
 
-    <button class="theme-btn" onclick="toggleTheme()">
-      🌙
-    </button>
+<a href="#home">Home</a>
 
-  </nav>
+<a href="#about">About</a>
 
+<a href="#projects">Projects</a>
 
-  <!-- HERO -->
+<a href="#skills">Skills</a>
 
-  <div class="hero" id="home">
+<a href="#contact">Contact</a>
 
-    <!-- YOUR PROFILE PHOTO -->
+<button class="theme-btn" onclick="toggleTheme()">
+🌙
+</button>
 
-    <img
-      class="profile-img"
-      src="IMG_20260218_125513_403.webp"
-      alt="Himanshu Shekhar">
+</nav>
 
-    <h1>Himanshu Shekhar</h1>
 
-    <p>
-      💻 Coding Learner • 📈 Trading Learner • 🚀 Future Builder
-    </p>
+<!-- HERO -->
 
-    <p>
-      Learning new skills, building projects
-      and creating my future step by step.
-    </p>
+<div class="hero" id="home">
 
-    <a class="button" href="#projects">
-      🚀 My Projects
-    </a>
+<img
+class="profile-img"
+src="IMG_20260218_125513_403.webp"
+alt="Himanshu Shekhar">
 
-    <a class="button dark" href="#about">
-      👤 About Me
-    </a>
+<h1>Himanshu Shekhar</h1>
 
-    <br>
+<h2>💻 Coding Learner • 📈 Trading Learner</h2>
 
-    <button class="button" onclick="showMessage()">
-      Click Me
-    </button>
+<p>
+Building projects, learning new skills and creating
+my future step by step.
+</p>
 
-  </div>
+<div>
 
+<a class="button" href="#projects">
+🚀 Explore Projects
+</a>
 
-  <!-- ABOUT -->
+<a class="button dark" href="#contact">
+📩 Contact Me
+</a>
 
-  <section id="about">
+</div>
 
-    <h2>About Me</h2>
+<br>
 
-    <div class="about">
+<button class="button" onclick="showMessage()">
+✨ Click Me
+</button>
 
-      I am Himanshu Shekhar, a beginner learning
-      coding, building projects and exploring new skills.
+</div>
 
-      <br>
-      <br>
 
-      My goal is to keep learning, create useful projects
-      and build my future step by step.
+<!-- ABOUT -->
 
-    </div>
+<section id="about">
 
-  </section>
+<h2>👤 About Me</h2>
 
+<div class="about-box">
 
-  <!-- PROJECTS -->
+I am Himanshu Shekhar, a beginner learning coding,
+building websites and exploring new skills.
 
-  <section id="projects">
+<br><br>
 
-    <h2>My Projects</h2>
+I enjoy learning technology, creating projects
+and improving myself step by step.
 
+<br><br>
 
-    <div class="project-card">
+My goal is to keep learning and build something
+useful with my skills.
 
-      <h3>🚀 My First Website</h3>
+</div>
 
-      <p>
-        My first website built using HTML, CSS
-        and JavaScript.
-      </p>
+</section>
 
-      <a class="button" href="#home">
-        View Project
-      </a>
 
-    </div>
+<!-- PROJECTS -->
 
+<section id="projects">
 
-    <div class="project-card">
+<h2>🚀 My Projects</h2>
 
-      <h3>💻 Coding Journey</h3>
 
-      <p>
-        Learning web development and creating
-        new projects.
-      </p>
+<div class="project-card">
 
-      <a class="button" href="#skills">
-        My Skills
-      </a>
+<h3>🌐 My First Website</h3>
 
-    </div>
+<p>
+My first personal website created using HTML,
+CSS and JavaScript.
+</p>
 
+<a class="button" href="#home">
+Live Demo
+</a>
 
-    <div class="project-card">
+</div>
 
-      <h3>📈 Trading Learning</h3>
 
-      <p>
-        Learning market concepts, analysis
-        and trading education.
-      </p>
+<div class="project-card">
 
-      <a class="button" href="#about">
-        About Me
-      </a>
+<h3>💻 Portfolio Website</h3>
 
-    </div>
+<p>
+A personal portfolio website showing my skills,
+projects and learning journey.
+</p>
 
-  </section>
+<a class="button" href="#home">
+View Project
+</a>
 
+</div>
 
-  <!-- SKILLS -->
 
-  <section id="skills">
+<div class="project-card">
 
-    <h2>My Skills</h2>
+<h3>📈 Trading Learning</h3>
 
+<p>
+Learning market concepts, technical analysis
+and trading education.
+</p>
 
-    <div class="skill-box">
+<a class="button" href="#about">
+Learn More
+</a>
 
-      <div class="skill-name">
-        HTML
-      </div>
+</div>
 
-      <div class="progress">
 
-        <div
-          class="progress-bar"
-          style="width:70%;">
-        </div>
+</section>
 
-      </div>
 
-    </div>
+<!-- SKILLS -->
 
+<section id="skills">
 
-    <div class="skill-box">
+<h2>💻 My Skills</h2>
 
-      <div class="skill-name">
-        CSS
-      </div>
 
-      <div class="progress">
+<div class="skill">
 
-        <div
-          class="progress-bar"
-          style="width:60%;">
-        </div>
+<div class="skill-name">
+HTML — 70%
+</div>
 
-      </div>
+<div class="progress">
 
-    </div>
+<div
+class="progress-bar"
+style="width:70%;">
+</div>
 
+</div>
 
-    <div class="skill-box">
+</div>
 
-      <div class="skill-name">
-        JavaScript
-      </div>
 
-      <div class="progress">
+<div class="skill">
 
-        <div
-          class="progress-bar"
-          style="width:30%;">
-        </div>
+<div class="skill-name">
+CSS — 60%
+</div>
 
-      </div>
+<div class="progress">
 
-    </div>
+<div
+class="progress-bar"
+style="width:60%;">
+</div>
 
+</div>
 
-    <div class="skill-box">
+</div>
 
-      <div class="skill-name">
-        Trading Basics
-      </div>
 
-      <div class="progress">
+<div class="skill">
 
-        <div
-          class="progress-bar"
-          style="width:45%;">
-        </div>
+<div class="skill-name">
+JavaScript — 30%
+</div>
 
-      </div>
+<div class="progress">
 
-    </div>
+<div
+class="progress-bar"
+style="width:30%;">
+</div>
 
-  </section>
+</div>
 
+</div>
 
-  <!-- SOCIAL -->
 
-  <section>
+<div class="skill">
 
-    <h2>Connect With Me</h2>
+<div class="skill-name">
+Trading Basics — 45%
+</div>
 
-    <div class="social">
+<div class="progress">
 
-      <a
-        href="https://github.com/"
-        target="_blank">
-        💻 GitHub
-      </a>
+<div
+class="progress-bar"
+style="width:45%;">
+</div>
 
-      <a
-        href="https://youtube.com/"
-        target="_blank">
-        ▶️ YouTube
-      </a>
+</div>
 
-      <a
-        href="https://instagram.com/"
-        target="_blank">
-        📸 Instagram
-      </a>
+</div>
 
-    </div>
+</section>
 
-  </section>
 
+<!-- SOCIAL -->
 
-  <!-- CONTACT -->
+<section>
 
-  <section id="contact">
+<h2>🔗 Connect With Me</h2>
 
-    <h2>Contact Me</h2>
+<div class="social">
 
-    <div class="contact-box">
+<a
+href="https://github.com/"
+target="_blank">
+💻 GitHub
+</a>
 
-      <p>
-        Want to connect with me?
-      </p>
+<a
+href="https://youtube.com/"
+target="_blank">
+▶️ YouTube
+</a>
 
-      <a
-        class="button"
-        href="mailto:your@email.com">
-        📧 Email Me
-      </a>
+<a
+href="https://instagram.com/"
+target="_blank">
+📸 Instagram
+</a>
 
-    </div>
+</div>
 
-  </section>
+</section>
 
 
-  <!-- FOOTER -->
+<!-- CONTACT -->
 
-  <footer>
+<section id="contact">
 
-    © 2026 Himanshu Shekhar
-    • Built with HTML, CSS & JavaScript
+<h2>📩 Contact Me</h2>
 
-  </footer>
+<div class="contact-box">
 
+<p>
+Want to connect with me?
+</p>
 
-  <!-- JAVASCRIPT -->
+<a
+class="button"
+href="mailto:your@email.com">
+📧 Email Me
+</a>
 
-  <script>
+</div>
 
-    function showMessage() {
+</section>
 
-      alert(
-        "Welcome to Himanshu Shekhar's website! 🚀"
-      );
 
-    }
+<!-- FOOTER -->
 
+<footer>
 
-    function toggleTheme() {
+© 2026 Himanshu Shekhar
 
-      document.body.classList.toggle("light");
+<br><br>
 
-      const button =
-        document.querySelector(".theme-btn");
+Built with HTML • CSS • JavaScript 🚀
 
-      if (
-        document.body.classList.contains("light")
-      ) {
+</footer>
 
-        button.innerHTML = "☀️";
 
-      } else {
+<!-- JAVASCRIPT -->
 
-        button.innerHTML = "🌙";
+<script>
 
-      }
+function showMessage() {
 
-    }
+alert(
+"Welcome to Himanshu Shekhar's website! 🚀"
+);
 
-  </script>
+}
+
+
+function toggleTheme() {
+
+document.body.classList.toggle("light");
+
+const button =
+document.querySelector(".theme-btn");
+
+if (
+document.body.classList.contains("light")
+) {
+
+button.innerHTML = "☀️";
+
+} else {
+
+button.innerHTML = "🌙";
+
+}
+
+}
+
+</script>
+
 
 </body>
 
-</html>
+      </html>
