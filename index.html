@@ -45,7 +45,22 @@
   border-radius: 12px;
   background: #151515;
 }
-  </style>
+ .projects {
+  max-width: 700px;
+  margin: 40px auto;
+}
+
+.project-card {
+  background: #151515;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 20px;
+}
+
+.project-card h3 {
+  margin-top: 0;
+} </style>
 </head>
 
 <body>
@@ -60,12 +75,24 @@
 
     <a class="button" href="#projects">My Projects</a>
   </div>
-<section id="projects">
+<section id="projects" class="projects">
   <h2>My Projects</h2>
 
-  <p>🚀 My First Website</p>
-  <p>💻 Learning Coding</p>
-  <p>📈 Learning Trading</p>
+  <div class="project-card">
+    <h3>🚀 My First Website</h3>
+    <p>My first website built with HTML and CSS.</p>
+  </div>
+
+  <div class="project-card">
+    <h3>💻 Learning Coding</h3>
+    <p>Currently learning web development and building projects.</p>
+  </div>
+
+  <div class="project-card">
+    <h3>📈 Learning Trading</h3>
+    <p>Exploring trading concepts and market analysis.</p>
+  </div>
+
 </section>
 </body>
 </html>
