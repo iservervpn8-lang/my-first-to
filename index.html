@@ -7,44 +7,42 @@
 
 <style>
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
 :root{
   --bg:#07090d;
-  --card:#10141c;
-  --card2:#151b25;
-  --text:#f5f7fb;
-  --muted:#8e99aa;
-  --blue:#3b82f6;
-  --cyan:#22d3ee;
-  --green:#22c55e;
-  --yellow:#facc15;
-  --red:#ef4444;
-  --border:#242c3a;
-  --shadow:0 15px 45px rgba(0,0,0,.35);
+  --panel:#10141b;
+  --panel2:#151a23;
+  --border:#252d39;
+  --text:#f4f7fb;
+  --muted:#8d98a8;
+  --blue:#4da3ff;
+  --blue2:#246bff;
+  --green:#35d69a;
+  --yellow:#ffc857;
+  --red:#ff6577;
+  --purple:#9b7cff;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
+  background:
+    radial-gradient(circle at 10% 0%,rgba(36,107,255,.13),transparent 30%),
+    radial-gradient(circle at 90% 10%,rgba(155,124,255,.09),transparent 25%),
+    var(--bg);
   color:var(--text);
   min-height:100vh;
 }
 
-button,input,select,textarea{
-  font:inherit;
-}
-
 button{
+  border:0;
   cursor:pointer;
 }
 
-.hidden{
-  display:none!important;
-}
+.hidden{display:none!important}
 
 /* SPLASH */
 
@@ -52,33 +50,31 @@ button{
   position:fixed;
   inset:0;
   z-index:9999;
-  background:#05070a;
   display:flex;
-  align-items:center;
   justify-content:center;
-  text-align:center;
-  padding:20px;
+  align-items:center;
+  background:#05070a;
+  padding:25px;
 }
 
 .splash-box{
-  max-width:500px;
-  width:100%;
-  animation:fadeUp .8s ease;
+  text-align:center;
+  max-width:450px;
 }
 
 .splash-logo{
-  width:180px;
-  height:180px;
-  object-fit:cover;
+  width:145px;
+  height:145px;
+  object-fit:contain;
   border-radius:50%;
-  border:3px solid #344154;
-  box-shadow:0 0 50px rgba(59,130,246,.2);
+  border:2px solid rgba(77,163,255,.55);
+  box-shadow:0 0 60px rgba(77,163,255,.22);
   margin-bottom:25px;
 }
 
 .splash-box h1{
-  font-size:42px;
-  margin-bottom:8px;
+  font-size:32px;
+  letter-spacing:2px;
 }
 
 .splash-box h1 span{
@@ -87,211 +83,145 @@ button{
 
 .splash-box p{
   color:var(--muted);
-  line-height:1.7;
+  margin:10px 0 5px;
 }
 
-.dev-line{
-  margin-top:18px;
+.developer{
+  color:#fff!important;
   font-size:14px;
-  color:#b8c2d1;
 }
 
-.primary-btn{
+.continue-btn{
   margin-top:25px;
-  border:0;
-  padding:13px 25px;
-  border-radius:12px;
-  color:white;
-  background:linear-gradient(135deg,#2563eb,#06b6d4);
+  padding:14px 28px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--blue2),var(--blue));
+  color:#fff;
   font-weight:700;
+  box-shadow:0 10px 35px rgba(36,107,255,.25);
 }
 
-/* SETUP */
+/* APP */
 
-.setup{
+#app{
   min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:25px;
 }
 
-.setup-card{
-  width:100%;
-  max-width:700px;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:24px;
-  padding:28px;
-  box-shadow:var(--shadow);
-}
-
-.setup-card h2{
-  font-size:28px;
-  margin-bottom:8px;
-}
-
-.setup-card>p{
-  color:var(--muted);
-  margin-bottom:25px;
-}
-
-.form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
-
-.field label{
-  display:block;
-  color:#b7c0cf;
-  font-size:13px;
-  margin-bottom:7px;
-}
-
-.field select,
-.field input{
-  width:100%;
-  padding:12px;
-  border-radius:10px;
-  background:#0b0f16;
-  color:white;
-  border:1px solid var(--border);
-  outline:none;
-}
-
-.full{
-  grid-column:1/-1;
-}
-
-/* HEADER */
-
-header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:rgba(7,9,13,.92);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--border);
-}
-
-.header-inner{
-  max-width:1300px;
-  margin:auto;
-  padding:13px 18px;
+.topbar{
+  height:72px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:15px;
+  padding:0 30px;
+  border-bottom:1px solid var(--border);
+  background:rgba(7,9,13,.82);
+  backdrop-filter:blur(18px);
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
 }
 
 .brand img{
-  width:48px;
-  height:48px;
+  width:42px;
+  height:42px;
+  object-fit:contain;
   border-radius:50%;
-  object-fit:cover;
 }
 
-.brand-text strong{
+.brand-title{
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.brand-title small{
   display:block;
-  font-size:17px;
-}
-
-.brand-text small{
   color:var(--muted);
+  font-size:10px;
+  letter-spacing:2px;
 }
 
-.header-actions{
+.top-actions{
   display:flex;
-  gap:8px;
+  gap:10px;
 }
 
 .icon-btn{
-  border:1px solid var(--border);
-  background:var(--card);
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  background:var(--panel);
   color:white;
-  border-radius:10px;
-  padding:9px 12px;
-}
-
-/* NAV */
-
-.nav{
-  max-width:1300px;
-  margin:auto;
-  padding:12px 18px;
-  display:flex;
-  gap:8px;
-  overflow:auto;
-}
-
-.nav button{
-  white-space:nowrap;
-  background:var(--card);
-  color:#aeb8c8;
   border:1px solid var(--border);
-  padding:9px 13px;
-  border-radius:10px;
-}
-
-.nav button.active{
-  color:white;
-  border-color:#2563eb;
-  background:#102044;
+  font-size:18px;
 }
 
 /* MAIN */
 
-main{
-  max-width:1300px;
+.main{
+  max-width:1250px;
   margin:auto;
-  padding:22px 18px 70px;
+  padding:35px 22px 70px;
 }
 
-.section{
-  margin-bottom:28px;
-}
+/* HOME HERO */
 
 .hero{
   background:
-    radial-gradient(circle at top right,rgba(37,99,235,.18),transparent 35%),
-    var(--card);
+    linear-gradient(135deg,rgba(77,163,255,.12),rgba(155,124,255,.05)),
+    var(--panel);
   border:1px solid var(--border);
-  border-radius:22px;
-  padding:25px;
-  box-shadow:var(--shadow);
+  border-radius:24px;
+  padding:30px;
+  margin-bottom:28px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  background:rgba(77,163,255,.08);
+  border-radius:50%;
+  right:-70px;
+  top:-90px;
 }
 
 .hero h1{
-  font-size:30px;
+  font-size:34px;
   margin-bottom:8px;
+}
+
+.hero h1 span{
+  color:var(--blue);
 }
 
 .hero p{
   color:var(--muted);
+  max-width:700px;
   line-height:1.6;
 }
 
-.badges{
+.hero-row{
   display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:15px;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
 }
 
-.badge{
-  padding:7px 10px;
-  border-radius:20px;
-  background:#151c28;
+.student-pill{
+  padding:10px 14px;
+  background:#0b1018;
   border:1px solid var(--border);
-  font-size:12px;
-  color:#cbd5e1;
+  border-radius:12px;
+  color:var(--muted);
 }
 
 /* STATS */
@@ -299,396 +229,451 @@ main{
 .stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:14px;
-  margin-top:18px;
+  gap:15px;
+  margin-bottom:32px;
 }
 
 .stat{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:18px;
-}
-
-.stat .num{
-  font-size:27px;
-  font-weight:800;
-}
-
-.stat .label{
-  color:var(--muted);
-  font-size:13px;
-  margin-top:5px;
-}
-
-/* CARDS */
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-}
-
-.card{
-  background:var(--card);
+  background:var(--panel);
   border:1px solid var(--border);
   border-radius:18px;
   padding:20px;
 }
 
-.card h3{
-  margin-bottom:7px;
+.stat-icon{
+  font-size:23px;
+  margin-bottom:12px;
 }
 
-.card p{
+.stat strong{
+  font-size:27px;
+  display:block;
+}
+
+.stat span{
   color:var(--muted);
-  line-height:1.6;
+  font-size:13px;
 }
 
-.card-header{
+/* SUBJECT */
+
+.section-head{
   display:flex;
+  align-items:end;
   justify-content:space-between;
-  gap:10px;
-  align-items:center;
-  margin-bottom:15px;
+  margin-bottom:17px;
 }
 
-.card-header h2{
-  font-size:20px;
+.section-head h2{
+  font-size:22px;
 }
 
-/* FILTER */
+.section-head p{
+  color:var(--muted);
+  font-size:13px;
+}
 
-.filters{
+.search{
+  background:var(--panel);
+  border:1px solid var(--border);
+  color:white;
+  padding:12px 15px;
+  border-radius:12px;
+  outline:none;
+  width:230px;
+}
+
+.subject-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:10px;
+  gap:17px;
+}
+
+.subject-card{
+  background:linear-gradient(145deg,#11161e,#0d1117);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:22px;
+  cursor:pointer;
+  transition:.25s;
+  min-height:190px;
+  position:relative;
+  overflow:hidden;
+}
+
+.subject-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(77,163,255,.6);
+  box-shadow:0 18px 45px rgba(0,0,0,.35);
+}
+
+.subject-logo{
+  width:65px;
+  height:65px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:18px;
+  background:#18202c;
+  border:1px solid #303b4b;
+  font-size:34px;
   margin-bottom:18px;
 }
 
-.filters select{
-  background:#0b0f16;
-  color:white;
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:11px;
+.subject-card h3{
+  font-size:18px;
 }
 
-/* QUESTION */
-
-.question-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:20px;
-  margin-bottom:13px;
+.subject-card p{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:5px;
 }
 
-.q-top{
+.subject-bottom{
   display:flex;
   justify-content:space-between;
-  gap:10px;
-  margin-bottom:13px;
+  align-items:center;
+  margin-top:20px;
 }
-
-.q-number{
-  color:#60a5fa;
-  font-weight:800;
-}
-
-.q-tags{
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap;
-}
-
-.q-tag{
-  font-size:11px;
-  padding:5px 8px;
-  border-radius:8px;
-  background:#171e29;
-  color:#aeb8c8;
-}
-
-.question{
-  font-size:17px;
-  line-height:1.6;
-  margin-bottom:15px;
-}
-
-.options{
-  display:grid;
-  gap:8px;
-}
-
-.option{
-  text-align:left;
-  border:1px solid var(--border);
-  background:#0c1119;
-  color:#e8edf5;
-  border-radius:10px;
-  padding:11px;
-}
-
-.option:hover{
-  border-color:#3b82f6;
-}
-
-.option.correct{
-  border-color:var(--green);
-  background:rgba(34,197,94,.1);
-}
-
-.option.wrong{
-  border-color:var(--red);
-  background:rgba(239,68,68,.1);
-}
-
-.answer-box{
-  margin-top:15px;
-  background:#0c121b;
-  border-left:3px solid var(--green);
-  padding:13px;
-  border-radius:8px;
-}
-
-.explain-box{
-  margin-top:10px;
-  background:#101827;
-  border-left:3px solid var(--blue);
-  padding:13px;
-  border-radius:8px;
-  color:#c7d2e2;
-}
-
-.question-actions{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:14px;
-}
-
-.small-btn{
-  border:1px solid var(--border);
-  background:#111722;
-  color:#e5e7eb;
-  padding:8px 11px;
-  border-radius:9px;
-}
-
-/* PROGRESS */
 
 .progress{
-  height:9px;
-  background:#202734;
+  height:5px;
+  background:#202733;
   border-radius:10px;
   overflow:hidden;
-  margin-top:10px;
+  flex:1;
+  margin-right:10px;
 }
 
 .progress span{
   display:block;
   height:100%;
-  background:linear-gradient(90deg,#2563eb,#22d3ee);
+  background:linear-gradient(90deg,var(--blue2),var(--blue));
+  border-radius:10px;
 }
 
-/* TASK */
+.percent{
+  color:var(--blue);
+  font-size:12px;
+  font-weight:700;
+}
 
-.task{
+/* EXTRA SECTIONS */
+
+.quick-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-top:35px;
+}
+
+.quick-card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:22px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.quick-card:hover{
+  border-color:var(--blue);
+  transform:translateY(-3px);
+}
+
+.quick-card .qicon{
+  font-size:26px;
+  margin-bottom:12px;
+}
+
+.quick-card h3{
+  font-size:16px;
+}
+
+.quick-card p{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:5px;
+}
+
+/* SUBJECT PAGE */
+
+.subject-page{
+  animation:fade .25s ease;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.back-btn{
+  background:var(--panel);
+  border:1px solid var(--border);
+  color:white;
+  padding:11px 16px;
+  border-radius:12px;
+  margin-bottom:22px;
+}
+
+.subject-header{
   display:flex;
   align-items:center;
-  gap:12px;
-  padding:12px 0;
-  border-bottom:1px solid var(--border);
+  gap:20px;
+  background:linear-gradient(135deg,rgba(77,163,255,.13),rgba(155,124,255,.05)),var(--panel);
+  border:1px solid var(--border);
+  padding:28px;
+  border-radius:24px;
+  margin-bottom:22px;
 }
 
-.task:last-child{
-  border-bottom:0;
+.big-subject-logo{
+  width:90px;
+  height:90px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#17202c;
+  border:1px solid #354254;
+  border-radius:25px;
+  font-size:48px;
 }
 
-.task input{
-  width:18px;
-  height:18px;
+.subject-header h1{
+  font-size:31px;
 }
 
-.task.done{
-  opacity:.5;
-  text-decoration:line-through;
+.subject-header p{
+  color:var(--muted);
+  margin-top:5px;
 }
 
-/* CHAT */
+.subject-progress{
+  margin-left:auto;
+  min-width:190px;
+}
 
-.chat-box{
-  height:330px;
-  overflow:auto;
-  background:#080c12;
+.subject-progress strong{
+  display:block;
+  font-size:25px;
+  margin-bottom:7px;
+}
+
+.progress-large{
+  height:8px;
+  background:#222a36;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.progress-large span{
+  display:block;
+  height:100%;
+  background:linear-gradient(90deg,var(--blue2),var(--blue));
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.feature-card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:22px;
+  min-height:145px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.feature-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(77,163,255,.6);
+}
+
+.feature-icon{
+  font-size:27px;
+  margin-bottom:14px;
+}
+
+.feature-card h3{
+  font-size:16px;
+}
+
+.feature-card p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.5;
+  margin-top:6px;
+}
+
+/* CONTENT PAGE */
+
+.content-box{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:25px;
+  margin-top:20px;
+}
+
+.content-box h2{
+  margin-bottom:10px;
+}
+
+.content-box p{
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.list-item{
+  padding:16px;
   border:1px solid var(--border);
   border-radius:14px;
-  padding:14px;
-}
-
-.msg{
-  margin-bottom:10px;
-  max-width:85%;
-  padding:10px 12px;
-  border-radius:12px;
-  line-height:1.5;
-}
-
-.msg.ai{
-  background:#151c28;
-}
-
-.msg.user{
-  margin-left:auto;
-  background:#12336e;
-}
-
-.chat-input{
-  display:flex;
-  gap:8px;
   margin-top:10px;
-}
-
-.chat-input input{
-  flex:1;
-  padding:12px;
-  border-radius:10px;
-  background:#0b1018;
-  border:1px solid var(--border);
-  color:white;
-}
-
-/* PROFILE */
-
-.profile{
-  display:grid;
-  grid-template-columns:180px 1fr;
-  gap:25px;
-  align-items:center;
-}
-
-.profile-img{
-  width:170px;
-  height:170px;
-  object-fit:cover;
-  border-radius:20px;
-  border:1px solid var(--border);
-}
-
-/* POMODORO */
-
-#pomoOverlay{
-  position:fixed;
-  inset:0;
-  z-index:5000;
-  background:rgba(0,0,0,.92);
   display:flex;
+  justify-content:space-between;
   align-items:center;
-  justify-content:center;
-  padding:20px;
+  background:#0c1118;
 }
 
-.pomo{
-  width:100%;
-  max-width:430px;
+.list-item span{
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* FOOTER */
+
+footer{
   text-align:center;
-  background:#0d121a;
-  border:1px solid var(--border);
-  border-radius:25px;
-  padding:30px;
-}
-
-.timer{
-  font-size:65px;
-  font-weight:900;
-  margin:25px 0;
-}
-
-.pomo-actions{
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
-/* TOAST */
-
-#toast{
-  position:fixed;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#151b25;
-  border:1px solid var(--border);
-  color:white;
-  padding:12px 17px;
-  border-radius:12px;
-  z-index:8000;
-  box-shadow:var(--shadow);
+  color:#657080;
+  font-size:12px;
+  margin-top:60px;
+  padding:20px;
 }
 
 /* MOBILE */
 
-@media(max-width:850px){
+@media(max-width:950px){
+  .subject-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .feature-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
   .stats{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .filters{
-    grid-template-columns:1fr 1fr;
+  .quick-grid{
+    grid-template-columns:repeat(2,1fr);
   }
 }
 
-@media(max-width:600px){
-  .form-grid,
-  .filters{
-    grid-template-columns:1fr;
+@media(max-width:650px){
+  .topbar{
+    padding:0 15px;
   }
 
-  .full{
-    grid-column:auto;
+  .main{
+    padding:22px 14px 50px;
   }
 
-  .splash-box h1{
-    font-size:32px;
+  .brand-title{
+    font-size:14px;
   }
 
-  .splash-logo{
-    width:145px;
-    height:145px;
+  .hero{
+    padding:22px;
   }
 
-  .profile{
-    grid-template-columns:1fr;
-    text-align:center;
+  .hero-row{
+    display:block;
   }
 
-  .profile-img{
-    margin:auto;
+  .hero h1{
+    font-size:26px;
+  }
+
+  .student-pill{
+    display:inline-block;
+    margin-top:15px;
   }
 
   .stats{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
   }
 
-  .timer{
-    font-size:50px;
+  .stat{
+    padding:15px;
   }
-}
 
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(20px);
+  .stat strong{
+    font-size:22px;
   }
-  to{
-    opacity:1;
-    transform:translateY(0);
+
+  .section-head{
+    display:block;
+  }
+
+  .search{
+    width:100%;
+    margin-top:12px;
+  }
+
+  .subject-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .subject-card{
+    min-height:165px;
+    padding:16px;
+  }
+
+  .subject-logo{
+    width:55px;
+    height:55px;
+    font-size:27px;
+  }
+
+  .feature-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .feature-card{
+    padding:16px;
+  }
+
+  .subject-header{
+    padding:20px;
+    display:block;
+  }
+
+  .big-subject-logo{
+    width:70px;
+    height:70px;
+    font-size:38px;
+    margin-bottom:15px;
+  }
+
+  .subject-header h1{
+    font-size:25px;
+  }
+
+  .subject-progress{
+    margin:20px 0 0;
+  }
+
+  .quick-grid{
+    grid-template-columns:repeat(2,1fr);
   }
 }
 </style>
@@ -707,18 +692,15 @@ main{
       alt="BM — Beyond Mastery"
     >
 
-    <h1>BM <span>Beyond Mastery</span></h1>
+    <h1>BM — <span>BEYOND MASTERY</span></h1>
 
-    <p>
-      Learn Beyond Limits.<br>
-      Study smarter. Practice daily. Improve consistently.
+    <p>Learn Beyond Limits</p>
+
+    <p class="developer">
+      Developed by <b>Himanshu Shekhar</b>
     </p>
 
-    <div class="dev-line">
-      Developed by <b>Himanshu Shekhar</b>
-    </div>
-
-    <button class="primary-btn" onclick="startBM()">
+    <button class="continue-btn" onclick="enterApp()">
       Continue →
     </button>
 
@@ -726,2783 +708,1043 @@ main{
 </div>
 
 
-<!-- SETUP -->
-
-<section id="setup" class="setup hidden">
-
-  <div class="setup-card">
-
-    <h2>Welcome to BM 🎓</h2>
-
-    <p>
-      Apna study profile set karo. BM tumhare according
-      questions, revision aur daily practice organize karega.
-    </p>
-
-    <div class="form-grid">
-
-      <div class="field">
-        <label>Board</label>
-        <select id="board">
-          <option>Bihar Board</option>
-          <option>CBSE</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>Class</label>
-        <select id="className">
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>Stream</label>
-        <select id="stream">
-          <option>Science</option>
-          <option>Commerce</option>
-          <option>Arts / Humanities</option>
-          <option>General</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>Language</label>
-        <select id="language">
-          <option>Hindi</option>
-          <option>English</option>
-        </select>
-      </div>
-
-      <div class="field full">
-        <label>Daily Study Goal</label>
-        <select id="goal">
-          <option value="60">1 Hour</option>
-          <option value="120">2 Hours</option>
-          <option value="180">3 Hours</option>
-          <option value="240">4 Hours</option>
-          <option value="300">5 Hours</option>
-          <option value="360">6 Hours</option>
-        </select>
-      </div>
-
-    </div>
-
-    <button class="primary-btn" onclick="saveSetup()">
-      Create My BM Dashboard →
-    </button>
-
-  </div>
-
-</section>
-
-
 <!-- APP -->
 
 <div id="app" class="hidden">
 
-<header>
-
-  <div class="header-inner">
+  <header class="topbar">
 
     <div class="brand">
-
       <img
         src="file_000000004bbc821186700759679ec160.png"
         alt="BM"
       >
 
-      <div class="brand-text">
-        <strong>BM — Beyond Mastery</strong>
-        <small>Learn Beyond Limits</small>
+      <div class="brand-title">
+        BEYOND MASTERY
+        <small>LEARN BEYOND LIMITS</small>
       </div>
-
     </div>
 
-    <div class="header-actions">
-      <button class="icon-btn" onclick="openPomodoro()">⏱</button>
-      <button class="icon-btn" onclick="toggleTheme()">☀</button>
-      <button class="icon-btn" onclick="resetApp()">↻</button>
+    <div class="top-actions">
+      <button class="icon-btn" onclick="showHome()">⌂</button>
+      <button class="icon-btn" onclick="toggleTheme()">◐</button>
     </div>
 
-  </div>
+  </header>
 
-</header>
 
+  <main class="main">
 
-<nav class="nav">
+    <!-- HOME -->
 
-  <button class="active" onclick="showPage('dashboard',this)">
-    Dashboard
-  </button>
+    <section id="homePage">
 
-  <button onclick="showPage('questions',this)">
-    🤖 Daily Questions
-  </button>
+      <div class="hero">
 
-  <button onclick="showPage('planner',this)">
-    📅 Planner
-  </button>
+        <div class="hero-row">
 
-  <button onclick="showPage('notes',this)">
-    📝 Notes
-  </button>
+          <div>
+            <h1>Welcome to <span>BM</span></h1>
 
-  <button onclick="showPage('mistakes',this)">
-    ❌ Mistakes
-  </button>
+            <p>
+              One powerful study platform for Class 10, 11 & 12
+              students — Bihar Board & CBSE.
+            </p>
+          </div>
 
-  <button onclick="showPage('ai',this)">
-    🧠 BM AI
-  </button>
-
-  <button onclick="showPage('developer',this)">
-    👨‍💻 Developer
-  </button>
-
-</nav>
-
-
-<main>
-
-
-<!-- DASHBOARD -->
-
-<section id="dashboard" class="page">
-
-  <div class="hero">
-
-    <h1 id="welcomeText">Welcome to BM 👋</h1>
-
-    <p>
-      Your personalized study dashboard.
-      Daily questions, revision, focus and progress — all in one place.
-    </p>
-
-    <div class="badges">
-
-      <span class="badge" id="profileBadge">
-        Bihar Board • Class 12 • Science
-      </span>
-
-      <span class="badge">
-        🤖 AI Study System
-      </span>
-
-      <span class="badge">
-        🔥 Daily Practice
-      </span>
-
-    </div>
-
-  </div>
-
-
-  <div class="stats">
-
-    <div class="stat">
-      <div class="num" id="studyMinutes">0</div>
-      <div class="label">Study Minutes</div>
-    </div>
-
-    <div class="stat">
-      <div class="num" id="questionScore">0</div>
-      <div class="label">Questions Score</div>
-    </div>
-
-    <div class="stat">
-      <div class="num" id="accuracy">0%</div>
-      <div class="label">Accuracy</div>
-    </div>
-
-    <div class="stat">
-      <div class="num" id="streak">0 🔥</div>
-      <div class="label">Study Streak</div>
-    </div>
-
-  </div>
-
-
-  <div class="grid section">
-
-    <div class="card">
-
-      <div class="card-header">
-        <h2>🎯 Today's Mission</h2>
-        <span class="badge" id="missionCount">0/3</span>
-      </div>
-
-      <div id="missionList"></div>
-
-    </div>
-
-
-    <div class="card">
-
-      <div class="card-header">
-        <h2>🧠 BM Daily Intelligence</h2>
-      </div>
-
-      <p id="dailyInsight">
-        Complete today's questions to generate your study insight.
-      </p>
-
-      <div class="progress">
-        <span id="dailyProgress" style="width:0%"></span>
-      </div>
-
-      <div class="badges">
-        <span class="badge" id="weakBadge">Weak Topic: —</span>
-        <span class="badge" id="revisionBadge">Revision: —</span>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="grid section">
-
-    <div class="card">
-
-      <div class="card-header">
-        <h2>📊 Subject Progress</h2>
-      </div>
-
-      <div id="subjectProgress"></div>
-
-    </div>
-
-
-    <div class="card">
-
-      <div class="card-header">
-        <h2>⚡ Quick Actions</h2>
-      </div>
-
-      <div class="question-actions">
-
-        <button class="small-btn" onclick="showPageById('questions')">
-          🤖 Daily Questions
-        </button>
-
-        <button class="small-btn" onclick="openPomodoro()">
-          ⏱ Focus 20 Min
-        </button>
-
-        <button class="small-btn" onclick="showPageById('planner')">
-          📅 Add Study Task
-        </button>
-
-        <button class="small-btn" onclick="showPageById('notes')">
-          📝 Quick Note
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- DAILY QUESTIONS -->
-
-<section id="questions" class="page hidden">
-
-  <div class="hero">
-
-    <h1>🤖 BM Daily Important Questions</h1>
-
-    <p>
-      AI-style personalized practice engine.
-      Questions are filtered according to your board, class, stream,
-      subject and difficulty.
-    </p>
-
-    <div class="badges">
-
-      <span class="badge">🎯 Exam Oriented</span>
-      <span class="badge">📚 Syllabus Based</span>
-      <span class="badge">🔁 Revision Friendly</span>
-      <span class="badge">🧠 Personalized</span>
-
-    </div>
-
-  </div>
-
-
-  <div class="card section">
-
-    <div class="filters">
-
-      <select id="qBoard" onchange="generateQuestions()">
-        <option>Bihar Board</option>
-        <option>CBSE</option>
-      </select>
-
-      <select id="qClass" onchange="updateQuestionSubjects()">
-        <option>10</option>
-        <option>11</option>
-        <option>12</option>
-      </select>
-
-      <select id="qStream" onchange="updateQuestionSubjects()">
-        <option>Science</option>
-        <option>Commerce</option>
-        <option>Arts / Humanities</option>
-        <option>General</option>
-      </select>
-
-      <select id="qSubject" onchange="generateQuestions()"></select>
-
-      <select id="qDifficulty" onchange="generateQuestions()">
-        <option>All Difficulty</option>
-        <option>Easy</option>
-        <option>Medium</option>
-        <option>Hard</option>
-      </select>
-
-      <select id="qType" onchange="generateQuestions()">
-        <option>All Types</option>
-        <option>MCQ</option>
-        <option>Short Answer</option>
-        <option>Concept</option>
-        <option>Numerical</option>
-      </select>
-
-      <select id="qLanguage" onchange="generateQuestions()">
-        <option>Hindi</option>
-        <option>English</option>
-      </select>
-
-    </div>
-
-    <div class="question-actions">
-
-      <button class="primary-btn" onclick="generateQuestions()">
-        🔄 Generate Today's Set
-      </button>
-
-      <button class="small-btn" onclick="showAnswers()">
-        👁 Show Answers
-      </button>
-
-      <button class="small-btn" onclick="resetQuestions()">
-        ↺ Reset Attempt
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="stats">
-
-    <div class="stat">
-      <div class="num" id="todayTotal">0</div>
-      <div class="label">Today's Questions</div>
-    </div>
-
-    <div class="stat">
-      <div class="num" id="todayCorrect">0</div>
-      <div class="label">Correct</div>
-    </div>
-
-    <div class="stat">
-      <div class="num" id="todayWrong">0</div>
-      <div class="label">Wrong</div>
-    </div>
-
-    <div class="stat">
-      <div class="num" id="todayAccuracy">0%</div>
-      <div class="label">Today's Accuracy</div>
-    </div>
-
-  </div>
-
-
-  <div id="questionList" class="section"></div>
-
-</section>
-
-
-<!-- PLANNER -->
-
-<section id="planner" class="page hidden">
-
-  <div class="hero">
-
-    <h1>📅 Weekly Study Planner</h1>
-
-    <p>
-      Apne daily study targets add karo aur completion track karo.
-    </p>
-
-  </div>
-
-
-  <div class="card section">
-
-    <div class="form-grid">
-
-      <div class="field">
-        <label>Day</label>
-        <select id="taskDay">
-          <option>Monday</option>
-          <option>Tuesday</option>
-          <option>Wednesday</option>
-          <option>Thursday</option>
-          <option>Friday</option>
-          <option>Saturday</option>
-          <option>Sunday</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>Subject</label>
-        <input id="taskSubject" placeholder="Maths">
-      </div>
-
-      <div class="field">
-        <label>Topic</label>
-        <input id="taskTopic" placeholder="Important Chapter">
-      </div>
-
-      <div class="field">
-        <label>Duration</label>
-        <input id="taskDuration" type="number" value="60">
-      </div>
-
-    </div>
-
-    <button class="primary-btn" onclick="addTask()">
-      + Add Study Task
-    </button>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="card-header">
-      <h2>Your Tasks</h2>
-    </div>
-
-    <div id="taskList"></div>
-
-  </div>
-
-</section>
-
-
-<!-- NOTES -->
-
-<section id="notes" class="page hidden">
-
-  <div class="hero">
-
-    <h1>📝 Quick Notes</h1>
-
-    <p>
-      Important formulas, concepts, reminders aur revision points yahan save karo.
-    </p>
-
-  </div>
-
-  <div class="card section">
-
-    <textarea
-      id="noteInput"
-      placeholder="Apna important note likho..."
-      style="
-        width:100%;
-        min-height:160px;
-        background:#0b1018;
-        color:white;
-        border:1px solid var(--border);
-        border-radius:12px;
-        padding:14px;
-        resize:vertical;
-      "
-    ></textarea>
-
-    <button class="primary-btn" onclick="saveNote()">
-      Save Note
-    </button>
-
-  </div>
-
-  <div id="noteList"></div>
-
-</section>
-
-
-<!-- MISTAKES -->
-
-<section id="mistakes" class="page hidden">
-
-  <div class="hero">
-
-    <h1>❌ Mistake Book</h1>
-
-    <p>
-      Jo questions galat hue, unhe yahan save karke dobara practice karo.
-    </p>
-
-  </div>
-
-  <div id="mistakeList" class="section"></div>
-
-</section>
-
-
-<!-- AI -->
-
-<section id="ai" class="page hidden">
-
-  <div class="hero">
-
-    <h1>🧠 BM AI Study Mentor</h1>
-
-    <p>
-      Study planning, revision, weak-topic analysis aur question strategy ke liye BM AI.
-    </p>
-
-  </div>
-
-  <div class="card section">
-
-    <div id="chatBox" class="chat-box">
-
-      <div class="msg ai">
-        👋 Hi! Main BM AI Study Mentor hoon.
-        Tum mujhse study plan, revision, questions ya mistakes ke baare mein pooch sakte ho.
-      </div>
-
-    </div>
-
-    <div class="chat-input">
-
-      <input
-        id="chatInput"
-        placeholder="Example: mera weak subject kya hai?"
-        onkeydown="if(event.key==='Enter')sendAI()"
-      >
-
-      <button class="primary-btn" onclick="sendAI()">
-        Send
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="grid">
-
-    <div class="card">
-
-      <h3>📈 Performance Analysis</h3>
-
-      <p id="performanceAnalysis">
-        Start solving questions to generate your analysis.
-      </p>
-
-    </div>
-
-    <div class="card">
-
-      <h3>🔮 Tomorrow's Revision</h3>
-
-      <p id="tomorrowRevision">
-        Your revision recommendation will appear here.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- DEVELOPER -->
-
-<section id="developer" class="page hidden">
-
-  <div class="hero">
-
-    <h1>👨‍💻 Developer History</h1>
-
-    <p>
-      The person behind BM — Beyond Mastery.
-    </p>
-
-  </div>
-
-  <div class="card section">
-
-    <div class="profile">
-
-      <img
-        class="profile-img"
-        id="324n3e"
-        src="IMG_20260218_125513_403.webp"
-        alt="Himanshu Shekhar"
-      >
-
-      <div>
-
-        <h2>Himanshu Shekhar</h2>
-
-        <p style="margin-top:10px;">
-          Creator & Developer of BM — Beyond Mastery.
-        </p>
-
-        <p style="margin-top:10px;">
-          BM ka goal hai students ko ek organized,
-          personalized aur distraction-free study environment dena.
-        </p>
-
-        <div class="badges">
-
-          <span class="badge">BM Creator</span>
-          <span class="badge">Student Focused</span>
-          <span class="badge">Learning Platform</span>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-</main>
-
-</div>
-
-
-<!-- POMODORO -->
-
-<div id="pomoOverlay" class="hidden">
-
-  <div class="pomo">
-
-    <h2>⏱ BM Focus Session</h2>
-
-    <p style="color:var(--muted);margin-top:8px;">
-      20 minutes deep focus
-    </p>
-
-    <div class="timer" id="timer">
-      20:00
-    </div>
-
-    <p id="pomoStatus" style="color:var(--muted);">
-      Ready to focus?
-    </p>
-
-    <div class="pomo-actions">
-
-      <button class="primary-btn" id="pomoStart" onclick="startPomodoro()">
-        ▶ Start
-      </button>
-
-      <button class="small-btn" onclick="resetPomodoro()">
-        ↺ Reset
-      </button>
-
-      <button class="small-btn" onclick="closePomodoro()">
-        Close
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<div id="toast" class="hidden"></div>
-
-
-<script>
-
-/* ================================
-   BM DATA
-================================ */
-
-const defaultData = {
-
-  profile:{
-    board:"Bihar Board",
-    className:"12",
-    stream:"Science",
-    language:"Hindi",
-    goal:120
-  },
-
-  studyMinutes:0,
-
-  xp:0,
-
-  streak:0,
-
-  tasks:[],
-
-  notes:[],
-
-  mistakes:[],
-
-  questionHistory:[],
-
-  sessions:[],
-
-  correct:0,
-
-  wrong:0,
-
-  lastStudy:null
-
-};
-
-let data =
-  JSON.parse(localStorage.getItem("BM_DATA")) ||
-  structuredClone(defaultData);
-
-let currentQuestions=[];
-
-let answered={};
-
-let showAllAnswers=false;
-
-
-/* ================================
-   SAVE
-================================ */
-
-function save(){
-
-  localStorage.setItem(
-    "BM_DATA",
-    JSON.stringify(data)
-  );
-
-}
-
-
-/* ================================
-   TOAST
-================================ */
-
-function toast(message){
-
-  const t=document.getElementById("toast");
-
-  t.textContent=message;
-
-  t.classList.remove("hidden");
-
-  clearTimeout(window.toastTimer);
-
-  window.toastTimer=setTimeout(()=>{
-    t.classList.add("hidden");
-  },2200);
-
-}
-
-
-/* ================================
-   START
-================================ */
-
-function startBM(){
-
-  document.getElementById("splash").classList.add("hidden");
-
-  if(localStorage.getItem("BM_SETUP_DONE")){
-
-    document.getElementById("app").classList.remove("hidden");
-
-    updateAll();
-
-  }else{
-
-    document.getElementById("setup").classList.remove("hidden");
-
-  }
-
-}
-
-
-/* ================================
-   SETUP
-================================ */
-
-function saveSetup(){
-
-  data.profile.board=
-    document.getElementById("board").value;
-
-  data.profile.className=
-    document.getElementById("className").value;
-
-  data.profile.stream=
-    document.getElementById("stream").value;
-
-  data.profile.language=
-    document.getElementById("language").value;
-
-  data.profile.goal=
-    Number(document.getElementById("goal").value);
-
-  save();
-
-  localStorage.setItem("BM_SETUP_DONE","yes");
-
-  document.getElementById("setup").classList.add("hidden");
-
-  document.getElementById("app").classList.remove("hidden");
-
-  updateAll();
-
-  toast("BM Dashboard ready 🚀");
-
-}
-
-
-/* ================================
-   NAVIGATION
-================================ */
-
-function showPage(id,button){
-
-  document.querySelectorAll(".page")
-    .forEach(p=>p.classList.add("hidden"));
-
-  document.getElementById(id)
-    .classList.remove("hidden");
-
-  document.querySelectorAll(".nav button")
-    .forEach(b=>b.classList.remove("active"));
-
-  if(button){
-    button.classList.add("active");
-  }
-
-  if(id==="questions"){
-    updateQuestionSubjects();
-    generateQuestions();
-  }
-
-  if(id==="planner"){
-    renderTasks();
-  }
-
-  if(id==="notes"){
-    renderNotes();
-  }
-
-  if(id==="mistakes"){
-    renderMistakes();
-  }
-
-  if(id==="ai"){
-    updateAIAnalysis();
-  }
-
-}
-
-function showPageById(id){
-
-  const buttons=document.querySelectorAll(".nav button");
-
-  const index={
-    dashboard:0,
-    questions:1,
-    planner:2,
-    notes:3,
-    mistakes:4,
-    ai:5,
-    developer:6
-  };
-
-  showPage(
-    id,
-    buttons[index[id]]
-  );
-
-}
-
-
-/* ================================
-   QUESTION DATABASE
-================================ */
-
-const questionBank=[
-
-/* CLASS 10 MATH */
-
-{
-className:"10",
-stream:"General",
-subject:"Mathematics",
-type:"MCQ",
-difficulty:"Easy",
-question:"यदि x + 5 = 12 है, तो x का मान क्या होगा?",
-options:["5","6","7","8"],
-answer:2,
-explanation:"x = 12 - 5 = 7.",
-source:"BM Practice Bank"
-},
-
-{
-className:"10",
-stream:"General",
-subject:"Mathematics",
-type:"Concept",
-difficulty:"Medium",
-question:"द्विघात समीकरण का सामान्य रूप क्या है?",
-answerText:"ax² + bx + c = 0, जहाँ a ≠ 0.",
-explanation:"Quadratic equation में x की highest power 2 होती है.",
-source:"BM Syllabus Practice"
-},
-
-{
-className:"10",
-stream:"General",
-subject:"Science",
-type:"MCQ",
-difficulty:"Easy",
-question:"प्रकाश संश्लेषण मुख्य रूप से किस अंगक में होता है?",
-options:["माइटोकॉन्ड्रिया","क्लोरोप्लास्ट","नाभिक","राइबोसोम"],
-answer:1,
-explanation:"Photosynthesis chloroplast में होता है.",
-source:"BM Practice Bank"
-},
-
-{
-className:"10",
-stream:"General",
-subject:"English",
-type:"Concept",
-difficulty:"Easy",
-question:"What is the opposite of 'ancient'?",
-options:["old","modern","past","historic"],
-answer:1,
-explanation:"Ancient का opposite modern होता है.",
-source:"BM Language Practice"
-},
-
-/* CLASS 11 SCIENCE */
-
-{
-className:"11",
-stream:"Science",
-subject:"Physics",
-type:"MCQ",
-difficulty:"Medium",
-question:"Velocity का SI unit क्या है?",
-options:["m","m/s","m/s²","N"],
-answer:1,
-explanation:"Velocity = displacement/time, इसलिए SI unit m/s है.",
-source:"BM Physics Practice"
-},
-
-{
-className:"11",
-stream:"Science",
-subject:"Mathematics",
-type:"MCQ",
-difficulty:"Medium",
-question:"यदि A = {1,2,3}, तो A में कितने elements हैं?",
-options:["2","3","4","1"],
-answer:1,
-explanation:"Set में तीन अलग-अलग elements हैं.",
-source:"BM Mathematics Practice"
-},
-
-{
-className:"11",
-stream:"Science",
-subject:"Chemistry",
-type:"Concept",
-difficulty:"Medium",
-question:"Atomic number किसे दर्शाता है?",
-answerText:"नाभिक में उपस्थित protons की संख्या.",
-explanation:"Neutral atom में atomic number proton number के बराबर होता है.",
-source:"BM Chemistry Practice"
-},
-
-{
-className:"11",
-stream:"Science",
-subject:"Biology",
-type:"MCQ",
-difficulty:"Easy",
-question:"Cell का powerhouse किसे कहा जाता है?",
-options:["Nucleus","Ribosome","Mitochondria","Golgi body"],
-answer:2,
-explanation:"Mitochondria ATP production का मुख्य स्थान है.",
-source:"BM Biology Practice"
-},
-
-/* CLASS 11 COMMERCE */
-
-{
-className:"11",
-stream:"Commerce",
-subject:"Accountancy",
-type:"Concept",
-difficulty:"Medium",
-question:"Assets क्या होते हैं?",
-answerText:"Business के वे resources जिनसे future economic benefit मिलने की अपेक्षा होती है.",
-explanation:"Assets business की आर्थिक resources होती हैं.",
-source:"BM Commerce Practice"
-},
-
-{
-className:"11",
-stream:"Commerce",
-subject:"Economics",
-type:"MCQ",
-difficulty:"Easy",
-question:"Economics में scarcity का अर्थ क्या है?",
-options:[
-"Resources unlimited हैं",
-"Resources limited हैं और wants unlimited हैं",
-"Demand नहीं होती",
-"Production नहीं होता"
-],
-answer:1,
-explanation:"Scarcity का संबंध limited resources और unlimited wants से है.",
-source:"BM Economics Practice"
-},
-
-{
-className:"11",
-stream:"Commerce",
-subject:"Business Studies",
-type:"Concept",
-difficulty:"Easy",
-question:"Management का मुख्य उद्देश्य क्या है?",
-answerText:"Resources का प्रभावी और कुशल उपयोग करके organizational goals प्राप्त करना.",
-explanation:"Management efficiency और effectiveness दोनों पर focus करता है.",
-source:"BM Business Studies Practice"
-},
-
-/* CLASS 11 ARTS */
-
-{
-className:"11",
-stream:"Arts / Humanities",
-subject:"History",
-type:"Concept",
-difficulty:"Medium",
-question:"इतिहास के अध्ययन में primary source का क्या अर्थ है?",
-answerText:"ऐसा मूल स्रोत जो अध्ययन किए जा रहे समय या घटना से प्रत्यक्ष रूप से संबंधित हो.",
-explanation:"उदाहरण: contemporary documents, inscriptions आदि.",
-source:"BM Humanities Practice"
-},
-
-{
-className:"11",
-stream:"Arts / Humanities",
-subject:"Political Science",
-type:"Concept",
-difficulty:"Medium",
-question:"लोकतंत्र का मूल विचार क्या है?",
-answerText:"जनता की भागीदारी और जनता के प्रति उत्तरदायी शासन.",
-explanation:"Democracy में citizens की political participation महत्वपूर्ण होती है.",
-source:"BM Civics Practice"
-},
-
-{
-className:"11",
-stream:"Arts / Humanities",
-subject:"Geography",
-type:"MCQ",
-difficulty:"Easy",
-question:"पृथ्वी के वायुमंडल में सबसे अधिक कौन-सी गैस है?",
-options:["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"],
-answer:1,
-explanation:"Atmosphere में nitrogen सबसे अधिक मात्रा में है.",
-source:"BM Geography Practice"
-},
-
-/* CLASS 12 SCIENCE */
-
-{
-className:"12",
-stream:"Science",
-subject:"Mathematics",
-type:"MCQ",
-difficulty:"Medium",
-question:"यदि f(x)=x² है, तो f'(x) क्या होगा?",
-options:["x","2x","x²","2"],
-answer:1,
-explanation:"d(x²)/dx = 2x.",
-source:"BM Mathematics Practice"
-},
-
-{
-className:"12",
-stream:"Science",
-subject:"Mathematics",
-type:"Concept",
-difficulty:"Hard",
-question:"Derivative का geometrical interpretation क्या है?",
-answerText:"किसी point पर curve की tangent की slope.",
-explanation:"Derivative instantaneous rate of change और tangent slope को represent करता है.",
-source:"BM Mathematics Practice"
-},
-
-{
-className:"12",
-stream:"Science",
-subject:"Physics",
-type:"MCQ",
-difficulty:"Medium",
-question:"Ohm's law का सही relation क्या है?",
-options:["V = IR","P = VI","F = ma","Q = It"],
-answer:0,
-explanation:"Ohm's law: V = IR.",
-source:"BM Physics Practice"
-},
-
-{
-className:"12",
-stream:"Science",
-subject:"Physics",
-type:"Numerical",
-difficulty:"Hard",
-question:"एक resistor का resistance 5 Ω है और current 2 A है। उसके across potential difference कितना होगा?",
-answerText:"10 V",
-explanation:"V = IR = 2 × 5 = 10 V.",
-source:"BM Physics Numerical Practice"
-},
-
-{
-className:"12",
-stream:"Science",
-subject:"Chemistry",
-type:"MCQ",
-difficulty:"Medium",
-question:"pH = 7 सामान्यतः किस solution को दर्शाता है?",
-options:["Acidic","Basic","Neutral","Strong acid"],
-answer:2,
-explanation:"25°C पर pH 7 neutral solution को दर्शाता है.",
-source:"BM Chemistry Practice"
-},
-
-{
-className:"12",
-stream:"Science",
-subject:"Biology",
-type:"Concept",
-difficulty:"Medium",
-question:"DNA का मुख्य कार्य क्या है?",
-answerText:"Genetic information को store और transmit करना.",
-explanation:"DNA hereditary information का प्रमुख carrier है.",
-source:"BM Biology Practice"
-},
-
-{
-className:"12",
-stream:"Science",
-subject:"English",
-type:"Concept",
-difficulty:"Easy",
-question:"What is a metaphor?",
-answerText:"A figure of speech in which one thing is directly described as another.",
-explanation:"Metaphor में direct comparison किया जाता है without 'like' or 'as'.",
-source:"BM English Practice"
-},
-
-/* CLASS 12 COMMERCE */
-
-{
-className:"12",
-stream:"Commerce",
-subject:"Accountancy",
-type:"Concept",
-difficulty:"Medium",
-question:"Balance Sheet क्या दर्शाती है?",
-answerText:"एक निश्चित date पर business की financial position.",
-explanation:"It shows assets, liabilities and capital.",
-source:"BM Accountancy Practice"
-},
-
-{
-className:"12",
-stream:"Commerce",
-subject:"Economics",
-type:"MCQ",
-difficulty:"Medium",
-question:"GDP का full form क्या है?",
-options:[
-"Gross Domestic Product",
-"General Domestic Price",
-"Gross Development Product",
-"Global Domestic Product"
-],
-answer:0,
-explanation:"GDP = Gross Domestic Product.",
-source:"BM Economics Practice"
-},
-
-{
-className:"12",
-stream:"Commerce",
-subject:"Business Studies",
-type:"Concept",
-difficulty:"Medium",
-question:"Planning का अर्थ क्या है?",
-answerText:"भविष्य के लिए पहले से objectives और actions तय करना.",
-explanation:"Planning management का primary function माना जाता है.",
-source:"BM Business Studies Practice"
-},
-
-/* CLASS 12 ARTS */
-
-{
-className:"12",
-stream:"Arts / Humanities",
-subject:"History",
-type:"Concept",
-difficulty:"Medium",
-question:"इतिहास में archaeological sources क्यों महत्वपूर्ण हैं?",
-answerText:"वे past societies के material remains के आधार पर जानकारी प्रदान करते हैं.",
-explanation:"Buildings, coins, inscriptions आदि archaeological evidence हो सकते हैं.",
-source:"BM History Practice"
-},
-
-{
-className:"12",
-stream:"Arts / Humanities",
-subject:"Political Science",
-type:"Concept",
-difficulty:"Hard",
-question:"संघवाद (Federalism) की मुख्य विशेषता क्या है?",
-answerText:"शासन की शक्तियों का विभिन्न स्तरों के बीच संवैधानिक विभाजन.",
-explanation:"Federal system में central और regional governments के powers निर्धारित होते हैं.",
-source:"BM Political Science Practice"
-},
-
-{
-className:"12",
-stream:"Arts / Humanities",
-subject:"Geography",
-type:"MCQ",
-difficulty:"Medium",
-question:"मानसून भारत की अर्थव्यवस्था के लिए क्यों महत्वपूर्ण है?",
-options:[
-"कृषि और जल उपलब्धता पर प्रभाव के कारण",
-"केवल tourism के कारण",
-"केवल transport के कारण",
-"इसका कोई प्रभाव नहीं"
-],
-answer:0,
-explanation:"Indian agriculture और water resources पर monsoon का बड़ा प्रभाव है.",
-source:"BM Geography Practice"
-}
-
-];
-
-
-/* ================================
-   SUBJECTS
-================================ */
-
-function getSubjects(className,stream){
-
-  if(className==="10"){
-    return [
-      "Mathematics",
-      "Science",
-      "Social Science",
-      "English",
-      "Hindi"
-    ];
-  }
-
-  if(stream==="Science"){
-    return [
-      "Mathematics",
-      "Physics",
-      "Chemistry",
-      "Biology",
-      "English"
-    ];
-  }
-
-  if(stream==="Commerce"){
-    return [
-      "Accountancy",
-      "Economics",
-      "Business Studies",
-      "Mathematics",
-      "English"
-    ];
-  }
-
-  if(stream==="Arts / Humanities"){
-    return [
-      "History",
-      "Political Science",
-      "Geography",
-      "Economics",
-      "English",
-      "Hindi"
-    ];
-  }
-
-  return [
-    "Mathematics",
-    "Science",
-    "English",
-    "Hindi"
-  ];
-
-}
-
-
-/* ================================
-   QUESTION FILTER
-================================ */
-
-function updateQuestionSubjects(){
-
-  const className=
-    document.getElementById("qClass").value;
-
-  const stream=
-    document.getElementById("qStream").value;
-
-  const select=
-    document.getElementById("qSubject");
-
-  const subjects=
-    getSubjects(className,stream);
-
-  const old=select.value;
-
-  select.innerHTML="";
-
-  subjects.forEach(s=>{
-
-    const o=document.createElement("option");
-
-    o.textContent=s;
-
-    o.value=s;
-
-    select.appendChild(o);
-
-  });
-
-  if(subjects.includes(old)){
-    select.value=old;
-  }
-
-  generateQuestions();
-
-}
-
-
-/* ================================
-   DAILY SET
-================================ */
-
-function generateQuestions(){
-
-  const className=
-    document.getElementById("qClass").value;
-
-  const stream=
-    document.getElementById("qStream").value;
-
-  const subject=
-    document.getElementById("qSubject").value;
-
-  const difficulty=
-    document.getElementById("qDifficulty").value;
-
-  const type=
-    document.getElementById("qType").value;
-
-  let pool=questionBank.filter(q=>
-    q.className===className &&
-    q.stream===stream &&
-    q.subject===subject
-  );
-
-  if(difficulty!=="All Difficulty"){
-    pool=pool.filter(q=>q.difficulty===difficulty);
-  }
-
-  if(type!=="All Types"){
-    pool=pool.filter(q=>q.type===type);
-  }
-
-  currentQuestions=
-    pool.length ?
-    [...pool].sort(()=>Math.random()-.5) :
-    [];
-
-  answered={};
-
-  showAllAnswers=false;
-
-  renderQuestions();
-
-}
-
-
-/* ================================
-   RENDER QUESTIONS
-================================ */
-
-function renderQuestions(){
-
-  const box=
-    document.getElementById("questionList");
-
-  if(!currentQuestions.length){
-
-    box.innerHTML=`
-      <div class="card">
-        <h3>📚 Is filter ke liye abhi local questions available nahi hain.</h3>
-        <p style="margin-top:8px;">
-          Real BM version mein backend se daily source-based question
-          collection connect ki ja sakti hai.
-        </p>
-      </div>
-    `;
-
-    updateQuestionStats();
-
-    return;
-
-  }
-
-  box.innerHTML="";
-
-  currentQuestions.forEach((q,i)=>{
-
-    const wrapper=
-      document.createElement("div");
-
-    wrapper.className="question-card";
-
-    let content="";
-
-    content+=`
-      <div class="q-top">
-        <span class="q-number">Q${i+1}</span>
-
-        <div class="q-tags">
-          <span class="q-tag">${q.type}</span>
-          <span class="q-tag">${q.difficulty}</span>
-          <span class="q-tag">📚 ${q.source}</span>
-        </div>
-      </div>
-
-      <div class="question">
-        ${q.question}
-      </div>
-    `;
-
-    if(q.options){
-
-      content+=`<div class="options">`;
-
-      q.options.forEach((option,index)=>{
-
-        let cls="option";
-
-        if(answered[i]!==undefined){
-
-          if(index===q.answer){
-            cls+=" correct";
-          }
-
-          if(
-            answered[i]===index &&
-            index!==q.answer
-          ){
-            cls+=" wrong";
-          }
-
-        }
-
-        content+=`
-          <button
-            class="${cls}"
-            onclick="answerQuestion(${i},${index})"
-          >
-            ${String.fromCharCode(65+index)}. ${option}
-          </button>
-        `;
-
-      });
-
-      content+=`</div>`;
-
-    }
-
-
-    if(!q.options){
-
-      content+=`
-        <div class="question-actions">
-          <button
-            class="small-btn"
-            onclick="showTextAnswer(${i})"
-          >
-            Show Answer
-          </button>
-        </div>
-      `;
-
-    }
-
-
-    if(
-      showAllAnswers ||
-      answered[i]!==undefined ||
-      answered["text"+i]
-    ){
-
-      const answer=
-        q.options ?
-        q.options[q.answer] :
-        q.answerText;
-
-      content+=`
-        <div class="answer-box">
-          <b>Answer:</b> ${answer}
-        </div>
-
-        <div class="explain-box">
-          <b>💡 Explanation:</b><br>
-          ${q.explanation}
-        </div>
-      `;
-
-    }
-
-
-    content+=`
-
-      <div class="question-actions">
-
-        <button
-          class="small-btn"
-          onclick="saveQuestionMistake(${i})"
-        >
-          ❌ Add to Mistakes
-        </button>
-
-        <button
-          class="small-btn"
-          onclick="practiceAgain(${i})"
-        >
-          🔁 Practice Again
-        </button>
-
-        <button
-          class="small-btn"
-          onclick="explainQuestion(${i})"
-        >
-          🧠 Explain This
-        </button>
-
-        <button
-          class="small-btn"
-          onclick="importantQuestion(${i})"
-        >
-          ⭐ Important
-        </button>
-
-      </div>
-    `;
-
-
-    wrapper.innerHTML=content;
-
-    box.appendChild(wrapper);
-
-  });
-
-  updateQuestionStats();
-
-}
-
-
-/* ================================
-   ANSWER
-================================ */
-
-function answerQuestion(qIndex,selected){
-
-  if(answered[qIndex]!==undefined){
-    return;
-  }
-
-  const q=currentQuestions[qIndex];
-
-  answered[qIndex]=selected;
-
-  if(selected===q.answer){
-
-    data.correct++;
-
-    data.xp+=10;
-
-    toast("Correct! +10 XP 🔥");
-
-  }else{
-
-    data.wrong++;
-
-    saveMistakeObject(q);
-
-    toast("Wrong — mistake book mein save hua ❌");
-
-  }
-
-  data.questionHistory.push({
-
-    date:new Date().toISOString(),
-
-    question:q.question,
-
-    subject:q.subject,
-
-    correct:selected===q.answer
-
-  });
-
-  save();
-
-  renderQuestions();
-
-  updateAll();
-
-}
-
-
-/* ================================
-   TEXT ANSWER
-================================ */
-
-function showTextAnswer(i){
-
-  answered["text"+i]=true;
-
-  renderQuestions();
-
-}
-
-
-/* ================================
-   SHOW ALL
-================================ */
-
-function showAnswers(){
-
-  showAllAnswers=true;
-
-  renderQuestions();
-
-}
-
-
-/* ================================
-   RESET
-================================ */
-
-function resetQuestions(){
-
-  answered={};
-
-  showAllAnswers=false;
-
-  renderQuestions();
-
-}
-
-
-/* ================================
-   QUESTION STATS
-================================ */
-
-function updateQuestionStats(){
-
-  const total=currentQuestions.length;
-
-  let correct=0;
-
-  let wrong=0;
-
-  Object.keys(answered).forEach(key=>{
-
-    if(key.startsWith("text")){
-      return;
-    }
-
-    const i=Number(key);
-
-    if(
-      currentQuestions[i] &&
-      answered[key]===currentQuestions[i].answer
-    ){
-      correct++;
-    }else{
-      wrong++;
-    }
-
-  });
-
-  document.getElementById("todayTotal")
-    .textContent=total;
-
-  document.getElementById("todayCorrect")
-    .textContent=correct;
-
-  document.getElementById("todayWrong")
-    .textContent=wrong;
-
-  document.getElementById("todayAccuracy")
-    .textContent=
-      total ?
-      Math.round(correct/total*100)+"%" :
-      "0%";
-
-}
-
-
-/* ================================
-   MISTAKES
-================================ */
-
-function saveMistakeObject(q){
-
-  const exists=data.mistakes.some(
-    m=>m.question===q.question
-  );
-
-  if(!exists){
-
-    data.mistakes.push({
-
-      question:q.question,
-
-      answer:q.options ?
-        q.options[q.answer] :
-        q.answerText,
-
-      explanation:q.explanation,
-
-      subject:q.subject,
-
-      date:new Date().toISOString()
-
-    });
-
-    save();
-
-  }
-
-}
-
-
-function saveQuestionMistake(i){
-
-  saveMistakeObject(
-    currentQuestions[i]
-  );
-
-  renderMistakes();
-
-  toast("Saved in Mistake Book 📚");
-
-}
-
-
-function renderMistakes(){
-
-  const box=
-    document.getElementById("mistakeList");
-
-  if(!data.mistakes.length){
-
-    box.innerHTML=`
-      <div class="card">
-        <h3>🎉 अभी कोई mistake saved नहीं है.</h3>
-        <p style="margin-top:7px;">
-          गलत questions यहाँ automatically भी add होंगे.
-        </p>
-      </div>
-    `;
-
-    return;
-
-  }
-
-  box.innerHTML="";
-
-  data.mistakes.forEach((m,i)=>{
-
-    box.innerHTML+=`
-
-      <div class="question-card">
-
-        <div class="q-top">
-
-          <b>❌ Mistake ${i+1}</b>
-
-          <span class="q-tag">
-            ${m.subject}
-          </span>
-
-        </div>
-
-        <div class="question">
-          ${m.question}
-        </div>
-
-        <div class="answer-box">
-          <b>Correct Answer:</b> ${m.answer}
-        </div>
-
-        <div class="explain-box">
-          ${m.explanation}
-        </div>
-
-        <div class="question-actions">
-
-          <button
-            class="small-btn"
-            onclick="deleteMistake(${i})"
-          >
-            🗑 Remove
-          </button>
-
-        </div>
-
-      </div>
-    `;
-
-  });
-
-}
-
-
-function deleteMistake(i){
-
-  data.mistakes.splice(i,1);
-
-  save();
-
-  renderMistakes();
-
-}
-
-
-/* ================================
-   PRACTICE AGAIN
-================================ */
-
-function practiceAgain(i){
-
-  answered[i]=undefined;
-
-  delete answered[i];
-
-  renderQuestions();
-
-  toast("Question unlocked for practice 🔁");
-
-}
-
-
-/* ================================
-   EXPLAIN
-================================ */
-
-function explainQuestion(i){
-
-  const q=currentQuestions[i];
-
-  alert(
-    "🧠 BM AI Explanation\n\n"+
-    q.explanation+
-    "\n\nImportance:\n"+
-    "Ye concept revision aur exam practice ke liye useful hai."
-  );
-
-}
-
-
-/* ================================
-   IMPORTANT
-================================ */
-
-function importantQuestion(i){
-
-  const q=currentQuestions[i];
-
-  saveMistakeObject(q);
-
-  toast("⭐ Question saved for revision");
-
-}
-
-
-/* ================================
-   TASKS
-================================ */
-
-function addTask(){
-
-  const task={
-
-    day:document.getElementById("taskDay").value,
-
-    subject:document.getElementById("taskSubject").value.trim(),
-
-    topic:document.getElementById("taskTopic").value.trim(),
-
-    duration:Number(
-      document.getElementById("taskDuration").value
-    ),
-
-    done:false
-
-  };
-
-  if(!task.subject || !task.topic){
-
-    toast("Subject aur topic bharo");
-
-    return;
-
-  }
-
-  data.tasks.push(task);
-
-  save();
-
-  renderTasks();
-
-  toast("Study task added 📅");
-
-}
-
-
-function renderTasks(){
-
-  const box=
-    document.getElementById("taskList");
-
-  if(!data.tasks.length){
-
-    box.innerHTML=
-      `<p style="color:var(--muted);">
-        अभी कोई task नहीं है.
-      </p>`;
-
-    return;
-
-  }
-
-  box.innerHTML="";
-
-  data.tasks.forEach((t,i)=>{
-
-    box.innerHTML+=`
-
-      <div class="task ${t.done?'done':''}">
-
-        <input
-          type="checkbox"
-          ${t.done?'checked':''}
-          onchange="toggleTask(${i})"
-        >
-
-        <div style="flex:1">
-
-          <b>${t.subject}</b>
-
-          <div style="color:var(--muted);font-size:13px;margin-top:3px;">
-            ${t.topic} • ${t.duration} min • ${t.day}
+          <div class="student-pill">
+            🎓 Student Dashboard
           </div>
 
         </div>
 
-        <button
-          class="small-btn"
-          onclick="deleteTask(${i})"
+      </div>
+
+
+      <!-- STATS -->
+
+      <div class="stats">
+
+        <div class="stat">
+          <div class="stat-icon">⏱️</div>
+          <strong id="studyMinutes">0</strong>
+          <span>Study Minutes</span>
+        </div>
+
+        <div class="stat">
+          <div class="stat-icon">🔥</div>
+          <strong id="streak">1</strong>
+          <span>Day Streak</span>
+        </div>
+
+        <div class="stat">
+          <div class="stat-icon">⭐</div>
+          <strong id="xp">0</strong>
+          <span>XP Earned</span>
+        </div>
+
+        <div class="stat">
+          <div class="stat-icon">🎯</div>
+          <strong>0%</strong>
+          <span>Overall Progress</span>
+        </div>
+
+      </div>
+
+
+      <!-- SUBJECTS -->
+
+      <div class="section-head">
+
+        <div>
+          <h2>📚 My Subjects</h2>
+          <p>Choose a subject to open its complete study page.</p>
+        </div>
+
+        <input
+          class="search"
+          id="subjectSearch"
+          placeholder="Search subject..."
+          oninput="searchSubjects()"
         >
-          🗑
-        </button>
 
       </div>
-    `;
-
-  });
-
-  renderMissions();
-
-}
 
 
-function toggleTask(i){
-
-  data.tasks[i].done=
-    !data.tasks[i].done;
-
-  if(data.tasks[i].done){
-
-    data.xp+=15;
-
-    toast("+15 XP 🎯");
-
-  }
-
-  save();
-
-  renderTasks();
-
-  updateAll();
-
-}
+      <div class="subject-grid" id="subjectGrid"></div>
 
 
-function deleteTask(i){
+      <!-- QUICK FEATURES -->
 
-  data.tasks.splice(i,1);
-
-  save();
-
-  renderTasks();
-
-}
-
-
-/* ================================
-   NOTES
-================================ */
-
-function saveNote(){
-
-  const text=
-    document.getElementById("noteInput")
-      .value.trim();
-
-  if(!text){
-
-    toast("Note empty hai");
-
-    return;
-
-  }
-
-  data.notes.unshift({
-
-    text,
-
-    date:new Date().toLocaleString()
-
-  });
-
-  document.getElementById("noteInput").value="";
-
-  save();
-
-  renderNotes();
-
-  toast("Note saved 📝");
-
-}
-
-
-function renderNotes(){
-
-  const box=
-    document.getElementById("noteList");
-
-  box.innerHTML="";
-
-  if(!data.notes.length){
-
-    box.innerHTML=`
-      <div class="card">
-        <p style="color:var(--muted);">
-          अभी कोई note saved नहीं है.
-        </p>
+      <div class="section-head" style="margin-top:40px;">
+        <div>
+          <h2>⚡ Quick Access</h2>
+          <p>Important BM tools</p>
+        </div>
       </div>
-    `;
 
-    return;
 
-  }
+      <div class="quick-grid">
 
-  data.notes.forEach((n,i)=>{
-
-    box.innerHTML+=`
-
-      <div class="card section">
-
-        <div class="card-header">
-
-          <h3>📝 Note ${i+1}</h3>
-
-          <button
-            class="small-btn"
-            onclick="deleteNote(${i})"
-          >
-            🗑
-          </button>
-
+        <div class="quick-card" onclick="openGeneral('Daily Important Questions')">
+          <div class="qicon">🤖</div>
+          <h3>Daily Questions</h3>
+          <p>AI-powered daily practice</p>
         </div>
 
-        <p>${escapeHTML(n.text)}</p>
+        <div class="quick-card" onclick="openGeneral('Study Planner')">
+          <div class="qicon">📅</div>
+          <h3>Study Planner</h3>
+          <p>Plan your study sessions</p>
+        </div>
 
-        <small style="color:var(--muted);display:block;margin-top:10px;">
-          ${n.date}
-        </small>
+        <div class="quick-card" onclick="openGeneral('Analytics')">
+          <div class="qicon">📊</div>
+          <h3>Analytics</h3>
+          <p>Track your performance</p>
+        </div>
+
+        <div class="quick-card" onclick="openGeneral('Achievements')">
+          <div class="qicon">🏆</div>
+          <h3>Achievements</h3>
+          <p>XP, badges & milestones</p>
+        </div>
 
       </div>
-    `;
 
-  });
-
-}
+    </section>
 
 
-function deleteNote(i){
+    <!-- SUBJECT PAGE -->
 
-  data.notes.splice(i,1);
+    <section id="subjectPage" class="subject-page hidden">
 
-  save();
+      <button class="back-btn" onclick="showHome()">
+        ← Back to Subjects
+      </button>
 
-  renderNotes();
+      <div class="subject-header">
 
-}
+        <div class="big-subject-logo" id="bigSubjectLogo">
+          🧮
+        </div>
 
+        <div>
+          <h1 id="subjectTitle">Mathematics</h1>
+          <p id="subjectDescription">
+            Complete Mathematics study center
+          </p>
+        </div>
 
-/* ================================
-   MISSIONS
-================================ */
+        <div class="subject-progress">
+          <strong id="subjectPercent">0%</strong>
 
-function renderMissions(){
+          <div class="progress-large">
+            <span id="subjectProgressBar" style="width:0%"></span>
+          </div>
+        </div>
 
-  const box=
-    document.getElementById("missionList");
-
-  const todayTasks=
-    data.tasks.slice(0,3);
-
-  if(!todayTasks.length){
-
-    box.innerHTML=`
-      <div class="task">
-        <span>📚</span>
-        <span>Add 3 priority tasks.</span>
       </div>
-    `;
 
-    document.getElementById("missionCount")
-      .textContent="0/3";
 
-    return;
+      <div class="feature-grid">
 
+        <div class="feature-card" onclick="openSubjectFeature('Chapters')">
+          <div class="feature-icon">📚</div>
+          <h3>Chapters</h3>
+          <p>Complete chapter-wise syllabus and progress.</p>
+        </div>
+
+        <div class="feature-card" onclick="openSubjectFeature('Daily Important Questions')">
+          <div class="feature-icon">❓</div>
+          <h3>Daily Important Questions</h3>
+          <p>Fresh exam-oriented questions every day.</p>
+        </div>
+
+        <div class="feature-card" onclick="openSubjectFeature('Notes')">
+          <div class="feature-icon">📝</div>
+          <h3>Notes</h3>
+          <p>Save and organize important study notes.</p>
+        </div>
+
+        <div class="feature-card" onclick="openSubjectFeature('Revision')">
+          <div class="feature-icon">🔄</div>
+          <h3>Revision</h3>
+          <p>Build your revision queue and review topics.</p>
+        </div>
+
+        <div class="feature-card" onclick="openSubjectFeature('Practice')">
+          <div class="feature-icon">🎯</div>
+          <h3>Practice</h3>
+          <p>MCQ, short answer, long answer and numericals.</p>
+        </div>
+
+        <div class="feature-card" onclick="openSubjectFeature('Tests')">
+          <div class="feature-icon">📋</div>
+          <h3>Tests</h3>
+          <p>Chapter tests, subject tests and mock tests.</p>
+        </div>
+
+        <div class="feature-card" onclick="openSubjectFeature('Mistake Book')">
+          <div class="feature-icon">❌</div>
+          <h3>Mistake Book</h3>
+          <p>Store wrong questions and learn from mistakes.</p>
+        </div>
+
+        <div class="feature-card" onclick="openSubjectFeature('Weak Topics')">
+          <div class="feature-icon">⚠️</div>
+          <h3>Weak Topics</h3>
+          <p>Identify topics that need more attention.</p>
+        </div>
+
+        <div class="feature-card" onclick="openSubjectFeature('Important Formulas')">
+          <div class="feature-icon">📐</div>
+          <h3>Important Formulas</h3>
+          <p>Quick-access formula and concept board.</p>
+        </div>
+
+        <div class="feature-card" onclick="openSubjectFeature('Question History')">
+          <div class="feature-icon">🕘</div>
+          <h3>Question History</h3>
+          <p>See attempted questions and scores.</p>
+        </div>
+
+        <div class="feature-card" onclick="openSubjectFeature('Bookmarks')">
+          <div class="feature-icon">🔖</div>
+          <h3>Bookmarks</h3>
+          <p>Save important topics for later.</p>
+        </div>
+
+        <div class="feature-card" onclick="openSubjectFeature('AI Explanation')">
+          <div class="feature-icon">🤖</div>
+          <h3>AI Explanation</h3>
+          <p>Get simple explanations for difficult concepts.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- GENERAL CONTENT -->
+
+    <section id="contentPage" class="subject-page hidden">
+
+      <button class="back-btn" onclick="goBack()">
+        ← Back
+      </button>
+
+      <div class="hero">
+        <h1 id="contentTitle">BM</h1>
+        <p id="contentDescription"></p>
+      </div>
+
+      <div class="content-box" id="contentArea"></div>
+
+    </section>
+
+
+    <footer>
+      © 2026 BM — Beyond Mastery · Learn Beyond Limits<br>
+      Developed by Himanshu Shekhar
+    </footer>
+
+  </main>
+
+</div>
+
+
+<script>
+
+/* SUBJECT DATABASE */
+
+const subjects = [
+
+  {
+    name:"Mathematics",
+    icon:"🧮",
+    description:"Numbers, algebra, geometry, calculus & problem solving.",
+    progress:0
+  },
+
+  {
+    name:"Physics",
+    icon:"⚡",
+    description:"Mechanics, electricity, optics, waves & modern physics.",
+    progress:0
+  },
+
+  {
+    name:"Chemistry",
+    icon:"🧪",
+    description:"Physical, organic and inorganic chemistry.",
+    progress:0
+  },
+
+  {
+    name:"Biology",
+    icon:"🧬",
+    description:"Botany, zoology, genetics, ecology & human biology.",
+    progress:0
+  },
+
+  {
+    name:"English",
+    icon:"📖",
+    description:"Grammar, literature, writing and comprehension.",
+    progress:0
+  },
+
+  {
+    name:"Hindi",
+    icon:"📝",
+    description:"Hindi literature, grammar and writing practice.",
+    progress:0
+  },
+
+  {
+    name:"Accountancy",
+    icon:"📊",
+    description:"Accounting principles, journal, ledger and financial statements.",
+    progress:0
+  },
+
+  {
+    name:"Economics",
+    icon:"💰",
+    description:"Microeconomics, macroeconomics and Indian economy.",
+    progress:0
+  },
+
+  {
+    name:"Business Studies",
+    icon:"🏢",
+    description:"Business management, finance, marketing and organization.",
+    progress:0
+  },
+
+  {
+    name:"Geography",
+    icon:"🌍",
+    description:"Physical, human and economic geography.",
+    progress:0
+  },
+
+  {
+    name:"History",
+    icon:"🏛️",
+    description:"Ancient, medieval and modern history.",
+    progress:0
+  },
+
+  {
+    name:"Political Science",
+    icon:"⚖️",
+    description:"Political theory, constitution and contemporary politics.",
+    progress:0
   }
 
-  box.innerHTML="";
+];
 
-  let done=0;
 
-  todayTasks.forEach((t,i)=>{
+/* APP STATE */
 
-    if(t.done) done++;
+let currentSubject = null;
+let previousPage = "home";
 
-    box.innerHTML+=`
+let studyMinutes =
+  Number(localStorage.getItem("bmStudyMinutes")) || 0;
 
-      <div class="task ${t.done?'done':''}">
+let xp =
+  Number(localStorage.getItem("bmXP")) || 0;
 
-        <span>
-          ${t.done?'✅':'🎯'}
-        </span>
 
-        <span>
-          ${t.subject} — ${t.topic}
-        </span>
+/* SPLASH */
 
-      </div>
-    `;
+function enterApp(){
 
-  });
+  document.getElementById("splash").classList.add("hidden");
 
-  document.getElementById("missionCount")
-    .textContent=done+"/"+todayTasks.length;
+  document.getElementById("app").classList.remove("hidden");
+
+  renderSubjects();
+
+  updateStats();
 
 }
 
 
-/* ================================
-   SUBJECT PROGRESS
-================================ */
+/* HOME */
 
-function renderSubjectProgress(){
+function showHome(){
 
-  const box=
-    document.getElementById("subjectProgress");
+  document.getElementById("homePage").classList.remove("hidden");
 
-  const subjects=
-    getSubjects(
-      data.profile.className,
-      data.profile.stream
-    );
+  document.getElementById("subjectPage").classList.add("hidden");
 
-  box.innerHTML="";
+  document.getElementById("contentPage").classList.add("hidden");
 
-  subjects.forEach((s,i)=>{
+  previousPage = "home";
 
-    const relevant=
-      data.questionHistory.filter(
-        q=>q.subject===s
-      );
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
-    const correct=
-      relevant.filter(q=>q.correct).length;
+}
 
-    const percent=
-      relevant.length ?
-      Math.round(correct/relevant.length*100) :
-      Math.min(15+i*5,40);
 
-    box.innerHTML+=`
+/* SUBJECT GRID */
 
-      <div style="margin-bottom:15px;">
+function renderSubjects(list = subjects){
 
-        <div style="
-          display:flex;
-          justify-content:space-between;
-          font-size:13px;
-        ">
-          <span>${s}</span>
-          <span>${percent}%</span>
-        </div>
+  const grid =
+    document.getElementById("subjectGrid");
+
+  grid.innerHTML = "";
+
+  list.forEach((subject,index)=>{
+
+    const card =
+      document.createElement("div");
+
+    card.className = "subject-card";
+
+    card.innerHTML = `
+
+      <div class="subject-logo">
+        ${subject.icon}
+      </div>
+
+      <h3>${subject.name}</h3>
+
+      <p>${subject.description}</p>
+
+      <div class="subject-bottom">
 
         <div class="progress">
-          <span style="width:${percent}%"></span>
+          <span style="width:${subject.progress}%"></span>
+        </div>
+
+        <div class="percent">
+          ${subject.progress}%
         </div>
 
       </div>
+
     `;
 
+    card.onclick = () =>
+      openSubject(index);
+
+    grid.appendChild(card);
+
   });
 
 }
 
 
-/* ================================
-   DASHBOARD
-================================ */
+/* SEARCH */
 
-function updateDashboard(){
+function searchSubjects(){
 
-  document.getElementById("studyMinutes")
-    .textContent=data.studyMinutes;
+  const value =
+    document
+      .getElementById("subjectSearch")
+      .value
+      .toLowerCase();
 
-  document.getElementById("questionScore")
-    .textContent=data.xp;
-
-  const total=
-    data.correct+data.wrong;
-
-  const acc=
-    total ?
-    Math.round(data.correct/total*100) :
-    0;
-
-  document.getElementById("accuracy")
-    .textContent=acc+"%";
-
-  document.getElementById("streak")
-    .textContent=data.streak+" 🔥";
-
-  document.getElementById("welcomeText")
-    .textContent=
-      "Welcome back, Himanshu 👋";
-
-  document.getElementById("profileBadge")
-    .textContent=
-      `${data.profile.board} • Class ${data.profile.className} • ${data.profile.stream}`;
-
-  renderSubjectProgress();
-
-  renderMissions();
-
-  updateDailyIntelligence();
-
-}
-
-
-function updateDailyIntelligence(){
-
-  const total=
-    data.correct+data.wrong;
-
-  const acc=
-    total ?
-    Math.round(data.correct/total*100) :
-    0;
-
-  let insight=
-    "Aaj questions solve karo aur BM tumhari performance analyze karega.";
-
-  if(total>0){
-
-    if(acc>=80){
-
-      insight=
-        `Excellent! Current accuracy ${acc}% hai. Ab hard questions aur revision par focus karo.`;
-
-    }else if(acc>=60){
-
-      insight=
-        `Good progress! Accuracy ${acc}% hai. Mistake Book ko revise karke accuracy improve karo.`;
-
-    }else{
-
-      insight=
-        `Accuracy ${acc}% hai. Weak concepts ko identify karke easy → medium practice se start karo.`;
-
-    }
-
-  }
-
-  document.getElementById("dailyInsight")
-    .textContent=insight;
-
-  const goal=
-    data.profile.goal || 120;
-
-  const progress=
-    Math.min(
-      100,
-      Math.round(data.studyMinutes/goal*100)
+  const filtered =
+    subjects.filter(subject =>
+      subject.name
+        .toLowerCase()
+        .includes(value)
     );
 
-  document.getElementById("dailyProgress")
-    .style.width=progress+"%";
-
-  document.getElementById("weakBadge")
-    .textContent=
-      data.mistakes.length ?
-      "Weak Topic: "+data.mistakes[0].subject :
-      "Weak Topic: —";
-
-  document.getElementById("revisionBadge")
-    .textContent=
-      data.mistakes.length ?
-      "Revision: "+data.mistakes.length+" questions" :
-      "Revision: Ready";
+  renderSubjects(filtered);
 
 }
 
 
-/* ================================
-   AI
-================================ */
+/* OPEN SUBJECT */
 
-function sendAI(){
+function openSubject(index){
 
-  const input=
-    document.getElementById("chatInput");
+  const subject = subjects[index];
 
-  const text=
-    input.value.trim();
+  currentSubject = subject;
 
-  if(!text)return;
-
-  addMessage(text,"user");
-
-  input.value="";
-
-  setTimeout(()=>{
-
-    const reply=
-      aiReply(text);
-
-    addMessage(reply,"ai");
-
-  },400);
-
-}
-
-
-function addMessage(text,type){
-
-  const box=
-    document.getElementById("chatBox");
-
-  const msg=
-    document.createElement("div");
-
-  msg.className="msg "+type;
-
-  msg.textContent=text;
-
-  box.appendChild(msg);
-
-  box.scrollTop=box.scrollHeight;
-
-}
-
-
-function aiReply(text){
-
-  const t=text.toLowerCase();
-
-  const total=
-    data.correct+data.wrong;
-
-  const acc=
-    total ?
-    Math.round(data.correct/total*100) :
-    0;
-
-  if(
-    t.includes("weak") ||
-    t.includes("कमजोर")
-  ){
-
-    return data.mistakes.length ?
-      "Tumhari current Mistake Book mein "+
-      data.mistakes.length+
-      " questions hain. Sabse pehle inhe revise karo." :
-      "Abhi enough data nahi hai. Daily questions solve karo.";
-
-  }
-
-  if(
-    t.includes("plan") ||
-    t.includes("schedule")
-  ){
-
-    return "BM suggestion: pehle weak subject, phir important questions, uske baad mistake revision aur end mein 20-minute focus session.";
-
-  }
-
-  if(
-    t.includes("accuracy") ||
-    t.includes("score")
-  ){
-
-    return "Current question accuracy "+acc+"% hai. Target gradually 80%+ rakh sakte ho.";
-
-  }
-
-  if(
-    t.includes("revision") ||
-    t.includes("revise")
-  ){
-
-    return data.mistakes.length ?
-      "Aaj "+data.mistakes.length+
-      " mistake questions revise karo, phir same topics ke fresh questions solve karo." :
-      "Mistake Book empty hai. Questions solve karte raho; wrong questions automatically revision list mein aa sakte hain.";
-
-  }
-
-  if(
-    t.includes("question") ||
-    t.includes("important")
-  ){
-
-    return "Daily Important Questions section mein Board, Class, Stream, Subject, Difficulty aur Type select karke fresh practice set generate karo.";
-
-  }
-
-  return "BM AI suggestion: daily questions + mistake revision + focused study session ko combine karo. Consistency सबसे important है.";
-
-}
-
-
-function updateAIAnalysis(){
-
-  const total=
-    data.correct+data.wrong;
-
-  const acc=
-    total ?
-    Math.round(data.correct/total*100) :
-    0;
-
-  document.getElementById("performanceAnalysis")
-    .textContent=
-      total ?
-      `Tumne ${total} questions attempt kiye hain aur current accuracy ${acc}% hai. ${data.mistakes.length} questions Mistake Book mein hain.` :
-      "Abhi data kam hai. Daily Important Questions solve karna start karo.";
-
-  document.getElementById("tomorrowRevision")
-    .textContent=
-      data.mistakes.length ?
-      `Kal sabse pehle ${data.mistakes.length} saved mistake questions revise karo.` :
-      "Kal weak topics identify karne ke liye daily question set solve karo.";
-
-}
-
-
-/* ================================
-   POMODORO
-================================ */
-
-let pomodoro={
-  seconds:1200,
-  running:false,
-  interval:null
-};
-
-
-function openPomodoro(){
-
-  document.getElementById("pomoOverlay")
-    .classList.remove("hidden");
-
-  resetPomodoro();
-
-}
-
-
-function closePomodoro(){
-
-  clearInterval(pomodoro.interval);
-
-  pomodoro.running=false;
-
-  document.getElementById("pomoOverlay")
+  document.getElementById("homePage")
     .classList.add("hidden");
 
+  document.getElementById("contentPage")
+    .classList.add("hidden");
+
+  document.getElementById("subjectPage")
+    .classList.remove("hidden");
+
+  document.getElementById("bigSubjectLogo")
+    .textContent = subject.icon;
+
+  document.getElementById("subjectTitle")
+    .textContent = subject.name;
+
+  document.getElementById("subjectDescription")
+    .textContent = subject.description;
+
+  document.getElementById("subjectPercent")
+    .textContent = subject.progress + "%";
+
+  document.getElementById("subjectProgressBar")
+    .style.width = subject.progress + "%";
+
+  previousPage = "home";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
 }
 
 
-function updateTimer(){
+/* SUBJECT FEATURE */
 
-  const min=
-    Math.floor(pomodoro.seconds/60)
-      .toString()
-      .padStart(2,"0");
+function openSubjectFeature(feature){
 
-  const sec=
-    (pomodoro.seconds%60)
-      .toString()
-      .padStart(2,"0");
+  if(!currentSubject) return;
 
-  document.getElementById("timer")
-    .textContent=
-      min+":"+sec;
+  previousPage = "subject";
+
+  document.getElementById("subjectPage")
+    .classList.add("hidden");
+
+  document.getElementById("contentPage")
+    .classList.remove("hidden");
+
+  document.getElementById("contentTitle")
+    .textContent =
+      currentSubject.icon +
+      " " +
+      currentSubject.name +
+      " — " +
+      feature;
+
+  document.getElementById("contentDescription")
+    .textContent =
+      "BM " +
+      currentSubject.name +
+      " learning center";
+
+  const area =
+    document.getElementById("contentArea");
+
+  area.innerHTML = buildFeature(feature);
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 }
 
 
-function startPomodoro(){
+/* FEATURE CONTENT */
 
-  if(pomodoro.running){
+function buildFeature(feature){
 
-    clearInterval(pomodoro.interval);
+  const s = currentSubject.name;
 
-    pomodoro.running=false;
+  if(feature === "Chapters"){
 
-    document.getElementById("pomoStart")
-      .textContent="▶ Resume";
+    return `
 
-    document.getElementById("pomoStatus")
-      .textContent="Paused.";
+      <h2>📚 ${s} Chapters</h2>
 
-    return;
+      <p>
+        यहाँ ${s} के chapters और उनका completion progress
+        manage किया जा सकता है।
+      </p>
+
+      ${["Chapter 1","Chapter 2","Chapter 3","Chapter 4","Chapter 5"]
+        .map((x,i)=>`
+
+          <div class="list-item">
+
+            <b>${x}</b>
+
+            <span>0% Complete</span>
+
+          </div>
+
+        `).join("")}
+
+    `;
 
   }
 
-  pomodoro.running=true;
 
-  document.getElementById("pomoStart")
-    .textContent="⏸ Pause";
+  if(feature === "Daily Important Questions"){
 
-  document.getElementById("pomoStatus")
-    .textContent=
-      "Focus mode active — keep studying!";
+    return `
 
-  pomodoro.interval=
-    setInterval(()=>{
+      <h2>❓ Daily Important Questions</h2>
 
-      pomodoro.seconds--;
+      <p>
+        ${s} के लिए daily exam-oriented practice set.
+      </p>
 
-      updateTimer();
+      <div class="list-item">
+        <b>Question Set #1</b>
+        <span>Today's Practice</span>
+      </div>
 
-      if(pomodoro.seconds<=0){
+      <div class="list-item">
+        <b>Easy + Medium + Hard</b>
+        <span>Mixed Level</span>
+      </div>
 
-        completePomodoro();
+      <div class="list-item">
+        <b>MCQ + Short + Long</b>
+        <span>Practice</span>
+      </div>
 
-      }
+      <div class="list-item">
+        <b>AI Personalization</b>
+        <span>Coming with backend</span>
+      </div>
 
-    },1000);
+    `;
+
+  }
+
+
+  if(feature === "Notes"){
+
+    return `
+
+      <h2>📝 ${s} Notes</h2>
+
+      <p>
+        अपने important notes यहाँ organize कर सकते हो।
+      </p>
+
+      <div class="list-item">
+        <b>+ Add New Note</b>
+        <span>Coming soon</span>
+      </div>
+
+    `;
+
+  }
+
+
+  if(feature === "Revision"){
+
+    return `
+
+      <h2>🔄 Revision Queue</h2>
+
+      <p>
+        जिन topics को दोबारा पढ़ना है उन्हें यहाँ रखा जाएगा।
+      </p>
+
+      <div class="list-item">
+        <b>No revision topics yet</b>
+        <span>0 pending</span>
+      </div>
+
+    `;
+
+  }
+
+
+  if(feature === "Practice"){
+
+    return `
+
+      <h2>🎯 ${s} Practice</h2>
+
+      <p>
+        अलग-अलग question formats में practice करो।
+      </p>
+
+      <div class="list-item">
+        <b>🟢 Easy</b>
+        <span>Practice</span>
+      </div>
+
+      <div class="list-item">
+        <b>🟡 Medium</b>
+        <span>Practice</span>
+      </div>
+
+      <div class="list-item">
+        <b>🔴 Hard</b>
+        <span>Practice</span>
+      </div>
+
+    `;
+
+  }
+
+
+  if(feature === "Tests"){
+
+    return `
+
+      <h2>📋 ${s} Tests</h2>
+
+      <p>
+        Chapter test, subject test और mock test यहाँ मिलेंगे।
+      </p>
+
+      <div class="list-item">
+        <b>Chapter Test</b>
+        <span>Start →</span>
+      </div>
+
+      <div class="list-item">
+        <b>Subject Test</b>
+        <span>Start →</span>
+      </div>
+
+      <div class="list-item">
+        <b>Full Mock Test</b>
+        <span>Start →</span>
+      </div>
+
+    `;
+
+  }
+
+
+  if(feature === "Mistake Book"){
+
+    return `
+
+      <h2>❌ Mistake Book</h2>
+
+      <p>
+        गलत किए गए questions यहाँ automatically save किए जा सकते हैं।
+      </p>
+
+      <div class="list-item">
+        <b>No mistakes saved</b>
+        <span>0 Questions</span>
+      </div>
+
+    `;
+
+  }
+
+
+  if(feature === "Weak Topics"){
+
+    return `
+
+      <h2>⚠️ Weak Topics</h2>
+
+      <p>
+        BM आपके performance के आधार पर weak topics identify करेगा।
+      </p>
+
+      <div class="list-item">
+        <b>No weak topics detected</b>
+        <span>Keep practicing</span>
+      </div>
+
+    `;
+
+  }
+
+
+  if(feature === "Important Formulas"){
+
+    return `
+
+      <h2>📐 Important Formulas</h2>
+
+      <p>
+        ${s} के important formulas और quick revision material.
+      </p>
+
+      <div class="list-item">
+        <b>Formula Board</b>
+        <span>Open →</span>
+      </div>
+
+    `;
+
+  }
+
+
+  if(feature === "Question History"){
+
+    return `
+
+      <h2>🕘 Question History</h2>
+
+      <p>
+        आपके attempted questions और scores यहाँ दिखाई देंगे।
+      </p>
+
+      <div class="list-item">
+        <b>No attempts yet</b>
+        <span>0 Questions</span>
+      </div>
+
+    `;
+
+  }
+
+
+  if(feature === "Bookmarks"){
+
+    return `
+
+      <h2>🔖 Bookmarks</h2>
+
+      <p>
+        Important questions और topics को save करें।
+      </p>
+
+      <div class="list-item">
+        <b>No bookmarks</b>
+        <span>0 Saved</span>
+      </div>
+
+    `;
+
+  }
+
+
+  if(feature === "AI Explanation"){
+
+    return `
+
+      <h2>🤖 BM AI Explanation</h2>
+
+      <p>
+        किसी difficult ${s} concept को simple language में समझाने
+        के लिए AI system इस्तेमाल किया जाएगा।
+      </p>
+
+      <div class="list-item">
+        <b>AI Explanation Engine</b>
+        <span>Backend required</span>
+      </div>
+
+    `;
+
+  }
+
+
+  return `
+
+    <h2>${feature}</h2>
+
+    <p>
+      यह BM learning module है।
+    </p>
+
+  `;
 
 }
 
 
-function resetPomodoro(){
+/* GENERAL */
 
-  clearInterval(pomodoro.interval);
+function openGeneral(title){
 
-  pomodoro.seconds=1200;
+  previousPage = "home";
 
-  pomodoro.running=false;
+  document.getElementById("homePage")
+    .classList.add("hidden");
 
-  updateTimer();
+  document.getElementById("subjectPage")
+    .classList.add("hidden");
 
-  document.getElementById("pomoStart")
-    .textContent="▶ Start";
+  document.getElementById("contentPage")
+    .classList.remove("hidden");
 
-  document.getElementById("pomoStatus")
-    .textContent="Ready to focus?";
+  document.getElementById("contentTitle")
+    .textContent = title;
 
-}
+  document.getElementById("contentDescription")
+    .textContent =
+      "BM — Beyond Mastery";
 
+  document.getElementById("contentArea")
+    .innerHTML = `
 
-function completePomodoro(){
+      <h2>${title}</h2>
 
-  clearInterval(pomodoro.interval);
+      <p>
+        यह BM platform का dedicated module है।
+        इसमें आगे complete functionality जोड़ी जा सकती है।
+      </p>
 
-  pomodoro.running=false;
+      <div class="list-item">
+        <b>Module Ready</b>
+        <span>BM System</span>
+      </div>
 
-  data.studyMinutes+=20;
+      <div class="list-item">
+        <b>Personalized Student Data</b>
+        <span>Enabled</span>
+      </div>
 
-  data.xp+=50;
+    `;
 
-  data.streak=Math.max(
-    data.streak,
-    1
-  );
-
-  data.sessions.push({
-
-    date:new Date().toISOString(),
-
-    minutes:20
-
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
   });
 
-  save();
+}
 
-  updateAll();
 
-  document.getElementById("pomoStatus")
-    .textContent=
-      "🎉 Focus session completed! +20 min +50 XP";
+/* BACK */
 
-  document.getElementById("pomoStart")
-    .textContent="Done";
+function goBack(){
+
+  if(previousPage === "subject"){
+
+    document.getElementById("contentPage")
+      .classList.add("hidden");
+
+    document.getElementById("subjectPage")
+      .classList.remove("hidden");
+
+  }else{
+
+    showHome();
+
+  }
 
 }
 
 
-/* ================================
-   THEME
-================================ */
+/* STATS */
+
+function updateStats(){
+
+  document.getElementById("studyMinutes")
+    .textContent = studyMinutes;
+
+  document.getElementById("xp")
+    .textContent = xp;
+
+}
+
+
+/* THEME */
 
 function toggleTheme(){
 
-  document.body.classList.toggle("light");
+  const light =
+    document.body.dataset.theme === "light";
 
-  toast("Theme changed");
+  if(!light){
 
-}
+    document.body.dataset.theme = "light";
 
+    document.documentElement.style
+      .setProperty("--bg","#f4f7fb");
 
-/* ================================
-   RESET
-================================ */
+    document.documentElement.style
+      .setProperty("--panel","#ffffff");
 
-function resetApp(){
+    document.documentElement.style
+      .setProperty("--panel2","#f0f3f7");
 
-  const ok=
-    confirm(
-      "BM ka saara local data reset karna hai?"
-    );
+    document.documentElement.style
+      .setProperty("--border","#dce2ea");
 
-  if(!ok)return;
+    document.documentElement.style
+      .setProperty("--text","#111827");
 
-  localStorage.removeItem("BM_DATA");
+    document.documentElement.style
+      .setProperty("--muted","#667085");
 
-  localStorage.removeItem("BM_SETUP_DONE");
+  }else{
 
-  location.reload();
+    document.body.dataset.theme = "dark";
 
-}
+    document.documentElement.style
+      .setProperty("--bg","#07090d");
 
+    document.documentElement.style
+      .setProperty("--panel","#10141b");
 
-/* ================================
-   UPDATE ALL
-================================ */
+    document.documentElement.style
+      .setProperty("--panel2","#151a23");
 
-function updateAll(){
+    document.documentElement.style
+      .setProperty("--border","#252d39");
 
-  updateDashboard();
+    document.documentElement.style
+      .setProperty("--text","#f4f7fb");
 
-  renderTasks();
+    document.documentElement.style
+      .setProperty("--muted","#8d98a8");
 
-  renderNotes();
-
-  renderMistakes();
-
-  updateAIAnalysis();
-
-  updateQuestionSubjects();
-
-}
-
-
-/* ================================
-   ESCAPE HTML
-================================ */
-
-function escapeHTML(text){
-
-  const div=document.createElement("div");
-
-  div.textContent=text;
-
-  return div.innerHTML;
+  }
 
 }
 
 
-/* ================================
-   INIT
-================================ */
+/* INITIAL */
 
 window.addEventListener("load",()=>{
 
-  if(localStorage.getItem("BM_SETUP_DONE")){
+  setTimeout(()=>{
 
-    document.getElementById("splash")
-      .classList.remove("hidden");
+    /* Splash stays until Continue */
 
-  }
+  },500);
 
 });
 
