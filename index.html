@@ -2,10 +2,14 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
   <title>Himanshu Shekhar | Portfolio</title>
+
 
   <style>
 
@@ -30,323 +34,670 @@
       color: #111;
     }
 
-    /* NAVIGATION */
+
+    /* NAVBAR */
 
     nav {
       position: sticky;
       top: 0;
       z-index: 1000;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       padding: 15px;
-      background: rgba(10, 10, 10, 0.95);
+
+      background: rgba(10,10,10,0.96);
       border-bottom: 1px solid #333;
-      text-align: center;
     }
 
     body.light nav {
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255,255,255,0.96);
       border-color: #ddd;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 8px;
+
+      padding: 8px 10px;
+
+      border-radius: 7px;
+
       font-size: 14px;
+
+      transition: 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background: white;
+      color: black;
     }
 
     body.light nav a {
       color: #111;
     }
 
-    .theme-btn {
-      margin-left: 8px;
-      padding: 7px 11px;
+    body.light nav a:hover,
+    body.light nav a.active {
+      background: #111;
+      color: white;
+    }
+
+
+    /* HAMBURGER */
+
+    .menu-btn {
+      display: none;
+
+      background: none;
+      color: white;
+
       border: none;
-      border-radius: 8px;
+
+      font-size: 25px;
+
       cursor: pointer;
     }
+
+    body.light .menu-btn {
+      color: #111;
+    }
+
+
+    /* THEME */
+
+    .theme-btn {
+      margin-left: 10px;
+
+      padding: 8px 11px;
+
+      border: none;
+      border-radius: 8px;
+
+      cursor: pointer;
+    }
+
 
     /* HERO */
 
     .hero {
+
       min-height: 90vh;
+
       display: flex;
+
       flex-direction: column;
+
       justify-content: center;
+
       align-items: center;
+
       text-align: center;
+
       padding: 50px 20px;
+
       animation: fadeIn 1.2s ease;
     }
 
     .profile-img {
+
       width: 170px;
       height: 170px;
+
       border-radius: 50%;
+
       object-fit: cover;
+
       border: 4px solid white;
+
       padding: 3px;
+
       margin-bottom: 20px;
     }
 
     .hero h1 {
+
       font-size: 48px;
+
       margin: 10px 0;
     }
 
     .hero h2 {
+
+      min-height: 30px;
+
       font-size: 22px;
+
       color: #aaa;
+
       font-weight: normal;
     }
 
     .hero p {
+
       max-width: 600px;
+
       color: #999;
+
       line-height: 1.7;
     }
 
-    /* BUTTONS */
+    body.light .hero p {
+      color: #555;
+    }
+
+
+    /* BUTTON */
 
     .button {
+
       display: inline-block;
-      margin: 10px 5px;
+
+      margin: 8px 5px;
+
       padding: 13px 22px;
+
       background: white;
+
       color: black;
+
       text-decoration: none;
+
       border-radius: 9px;
+
       font-weight: bold;
+
       border: none;
+
       cursor: pointer;
+
       transition: 0.3s;
     }
 
     .button:hover {
+
       transform: translateY(-4px);
     }
 
     .button.dark {
+
       background: #151515;
+
       color: white;
+
       border: 1px solid #444;
     }
 
     body.light .button.dark {
+
       background: #111;
+
       color: white;
     }
+
 
     /* SECTIONS */
 
     section {
+
       max-width: 850px;
+
       margin: auto;
+
       padding: 80px 20px;
     }
 
     section h2 {
+
       text-align: center;
+
       font-size: 32px;
+
       margin-bottom: 35px;
     }
+
+
+    /* SCROLL REVEAL */
+
+    .reveal {
+
+      opacity: 0;
+
+      transform: translateY(40px);
+
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+    }
+
+    .reveal.show {
+
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
 
     /* ABOUT */
 
     .about-box {
+
       background: #151515;
+
       border: 1px solid #333;
+
       border-radius: 16px;
+
       padding: 30px;
+
       line-height: 1.8;
+
       color: #aaa;
     }
 
     body.light .about-box {
+
       background: white;
+
       border-color: #ddd;
+
       color: #555;
     }
+
 
     /* PROJECTS */
 
     .project-card {
+
       background: #151515;
+
       border: 1px solid #333;
+
       border-radius: 16px;
+
       padding: 25px;
+
       margin: 20px 0;
+
       transition: 0.3s;
     }
 
     .project-card:hover {
+
       transform: translateY(-8px);
+
+      border-color: #777;
     }
 
     body.light .project-card {
+
       background: white;
+
       border-color: #ddd;
     }
 
     .project-card h3 {
+
       margin-top: 0;
+
+      font-size: 22px;
     }
 
     .project-card p {
+
       color: #aaa;
+
       line-height: 1.6;
     }
 
     body.light .project-card p {
+
       color: #555;
     }
+
 
     /* SKILLS */
 
     .skill {
+
       margin: 25px 0;
     }
 
     .skill-name {
+
       margin-bottom: 8px;
+
       font-weight: bold;
     }
 
     .progress {
+
       height: 10px;
+
       background: #333;
+
       border-radius: 20px;
+
       overflow: hidden;
     }
 
     .progress-bar {
+
       height: 100%;
+
+      width: 0;
+
       background: white;
+
       border-radius: 20px;
+
+      transition: width 1.5s ease;
     }
 
     body.light .progress {
+
       background: #ddd;
     }
 
     body.light .progress-bar {
+
       background: #111;
     }
 
-    /* LEARNING JOURNEY */
+
+    /* JOURNEY */
 
     .journey-card {
+
       background: #151515;
+
       border: 1px solid #333;
+
       border-radius: 16px;
+
       padding: 25px;
+
       margin: 18px 0;
+
       text-align: left;
     }
 
     body.light .journey-card {
+
       background: white;
+
       border-color: #ddd;
     }
 
     .journey-card h3 {
+
       margin-top: 0;
     }
 
     .journey-card p {
+
       color: #aaa;
+
       line-height: 1.6;
     }
 
     body.light .journey-card p {
+
       color: #555;
     }
+
+
+    /* STATS */
+
+    .stats {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 15px;
+    }
+
+    .stat-card {
+
+      text-align: center;
+
+      background: #151515;
+
+      border: 1px solid #333;
+
+      border-radius: 15px;
+
+      padding: 25px;
+    }
+
+    body.light .stat-card {
+
+      background: white;
+
+      border-color: #ddd;
+    }
+
+    .stat-card h3 {
+
+      font-size: 32px;
+
+      margin: 0 0 8px;
+    }
+
+    .stat-card p {
+
+      color: #999;
+
+      margin: 0;
+    }
+
 
     /* ACHIEVEMENTS */
 
     .achievement {
+
       background: #151515;
+
       border: 1px solid #333;
+
       border-radius: 16px;
+
       padding: 25px;
+
       margin: 18px 0;
+
       text-align: center;
     }
 
     body.light .achievement {
+
       background: white;
+
       border-color: #ddd;
     }
 
-    .achievement h3 {
-      margin-top: 0;
-    }
 
     /* CONTACT */
 
     .contact-box {
+
       text-align: center;
+
       background: #151515;
+
       border: 1px solid #333;
+
       border-radius: 16px;
+
       padding: 35px;
     }
 
     body.light .contact-box {
+
       background: white;
+
       border-color: #ddd;
     }
+
+
+    /* TOP BUTTON */
+
+    #topBtn {
+
+      position: fixed;
+
+      right: 20px;
+
+      bottom: 20px;
+
+      display: none;
+
+      width: 45px;
+
+      height: 45px;
+
+      border: none;
+
+      border-radius: 50%;
+
+      background: white;
+
+      color: black;
+
+      font-size: 20px;
+
+      cursor: pointer;
+
+      z-index: 999;
+    }
+
 
     /* FOOTER */
 
     footer {
+
       text-align: center;
+
       padding: 30px;
+
       border-top: 1px solid #333;
+
       color: #777;
     }
+
 
     /* ANIMATION */
 
     @keyframes fadeIn {
 
       from {
+
         opacity: 0;
+
         transform: translateY(30px);
       }
 
       to {
+
         opacity: 1;
+
         transform: translateY(0);
       }
 
     }
 
+
     /* MOBILE */
 
-    @media (max-width: 600px) {
+    @media (max-width: 650px) {
+
+      .menu-btn {
+
+        display: block;
+      }
+
+      nav {
+
+        justify-content: space-between;
+
+        padding: 12px 15px;
+      }
+
+      .nav-links {
+
+        display: none;
+
+        position: absolute;
+
+        top: 60px;
+
+        left: 0;
+
+        width: 100%;
+
+        flex-direction: column;
+
+        padding: 15px;
+
+        background: #111;
+
+        border-bottom: 1px solid #333;
+      }
+
+      .nav-links.open {
+
+        display: flex;
+      }
+
+      body.light .nav-links {
+
+        background: white;
+      }
 
       nav a {
-        font-size: 12px;
-        margin: 0 3px;
+
+        width: 100%;
+
+        text-align: center;
       }
 
       .hero h1 {
+
         font-size: 36px;
       }
 
       .hero h2 {
+
         font-size: 18px;
       }
 
       .profile-img {
+
         width: 135px;
+
         height: 135px;
+      }
+
+      .stats {
+
+        grid-template-columns: 1fr;
       }
 
     }
 
   </style>
+
 </head>
 
 
@@ -357,19 +708,33 @@
 
   <nav>
 
-    <a href="#home">Home</a>
+    <button
+      class="menu-btn"
+      onclick="toggleMenu()">
+      ☰
+    </button>
 
-    <a href="#about">About</a>
 
-    <a href="#projects">Projects</a>
+    <div class="nav-links" id="navLinks">
 
-    <a href="#skills">Skills</a>
+      <a href="#home">Home</a>
 
-    <a href="#journey">Journey</a>
+      <a href="#about">About</a>
 
-    <a href="#contact">Contact</a>
+      <a href="#projects">Projects</a>
 
-    <button class="theme-btn" onclick="toggleTheme()">
+      <a href="#skills">Skills</a>
+
+      <a href="#journey">Journey</a>
+
+      <a href="#contact">Contact</a>
+
+    </div>
+
+
+    <button
+      class="theme-btn"
+      onclick="toggleTheme()">
       🌙
     </button>
 
@@ -385,33 +750,56 @@
       src="IMG_20260218_125513_403.webp"
       alt="Himanshu Shekhar">
 
-    <h1>Himanshu Shekhar</h1>
+
+    <h1>
+      Himanshu Shekhar
+    </h1>
+
 
     <h2>
-      💻 Coding Learner • 📈 Trading Learner
+      <span id="typing"></span>
     </h2>
 
+
     <p>
-      Building projects, learning new skills and
-      creating my future step by step.
+
+      Building projects, learning new skills
+      and creating my future step by step.
+
     </p>
+
 
     <div>
 
-      <a class="button" href="#projects">
+      <a
+        class="button"
+        href="#projects">
+
         🚀 Explore Projects
+
       </a>
 
-      <a class="button dark" href="#contact">
+
+      <a
+        class="button dark"
+        href="#contact">
+
         📩 Contact Me
+
       </a>
 
     </div>
 
+
     <br>
 
-    <button class="button" onclick="showMessage()">
+
+    <button
+      class="button"
+      onclick="showMessage()">
+
       ✨ Click Me
+
     </button>
 
   </div>
@@ -419,26 +807,34 @@
 
   <!-- ABOUT -->
 
-  <section id="about">
+  <section
+    id="about"
+    class="reveal">
 
-    <h2>👤 About Me</h2>
+    <h2>
+      👤 About Me
+    </h2>
+
 
     <div class="about-box">
 
-      I am Himanshu Shekhar, a beginner learning
-      coding, building websites and exploring new skills.
+      I am Himanshu Shekhar, a beginner
+      learning coding, building websites
+      and exploring new skills.
 
       <br>
       <br>
 
-      I enjoy learning technology, creating projects
-      and improving myself step by step.
+      I enjoy learning technology,
+      creating projects and improving
+      myself step by step.
 
       <br>
       <br>
 
-      My goal is to keep learning and build something
-      useful with my skills.
+      My goal is to keep learning
+      and build something useful
+      with my skills.
 
     </div>
 
@@ -447,22 +843,35 @@
 
   <!-- PROJECTS -->
 
-  <section id="projects">
+  <section
+    id="projects"
+    class="reveal">
 
-    <h2>🚀 My Projects</h2>
+    <h2>
+      🚀 My Projects
+    </h2>
 
 
     <div class="project-card">
 
-      <h3>🌐 My First Website</h3>
+      <h3>
+        🌐 My First Website
+      </h3>
 
       <p>
-        My first personal website created using
-        HTML, CSS and JavaScript.
+
+        My first personal website created
+        using HTML, CSS and JavaScript.
+
       </p>
 
-      <a class="button" href="#home">
+
+      <a
+        class="button"
+        href="#home">
+
         Live Demo
+
       </a>
 
     </div>
@@ -470,15 +879,24 @@
 
     <div class="project-card">
 
-      <h3>💻 Portfolio Website</h3>
+      <h3>
+        💻 Portfolio Website
+      </h3>
 
       <p>
-        A personal portfolio website showing my
-        skills, projects and learning journey.
+
+        A personal portfolio showing my
+        skills and learning journey.
+
       </p>
 
-      <a class="button" href="#home">
+
+      <a
+        class="button"
+        href="#home">
+
         View Project
+
       </a>
 
     </div>
@@ -486,28 +904,41 @@
 
     <div class="project-card">
 
-      <h3>📈 Trading Learning</h3>
+      <h3>
+        📈 Trading Learning
+      </h3>
 
       <p>
-        Learning market concepts, technical analysis
-        and trading education.
+
+        Learning market concepts,
+        technical analysis and trading
+        education.
+
       </p>
 
-      <a class="button" href="#about">
+
+      <a
+        class="button"
+        href="#about">
+
         Learn More
+
       </a>
 
     </div>
-
 
   </section>
 
 
   <!-- SKILLS -->
 
-  <section id="skills">
+  <section
+    id="skills"
+    class="reveal">
 
-    <h2>💻 My Skills</h2>
+    <h2>
+      💻 My Skills
+    </h2>
 
 
     <div class="skill">
@@ -520,7 +951,7 @@
 
         <div
           class="progress-bar"
-          style="width:70%;">
+          data-width="70">
         </div>
 
       </div>
@@ -538,7 +969,7 @@
 
         <div
           class="progress-bar"
-          style="width:60%;">
+          data-width="60">
         </div>
 
       </div>
@@ -556,7 +987,7 @@
 
         <div
           class="progress-bar"
-          style="width:30%;">
+          data-width="30">
         </div>
 
       </div>
@@ -574,7 +1005,7 @@
 
         <div
           class="progress-bar"
-          style="width:45%;">
+          data-width="45">
         </div>
 
       </div>
@@ -584,20 +1015,98 @@
   </section>
 
 
-  <!-- LEARNING JOURNEY -->
+  <!-- STATS -->
 
-  <section id="journey">
+  <section
+    class="reveal">
 
-    <h2>📚 My Learning Journey</h2>
+    <h2>
+      📊 My Progress
+    </h2>
+
+
+    <div class="stats">
+
+
+      <div class="stat-card">
+
+        <h3>
+          <span
+            class="counter"
+            data-target="3">
+            0
+          </span>
+        </h3>
+
+        <p>
+          Projects
+        </p>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <h3>
+          <span
+            class="counter"
+            data-target="4">
+            0
+          </span>
+        </h3>
+
+        <p>
+          Skills
+        </p>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <h3>
+          <span
+            class="counter"
+            data-target="1">
+            0
+          </span>
+        </h3>
+
+        <p>
+          Website
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- JOURNEY -->
+
+  <section
+    id="journey"
+    class="reveal">
+
+    <h2>
+      📚 My Learning Journey
+    </h2>
 
 
     <div class="journey-card">
 
-      <h3>💻 Coding</h3>
+      <h3>
+        💻 Coding
+      </h3>
 
       <p>
-        Currently learning HTML, CSS and JavaScript
-        and building small web projects.
+
+        Currently learning HTML, CSS
+        and JavaScript and building
+        small web projects.
+
       </p>
 
     </div>
@@ -605,11 +1114,16 @@
 
     <div class="journey-card">
 
-      <h3>📈 Trading</h3>
+      <h3>
+        📈 Trading
+      </h3>
 
       <p>
-        Exploring market concepts, technical analysis
-        and learning how financial markets work.
+
+        Exploring market concepts,
+        technical analysis and learning
+        how financial markets work.
+
       </p>
 
     </div>
@@ -617,11 +1131,16 @@
 
     <div class="journey-card">
 
-      <h3>🚀 Future Goals</h3>
+      <h3>
+        🚀 Future Goals
+      </h3>
 
       <p>
-        Keep learning, build useful projects and
-        develop valuable skills for the future.
+
+        Keep learning, build useful
+        projects and develop valuable
+        skills for the future.
+
       </p>
 
     </div>
@@ -631,18 +1150,25 @@
 
   <!-- ACHIEVEMENTS -->
 
-  <section>
+  <section
+    class="reveal">
 
-    <h2>🏆 Achievements</h2>
+    <h2>
+      🏆 Achievements
+    </h2>
 
 
     <div class="achievement">
 
-      <h3>🌐 First Website</h3>
+      <h3>
+        🌐 First Website
+      </h3>
 
       <p>
-        Successfully created and published my
-        first website.
+
+        Successfully created and
+        published my first website.
+
       </p>
 
     </div>
@@ -650,11 +1176,15 @@
 
     <div class="achievement">
 
-      <h3>💻 Started Coding</h3>
+      <h3>
+        💻 Started Coding
+      </h3>
 
       <p>
-        Started learning web development from
-        the basics.
+
+        Started learning web development
+        from the basics.
+
       </p>
 
     </div>
@@ -662,11 +1192,15 @@
 
     <div class="achievement">
 
-      <h3>🚀 Building My Future</h3>
+      <h3>
+        🚀 Building My Future
+      </h3>
 
       <p>
-        Learning new skills and working on
-        personal projects.
+
+        Learning new skills and working
+        on personal projects.
+
       </p>
 
     </div>
@@ -676,9 +1210,14 @@
 
   <!-- CONTACT -->
 
-  <section id="contact">
+  <section
+    id="contact"
+    class="reveal">
 
-    <h2>📩 Contact Me</h2>
+    <h2>
+      📩 Contact Me
+    </h2>
+
 
     <div class="contact-box">
 
@@ -690,11 +1229,13 @@
         You can contact me through email.
       </p>
 
-      <!-- Replace this email later with your own -->
+
       <a
         class="button"
         href="mailto:your@email.com">
+
         📧 Email Me
+
       </a>
 
     </div>
@@ -716,9 +1257,99 @@
   </footer>
 
 
+  <!-- BACK TO TOP -->
+
+  <button
+    id="topBtn"
+    onclick="goTop()">
+
+    ↑
+
+  </button>
+
+
   <!-- JAVASCRIPT -->
 
   <script>
+
+
+    /* TYPING ANIMATION */
+
+    const words = [
+
+      "💻 Coding Learner",
+
+      "📈 Trading Learner",
+
+      "🚀 Future Builder"
+
+    ];
+
+    let wordIndex = 0;
+
+    let charIndex = 0;
+
+    let deleting = false;
+
+
+    function typeEffect() {
+
+      const typing =
+        document.getElementById("typing");
+
+      const word =
+        words[wordIndex];
+
+
+      if (!deleting) {
+
+        typing.textContent =
+          word.substring(0, charIndex + 1);
+
+        charIndex++;
+
+
+        if (charIndex === word.length) {
+
+          deleting = true;
+
+          setTimeout(typeEffect, 1200);
+
+          return;
+        }
+
+      } else {
+
+        typing.textContent =
+          word.substring(0, charIndex - 1);
+
+        charIndex--;
+
+
+        if (charIndex === 0) {
+
+          deleting = false;
+
+          wordIndex =
+            (wordIndex + 1) % words.length;
+
+        }
+
+      }
+
+
+      setTimeout(
+        typeEffect,
+        deleting ? 50 : 100
+      );
+
+    }
+
+
+    typeEffect();
+
+
+    /* WELCOME MESSAGE */
 
     function showMessage() {
 
@@ -729,30 +1360,361 @@
     }
 
 
+    /* MOBILE MENU */
+
+    function toggleMenu() {
+
+      const menu =
+        document.getElementById("navLinks");
+
+      menu.classList.toggle("open");
+
+    }
+
+
+    /* THEME */
+
     function toggleTheme() {
 
       document.body.classList.toggle("light");
 
+
       const button =
         document.querySelector(".theme-btn");
 
-      if (
-        document.body.classList.contains("light")
-      ) {
+
+      const isLight =
+        document.body.classList.contains("light");
+
+
+      if (isLight) {
 
         button.innerHTML = "☀️";
+
+        localStorage.setItem(
+          "theme",
+          "light"
+        );
 
       } else {
 
         button.innerHTML = "🌙";
 
+        localStorage.setItem(
+          "theme",
+          "dark"
+        );
+
       }
 
     }
+
+
+    /* REMEMBER THEME */
+
+    if (
+      localStorage.getItem("theme")
+      === "light"
+    ) {
+
+      document.body.classList.add("light");
+
+      document.querySelector(
+        ".theme-btn"
+      ).innerHTML = "☀️";
+
+    }
+
+
+    /* SCROLL REVEAL */
+
+    const reveals =
+      document.querySelectorAll(".reveal");
+
+
+    function revealOnScroll() {
+
+      reveals.forEach(
+        function(element) {
+
+          const windowHeight =
+            window.innerHeight;
+
+          const elementTop =
+            element.getBoundingClientRect().top;
+
+
+          if (
+            elementTop <
+            windowHeight - 100
+          ) {
+
+            element.classList.add("show");
+
+          }
+
+        }
+      );
+
+    }
+
+
+    window.addEventListener(
+      "scroll",
+      revealOnScroll
+    );
+
+
+    revealOnScroll();
+
+
+    /* SKILL ANIMATION */
+
+    const skillBars =
+      document.querySelectorAll(
+        ".progress-bar"
+      );
+
+
+    function animateSkills() {
+
+      skillBars.forEach(
+        function(bar) {
+
+          const position =
+            bar.getBoundingClientRect().top;
+
+
+          if (
+            position <
+            window.innerHeight - 50
+          ) {
+
+            bar.style.width =
+              bar.dataset.width + "%";
+
+          }
+
+        }
+      );
+
+    }
+
+
+    window.addEventListener(
+      "scroll",
+      animateSkills
+    );
+
+
+    animateSkills();
+
+
+    /* COUNTERS */
+
+    let countersStarted = false;
+
+
+    function startCounters() {
+
+      if (countersStarted) {
+        return;
+      }
+
+
+      const stats =
+        document
+          .querySelector(".stats")
+          .getBoundingClientRect();
+
+
+      if (
+        stats.top <
+        window.innerHeight - 100
+      ) {
+
+        countersStarted = true;
+
+
+        document
+          .querySelectorAll(".counter")
+          .forEach(
+            function(counter) {
+
+              const target =
+                Number(
+                  counter.dataset.target
+                );
+
+              let number = 0;
+
+
+              const timer =
+                setInterval(
+                  function() {
+
+                    number++;
+
+                    counter.textContent =
+                      number;
+
+
+                    if (
+                      number >= target
+                    ) {
+
+                      clearInterval(timer);
+
+                    }
+
+                  },
+                  250
+                );
+
+            }
+          );
+
+      }
+
+    }
+
+
+    window.addEventListener(
+      "scroll",
+      startCounters
+    );
+
+
+    startCounters();
+
+
+    /* BACK TO TOP */
+
+    const topBtn =
+      document.getElementById(
+        "topBtn"
+      );
+
+
+    window.addEventListener(
+      "scroll",
+      function() {
+
+        if (window.scrollY > 400) {
+
+          topBtn.style.display =
+            "block";
+
+        } else {
+
+          topBtn.style.display =
+            "none";
+
+        }
+
+      }
+    );
+
+
+    function goTop() {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* ACTIVE NAV */
+
+    const sections =
+      document.querySelectorAll(
+        "section, .hero"
+      );
+
+    const navLinks =
+      document.querySelectorAll(
+        ".nav-links a"
+      );
+
+
+    window.addEventListener(
+      "scroll",
+      function() {
+
+        let current = "";
+
+
+        sections.forEach(
+          function(section) {
+
+            const sectionTop =
+              section.offsetTop - 150;
+
+
+            if (
+              window.scrollY >=
+              sectionTop
+            ) {
+
+              current =
+                section.getAttribute("id");
+
+            }
+
+          }
+        );
+
+
+        navLinks.forEach(
+          function(link) {
+
+            link.classList.remove(
+              "active"
+            );
+
+
+            if (
+              link.getAttribute("href")
+              === "#" + current
+            ) {
+
+              link.classList.add(
+                "active"
+              );
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+    /* CLOSE MOBILE MENU */
+
+    navLinks.forEach(
+      function(link) {
+
+        link.addEventListener(
+          "click",
+          function() {
+
+            document
+              .getElementById("navLinks")
+              .classList.remove("open");
+
+          }
+        );
+
+      }
+    );
 
   </script>
 
 
 </body>
 
-      </html>
+  </html>
