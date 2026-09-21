@@ -249,6 +249,7 @@
     }
 
     @media (max-width: 600px) {
+
       .hero h1 {
         font-size: 35px;
       }
@@ -268,7 +269,10 @@
 
 <body>
 
+  <!-- NAVIGATION -->
+
   <nav>
+
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#projects">Projects</a>
@@ -278,14 +282,19 @@
     <button class="theme-btn" onclick="toggleTheme()">
       🌙
     </button>
+
   </nav>
+
+
+  <!-- HERO -->
 
   <div class="hero" id="home">
 
-    <!-- अपनी uploaded photo का नाम profile.jpg रखें -->
+    <!-- YOUR PROFILE PHOTO -->
+
     <img
       class="profile-img"
-      src="profile.jpg"
+      src="IMG_20260218_125513_403.webp"
       alt="Himanshu Shekhar">
 
     <h1>Himanshu Shekhar</h1>
@@ -315,27 +324,38 @@
 
   </div>
 
+
+  <!-- ABOUT -->
+
   <section id="about">
 
     <h2>About Me</h2>
 
     <div class="about">
+
       I am Himanshu Shekhar, a beginner learning
       coding, building projects and exploring new skills.
 
-      <br><br>
+      <br>
+      <br>
 
       My goal is to keep learning, create useful projects
       and build my future step by step.
+
     </div>
 
   </section>
+
+
+  <!-- PROJECTS -->
 
   <section id="projects">
 
     <h2>My Projects</h2>
 
+
     <div class="project-card">
+
       <h3>🚀 My First Website</h3>
 
       <p>
@@ -346,9 +366,12 @@
       <a class="button" href="#home">
         View Project
       </a>
+
     </div>
 
+
     <div class="project-card">
+
       <h3>💻 Coding Journey</h3>
 
       <p>
@@ -359,9 +382,12 @@
       <a class="button" href="#skills">
         My Skills
       </a>
+
     </div>
 
+
     <div class="project-card">
+
       <h3>📈 Trading Learning</h3>
 
       <p>
@@ -372,47 +398,94 @@
       <a class="button" href="#about">
         About Me
       </a>
+
     </div>
 
   </section>
+
+
+  <!-- SKILLS -->
 
   <section id="skills">
 
     <h2>My Skills</h2>
 
+
     <div class="skill-box">
-      <div class="skill-name">HTML</div>
+
+      <div class="skill-name">
+        HTML
+      </div>
 
       <div class="progress">
-        <div class="progress-bar" style="width:70%;"></div>
+
+        <div
+          class="progress-bar"
+          style="width:70%;">
+        </div>
+
       </div>
+
     </div>
 
+
     <div class="skill-box">
-      <div class="skill-name">CSS</div>
+
+      <div class="skill-name">
+        CSS
+      </div>
 
       <div class="progress">
-        <div class="progress-bar" style="width:60%;"></div>
+
+        <div
+          class="progress-bar"
+          style="width:60%;">
+        </div>
+
       </div>
+
     </div>
 
+
     <div class="skill-box">
-      <div class="skill-name">JavaScript</div>
+
+      <div class="skill-name">
+        JavaScript
+      </div>
 
       <div class="progress">
-        <div class="progress-bar" style="width:30%;"></div>
+
+        <div
+          class="progress-bar"
+          style="width:30%;">
+        </div>
+
       </div>
+
     </div>
 
+
     <div class="skill-box">
-      <div class="skill-name">Trading Basics</div>
+
+      <div class="skill-name">
+        Trading Basics
+      </div>
 
       <div class="progress">
-        <div class="progress-bar" style="width:45%;"></div>
+
+        <div
+          class="progress-bar"
+          style="width:45%;">
+        </div>
+
       </div>
+
     </div>
 
   </section>
+
+
+  <!-- SOCIAL -->
 
   <section>
 
@@ -420,21 +493,30 @@
 
     <div class="social">
 
-      <a href="https://github.com/" target="_blank">
+      <a
+        href="https://github.com/"
+        target="_blank">
         💻 GitHub
       </a>
 
-      <a href="https://youtube.com/" target="_blank">
+      <a
+        href="https://youtube.com/"
+        target="_blank">
         ▶️ YouTube
       </a>
 
-      <a href="https://instagram.com/" target="_blank">
+      <a
+        href="https://instagram.com/"
+        target="_blank">
         📸 Instagram
       </a>
 
     </div>
 
   </section>
+
+
+  <!-- CONTACT -->
 
   <section id="contact">
 
@@ -446,7 +528,9 @@
         Want to connect with me?
       </p>
 
-      <a class="button" href="mailto:your@email.com">
+      <a
+        class="button"
+        href="mailto:your@email.com">
         📧 Email Me
       </a>
 
@@ -454,15 +538,29 @@
 
   </section>
 
+
+  <!-- FOOTER -->
+
   <footer>
-    © 2026 Himanshu Shekhar • Built with HTML, CSS & JavaScript
+
+    © 2026 Himanshu Shekhar
+    • Built with HTML, CSS & JavaScript
+
   </footer>
+
+
+  <!-- JAVASCRIPT -->
 
   <script>
 
     function showMessage() {
-      alert("Welcome to Himanshu Shekhar's website! 🚀");
+
+      alert(
+        "Welcome to Himanshu Shekhar's website! 🚀"
+      );
+
     }
+
 
     function toggleTheme() {
 
@@ -471,10 +569,16 @@
       const button =
         document.querySelector(".theme-btn");
 
-      if (document.body.classList.contains("light")) {
+      if (
+        document.body.classList.contains("light")
+      ) {
+
         button.innerHTML = "☀️";
+
       } else {
+
         button.innerHTML = "🌙";
+
       }
 
     }
@@ -483,4 +587,4 @@
 
 </body>
 
-      </html>
+</html>
