@@ -2,663 +2,755 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Himanshu Shekhar | Portfolio</title>
-
-<style>
-
-html {
-  scroll-behavior: smooth;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #080808;
-  color: white;
-  transition: 0.4s;
-}
-
-body.light {
-  background: #f4f4f4;
-  color: #111;
-}
-
-/* NAVBAR */
-
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  padding: 15px;
-  background: rgba(10,10,10,0.95);
-  border-bottom: 1px solid #333;
-  text-align: center;
-}
-
-body.light nav {
-  background: rgba(255,255,255,0.95);
-  border-color: #ddd;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 8px;
-  font-size: 14px;
-}
-
-body.light nav a {
-  color: #111;
-}
-
-.theme-btn {
-  margin-left: 8px;
-  padding: 7px 11px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-/* HERO */
-
-.hero {
-  min-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 50px 20px;
-  animation: fadeIn 1.2s ease;
-}
-
-.profile-img {
-  width: 170px;
-  height: 170px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid white;
-  padding: 3px;
-  margin-bottom: 20px;
-}
-
-.hero h1 {
-  font-size: 48px;
-  margin: 10px 0;
-}
-
-.hero h2 {
-  font-size: 22px;
-  color: #aaa;
-  font-weight: normal;
-}
-
-.hero p {
-  max-width: 600px;
-  color: #999;
-  line-height: 1.7;
-}
-
-/* BUTTON */
-
-.button {
-  display: inline-block;
-  margin: 10px 5px;
-  padding: 13px 22px;
-  background: white;
-  color: black;
-  text-decoration: none;
-  border-radius: 9px;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.button:hover {
-  transform: translateY(-4px);
-}
-
-.button.dark {
-  background: #151515;
-  color: white;
-  border: 1px solid #444;
-}
-
-body.light .button.dark {
-  background: #111;
-  color: white;
-}
-
-/* SECTIONS */
-
-section {
-  max-width: 850px;
-  margin: auto;
-  padding: 80px 20px;
-}
-
-section h2 {
-  text-align: center;
-  font-size: 32px;
-  margin-bottom: 35px;
-}
-
-/* ABOUT */
-
-.about-box {
-  background: #151515;
-  border: 1px solid #333;
-  border-radius: 16px;
-  padding: 30px;
-  line-height: 1.8;
-  color: #aaa;
-}
-
-body.light .about-box {
-  background: white;
-  border-color: #ddd;
-  color: #555;
-}
-
-/* PROJECTS */
-
-.project-card {
-  background: #151515;
-  border: 1px solid #333;
-  border-radius: 16px;
-  padding: 25px;
-  margin: 20px 0;
-  transition: 0.3s;
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
-}
-
-body.light .project-card {
-  background: white;
-  border-color: #ddd;
-}
-
-.project-card h3 {
-  margin-top: 0;
-}
-
-.project-card p {
-  color: #aaa;
-  line-height: 1.6;
-}
-
-body.light .project-card p {
-  color: #555;
-}
-
-/* SKILLS */
-
-.skill {
-  margin: 25px 0;
-}
-
-.skill-name {
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-
-.progress {
-  height: 10px;
-  background: #333;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  background: white;
-  border-radius: 20px;
-}
-
-body.light .progress {
-  background: #ddd;
-}
-
-body.light .progress-bar {
-  background: #111;
-}
-
-/* SOCIAL */
-
-.social {
-  text-align: center;
-}
-
-.social a {
-  display: inline-block;
-  margin: 7px;
-  padding: 12px 18px;
-  background: #151515;
-  border: 1px solid #333;
-  border-radius: 9px;
-  color: white;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.social a:hover {
-  transform: translateY(-4px);
-}
-
-body.light .social a {
-  background: white;
-  color: #111;
-  border-color: #ddd;
-}
-
-/* CONTACT */
-
-.contact-box {
-  text-align: center;
-  background: #151515;
-  border: 1px solid #333;
-  border-radius: 16px;
-  padding: 35px;
-}
-
-body.light .contact-box {
-  background: white;
-  border-color: #ddd;
-}
-
-/* FOOTER */
-
-footer {
-  text-align: center;
-  padding: 30px;
-  border-top: 1px solid #333;
-  color: #777;
-}
-
-/* ANIMATION */
-
-@keyframes fadeIn {
-
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-}
-
-/* MOBILE */
-
-@media (max-width: 600px) {
-
-  nav a {
-    font-size: 12px;
-    margin: 0 3px;
-  }
-
-  .hero h1 {
-    font-size: 36px;
-  }
-
-  .hero h2 {
-    font-size: 18px;
-  }
-
-  .profile-img {
-    width: 135px;
-    height: 135px;
-  }
-
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Himanshu Shekhar | Portfolio</title>
+
+  <style>
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #080808;
+      color: white;
+      transition: 0.4s;
+    }
+
+    body.light {
+      background: #f4f4f4;
+      color: #111;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 15px;
+      background: rgba(10, 10, 10, 0.95);
+      border-bottom: 1px solid #333;
+      text-align: center;
+    }
+
+    body.light nav {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: #ddd;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+      font-size: 14px;
+    }
+
+    body.light nav a {
+      color: #111;
+    }
+
+    .theme-btn {
+      margin-left: 8px;
+      padding: 7px 11px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 50px 20px;
+      animation: fadeIn 1.2s ease;
+    }
+
+    .profile-img {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      padding: 3px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin: 10px 0;
+    }
+
+    .hero h2 {
+      font-size: 22px;
+      color: #aaa;
+      font-weight: normal;
+    }
+
+    .hero p {
+      max-width: 600px;
+      color: #999;
+      line-height: 1.7;
+    }
+
+    /* BUTTONS */
+
+    .button {
+      display: inline-block;
+      margin: 10px 5px;
+      padding: 13px 22px;
+      background: white;
+      color: black;
+      text-decoration: none;
+      border-radius: 9px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      transform: translateY(-4px);
+    }
+
+    .button.dark {
+      background: #151515;
+      color: white;
+      border: 1px solid #444;
+    }
+
+    body.light .button.dark {
+      background: #111;
+      color: white;
+    }
+
+    /* SECTIONS */
+
+    section {
+      max-width: 850px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 35px;
+    }
+
+    /* ABOUT */
+
+    .about-box {
+      background: #151515;
+      border: 1px solid #333;
+      border-radius: 16px;
+      padding: 30px;
+      line-height: 1.8;
+      color: #aaa;
+    }
+
+    body.light .about-box {
+      background: white;
+      border-color: #ddd;
+      color: #555;
+    }
+
+    /* PROJECTS */
+
+    .project-card {
+      background: #151515;
+      border: 1px solid #333;
+      border-radius: 16px;
+      padding: 25px;
+      margin: 20px 0;
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+    }
+
+    body.light .project-card {
+      background: white;
+      border-color: #ddd;
+    }
+
+    .project-card h3 {
+      margin-top: 0;
+    }
+
+    .project-card p {
+      color: #aaa;
+      line-height: 1.6;
+    }
+
+    body.light .project-card p {
+      color: #555;
+    }
+
+    /* SKILLS */
+
+    .skill {
+      margin: 25px 0;
+    }
+
+    .skill-name {
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .progress {
+      height: 10px;
+      background: #333;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: white;
+      border-radius: 20px;
+    }
+
+    body.light .progress {
+      background: #ddd;
+    }
+
+    body.light .progress-bar {
+      background: #111;
+    }
+
+    /* LEARNING JOURNEY */
+
+    .journey-card {
+      background: #151515;
+      border: 1px solid #333;
+      border-radius: 16px;
+      padding: 25px;
+      margin: 18px 0;
+      text-align: left;
+    }
+
+    body.light .journey-card {
+      background: white;
+      border-color: #ddd;
+    }
+
+    .journey-card h3 {
+      margin-top: 0;
+    }
+
+    .journey-card p {
+      color: #aaa;
+      line-height: 1.6;
+    }
+
+    body.light .journey-card p {
+      color: #555;
+    }
+
+    /* ACHIEVEMENTS */
+
+    .achievement {
+      background: #151515;
+      border: 1px solid #333;
+      border-radius: 16px;
+      padding: 25px;
+      margin: 18px 0;
+      text-align: center;
+    }
+
+    body.light .achievement {
+      background: white;
+      border-color: #ddd;
+    }
+
+    .achievement h3 {
+      margin-top: 0;
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      text-align: center;
+      background: #151515;
+      border: 1px solid #333;
+      border-radius: 16px;
+      padding: 35px;
+    }
+
+    body.light .contact-box {
+      background: white;
+      border-color: #ddd;
+    }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid #333;
+      color: #777;
+    }
+
+    /* ANIMATION */
+
+    @keyframes fadeIn {
+
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      nav a {
+        font-size: 12px;
+        margin: 0 3px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero h2 {
+        font-size: 18px;
+      }
+
+      .profile-img {
+        width: 135px;
+        height: 135px;
+      }
+
+    }
+
+  </style>
 </head>
 
 
 <body>
 
 
-<!-- NAVIGATION -->
+  <!-- NAVIGATION -->
 
-<nav>
+  <nav>
 
-<a href="#home">Home</a>
+    <a href="#home">Home</a>
 
-<a href="#about">About</a>
+    <a href="#about">About</a>
 
-<a href="#projects">Projects</a>
+    <a href="#projects">Projects</a>
 
-<a href="#skills">Skills</a>
+    <a href="#skills">Skills</a>
 
-<a href="#contact">Contact</a>
+    <a href="#journey">Journey</a>
 
-<button class="theme-btn" onclick="toggleTheme()">
-🌙
-</button>
+    <a href="#contact">Contact</a>
 
-</nav>
+    <button class="theme-btn" onclick="toggleTheme()">
+      🌙
+    </button>
 
+  </nav>
 
-<!-- HERO -->
 
-<div class="hero" id="home">
+  <!-- HERO -->
 
-<img
-class="profile-img"
-src="IMG_20260218_125513_403.webp"
-alt="Himanshu Shekhar">
+  <div class="hero" id="home">
 
-<h1>Himanshu Shekhar</h1>
+    <img
+      class="profile-img"
+      src="IMG_20260218_125513_403.webp"
+      alt="Himanshu Shekhar">
 
-<h2>💻 Coding Learner • 📈 Trading Learner</h2>
+    <h1>Himanshu Shekhar</h1>
 
-<p>
-Building projects, learning new skills and creating
-my future step by step.
-</p>
+    <h2>
+      💻 Coding Learner • 📈 Trading Learner
+    </h2>
 
-<div>
+    <p>
+      Building projects, learning new skills and
+      creating my future step by step.
+    </p>
 
-<a class="button" href="#projects">
-🚀 Explore Projects
-</a>
+    <div>
 
-<a class="button dark" href="#contact">
-📩 Contact Me
-</a>
+      <a class="button" href="#projects">
+        🚀 Explore Projects
+      </a>
 
-</div>
+      <a class="button dark" href="#contact">
+        📩 Contact Me
+      </a>
 
-<br>
+    </div>
 
-<button class="button" onclick="showMessage()">
-✨ Click Me
-</button>
+    <br>
 
-</div>
+    <button class="button" onclick="showMessage()">
+      ✨ Click Me
+    </button>
 
+  </div>
 
-<!-- ABOUT -->
 
-<section id="about">
+  <!-- ABOUT -->
 
-<h2>👤 About Me</h2>
+  <section id="about">
 
-<div class="about-box">
+    <h2>👤 About Me</h2>
 
-I am Himanshu Shekhar, a beginner learning coding,
-building websites and exploring new skills.
+    <div class="about-box">
 
-<br><br>
+      I am Himanshu Shekhar, a beginner learning
+      coding, building websites and exploring new skills.
 
-I enjoy learning technology, creating projects
-and improving myself step by step.
+      <br>
+      <br>
 
-<br><br>
+      I enjoy learning technology, creating projects
+      and improving myself step by step.
 
-My goal is to keep learning and build something
-useful with my skills.
+      <br>
+      <br>
 
-</div>
+      My goal is to keep learning and build something
+      useful with my skills.
 
-</section>
+    </div>
 
+  </section>
 
-<!-- PROJECTS -->
 
-<section id="projects">
+  <!-- PROJECTS -->
 
-<h2>🚀 My Projects</h2>
+  <section id="projects">
 
+    <h2>🚀 My Projects</h2>
 
-<div class="project-card">
 
-<h3>🌐 My First Website</h3>
+    <div class="project-card">
 
-<p>
-My first personal website created using HTML,
-CSS and JavaScript.
-</p>
+      <h3>🌐 My First Website</h3>
 
-<a class="button" href="#home">
-Live Demo
-</a>
+      <p>
+        My first personal website created using
+        HTML, CSS and JavaScript.
+      </p>
 
-</div>
+      <a class="button" href="#home">
+        Live Demo
+      </a>
 
+    </div>
 
-<div class="project-card">
 
-<h3>💻 Portfolio Website</h3>
+    <div class="project-card">
 
-<p>
-A personal portfolio website showing my skills,
-projects and learning journey.
-</p>
+      <h3>💻 Portfolio Website</h3>
 
-<a class="button" href="#home">
-View Project
-</a>
+      <p>
+        A personal portfolio website showing my
+        skills, projects and learning journey.
+      </p>
 
-</div>
+      <a class="button" href="#home">
+        View Project
+      </a>
 
+    </div>
 
-<div class="project-card">
 
-<h3>📈 Trading Learning</h3>
+    <div class="project-card">
 
-<p>
-Learning market concepts, technical analysis
-and trading education.
-</p>
+      <h3>📈 Trading Learning</h3>
 
-<a class="button" href="#about">
-Learn More
-</a>
+      <p>
+        Learning market concepts, technical analysis
+        and trading education.
+      </p>
 
-</div>
+      <a class="button" href="#about">
+        Learn More
+      </a>
 
+    </div>
 
-</section>
 
+  </section>
 
-<!-- SKILLS -->
 
-<section id="skills">
+  <!-- SKILLS -->
 
-<h2>💻 My Skills</h2>
+  <section id="skills">
 
+    <h2>💻 My Skills</h2>
 
-<div class="skill">
 
-<div class="skill-name">
-HTML — 70%
-</div>
+    <div class="skill">
 
-<div class="progress">
+      <div class="skill-name">
+        HTML — 70%
+      </div>
 
-<div
-class="progress-bar"
-style="width:70%;">
-</div>
+      <div class="progress">
 
-</div>
+        <div
+          class="progress-bar"
+          style="width:70%;">
+        </div>
 
-</div>
+      </div>
 
+    </div>
 
-<div class="skill">
 
-<div class="skill-name">
-CSS — 60%
-</div>
+    <div class="skill">
 
-<div class="progress">
+      <div class="skill-name">
+        CSS — 60%
+      </div>
 
-<div
-class="progress-bar"
-style="width:60%;">
-</div>
+      <div class="progress">
 
-</div>
+        <div
+          class="progress-bar"
+          style="width:60%;">
+        </div>
 
-</div>
+      </div>
 
+    </div>
 
-<div class="skill">
 
-<div class="skill-name">
-JavaScript — 30%
-</div>
+    <div class="skill">
 
-<div class="progress">
+      <div class="skill-name">
+        JavaScript — 30%
+      </div>
 
-<div
-class="progress-bar"
-style="width:30%;">
-</div>
+      <div class="progress">
 
-</div>
+        <div
+          class="progress-bar"
+          style="width:30%;">
+        </div>
 
-</div>
+      </div>
 
+    </div>
 
-<div class="skill">
 
-<div class="skill-name">
-Trading Basics — 45%
-</div>
+    <div class="skill">
 
-<div class="progress">
+      <div class="skill-name">
+        Trading Basics — 45%
+      </div>
 
-<div
-class="progress-bar"
-style="width:45%;">
-</div>
+      <div class="progress">
 
-</div>
+        <div
+          class="progress-bar"
+          style="width:45%;">
+        </div>
 
-</div>
+      </div>
 
-</section>
+    </div>
 
+  </section>
 
-<!-- SOCIAL -->
 
-<section>
+  <!-- LEARNING JOURNEY -->
 
-<h2>🔗 Connect With Me</h2>
+  <section id="journey">
 
-<div class="social">
+    <h2>📚 My Learning Journey</h2>
 
-<a
-href="https://github.com/"
-target="_blank">
-💻 GitHub
-</a>
 
-<a
-href="https://youtube.com/"
-target="_blank">
-▶️ YouTube
-</a>
+    <div class="journey-card">
 
-<a
-href="https://instagram.com/"
-target="_blank">
-📸 Instagram
-</a>
+      <h3>💻 Coding</h3>
 
-</div>
+      <p>
+        Currently learning HTML, CSS and JavaScript
+        and building small web projects.
+      </p>
 
-</section>
+    </div>
 
 
-<!-- CONTACT -->
+    <div class="journey-card">
 
-<section id="contact">
+      <h3>📈 Trading</h3>
 
-<h2>📩 Contact Me</h2>
+      <p>
+        Exploring market concepts, technical analysis
+        and learning how financial markets work.
+      </p>
 
-<div class="contact-box">
+    </div>
 
-<p>
-Want to connect with me?
-</p>
 
-<a
-class="button"
-href="mailto:your@email.com">
-📧 Email Me
-</a>
+    <div class="journey-card">
 
-</div>
+      <h3>🚀 Future Goals</h3>
 
-</section>
+      <p>
+        Keep learning, build useful projects and
+        develop valuable skills for the future.
+      </p>
 
+    </div>
 
-<!-- FOOTER -->
+  </section>
 
-<footer>
 
-© 2026 Himanshu Shekhar
+  <!-- ACHIEVEMENTS -->
 
-<br><br>
+  <section>
 
-Built with HTML • CSS • JavaScript 🚀
+    <h2>🏆 Achievements</h2>
 
-</footer>
 
+    <div class="achievement">
 
-<!-- JAVASCRIPT -->
+      <h3>🌐 First Website</h3>
 
-<script>
+      <p>
+        Successfully created and published my
+        first website.
+      </p>
 
-function showMessage() {
+    </div>
 
-alert(
-"Welcome to Himanshu Shekhar's website! 🚀"
-);
 
-}
+    <div class="achievement">
 
+      <h3>💻 Started Coding</h3>
 
-function toggleTheme() {
+      <p>
+        Started learning web development from
+        the basics.
+      </p>
 
-document.body.classList.toggle("light");
+    </div>
 
-const button =
-document.querySelector(".theme-btn");
 
-if (
-document.body.classList.contains("light")
-) {
+    <div class="achievement">
 
-button.innerHTML = "☀️";
+      <h3>🚀 Building My Future</h3>
 
-} else {
+      <p>
+        Learning new skills and working on
+        personal projects.
+      </p>
 
-button.innerHTML = "🌙";
+    </div>
 
-}
+  </section>
 
-}
 
-</script>
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <h2>📩 Contact Me</h2>
+
+    <div class="contact-box">
+
+      <p>
+        Want to connect with me?
+      </p>
+
+      <p>
+        You can contact me through email.
+      </p>
+
+      <!-- Replace this email later with your own -->
+      <a
+        class="button"
+        href="mailto:your@email.com">
+        📧 Email Me
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    © 2026 Himanshu Shekhar
+
+    <br>
+    <br>
+
+    Built with HTML • CSS • JavaScript 🚀
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    function showMessage() {
+
+      alert(
+        "Welcome to Himanshu Shekhar's website! 🚀"
+      );
+
+    }
+
+
+    function toggleTheme() {
+
+      document.body.classList.toggle("light");
+
+      const button =
+        document.querySelector(".theme-btn");
+
+      if (
+        document.body.classList.contains("light")
+      ) {
+
+        button.innerHTML = "☀️";
+
+      } else {
+
+        button.innerHTML = "🌙";
+
+      }
+
+    }
+
+  </script>
 
 
 </body>
