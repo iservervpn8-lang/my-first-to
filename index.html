@@ -2,1346 +2,1411 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#0b1020">
-<meta name="description" content="Himanshu Shekhar - Developer Portfolio">
-<title>Himanshu Shekhar | Developer Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BM — Beyond Mastery</title>
+<meta name="description"
+content="BM — Beyond Mastery. Learn Beyond Limits. A student-focused learning and productivity platform.">
 
 <style>
-:root{
-  --bg:#080b14;
-  --card:rgba(255,255,255,.07);
-  --card2:rgba(255,255,255,.11);
-  --text:#f5f7ff;
-  --muted:#aab2c5;
-  --accent:#6c63ff;
-  --accent2:#00d4ff;
-  --border:rgba(255,255,255,.12);
-  --success:#35e68b;
-  --danger:#ff5f6d;
-  --shadow:0 20px 60px rgba(0,0,0,.35);
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
 }
+
+:root{
+  --bg:#07111f;
+  --bg2:#0c1728;
+  --card:rgba(255,255,255,.07);
+  --border:rgba(255,255,255,.12);
+  --text:#f5f7fb;
+  --muted:#9aa8bb;
+  --blue:#4da3ff;
+  --blue2:#147df5;
+  --green:#42d392;
+  --danger:#ff6678;
+  --shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
 body.light{
   --bg:#f4f7fb;
-  --card:rgba(255,255,255,.8);
-  --card2:#fff;
-  --text:#101522;
-  --muted:#5d6678;
-  --border:rgba(0,0,0,.1);
-  --shadow:0 15px 45px rgba(0,0,0,.12);
+  --bg2:#ffffff;
+  --card:rgba(255,255,255,.85);
+  --border:rgba(0,0,0,.08);
+  --text:#111827;
+  --muted:#64748b;
+  --shadow:0 20px 50px rgba(0,0,0,.08);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
+  background:
+    radial-gradient(circle at 10% 10%,rgba(77,163,255,.12),transparent 25%),
+    radial-gradient(circle at 90% 30%,rgba(66,211,146,.08),transparent 25%),
+    var(--bg);
   color:var(--text);
-  line-height:1.6;
-  overflow-x:hidden;
+  min-height:100vh;
+  transition:.3s;
 }
-a{text-decoration:none;color:inherit}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
-.container{width:min(1150px,92%);margin:auto}
-section{padding:85px 0}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,input,textarea,select{
+  font:inherit;
+}
+
+.container{
+  width:min(1150px,92%);
+  margin:auto;
+}
+
+section{
+  padding:90px 0;
+}
+
 .section-title{
-  text-align:center;
-  font-size:34px;
-  margin-bottom:45px;
-}
-.section-title span{color:var(--accent)}
-.muted{color:var(--muted)}
-.glass{
-  background:var(--card);
-  border:1px solid var(--border);
-  backdrop-filter:blur(18px);
-  box-shadow:var(--shadow);
-}
-.btn{
-  border:0;
-  padding:12px 18px;
-  border-radius:12px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:white;
-  font-weight:700;
-  transition:.25s;
-}
-.btn:hover{transform:translateY(-3px);filter:brightness(1.1)}
-.btn.secondary{
-  background:var(--card2);
-  border:1px solid var(--border);
-  color:var(--text);
-}
-.grid{display:grid;gap:20px}
-.card{
-  padding:24px;
-  border-radius:22px;
-  background:var(--card);
-  border:1px solid var(--border);
-  box-shadow:var(--shadow);
-}
-.card:hover{transform:translateY(-5px);transition:.25s}
-
-/* LOADER */
-#loader{
-  position:fixed;inset:0;background:var(--bg);
-  display:grid;place-items:center;z-index:9999;
-}
-.loader-box{text-align:center}
-.loader-ring{
-  width:65px;height:65px;border:5px solid var(--border);
-  border-top-color:var(--accent);border-radius:50%;
-  animation:spin 1s linear infinite;margin:auto auto 15px;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* PROGRESS */
-#progress{
-  position:fixed;top:0;left:0;width:0;height:4px;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  z-index:9998;
-}
-
-/* BACKGROUND */
-.bg-orb{
-  position:fixed;width:300px;height:300px;border-radius:50%;
-  filter:blur(90px);opacity:.18;z-index:-1;pointer-events:none;
-}
-.orb1{background:var(--accent);top:10%;left:-100px}
-.orb2{background:var(--accent2);right:-100px;top:45%}
-.orb3{background:#ff3cac;left:30%;bottom:-150px}
-
-/* NAV */
-nav{
-  position:sticky;top:0;z-index:1000;
-  background:rgba(8,11,20,.75);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--border);
-}
-body.light nav{background:rgba(255,255,255,.78)}
-.nav-inner{
-  min-height:70px;display:flex;align-items:center;
-  justify-content:space-between;gap:20px;
-}
-.logo{font-size:25px;font-weight:900;color:var(--accent)}
-.nav-links{display:flex;gap:18px;align-items:center}
-.nav-links a{
-  color:var(--muted);font-weight:700;font-size:14px;
-}
-.nav-links a:hover,.nav-links a.active{color:var(--accent)}
-.nav-actions{display:flex;gap:8px}
-.icon-btn{
-  width:42px;height:42px;border-radius:12px;
-  border:1px solid var(--border);
-  background:var(--card);color:var(--text);
-}
-.menu-btn{display:none}
-
-/* HERO */
-.hero{
-  min-height:90vh;display:flex;align-items:center;
-  text-align:center;
-}
-.hero-inner{width:100%}
-.profile-wrap{
-  width:190px;height:190px;margin:0 auto 25px;
-  padding:6px;border-radius:50%;
-  background:conic-gradient(var(--accent),var(--accent2),#ff3cac,var(--accent));
-  animation:rotate 7s linear infinite;
-}
-.profile-wrap img{
-  width:100%;height:100%;object-fit:cover;border-radius:50%;
-  border:5px solid var(--bg);
-  animation:counterrotate 7s linear infinite;
-}
-@keyframes rotate{to{transform:rotate(360deg)}}
-@keyframes counterrotate{to{transform:rotate(-360deg)}}
-.hero h1{font-size:clamp(42px,8vw,80px);line-height:1.05}
-.gradient-text{
-  background:linear-gradient(90deg,var(--accent),var(--accent2),#ff3cac);
-  -webkit-background-clip:text;color:transparent;
-}
-.typing{
-  color:var(--accent2);font-size:22px;font-weight:800;
-  min-height:35px;margin:15px 0;
-}
-.hero-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:25px 0}
-.date-box{color:var(--muted)}
-
-/* SEARCH */
-.search-box{display:flex;gap:10px;max-width:650px;margin:0 auto 25px}
-.search-box input,.field,.notes{
-  width:100%;padding:13px 15px;border-radius:12px;
-  border:1px solid var(--border);
-  background:var(--card);color:var(--text);outline:none;
-}
-.search-results{
-  max-width:650px;margin:auto;
-  display:none;
-}
-.search-result{
-  padding:12px;border-bottom:1px solid var(--border);
-  cursor:pointer;
-}
-
-/* ABOUT */
-.about-grid{grid-template-columns:1.2fr .8fr}
-.profile-card{text-align:center}
-.mini-avatar{
-  width:90px;height:90px;border-radius:50%;object-fit:cover;
+  font-size:clamp(28px,5vw,42px);
   margin-bottom:12px;
 }
 
-/* STATS */
-.stats-grid{grid-template-columns:repeat(4,1fr)}
-.stat{text-align:center}
-.stat b{font-size:35px;color:var(--accent)}
-.stat small{display:block;color:var(--muted)}
+.section-sub{
+  color:var(--muted);
+  margin-bottom:35px;
+}
+
+/* NAVBAR */
+
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  backdrop-filter:blur(18px);
+  background:rgba(7,17,31,.75);
+  border-bottom:1px solid var(--border);
+}
+
+body.light .navbar{
+  background:rgba(255,255,255,.8);
+}
+
+.nav-inner{
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+}
+
+.logo-box{
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  color:white;
+  font-weight:900;
+  box-shadow:0 8px 25px rgba(20,125,245,.3);
+}
+
+.logo-text span{
+  display:block;
+}
+
+.logo-main{
+  font-size:18px;
+}
+
+.logo-sub{
+  color:var(--muted);
+  font-size:10px;
+  letter-spacing:1px;
+}
+
+.nav-links{
+  display:flex;
+  gap:22px;
+  align-items:center;
+}
+
+.nav-links a{
+  color:var(--muted);
+  font-size:14px;
+  transition:.2s;
+}
+
+.nav-links a:hover{
+  color:var(--text);
+}
+
+.nav-actions{
+  display:flex;
+  gap:8px;
+}
+
+.icon-btn{
+  width:40px;
+  height:40px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--card);
+  color:var(--text);
+  cursor:pointer;
+}
+
+.menu-btn{
+  display:none;
+}
+
+/* HERO */
+
+.hero{
+  min-height:calc(100vh - 72px);
+  display:flex;
+  align-items:center;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:45px;
+  align-items:center;
+}
+
+.badge{
+  display:inline-flex;
+  padding:8px 13px;
+  border:1px solid var(--border);
+  border-radius:100px;
+  background:var(--card);
+  color:var(--blue);
+  font-size:13px;
+  margin-bottom:20px;
+}
+
+.hero h1{
+  font-size:clamp(45px,7vw,78px);
+  line-height:1;
+  margin-bottom:20px;
+}
+
+.gradient-text{
+  background:linear-gradient(90deg,#fff,var(--blue),var(--green));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  max-width:650px;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.7;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  margin-top:28px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  border:none;
+  padding:13px 19px;
+  border-radius:13px;
+  cursor:pointer;
+  font-weight:700;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  color:white;
+}
+
+.btn-secondary{
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border);
+}
+
+.hero-card{
+  padding:30px;
+  border:1px solid var(--border);
+  border-radius:28px;
+  background:var(--card);
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(20px);
+}
+
+.bm-big{
+  font-size:100px;
+  font-weight:900;
+  text-align:center;
+  background:linear-gradient(135deg,var(--blue),var(--green));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero-card h3{
+  text-align:center;
+  margin-top:-10px;
+}
+
+.hero-card p{
+  text-align:center;
+  font-size:14px;
+  margin-top:10px;
+}
+
+/* CARDS */
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:24px;
+  backdrop-filter:blur(18px);
+  box-shadow:var(--shadow);
+}
+
+.grid{
+  display:grid;
+  gap:18px;
+}
+
+.grid-3{
+  grid-template-columns:repeat(3,1fr);
+}
+
+.grid-4{
+  grid-template-columns:repeat(4,1fr);
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.muted{
+  color:var(--muted);
+  line-height:1.6;
+}
 
 /* DASHBOARD */
-.dashboard-grid{grid-template-columns:repeat(4,1fr)}
-.dash-value{font-size:30px;font-weight:900;color:var(--accent)}
-.progress-track{
-  height:10px;background:var(--card2);
-  border-radius:20px;overflow:hidden;margin-top:10px;
+
+.dashboard-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:25px;
+  flex-wrap:wrap;
 }
-.progress-fill{
-  height:100%;width:0;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.stat-number{
+  font-size:32px;
+  font-weight:800;
+  margin:8px 0;
+  color:var(--blue);
+}
+
+.stat-label{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.progress{
+  height:9px;
+  background:rgba(127,127,127,.15);
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:15px;
+}
+
+.progress-bar{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--blue),var(--green));
   transition:1s;
 }
 
-/* PROJECTS */
-.filters{
-  display:flex;justify-content:center;gap:8px;
-  flex-wrap:wrap;margin-bottom:25px;
-}
-.projects-grid{grid-template-columns:repeat(3,1fr)}
-.project-preview{
-  height:150px;border-radius:16px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  display:grid;place-items:center;font-size:40px;margin-bottom:18px;
-}
-.tags{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
-.tag{
-  font-size:12px;padding:5px 9px;border-radius:20px;
-  background:var(--card2);color:var(--accent2);
-}
-
-/* SKILLS */
-.skills-grid{grid-template-columns:repeat(2,1fr)}
-.skill-row{margin:18px 0}
-.skill-head{display:flex;justify-content:space-between}
-.skill-track{
-  height:12px;background:var(--card2);
-  border-radius:20px;overflow:hidden;margin-top:8px;
-}
-.skill-bar{
-  height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));
-}
-
-/* LEARNING */
-.learning-grid{grid-template-columns:repeat(3,1fr)}
-.timeline{position:relative;max-width:850px;margin:auto}
-.timeline-item{
-  padding:20px;margin:20px 0;
-  border-left:3px solid var(--accent);
-}
-
 /* TOOLS */
-.tools-grid{grid-template-columns:repeat(2,1fr)}
-.timer{
-  font-size:48px;font-weight:900;text-align:center;
-  color:var(--accent2);margin:15px 0;
+
+.tool-icon{
+  font-size:30px;
+  margin-bottom:15px;
 }
-.tool-buttons{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+
+.tool-card{
+  cursor:pointer;
+  transition:.25s;
+}
+
+.tool-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(77,163,255,.4);
+}
 
 /* TASKS */
-.task-form{display:grid;grid-template-columns:2fr 1fr auto;gap:10px}
-.task{
-  display:flex;align-items:center;gap:10px;
-  padding:13px;margin-top:10px;border-radius:12px;
-  background:var(--card2);
-}
-.task.done{text-decoration:line-through;opacity:.55}
-.task-priority{font-size:11px;padding:4px 7px;border-radius:10px}
-.high{background:#ff5f6d;color:white}
-.medium{background:#ffbd4a;color:#111}
-.low{background:#35e68b;color:#062}
 
-/* PLANNER */
-.plan-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px}
-.plan-item{
-  display:flex;justify-content:space-between;
-  padding:13px;margin-top:10px;background:var(--card2);
+.task-form{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+input,textarea,select{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid var(--border);
   border-radius:12px;
+  outline:none;
+  background:rgba(127,127,127,.08);
+  color:var(--text);
 }
 
-/* NOTES */
-.notes{min-height:220px;resize:vertical}
-
-/* QUOTE */
-.quote{
-  font-size:22px;text-align:center;
-  padding:35px;font-style:italic;
+textarea{
+  min-height:140px;
+  resize:vertical;
 }
 
-/* ACHIEVEMENTS */
-.badges{grid-template-columns:repeat(4,1fr)}
-.badge{text-align:center}
-.badge-icon{font-size:42px}
-.badge.locked{filter:grayscale(1);opacity:.45}
-
-/* ROADMAP */
-.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.road-step{
-  text-align:center;padding:20px;border-radius:18px;
-  border:1px solid var(--border);background:var(--card);
+.task{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 0;
+  border-bottom:1px solid var(--border);
 }
 
-/* RESOURCES */
-.resources{grid-template-columns:repeat(3,1fr)}
-.resource a{display:block;margin-top:10px;color:var(--accent2)}
-
-/* SETTINGS */
-.settings-grid{grid-template-columns:repeat(2,1fr)}
-.color-row{display:flex;gap:10px;flex-wrap:wrap}
-.color{
-  width:34px;height:34px;border-radius:50%;
-  border:3px solid transparent;cursor:pointer;
-}
-.color:hover{transform:scale(1.1)}
-
-/* MODAL */
-.modal{
-  position:fixed;inset:0;background:rgba(0,0,0,.7);
-  display:none;place-items:center;padding:20px;z-index:3000;
-}
-.modal-box{
-  width:min(600px,100%);padding:28px;border-radius:25px;
-  max-height:85vh;overflow:auto;
-}
-.close{
-  float:right;background:none;border:0;
-  color:var(--text);font-size:25px;
+.task:last-child{
+  border-bottom:0;
 }
 
-/* TOAST */
-#toast{
-  position:fixed;right:20px;bottom:20px;
-  padding:14px 18px;background:var(--card2);
-  border:1px solid var(--border);border-radius:14px;
-  transform:translateY(120px);opacity:0;
-  transition:.3s;z-index:5000;
+.task input{
+  width:auto;
 }
-#toast.show{transform:translateY(0);opacity:1}
 
-/* MOBILE NAV */
-.mobile-bottom{
-  display:none;position:fixed;bottom:0;left:0;right:0;
-  background:var(--card2);backdrop-filter:blur(20px);
-  border-top:1px solid var(--border);z-index:2000;
+.task.done span{
+  text-decoration:line-through;
+  opacity:.5;
 }
-.mobile-bottom div{
-  display:flex;justify-content:space-around;padding:10px;
+
+.delete{
+  margin-left:auto;
+  background:transparent;
+  border:0;
+  color:var(--danger);
+  cursor:pointer;
 }
-.mobile-bottom button{
-  background:none;border:0;color:var(--muted);
+
+/* TIMER */
+
+.timer{
+  text-align:center;
+}
+
+.timer-display{
+  font-size:55px;
+  font-weight:900;
+  margin:20px 0;
+  letter-spacing:2px;
+}
+
+.timer-buttons{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+/* EXAM */
+
+.exam-box{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.exam-date{
+  font-size:28px;
+  font-weight:800;
+  color:var(--blue);
+}
+
+/* DEVELOPER */
+
+.developer{
+  background:
+    linear-gradient(135deg,rgba(77,163,255,.08),rgba(66,211,146,.05)),
+    var(--bg2);
+}
+
+.dev-grid{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:35px;
+  align-items:center;
+}
+
+.profile-img{
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  object-fit:cover;
+  border:5px solid var(--blue);
+  padding:5px;
+  display:block;
+  margin:auto;
+  box-shadow:0 0 50px rgba(77,163,255,.25);
+}
+
+.dev-name{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.dev-tag{
+  color:var(--blue);
+  font-weight:700;
+  margin-bottom:18px;
+}
+
+.dev-skills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:20px;
+}
+
+.tag{
+  padding:7px 11px;
+  border-radius:100px;
+  background:rgba(77,163,255,.1);
+  border:1px solid rgba(77,163,255,.2);
   font-size:12px;
 }
 
-/* CURSOR */
-.cursor-dot{
-  position:fixed;width:9px;height:9px;border-radius:50%;
-  background:var(--accent);pointer-events:none;
-  z-index:10000;display:none;
+/* RESOURCES */
+
+.resource{
+  display:flex;
+  gap:15px;
+  align-items:flex-start;
 }
 
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(25px);transition:.7s}
-.reveal.show{opacity:1;transform:none}
+.resource-icon{
+  font-size:30px;
+}
+
+/* CALCULATOR */
+
+.calc-result{
+  font-size:34px;
+  font-weight:800;
+  color:var(--green);
+  margin-top:15px;
+}
+
+/* NOTES */
+
+.notes-actions{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:12px;
+  flex-wrap:wrap;
+}
 
 /* FOOTER */
+
 footer{
-  text-align:center;padding:50px 0 90px;
-  color:var(--muted);border-top:1px solid var(--border);
+  padding:35px 0;
+  border-top:1px solid var(--border);
+  text-align:center;
+  color:var(--muted);
 }
 
-/* RESPONSIVE */
-@media(max-width:900px){
-  .about-grid,.projects-grid,.learning-grid,.resources,
-  .stats-grid,.dashboard-grid,.badges,.roadmap{grid-template-columns:repeat(2,1fr)}
-  .nav-links{
-    display:none;position:absolute;top:70px;left:0;right:0;
-    padding:20px;background:var(--bg);flex-direction:column;
-  }
-  .nav-links.open{display:flex}
-  .menu-btn{display:block}
+footer strong{
+  color:var(--text);
 }
-@media(max-width:650px){
-  section{padding:65px 0}
-  .about-grid,.projects-grid,.learning-grid,.skills-grid,
-  .tools-grid,.settings-grid,.stats-grid,.dashboard-grid,
-  .badges,.roadmap,.resources{grid-template-columns:1fr}
-  .task-form,.plan-form{grid-template-columns:1fr}
-  .mobile-bottom{display:block}
-  footer{padding-bottom:110px}
-  .cursor-dot{display:none}
-  .hero{min-height:80vh}
-  .profile-wrap{width:155px;height:155px}
-  .section-title{font-size:29px}
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:3000;
+  padding:20px;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:min(500px,100%);
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:25px;
+}
+
+.modal-close{
+  float:right;
+  background:transparent;
+  border:0;
+  color:var(--muted);
+  font-size:25px;
+  cursor:pointer;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:var(--bg2);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  padding:14px 18px;
+  border-radius:13px;
+  transform:translateY(100px);
+  opacity:0;
+  transition:.3s;
+  z-index:4000;
+}
+
+.toast.show{
+  transform:translateY(0);
+  opacity:1;
+}
+
+/* MOBILE */
+
+.mobile-nav{
+  display:none;
+}
+
+@media(max-width:850px){
+
+  .nav-links{
+    display:none;
+    position:absolute;
+    left:4%;
+    right:4%;
+    top:78px;
+    padding:20px;
+    border:1px solid var(--border);
+    border-radius:18px;
+    background:var(--bg2);
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav-links.show{
+    display:flex;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .hero-grid,
+  .dev-grid,
+  .exam-box{
+    grid-template-columns:1fr;
+  }
+
+  .grid-3{
+    grid-template-columns:1fr;
+  }
+
+  .grid-4,
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero{
+    padding-top:50px;
+  }
+
+  section{
+    padding:65px 0;
+  }
+
+  .mobile-nav{
+    display:flex;
+    position:fixed;
+    bottom:12px;
+    left:4%;
+    right:4%;
+    z-index:1500;
+    padding:9px;
+    background:rgba(10,18,30,.9);
+    backdrop-filter:blur(18px);
+    border:1px solid var(--border);
+    border-radius:20px;
+    justify-content:space-around;
+  }
+
+  body.light .mobile-nav{
+    background:rgba(255,255,255,.9);
+  }
+
+  .mobile-nav a{
+    font-size:11px;
+    color:var(--muted);
+    text-align:center;
+  }
+
+  .mobile-nav span{
+    display:block;
+    font-size:18px;
+    margin-bottom:3px;
+  }
+
+  footer{
+    padding-bottom:100px;
+  }
+}
+
+@media(max-width:520px){
+
+  .grid-4,
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  .task-form{
+    grid-template-columns:1fr;
+  }
+
+  .dev-name{
+    font-size:32px;
+  }
+
+  .profile-img{
+    width:180px;
+    height:180px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div id="loader">
-  <div class="loader-box">
-    <div class="loader-ring"></div>
-    <h2>Loading Portfolio...</h2>
+<!-- NAVBAR -->
+
+<header class="navbar">
+  <div class="container nav-inner">
+
+    <a href="#home" class="logo">
+      <div class="logo-box">BM</div>
+
+      <div class="logo-text">
+        <span class="logo-main">Beyond Mastery</span>
+        <span class="logo-sub">LEARN BEYOND LIMITS</span>
+      </div>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#study">Study</a>
+      <a href="#practice">Practice</a>
+      <a href="#resources">Resources</a>
+      <a href="#developer">Developer</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" onclick="toggleTheme()" title="Theme">🌙</button>
+      <button class="icon-btn menu-btn" onclick="toggleMenu()">☰</button>
+    </div>
+
   </div>
-</div>
+</header>
 
-<div id="progress"></div>
 
-<div class="bg-orb orb1"></div>
-<div class="bg-orb orb2"></div>
-<div class="bg-orb orb3"></div>
+<!-- HOME -->
 
-<div class="cursor-dot" id="cursor"></div>
+<section class="hero" id="home">
 
-<nav>
-<div class="container nav-inner">
+  <div class="container hero-grid">
 
-  <div class="logo">HS.</div>
+    <div>
 
-  <div class="nav-links" id="navLinks">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#dashboard">Dashboard</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#learning">Learning</a>
-    <a href="#tools">Tools</a>
-    <a href="#contact">Contact</a>
+      <div class="badge">🎓 Student Learning Platform</div>
+
+      <h1>
+        Learn <span class="gradient-text">Beyond</span><br>
+        Mastery.
+      </h1>
+
+      <p>
+        BM — Beyond Mastery is a student-focused platform
+        designed to help you study smarter, practice better
+        and track your progress.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#dashboard" class="btn btn-primary">
+          Open Dashboard →
+        </a>
+
+        <a href="#study" class="btn btn-secondary">
+          Start Studying
+        </a>
+      </div>
+
+    </div>
+
+    <div class="hero-card">
+
+      <div class="bm-big">BM</div>
+
+      <h3>Beyond Mastery</h3>
+
+      <p class="muted">
+        Learn • Practice • Progress
+      </p>
+
+      <div class="progress">
+        <div class="progress-bar" id="heroProgress"></div>
+      </div>
+
+      <p style="margin-top:12px;">
+        Your learning journey starts here.
+      </p>
+
+    </div>
+
   </div>
 
-  <div class="nav-actions">
-    <button class="icon-btn" onclick="toggleTheme()" title="Theme">🌙</button>
-    <button class="icon-btn" onclick="openSettings()" title="Settings">⚙️</button>
-    <button class="icon-btn menu-btn" onclick="toggleMenu()">☰</button>
-  </div>
-
-</div>
-</nav>
-
-<main>
-
-<!-- HERO -->
-<section id="home" class="hero">
-<div class="container hero-inner reveal">
-
-  <div class="profile-wrap">
-    <img
-      class="profile-img"
-      src="IMG_20260218_125513_403.webp"
-      alt="Himanshu Shekhar">
-  </div>
-
-  <p class="muted">Hello, I'm</p>
-
-  <h1>
-    <span class="gradient-text">Himanshu Shekhar</span>
-  </h1>
-
-  <div class="typing" id="typing"></div>
-
-  <p class="muted">
-    Learning coding, building projects and creating my future.
-  </p>
-
-  <div class="hero-buttons">
-    <a class="btn" href="#projects">View Projects</a>
-    <a class="btn secondary" href="#dashboard">Open Dashboard</a>
-  </div>
-
-  <p class="date-box" id="today"></p>
-
-</div>
-</section>
-
-
-<!-- GLOBAL SEARCH -->
-<section>
-<div class="container reveal">
-
-<h2 class="section-title">🔎 Global <span>Search</span></h2>
-
-<div class="search-box">
-<input id="globalInput"
-       class="field"
-       placeholder="Search projects, skills, learning..."
-       oninput="globalSearch()">
-</div>
-
-<div id="searchResults" class="card search-results"></div>
-
-</div>
-</section>
-
-
-<!-- ABOUT -->
-<section id="about">
-<div class="container reveal">
-
-<h2 class="section-title">About <span>Me</span></h2>
-
-<div class="grid about-grid">
-
-<div class="card">
-<h2>👋 Hi!</h2>
-<br>
-<p>
-I'm <b>Himanshu Shekhar</b>, a coding learner interested in
-web development and building useful digital projects.
-</p>
-<br>
-<p class="muted">
-My goal is to continuously learn, practice and create better
-projects step by step.
-</p>
-<br>
-
-<div class="tags">
-<span class="tag">HTML</span>
-<span class="tag">CSS</span>
-<span class="tag">JavaScript</span>
-<span class="tag">Web Development</span>
-</div>
-</div>
-
-<div class="card profile-card">
-<img class="mini-avatar"
-src="IMG_20260218_125513_403.webp"
-alt="Himanshu">
-<h3>Himanshu Shekhar</h3>
-<p class="muted">Coding Learner</p>
-<br>
-<p>🚀 Building</p>
-<p>📚 Learning</p>
-<p>🧠 Improving</p>
-</div>
-
-</div>
-</div>
-</section>
-
-
-<!-- STATS -->
-<section>
-<div class="container reveal">
-
-<h2 class="section-title">Portfolio <span>Statistics</span></h2>
-
-<div class="grid stats-grid">
-
-<div class="card stat">
-<b id="statProjects">0</b>
-<small>Projects</small>
-</div>
-
-<div class="card stat">
-<b id="statSkills">4</b>
-<small>Core Skills</small>
-</div>
-
-<div class="card stat">
-<b id="statTasks">0</b>
-<small>Tasks Done</small>
-</div>
-
-<div class="card stat">
-<b id="statXP">0</b>
-<small>XP Earned</small>
-</div>
-
-</div>
-</div>
 </section>
 
 
 <!-- DASHBOARD -->
+
 <section id="dashboard">
-<div class="container reveal">
 
-<h2 class="section-title">Personal <span>Dashboard</span></h2>
+  <div class="container">
 
-<div class="grid dashboard-grid">
+    <div class="dashboard-head">
 
-<div class="card">
-<p class="muted">🔥 Learning Streak</p>
-<div class="dash-value"><span id="streak">0</span> days</div>
-</div>
+      <div>
+        <h2 class="section-title">Student Dashboard</h2>
+        <p class="section-sub">
+          Your personal learning overview.
+        </p>
+      </div>
 
-<div class="card">
-<p class="muted">⭐ XP</p>
-<div class="dash-value"><span id="xp">0</span></div>
-</div>
+      <button class="btn btn-primary" onclick="setDailyGoal()">
+        🎯 Set Daily Goal
+      </button>
 
-<div class="card">
-<p class="muted">🏅 Level</p>
-<div class="dash-value"><span id="level">1</span></div>
-</div>
+    </div>
 
-<div class="card">
-<p class="muted">🎯 Daily Goal</p>
-<div class="dash-value"><span id="goalPercent">0</span>%</div>
-<div class="progress-track">
-<div class="progress-fill" id="goalBar"></div>
-</div>
-</div>
+    <div class="stats">
 
-</div>
+      <div class="card">
+        <div>📚</div>
+        <div class="stat-number" id="studyMinutes">0</div>
+        <div class="stat-label">Study Minutes</div>
+      </div>
 
-<br>
+      <div class="card">
+        <div>🔥</div>
+        <div class="stat-number" id="streak">0</div>
+        <div class="stat-label">Day Streak</div>
+      </div>
 
-<div class="card">
-<h3>📈 Weekly Progress</h3>
-<br>
-<div class="grid stats-grid">
-<div class="stat">
-<b id="weekSessions">0</b>
-<small>Sessions</small>
-</div>
-<div class="stat">
-<b id="weekMinutes">0</b>
-<small>Minutes</small>
-</div>
-<div class="stat">
-<b id="weekTasks">0</b>
-<small>Tasks</small>
-</div>
-<div class="stat">
-<b id="weekXP">0</b>
-<small>XP</small>
-</div>
-</div>
-</div>
+      <div class="card">
+        <div>✅</div>
+        <div class="stat-number" id="completedTasks">0</div>
+        <div class="stat-label">Tasks Completed</div>
+      </div>
 
-</div>
+      <div class="card">
+        <div>🎯</div>
+        <div class="stat-number" id="goalText">0%</div>
+        <div class="stat-label">Daily Goal</div>
+      </div>
+
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+
+      <h3>Today's Learning Progress</h3>
+
+      <div class="progress">
+        <div class="progress-bar" id="dailyProgress"></div>
+      </div>
+
+      <p class="muted" id="progressText" style="margin-top:10px;">
+        Start studying to build your progress.
+      </p>
+
+    </div>
+
+  </div>
+
 </section>
 
 
-<!-- PROJECTS -->
-<section id="projects">
-<div class="container reveal">
+<!-- STUDY -->
 
-<h2 class="section-title">My <span>Projects</span></h2>
+<section id="study">
 
-<div class="filters">
-<button class="btn secondary" onclick="filterProjects('all',this)">All</button>
-<button class="btn secondary" onclick="filterProjects('HTML',this)">HTML</button>
-<button class="btn secondary" onclick="filterProjects('CSS',this)">CSS</button>
-<button class="btn secondary" onclick="filterProjects('JavaScript',this)">JavaScript</button>
-<button class="btn secondary" onclick="filterProjects('favorite',this)">⭐ Favorites</button>
-</div>
+  <div class="container">
 
-<div class="grid projects-grid" id="projectGrid">
+    <h2 class="section-title">Study Center</h2>
 
-<div class="card project" data-category="HTML CSS" data-title="My First Website">
-<div class="project-preview">🌐</div>
-<h3>My First Website</h3>
-<div class="tags">
-<span class="tag">HTML</span>
-<span class="tag">CSS</span>
-</div>
-<p class="muted">My first published web project.</p>
-<br>
-<button class="btn" onclick="openProject('My First Website','A beginner-friendly website created while learning HTML and CSS.')">Details</button>
-<button class="btn secondary favorite-btn" onclick="favoriteProject(this)">☆</button>
-</div>
+    <p class="section-sub">
+      Everything you need for focused study.
+    </p>
 
-<div class="card project" data-category="HTML CSS JavaScript" data-title="Portfolio Website">
-<div class="project-preview">👨‍💻</div>
-<h3>Portfolio Website</h3>
-<div class="tags">
-<span class="tag">HTML</span>
-<span class="tag">CSS</span>
-<span class="tag">JavaScript</span>
-</div>
-<p class="muted">This advanced portfolio project.</p>
-<br>
-<button class="btn" onclick="openProject('Portfolio Website','A responsive portfolio with dashboard, projects, tools and learning features.')">Details</button>
-<button class="btn secondary favorite-btn" onclick="favoriteProject(this)">☆</button>
-</div>
+    <div class="grid grid-3">
 
-<div class="card project" data-category="JavaScript" data-title="Future Web Project">
-<div class="project-preview">🚀</div>
-<h3>Future Web Project</h3>
-<div class="tags">
-<span class="tag">JavaScript</span>
-<span class="tag">Future</span>
-</div>
-<p class="muted">A future project for practicing JavaScript.</p>
-<br>
-<button class="btn" onclick="openProject('Future Web Project','A space reserved for a future JavaScript project.')">Details</button>
-<button class="btn secondary favorite-btn" onclick="favoriteProject(this)">☆</button>
-</div>
+      <div class="card tool-card" onclick="startStudyTimer()">
+        <div class="tool-icon">⏱️</div>
+        <h3>Study Timer</h3>
+        <p class="muted">
+          Focus on your studies and track learning time.
+        </p>
+      </div>
 
-</div>
+      <div class="card tool-card" onclick="showModal('Notes','Use the notes section below to save your study notes directly in your browser.')">
+        <div class="tool-icon">📝</div>
+        <h3>Smart Notes</h3>
+        <p class="muted">
+          Save important concepts, formulas and ideas.
+        </p>
+      </div>
 
-<br>
+      <div class="card tool-card" onclick="showModal('Study Planner','Create tasks and organize your daily study plan.')">
+        <div class="tool-icon">📅</div>
+        <h3>Study Planner</h3>
+        <p class="muted">
+          Plan what you want to study today.
+        </p>
+      </div>
 
-<div class="card">
-<h3>🚀 Project Progress</h3>
-<div class="progress-track">
-<div class="progress-fill" style="width:65%"></div>
-</div>
-<p class="muted">Portfolio development progress: 65%</p>
-</div>
+    </div>
 
-</div>
+
+    <!-- TIMER -->
+
+    <div class="card timer" style="margin-top:20px;">
+
+      <h3>Focus Timer</h3>
+
+      <div class="timer-display" id="timerDisplay">
+        25:00
+      </div>
+
+      <div class="timer-buttons">
+
+        <button class="btn btn-primary" onclick="startTimer()">
+          ▶ Start
+        </button>
+
+        <button class="btn btn-secondary" onclick="pauseTimer()">
+          ⏸ Pause
+        </button>
+
+        <button class="btn btn-secondary" onclick="resetTimer()">
+          ↺ Reset
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- TASKS -->
+
+    <div class="card" style="margin-top:20px;">
+
+      <h3>📋 Study Tasks</h3>
+
+      <p class="muted" style="margin-bottom:15px;">
+        Add your homework, revision and study tasks.
+      </p>
+
+      <div class="task-form">
+
+        <input
+          id="taskInput"
+          placeholder="Example: Complete Physics Chapter 1">
+
+        <button class="btn btn-primary" onclick="addTask()">
+          + Add Task
+        </button>
+
+      </div>
+
+      <div id="taskList"></div>
+
+    </div>
+
+
+    <!-- NOTES -->
+
+    <div class="card" style="margin-top:20px;">
+
+      <div class="notes-actions">
+        <div>
+          <h3>📝 My Study Notes</h3>
+          <p class="muted">
+            Notes are saved automatically on this device.
+          </p>
+        </div>
+
+        <button class="btn btn-secondary" onclick="clearNotes()">
+          Clear
+        </button>
+      </div>
+
+      <textarea
+        id="notes"
+        placeholder="Write formulas, important points, questions or revision notes..."></textarea>
+
+    </div>
+
+  </div>
+
 </section>
 
 
-<!-- SKILLS -->
-<section id="skills">
-<div class="container reveal">
+<!-- EXAM -->
 
-<h2 class="section-title">My <span>Skills</span></h2>
+<section id="exam">
 
-<div class="grid skills-grid">
+  <div class="container">
 
-<div class="card">
-<div class="skill-row">
-<div class="skill-head"><b>HTML</b><b>70%</b></div>
-<div class="skill-track"><div class="skill-bar" style="width:70%"></div></div>
-</div>
+    <h2 class="section-title">🎯 Exam Preparation</h2>
 
-<div class="skill-row">
-<div class="skill-head"><b>CSS</b><b>60%</b></div>
-<div class="skill-track"><div class="skill-bar" style="width:60%"></div></div>
-</div>
+    <p class="section-sub">
+      Keep your exam preparation organized.
+    </p>
 
-<div class="skill-row">
-<div class="skill-head"><b>JavaScript</b><b>30%</b></div>
-<div class="skill-track"><div class="skill-bar" style="width:30%"></div></div>
-</div>
+    <div class="exam-box">
 
-<div class="skill-row">
-<div class="skill-head"><b>Web Development</b><b>40%</b></div>
-<div class="skill-track"><div class="skill-bar" style="width:40%"></div></div>
-</div>
-</div>
+      <div class="card">
 
-<div class="card">
-<h3>🧩 Interactive Skills</h3>
-<br>
-<button class="btn" onclick="skillInfo('HTML','HTML creates the structure of web pages.')">HTML</button>
-<button class="btn" onclick="skillInfo('CSS','CSS controls design, layout, colors and responsive UI.')">CSS</button>
-<button class="btn" onclick="skillInfo('JavaScript','JavaScript adds interactivity and logic.')">JavaScript</button>
-<button class="btn" onclick="skillInfo('Web Development','Combines frontend technologies to build websites.')">Web Dev</button>
-</div>
+        <h3>Exam Date</h3>
 
-</div>
-</div>
+        <p class="muted">
+          Set your target exam date.
+        </p>
+
+        <input
+          type="date"
+          id="examDate"
+          style="margin-top:15px;">
+
+        <div class="exam-date" id="daysLeft">
+          —
+        </div>
+
+        <p class="muted">
+          days remaining
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Revision Progress</h3>
+
+        <p class="muted">
+          Track your preparation manually.
+        </p>
+
+        <div class="progress">
+          <div
+            class="progress-bar"
+            id="revisionProgress"
+            style="width:35%;">
+          </div>
+        </div>
+
+        <p style="margin-top:12px;">
+          Current revision: <strong>35%</strong>
+        </p>
+
+        <button
+          class="btn btn-primary"
+          style="margin-top:15px;"
+          onclick="increaseRevision()">
+          + Complete Revision
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
 
-<!-- LEARNING -->
-<section id="learning">
-<div class="container reveal">
-
-<h2 class="section-title">Learning <span>Center</span></h2>
-
-<div class="grid learning-grid">
-
-<div class="card">
-<h3>📚 Currently Learning</h3>
-<br>
-<p>HTML → CSS → JavaScript → Advanced Web Development</p>
-<br>
-<div class="progress-track">
-<div class="progress-fill" style="width:45%"></div>
-</div>
-<p class="muted">Current learning progress: 45%</p>
-</div>
-
-<div class="card">
-<h3>🧠 Coding Topics</h3>
-<br>
-<p>• HTML structure</p>
-<p>• CSS layouts</p>
-<p>• JavaScript basics</p>
-<p>• DOM</p>
-<p>• Local Storage</p>
-<p>• Responsive design</p>
-</div>
-
-<div class="card">
-<h3>🗺️ Future Roadmap</h3>
-<br>
-<p>HTML ✓</p>
-<p>CSS →</p>
-<p>JavaScript →</p>
-<p>Git/GitHub →</p>
-<p>Advanced Projects →</p>
-</div>
-
-</div>
-
-<br>
-
-<div class="timeline">
-
-<div class="timeline-item glass">
-<h3>01 — HTML</h3>
-<p class="muted">Learn website structure.</p>
-</div>
-
-<div class="timeline-item glass">
-<h3>02 — CSS</h3>
-<p class="muted">Learn design and responsive layouts.</p>
-</div>
-
-<div class="timeline-item glass">
-<h3>03 — JavaScript</h3>
-<p class="muted">Learn logic and interaction.</p>
-</div>
-
-<div class="timeline-item glass">
-<h3>04 — Projects</h3>
-<p class="muted">Build real projects.</p>
-</div>
-
-</div>
-
-</div>
-</section>
-
-
-<!-- TOOLS -->
-<section id="tools">
-<div class="container reveal">
-
-<h2 class="section-title">Productivity <span>Tools</span></h2>
-
-<div class="grid tools-grid">
-
-<!-- CODING TIMER -->
-<div class="card">
-<h3>💻 Coding Timer</h3>
-<div class="timer" id="codingTimer">00:00:00</div>
-<div class="tool-buttons">
-<button class="btn" onclick="startCoding()">Start</button>
-<button class="btn secondary" onclick="pauseCoding()">Pause</button>
-<button class="btn secondary" onclick="resetCoding()">Reset</button>
-</div>
-</div>
-
-<!-- POMODORO -->
-<div class="card">
-<h3>🍅 Pomodoro</h3>
-<div class="timer" id="pomodoro">25:00</div>
-<div class="tool-buttons">
-<button class="btn" onclick="startPomodoro()">Start</button>
-<button class="btn secondary" onclick="pausePomodoro()">Pause</button>
-<button class="btn secondary" onclick="resetPomodoro()">Reset</button>
-</div>
-<p class="muted" id="pomoMode">Study Session</p>
-</div>
+<!-- PRACTICE -->
 
-</div>
+<section id="practice">
 
-<br>
+  <div class="container">
 
-<!-- DAILY GOAL -->
-<div class="card">
-<h3>🎯 Daily Learning Goal</h3>
-<br>
-<p class="muted">Goal in minutes</p>
-<br>
-<div class="tool-buttons">
-<input class="field" style="max-width:180px" type="number"
-id="goalInput" value="60" min="1">
-<button class="btn" onclick="setGoal()">Set Goal</button>
-<button class="btn secondary" onclick="completeGoal()">+10 Minutes</button>
-</div>
-</div>
+    <h2 class="section-title">🧠 Practice Zone</h2>
 
-</div>
-</section>
+    <p class="section-sub">
+      Practice regularly and strengthen your concepts.
+    </p>
 
+    <div class="grid grid-3">
 
-<!-- TASK MANAGER -->
-<section>
-<div class="container reveal">
+      <div class="card tool-card"
+           onclick="showModal('Quick Quiz','Question: What is the value of 2 + 2?\\n\\nAnswer: 4')">
+        <div class="tool-icon">❓</div>
+        <h3>Quick Quiz</h3>
+        <p class="muted">
+          Test yourself with quick questions.
+        </p>
+      </div>
 
-<h2 class="section-title">Smart <span>Task Manager</span></h2>
+      <div class="card tool-card"
+           onclick="showModal('Important Questions','Create a list of important questions for each subject and revise them regularly.')">
+        <div class="tool-icon">⭐</div>
+        <h3>Important Questions</h3>
+        <p class="muted">
+          Keep important questions in one place.
+        </p>
+      </div>
 
-<div class="card">
+      <div class="card tool-card"
+           onclick="showModal('Revision','Use active recall, practice questions and spaced revision to strengthen memory.')">
+        <div class="tool-icon">🔁</div>
+        <h3>Revision</h3>
+        <p class="muted">
+          Build a consistent revision habit.
+        </p>
+      </div>
 
-<div class="task-form">
-<input id="taskInput" class="field" placeholder="Enter task...">
+    </div>
 
-<select id="taskPriority" class="field">
-<option value="low">Low Priority</option>
-<option value="medium">Medium Priority</option>
-<option value="high">High Priority</option>
-</select>
 
-<button class="btn" onclick="addTask()">Add</button>
-</div>
+    <!-- MARKS CALCULATOR -->
 
-<br>
+    <div class="card" style="margin-top:20px;">
 
-<div class="tool-buttons">
-<button class="btn secondary" onclick="sortTasks()">↕ Sort</button>
-<button class="btn secondary" onclick="clearCompleted()">🧹 Clear Completed</button>
-</div>
+      <h3>🧮 Marks & Percentage Calculator</h3>
 
-<div id="taskList"></div>
+      <div class="exam-box" style="margin-top:15px;">
 
-</div>
-</div>
-</section>
+        <div>
+          <label>Total Marks</label>
+          <input
+            id="totalMarks"
+            type="number"
+            placeholder="500">
+        </div>
 
+        <div>
+          <label>Obtained Marks</label>
+          <input
+            id="obtainedMarks"
+            type="number"
+            placeholder="400">
+        </div>
 
-<!-- STUDY PLANNER -->
-<section>
-<div class="container reveal">
+      </div>
 
-<h2 class="section-title">📅 Study <span>Planner</span></h2>
+      <button
+        class="btn btn-primary"
+        style="margin-top:15px;"
+        onclick="calculateMarks()">
+        Calculate
+      </button>
 
-<div class="card">
+      <div class="calc-result" id="calcResult">
+        —
+      </div>
 
-<div class="plan-form">
-<input id="planDate" class="field" type="date">
-<input id="planSubject" class="field" placeholder="Subject / Topic">
-<input id="planTime" class="field" type="time">
-<button class="btn" onclick="addPlan()">Add</button>
-</div>
+    </div>
 
-<div id="planList"></div>
+  </div>
 
-</div>
-</div>
-</section>
-
-
-<!-- NOTES -->
-<section>
-<div class="container reveal">
-
-<h2 class="section-title">📝 Personal <span>Notes</span></h2>
-
-<div class="card">
-<textarea id="notes" class="notes"
-placeholder="Write your coding or study notes here..."></textarea>
-
-<br><br>
-
-<div class="tool-buttons">
-<button class="btn" onclick="saveNotes()">Save Notes</button>
-<button class="btn secondary" onclick="clearNotes()">Clear</button>
-<button class="btn secondary" onclick="downloadNotes()">Download</button>
-</div>
-
-<p class="muted" id="noteStatus">Auto-save enabled</p>
-</div>
-
-</div>
-</section>
-
-
-<!-- QUOTE -->
-<section>
-<div class="container reveal">
-
-<h2 class="section-title">💡 Daily <span>Quote</span></h2>
-
-<div class="card quote" id="quote">
-"Small progress every day becomes big progress over time."
-</div>
-
-<br>
-
-<div style="text-align:center">
-<button class="btn" onclick="newQuote()">New Quote</button>
-</div>
-
-</div>
-</section>
-
-
-<!-- ACHIEVEMENTS -->
-<section>
-<div class="container reveal">
-
-<h2 class="section-title">🏆 <span>Achievements</span></h2>
-
-<div class="grid badges">
-
-<div class="card badge" id="badge1">
-<div class="badge-icon">🚀</div>
-<h3>Starter</h3>
-<p class="muted">Create your first activity</p>
-</div>
-
-<div class="card badge" id="badge2">
-<div class="badge-icon">🔥</div>
-<h3>Streak</h3>
-<p class="muted">Reach 3-day streak</p>
-</div>
-
-<div class="card badge" id="badge3">
-<div class="badge-icon">⭐</div>
-<h3>XP Hunter</h3>
-<p class="muted">Reach 100 XP</p>
-</div>
-
-<div class="card badge" id="badge4">
-<div class="badge-icon">🏆</div>
-<h3>Level Up</h3>
-<p class="muted">Reach Level 5</p>
-</div>
-
-</div>
-
-</div>
 </section>
 
 
 <!-- RESOURCES -->
-<section>
-<div class="container reveal">
 
-<h2 class="section-title">📚 Learning <span>Resources</span></h2>
+<section id="resources">
 
-<div class="grid resources">
+  <div class="container">
 
-<div class="card resource">
-<h3>MDN Web Docs</h3>
-<p class="muted">Web development documentation.</p>
-<a href="https://developer.mozilla.org/" target="_blank">Open →</a>
-</div>
+    <h2 class="section-title">📖 Student Resources</h2>
 
-<div class="card resource">
-<h3>GitHub Docs</h3>
-<p class="muted">Learn GitHub and repositories.</p>
-<a href="https://docs.github.com/" target="_blank">Open →</a>
-</div>
+    <p class="section-sub">
+      Useful learning resources for students.
+    </p>
 
-<div class="card resource">
-<h3>JavaScript.info</h3>
-<p class="muted">JavaScript learning resource.</p>
-<a href="https://javascript.info/" target="_blank">Open →</a>
-</div>
+    <div class="grid grid-3">
 
-</div>
+      <a class="card resource" href="https://developer.mozilla.org/" target="_blank">
+        <div class="resource-icon">🌐</div>
+        <div>
+          <h3>MDN Web Docs</h3>
+          <p class="muted">
+            Web development documentation.
+          </p>
+        </div>
+      </a>
 
-</div>
+      <a class="card resource" href="https://www.khanacademy.org/" target="_blank">
+        <div class="resource-icon">📚</div>
+        <div>
+          <h3>Khan Academy</h3>
+          <p class="muted">
+            Free learning resources.
+          </p>
+        </div>
+      </a>
+
+      <a class="card resource" href="https://www.github.com/" target="_blank">
+        <div class="resource-icon">💻</div>
+        <div>
+          <h3>GitHub</h3>
+          <p class="muted">
+            Learn and explore coding projects.
+          </p>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+
 </section>
 
 
-<!-- SETTINGS -->
-<section id="settings">
-<div class="container reveal">
+<!-- DEVELOPER HISTORY -->
 
-<h2 class="section-title">⚙️ Personal <span>Settings</span></h2>
+<section class="developer" id="developer">
 
-<div class="grid settings-grid">
+  <div class="container">
 
-<div class="card">
-<h3>🌈 Accent Color</h3>
-<br>
+    <h2 class="section-title">👨‍💻 Developer History</h2>
 
-<div class="color-row">
-<div class="color" style="background:#6c63ff"
-onclick="setAccent('#6c63ff')"></div>
+    <p class="section-sub">
+      The person behind BM — Beyond Mastery.
+    </p>
 
-<div class="color" style="background:#00d4ff"
-onclick="setAccent('#00d4ff')"></div>
+    <div class="dev-grid">
 
-<div class="color" style="background:#ff3cac"
-onclick="setAccent('#ff3cac')"></div>
+      <div class="card">
 
-<div class="color" style="background:#00c853"
-onclick="setAccent('#00c853')"></div>
+        <img
+          class="profile-img"
+          src="IMG_20260218_125513_403.webp"
+          alt="Himanshu Shekhar">
 
-<div class="color" style="background:#ff9800"
-onclick="setAccent('#ff9800')"></div>
+      </div>
 
-<div class="color" style="background:#e91e63"
-onclick="setAccent('#e91e63')"></div>
-</div>
-</div>
+      <div>
 
-<div class="card">
-<h3>🔊 Interface Sound</h3>
-<br>
-<button class="btn" onclick="toggleSound()" id="soundBtn">
-Sound: OFF
-</button>
-</div>
+        <div class="dev-name">
+          Himanshu Shekhar
+        </div>
 
-<div class="card">
-<h3>📱 Layout</h3>
-<br>
-<button class="btn secondary" onclick="toast('Responsive mobile + desktop mode is active.')">
-Responsive Mode ✓
-</button>
-</div>
+        <div class="dev-tag">
+          Student • Coding Learner • Future Builder
+        </div>
 
-<div class="card">
-<h3>🔒 Privacy</h3>
-<br>
-<p class="muted">
-Your dashboard data is stored locally in this browser.
-No login system or private server is used.
-</p>
-</div>
+        <p class="muted">
+          Himanshu Shekhar is the developer behind BM —
+          Beyond Mastery. This section represents the
+          coding journey, projects and technology learning
+          behind the platform.
+        </p>
 
-</div>
+        <div class="dev-skills">
 
-</div>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Web Development</span>
+          <span class="tag">GitHub</span>
+
+        </div>
+
+        <div class="hero-buttons">
+
+          <button
+            class="btn btn-primary"
+            onclick="showModal(
+              'Developer Journey',
+              'Started learning web development and building projects with HTML, CSS and JavaScript.'
+            )">
+            View Journey
+          </button>
+
+          <button
+            class="btn btn-secondary"
+            onclick="showModal(
+              'Developer Projects',
+              'Future projects can be added here as BM continues to grow.'
+            )">
+            Projects
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
 
-<!-- EXPORT -->
-<section>
-<div class="container reveal">
-
-<h2 class="section-title">📦 Portfolio <span>Export</span></h2>
-
-<div class="card" style="text-align:center">
-
-<p class="muted">
-Create a downloadable copy of your profile and local progress.
-</p>
-
-<br>
-
-<div class="tool-buttons">
-<button class="btn" onclick="downloadProfile()">📄 Download Profile</button>
-<button class="btn" onclick="downloadPortfolio()">🌐 Export HTML</button>
-<button class="btn secondary" onclick="backupData()">💾 Backup Data</button>
-</div>
-
-<br>
-
-<input type="file" id="restoreFile" accept=".json"
-style="display:none" onchange="restoreData(event)">
-
-<button class="btn secondary" onclick="document.getElementById('restoreFile').click()">
-📥 Restore Backup
-</button>
-
-</div>
-
-</div>
-</section>
-
-
-<!-- CONTACT -->
-<section id="contact">
-<div class="container reveal">
-
-<h2 class="section-title">Contact <span>Me</span></h2>
-
-<div class="card" style="text-align:center">
-
-<p class="muted">
-For project-related contact:
-</p>
-
-<h3 id="emailText">your@email.com</h3>
-
-<br>
-
-<button class="btn" onclick="copyEmail()">📋 Copy Email</button>
-
-</div>
-
-</div>
-</section>
-
-</main>
-
+<!-- FOOTER -->
 
 <footer>
-<div class="container">
-<p>© <span id="year"></span> Himanshu Shekhar</p>
-<p>Built with HTML • CSS • JavaScript</p>
-</div>
+
+  <div class="container">
+
+    <strong>BM — Beyond Mastery</strong>
+
+    <p style="margin-top:8px;">
+      Learn Beyond Limits.
+    </p>
+
+    <p style="margin-top:15px;font-size:12px;">
+      © <span id="year"></span> BM — Beyond Mastery
+    </p>
+
+  </div>
+
 </footer>
 
 
 <!-- MOBILE NAV -->
-<div class="mobile-bottom">
-<div>
-<button onclick="goTo('home')">🏠<br>Home</button>
-<button onclick="goTo('dashboard')">📊<br>Dashboard</button>
-<button onclick="goTo('projects')">💻<br>Projects</button>
-<button onclick="goTo('learning')">📚<br>Learn</button>
-<button onclick="goTo('settings')">⚙️<br>Settings</button>
-</div>
+
+<div class="mobile-nav">
+
+  <a href="#home">
+    <span>🏠</span>
+    Home
+  </a>
+
+  <a href="#dashboard">
+    <span>📊</span>
+    Dashboard
+  </a>
+
+  <a href="#study">
+    <span>📚</span>
+    Study
+  </a>
+
+  <a href="#practice">
+    <span>🧠</span>
+    Practice
+  </a>
+
+  <a href="#developer">
+    <span>👨‍💻</span>
+    Developer
+  </a>
+
 </div>
 
 
-<!-- PROJECT MODAL -->
-<div class="modal" id="projectModal" onclick="closeOutside(event)">
-<div class="modal-box glass">
-<button class="close" onclick="closeModal()">×</button>
-<h2 id="modalTitle"></h2>
-<br>
-<p class="muted" id="modalText"></p>
-<br>
-<button class="btn" onclick="closeModal()">Close</button>
-</div>
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+  <div class="modal-box">
+
+    <button class="modal-close" onclick="closeModal()">
+      ×
+    </button>
+
+    <h2 id="modalTitle"></h2>
+
+    <p
+      id="modalText"
+      class="muted"
+      style="margin-top:15px;white-space:pre-line;">
+    </p>
+
+  </div>
+
 </div>
 
 
 <!-- TOAST -->
-<div id="toast"></div>
+
+<div class="toast" id="toast"></div>
 
 
 <script>
 
 /* =========================
-   STORAGE HELPERS
+   BASIC SETUP
 ========================= */
 
-function get(key,fallback){
-  try{
-    const value=localStorage.getItem(key);
-    return value===null?fallback:JSON.parse(value);
-  }catch{
-    return fallback;
-  }
-}
+const $ = id => document.getElementById(id);
 
-function save(key,value){
-  localStorage.setItem(key,JSON.stringify(value));
-}
+$("year").textContent = new Date().getFullYear();
 
 
 /* =========================
-   INITIAL DATA
+   MOBILE MENU
 ========================= */
 
-let xp=get("xp",0);
-let streak=get("streak",0);
-let lastActive=get("lastActive","");
-let goalMinutes=get("goalMinutes",60);
-let goalProgress=get("goalProgress",0);
+function toggleMenu(){
 
-let tasks=get("tasks",[]);
-let plans=get("plans",[]);
-let favoriteProjects=get("favorites",[]);
+  $("navLinks").classList.toggle("show");
 
-let codingSeconds=get("codingSeconds",0);
-let codingInterval=null;
-
-let pomoSeconds=get("pomoSeconds",1500);
-let pomoInterval=null;
-
-let sound=get("sound",false);
-
-
-/* =========================
-   LOADER
-========================= */
-
-window.addEventListener("load",()=>{
-  setTimeout(()=>{
-    document.getElementById("loader").style.display="none";
-  },700);
-
-  init();
-});
-
-
-function init(){
-
-  applyTheme();
-  applyAccent();
-
-  document.getElementById("year").textContent=
-    new Date().getFullYear();
-
-  updateDate();
-  typeEffect();
-
-  document.getElementById("goalInput").value=goalMinutes;
-
-  renderTasks();
-  renderPlans();
-  loadNotes();
-  updateDashboard();
-  updateCodingTimer();
-  updatePomodoro();
-  checkAchievements();
-
-  setInterval(updateDate,60000);
-}
-
-
-/* =========================
-   DATE
-========================= */
-
-function updateDate(){
-
-  const now=new Date();
-
-  document.getElementById("today").textContent=
-    now.toLocaleDateString("en-IN",{
-      weekday:"long",
-      year:"numeric",
-      month:"long",
-      day:"numeric"
-    });
-}
-
-
-/* =========================
-   TYPING
-========================= */
-
-const words=[
-  "💻 Coding Learner",
-  "🌐 Web Developer",
-  "🚀 Future Builder",
-  "🧠 Lifelong Learner"
-];
-
-let wordIndex=0;
-let charIndex=0;
-let deleting=false;
-
-function typeEffect(){
-
-  const el=document.getElementById("typing");
-  const word=words[wordIndex];
-
-  if(!deleting){
-    el.textContent=word.substring(0,charIndex++);
-    if(charIndex>word.length){
-      deleting=true;
-      setTimeout(typeEffect,1200);
-      return;
-    }
-  }else{
-    el.textContent=word.substring(0,charIndex--);
-    if(charIndex<0){
-      deleting=false;
-      wordIndex=(wordIndex+1)%words.length;
-    }
-  }
-
-  setTimeout(typeEffect,deleting?45:80);
 }
 
 
@@ -1351,188 +1416,19 @@ function typeEffect(){
 
 function toggleTheme(){
 
-  const light=document.body.classList.toggle("light");
+  document.body.classList.toggle("light");
 
   localStorage.setItem(
-    "theme",
-    light?"light":"dark"
+    "bm_theme",
+    document.body.classList.contains("light")
+      ? "light"
+      : "dark"
   );
 
-  toast(light?"Light theme enabled":"Dark theme enabled");
 }
 
-function applyTheme(){
-
-  if(localStorage.getItem("theme")==="light"){
-    document.body.classList.add("light");
-  }
-}
-
-
-/* =========================
-   ACCENT
-========================= */
-
-function setAccent(color){
-
-  document.documentElement.style.setProperty(
-    "--accent",color
-  );
-
-  localStorage.setItem("accent",color);
-
-  toast("Accent color changed");
-}
-
-function applyAccent(){
-
-  const color=localStorage.getItem("accent");
-
-  if(color){
-    document.documentElement.style.setProperty(
-      "--accent",color
-    );
-  }
-}
-
-
-/* =========================
-   SOUND
-========================= */
-
-function toggleSound(){
-
-  sound=!sound;
-  save("sound",sound);
-
-  document.getElementById("soundBtn").textContent=
-    "Sound: "+(sound?"ON":"OFF");
-
-  beep();
-}
-
-function beep(){
-
-  if(!sound)return;
-
-  try{
-    const ctx=new AudioContext();
-    const osc=ctx.createOscillator();
-    const gain=ctx.createGain();
-
-    osc.frequency.value=600;
-    gain.gain.value=.04;
-
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-
-    osc.start();
-    osc.stop(ctx.currentTime+.08);
-  }catch{}
-}
-
-
-/* =========================
-   MOBILE MENU
-========================= */
-
-function toggleMenu(){
-  document.getElementById("navLinks").classList.toggle("open");
-}
-
-function goTo(id){
-  document.getElementById(id).scrollIntoView({
-    behavior:"smooth"
-  });
-
-  document.getElementById("navLinks").classList.remove("open");
-}
-
-
-/* =========================
-   PROJECT FILTER
-========================= */
-
-function filterProjects(category,button){
-
-  document.querySelectorAll(".project").forEach(project=>{
-
-    const categories=project.dataset.category;
-    const title=project.dataset.title;
-
-    let show=false;
-
-    if(category==="all"){
-      show=true;
-    }else if(category==="favorite"){
-      show=favoriteProjects.includes(title);
-    }else{
-      show=categories.includes(category);
-    }
-
-    project.style.display=show?"block":"none";
-  });
-
-  document.querySelectorAll(".filters .btn")
-    .forEach(b=>b.style.opacity=".6");
-
-  if(button)button.style.opacity="1";
-}
-
-
-/* =========================
-   FAVORITES
-========================= */
-
-function favoriteProject(button){
-
-  const project=button.closest(".project");
-  const title=project.dataset.title;
-
-  if(favoriteProjects.includes(title)){
-
-    favoriteProjects=
-      favoriteProjects.filter(x=>x!==title);
-
-    button.textContent="☆";
-
-    toast("Removed from favorites");
-
-  }else{
-
-    favoriteProjects.push(title);
-
-    button.textContent="★";
-
-    toast("Project added to favorites");
-  }
-
-  save("favorites",favoriteProjects);
-}
-
-
-/* =========================
-   PROJECT MODAL
-========================= */
-
-function openProject(title,text){
-
-  document.getElementById("modalTitle").textContent=title;
-  document.getElementById("modalText").textContent=text;
-
-  document.getElementById("projectModal").style.display="grid";
-}
-
-function closeModal(){
-  document.getElementById("projectModal").style.display="none";
-}
-
-function closeOutside(e){
-  if(e.target.id==="projectModal")closeModal();
-}
-
-function skillInfo(title,text){
-  openProject(title,text);
+if(localStorage.getItem("bm_theme") === "light"){
+  document.body.classList.add("light");
 }
 
 
@@ -1544,135 +1440,150 @@ let toastTimer;
 
 function toast(message){
 
-  const box=document.getElementById("toast");
+  const box = $("toast");
 
-  box.textContent=message;
+  box.textContent = message;
   box.classList.add("show");
 
   clearTimeout(toastTimer);
 
-  toastTimer=setTimeout(()=>{
+  toastTimer = setTimeout(()=>{
     box.classList.remove("show");
   },2500);
+
 }
 
 
 /* =========================
-   CODING TIMER
+   MODAL
 ========================= */
 
-function startCoding(){
+function showModal(title,text){
 
-  if(codingInterval)return;
+  $("modalTitle").textContent = title;
+  $("modalText").textContent = text;
 
-  activity();
+  $("modal").classList.add("show");
 
-  codingInterval=setInterval(()=>{
+}
 
-    codingSeconds++;
+function closeModal(){
 
-    localStorage.setItem(
-      "codingSeconds",
-      codingSeconds
-    );
+  $("modal").classList.remove("show");
 
-    if(codingSeconds%60===0){
-      goalProgress++;
-      xp++;
-      save("goalProgress",goalProgress);
-      save("xp",xp);
-      updateDashboard();
-      checkAchievements();
+}
+
+$("modal").addEventListener("click",e=>{
+
+  if(e.target === $("modal")){
+    closeModal();
+  }
+
+});
+
+
+/* =========================
+   STUDY TIMER
+========================= */
+
+let timerSeconds = 25 * 60;
+let timerInterval = null;
+let timerRunning = false;
+
+function updateTimer(){
+
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+
+  $("timerDisplay").textContent =
+    String(minutes).padStart(2,"0") + ":" +
+    String(seconds).padStart(2,"0");
+
+}
+
+function startTimer(){
+
+  if(timerRunning) return;
+
+  timerRunning = true;
+
+  timerInterval = setInterval(()=>{
+
+    if(timerSeconds > 0){
+
+      timerSeconds--;
+
+      updateTimer();
+
+    }else{
+
+      clearInterval(timerInterval);
+
+      timerRunning = false;
+
+      addStudyMinute(25);
+
+      toast("🎉 Focus session completed!");
+
+      timerSeconds = 25 * 60;
+
+      updateTimer();
+
     }
-
-    updateCodingTimer();
 
   },1000);
 
-  toast("Coding timer started");
 }
 
-function pauseCoding(){
+function pauseTimer(){
 
-  clearInterval(codingInterval);
-  codingInterval=null;
+  clearInterval(timerInterval);
 
-  toast("Coding timer paused");
+  timerRunning = false;
+
 }
 
-function resetCoding(){
+function resetTimer(){
 
-  pauseCoding();
+  clearInterval(timerInterval);
 
-  codingSeconds=0;
+  timerRunning = false;
 
-  localStorage.setItem("codingSeconds",0);
+  timerSeconds = 25 * 60;
 
-  updateCodingTimer();
+  updateTimer();
+
 }
 
-function updateCodingTimer(){
+function startStudyTimer(){
 
-  const h=Math.floor(codingSeconds/3600);
-  const m=Math.floor((codingSeconds%3600)/60);
-  const s=codingSeconds%60;
+  document
+    .getElementById("study")
+    .scrollIntoView({behavior:"smooth"});
 
-  document.getElementById("codingTimer").textContent=
-    String(h).padStart(2,"0")+":"+
-    String(m).padStart(2,"0")+":"+
-    String(s).padStart(2,"0");
+  setTimeout(startTimer,500);
+
 }
 
 
 /* =========================
-   POMODORO
+   STUDY MINUTES
 ========================= */
 
-function startPomodoro(){
+function addStudyMinute(minutes){
 
-  if(pomoInterval)return;
+  let total =
+    Number(localStorage.getItem("bm_study_minutes") || 0);
 
-  pomoInterval=setInterval(()=>{
+  total += minutes;
 
-    pomoSeconds--;
+  localStorage.setItem(
+    "bm_study_minutes",
+    total
+  );
 
-    if(pomoSeconds<=0){
+  updateDashboard();
 
-      pausePomodoro();
-      toast("🍅 Pomodoro session complete!");
-      beep();
-
-      pomoSeconds=1500;
-    }
-
-    updatePomodoro();
-
-  },1000);
-}
-
-function pausePomodoro(){
-
-  clearInterval(pomoInterval);
-  pomoInterval=null;
-}
-
-function resetPomodoro(){
-
-  pausePomodoro();
-
-  pomoSeconds=1500;
-
-  updatePomodoro();
-}
-
-function updatePomodoro(){
-
-  const min=Math.floor(pomoSeconds/60);
-  const sec=pomoSeconds%60;
-
-  document.getElementById("pomodoro").textContent=
-    String(min).padStart(2,"0")+":"+
-    String(sec).padStart(2,"0");
 }
 
 
@@ -1680,372 +1591,31 @@ function updatePomodoro(){
    DAILY GOAL
 ========================= */
 
-function setGoal(){
+function setDailyGoal(){
 
-  const value=
-    parseInt(document.getElementById("goalInput").value);
-
-  if(!value || value<1){
-    toast("Enter a valid goal");
-    return;
-  }
-
-  goalMinutes=value;
-
-  save("goalMinutes",goalMinutes);
-
-  toast("Daily goal updated");
-
-  updateDashboard();
-}
-
-function completeGoal(){
-
-  goalProgress+=10;
-
-  xp+=10;
-
-  save("goalProgress",goalProgress);
-  save("xp",xp);
-
-  activity();
-
-  updateDashboard();
-  checkAchievements();
-
-  toast("+10 minutes added 🎯");
-}
-
-
-/* =========================
-   TASK MANAGER
-========================= */
-
-function addTask(){
-
-  const input=document.getElementById("taskInput");
-  const priority=document.getElementById("taskPriority");
-
-  const text=input.value.trim();
-
-  if(!text){
-    toast("Enter a task");
-    return;
-  }
-
-  tasks.push({
-    text,
-    priority:priority.value,
-    done:false,
-    created:new Date().toISOString()
-  });
-
-  save("tasks",tasks);
-
-  input.value="";
-
-  renderTasks();
-  updateDashboard();
-
-  activity();
-
-  toast("Task added ✓");
-}
-
-function renderTasks(){
-
-  const box=document.getElementById("taskList");
-
-  box.innerHTML="";
-
-  tasks.forEach((task,index)=>{
-
-    const row=document.createElement("div");
-
-    row.className="task "+(task.done?"done":"");
-
-    row.innerHTML=`
-      <input type="checkbox"
-        ${task.done?"checked":""}
-        onchange="toggleTask(${index})">
-
-      <span style="flex:1">${escapeHTML(task.text)}</span>
-
-      <span class="task-priority ${task.priority}">
-        ${task.priority}
-      </span>
-
-      <button class="icon-btn"
-        onclick="deleteTask(${index})">×</button>
-    `;
-
-    box.appendChild(row);
-  });
-}
-
-function toggleTask(index){
-
-  tasks[index].done=!tasks[index].done;
-
-  save("tasks",tasks);
-
-  if(tasks[index].done){
-
-    xp+=5;
-
-    save("xp",xp);
-
-    activity();
-
-    toast("+5 XP");
-  }
-
-  renderTasks();
-  updateDashboard();
-  checkAchievements();
-}
-
-function deleteTask(index){
-
-  tasks.splice(index,1);
-
-  save("tasks",tasks);
-
-  renderTasks();
-  updateDashboard();
-}
-
-function clearCompleted(){
-
-  tasks=tasks.filter(t=>!t.done);
-
-  save("tasks",tasks);
-
-  renderTasks();
-  updateDashboard();
-
-  toast("Completed tasks cleared");
-}
-
-function sortTasks(){
-
-  const order={
-    high:1,
-    medium:2,
-    low:3
-  };
-
-  tasks.sort(
-    (a,b)=>order[a.priority]-order[b.priority]
+  const value = prompt(
+    "Daily study goal कितने minutes रखना चाहते हो?",
+    localStorage.getItem("bm_goal") || "60"
   );
 
-  save("tasks",tasks);
+  if(!value) return;
 
-  renderTasks();
+  const goal = Math.max(1,Number(value));
+
+  localStorage.setItem("bm_goal",goal);
+
+  updateDashboard();
+
+  toast("🎯 Daily goal updated!");
+
 }
 
-function escapeHTML(text){
+function getGoal(){
 
-  const div=document.createElement("div");
-
-  div.textContent=text;
-
-  return div.innerHTML;
-}
-
-
-/* =========================
-   STUDY PLANNER
-========================= */
-
-function addPlan(){
-
-  const date=document.getElementById("planDate").value;
-  const subject=document.getElementById("planSubject").value.trim();
-  const time=document.getElementById("planTime").value;
-
-  if(!date || !subject){
-    toast("Enter date and topic");
-    return;
-  }
-
-  plans.push({
-    date,
-    subject,
-    time
-  });
-
-  save("plans",plans);
-
-  document.getElementById("planSubject").value="";
-
-  renderPlans();
-
-  toast("Study plan added");
-}
-
-function renderPlans(){
-
-  const box=document.getElementById("planList");
-
-  box.innerHTML="";
-
-  plans
-    .sort((a,b)=>
-      (a.date+a.time).localeCompare(b.date+b.time)
-    )
-    .forEach((plan,index)=>{
-
-      const row=document.createElement("div");
-
-      row.className="plan-item";
-
-      row.innerHTML=`
-        <span>
-          📅 ${escapeHTML(plan.date)}
-          ${plan.time?" • "+escapeHTML(plan.time):""}
-          <br>
-          📚 ${escapeHTML(plan.subject)}
-        </span>
-
-        <button class="icon-btn"
-          onclick="deletePlan(${index})">×</button>
-      `;
-
-      box.appendChild(row);
-    });
-}
-
-function deletePlan(index){
-
-  plans.splice(index,1);
-
-  save("plans",plans);
-
-  renderPlans();
-}
-
-
-/* =========================
-   NOTES
-========================= */
-
-function loadNotes(){
-
-  document.getElementById("notes").value=
-    localStorage.getItem("notes")||"";
-}
-
-function saveNotes(){
-
-  const value=document.getElementById("notes").value;
-
-  localStorage.setItem("notes",value);
-
-  document.getElementById("noteStatus").textContent=
-    "Saved at "+new Date().toLocaleTimeString();
-
-  toast("Notes saved ✓");
-}
-
-document.getElementById("notes").addEventListener(
-  "input",
-  ()=>{
-    localStorage.setItem(
-      "notes",
-      document.getElementById("notes").value
-    );
-  }
-);
-
-function clearNotes(){
-
-  if(!confirm("Clear all notes?"))return;
-
-  document.getElementById("notes").value="";
-  localStorage.removeItem("notes");
-
-  toast("Notes cleared");
-}
-
-function downloadNotes(){
-
-  const text=
-    document.getElementById("notes").value;
-
-  downloadFile(
-    "Himanshu-Notes.txt",
-    text,
-    "text/plain"
-  );
-}
-
-
-/* =========================
-   QUOTES
-========================= */
-
-const quotes=[
-"Small progress every day becomes big progress over time.",
-"Learn → Build → Improve → Repeat.",
-"Consistency beats perfection.",
-"Every expert was once a beginner.",
-"Your future is built by what you do today.",
-"Code today. Improve tomorrow.",
-"Keep learning. Keep building."
-];
-
-function newQuote(){
-
-  const q=
-    quotes[Math.floor(Math.random()*quotes.length)];
-
-  document.getElementById("quote").textContent=
-    '"'+q+'"';
-
-  toast("New quote ✨");
-}
-
-
-/* =========================
-   XP / LEVEL / DASHBOARD
-========================= */
-
-function updateDashboard(){
-
-  const level=
-    Math.floor(xp/100)+1;
-
-  const percent=Math.min(
-    100,
-    Math.round(
-      (goalProgress/goalMinutes)*100
-    )
+  return Number(
+    localStorage.getItem("bm_goal") || 60
   );
 
-  document.getElementById("xp").textContent=xp;
-  document.getElementById("level").textContent=level;
-  document.getElementById("streak").textContent=streak;
-  document.getElementById("goalPercent").textContent=percent;
-
-  document.getElementById("goalBar").style.width=
-    percent+"%";
-
-  document.getElementById("statXP").textContent=xp;
-
-  document.getElementById("statTasks").textContent=
-    tasks.filter(t=>t.done).length;
-
-  document.getElementById("weekMinutes").textContent=
-    Math.floor(codingSeconds/60);
-
-  document.getElementById("weekTasks").textContent=
-    tasks.filter(t=>t.done).length;
-
-  document.getElementById("weekXP").textContent=xp;
-
-  document.getElementById("weekSessions") .textContent=
-    codingSeconds>0?1:0;
 }
 
 
@@ -2053,337 +1623,384 @@ function updateDashboard(){
    STREAK
 ========================= */
 
-function activity(){
+function updateStreak(){
 
-  const today=
+  const today =
     new Date().toISOString().slice(0,10);
 
-  if(lastActive===today)return;
+  const last =
+    localStorage.getItem("bm_last_active");
 
-  const previous=
-    new Date();
+  let streak =
+    Number(localStorage.getItem("bm_streak") || 0);
 
-  previous.setDate(
-    previous.getDate()-1
-  );
+  if(last !== today){
 
-  const yesterday=
-    previous.toISOString().slice(0,10);
+    if(last){
 
-  if(lastActive===yesterday){
-    streak++;
-  }else{
-    streak=1;
+      const lastDate = new Date(last);
+      const current = new Date(today);
+
+      const difference =
+        Math.floor(
+          (current-lastDate)/(1000*60*60*24)
+        );
+
+      if(difference === 1){
+        streak++;
+      }else{
+        streak = 1;
+      }
+
+    }else{
+      streak = 1;
+    }
+
+    localStorage.setItem("bm_streak",streak);
+    localStorage.setItem("bm_last_active",today);
+
   }
 
-  lastActive=today;
+}
 
-  save("streak",streak);
-  save("lastActive",lastActive);
+
+/* =========================
+   DASHBOARD
+========================= */
+
+function updateDashboard(){
+
+  updateStreak();
+
+  const minutes =
+    Number(localStorage.getItem("bm_study_minutes") || 0);
+
+  const streak =
+    Number(localStorage.getItem("bm_streak") || 0);
+
+  const tasks =
+    JSON.parse(
+      localStorage.getItem("bm_tasks") || "[]"
+    );
+
+  const completed =
+    tasks.filter(task=>task.done).length;
+
+  const goal = getGoal();
+
+  const percentage =
+    Math.min(
+      100,
+      Math.round((minutes / goal) * 100)
+    );
+
+  $("studyMinutes").textContent = minutes;
+  $("streak").textContent = streak;
+  $("completedTasks").textContent = completed;
+  $("goalText").textContent = percentage + "%";
+
+  $("dailyProgress").style.width =
+    percentage + "%";
+
+  $("heroProgress").style.width =
+    percentage + "%";
+
+  $("progressText").textContent =
+    minutes >= goal
+      ? "🎉 Daily goal completed!"
+      : `${minutes} / ${goal} study minutes completed.`;
+
+}
+
+updateDashboard();
+
+
+/* =========================
+   TASK MANAGER
+========================= */
+
+function getTasks(){
+
+  return JSON.parse(
+    localStorage.getItem("bm_tasks") || "[]"
+  );
+
+}
+
+function saveTasks(tasks){
+
+  localStorage.setItem(
+    "bm_tasks",
+    JSON.stringify(tasks)
+  );
+
+}
+
+function addTask(){
+
+  const input = $("taskInput");
+
+  const text = input.value.trim();
+
+  if(!text){
+
+    toast("Please enter a task.");
+
+    return;
+
+  }
+
+  const tasks = getTasks();
+
+  tasks.push({
+    text:text,
+    done:false
+  });
+
+  saveTasks(tasks);
+
+  input.value = "";
+
+  renderTasks();
 
   updateDashboard();
+
+  toast("✅ Task added!");
+
 }
 
+function toggleTask(index){
 
-/* =========================
-   ACHIEVEMENTS
-========================= */
+  const tasks = getTasks();
 
-function checkAchievements(){
+  tasks[index].done =
+    !tasks[index].done;
 
-  if(lastActive){
-    document.getElementById("badge1")
-      .classList.remove("locked");
-  }
+  saveTasks(tasks);
 
-  if(streak>=3){
-    document.getElementById("badge2")
-      .classList.remove("locked");
-  }
+  renderTasks();
 
-  if(xp>=100){
-    document.getElementById("badge3")
-      .classList.remove("locked");
-  }
+  updateDashboard();
 
-  if(Math.floor(xp/100)+1>=5){
-    document.getElementById("badge4")
-      .classList.remove("locked");
-  }
 }
 
+function deleteTask(index){
 
-/* =========================
-   GLOBAL SEARCH
-========================= */
+  const tasks = getTasks();
 
-function globalSearch(){
+  tasks.splice(index,1);
 
-  const query=
-    document.getElementById("globalInput")
-      .value.toLowerCase().trim();
+  saveTasks(tasks);
 
-  const box=
-    document.getElementById("searchResults");
+  renderTasks();
 
-  if(!query){
+  updateDashboard();
 
-    box.style.display="none";
-    box.innerHTML="";
-    return;
-  }
+}
 
-  const data=[
-    ["About","about"],
-    ["Dashboard","dashboard"],
-    ["Projects","projects"],
-    ["Skills","skills"],
-    ["Learning","learning"],
-    ["Tools","tools"],
-    ["Study Planner","learning"],
-    ["Notes","learning"],
-    ["Achievements","learning"],
-    ["Resources","learning"],
-    ["Settings","settings"],
-    ["Contact","contact"]
-  ];
+function renderTasks(){
 
-  const results=data.filter(x=>
-    x[0].toLowerCase().includes(query)
-  );
+  const tasks = getTasks();
 
-  box.style.display="block";
+  const list = $("taskList");
 
-  if(!results.length){
+  list.innerHTML = "";
 
-    box.innerHTML=
-      `<p class="muted">No results found.</p>`;
+  if(tasks.length === 0){
+
+    list.innerHTML =
+      `<p class="muted">No tasks yet. Add your first study task.</p>`;
 
     return;
+
   }
 
-  box.innerHTML=results.map(x=>`
-    <div class="search-result"
-      onclick="goTo('${x[1]}')">
-      🔎 ${x[0]}
-    </div>
-  `).join("");
+  tasks.forEach((task,index)=>{
+
+    const row = document.createElement("div");
+
+    row.className =
+      "task" + (task.done ? " done" : "");
+
+    row.innerHTML = `
+      <input
+        type="checkbox"
+        ${task.done ? "checked" : ""}
+        onchange="toggleTask(${index})">
+
+      <span>${escapeHTML(task.text)}</span>
+
+      <button
+        class="delete"
+        onclick="deleteTask(${index})">
+        Delete
+      </button>
+    `;
+
+    list.appendChild(row);
+
+  });
+
+}
+
+function escapeHTML(text){
+
+  return text
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+renderTasks();
+
+
+/* =========================
+   NOTES
+========================= */
+
+$("notes").value =
+  localStorage.getItem("bm_notes") || "";
+
+$("notes").addEventListener("input",()=>{
+
+  localStorage.setItem(
+    "bm_notes",
+    $("notes").value
+  );
+
+});
+
+function clearNotes(){
+
+  if(confirm("Clear all notes?")){
+
+    $("notes").value = "";
+
+    localStorage.removeItem("bm_notes");
+
+    toast("📝 Notes cleared.");
+
+  }
+
 }
 
 
 /* =========================
-   EXPORT
+   MARKS CALCULATOR
 ========================= */
 
-function downloadFile(filename,content,type){
+function calculateMarks(){
 
-  const blob=new Blob(
-    [content],
-    {type}
-  );
+  const total =
+    Number($("totalMarks").value);
 
-  const url=URL.createObjectURL(blob);
+  const obtained =
+    Number($("obtainedMarks").value);
 
-  const a=document.createElement("a");
+  if(
+    !total ||
+    obtained < 0 ||
+    obtained > total
+  ){
 
-  a.href=url;
-  a.download=filename;
+    $("calcResult").textContent =
+      "Enter valid marks.";
 
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
+    return;
 
-  URL.revokeObjectURL(url);
-}
+  }
 
-function downloadProfile(){
+  const percentage =
+    (obtained / total) * 100;
 
-  const text=`
-HIMANSHU SHEKHAR
-================
+  $("calcResult").textContent =
+    percentage.toFixed(2) + "%";
 
-Coding Learner
-Web Developer
-Future Builder
-
-Level: ${Math.floor(xp/100)+1}
-XP: ${xp}
-Streak: ${streak}
-
-Skills:
-HTML - 70%
-CSS - 60%
-JavaScript - 30%
-Web Development - 40%
-
-Projects:
-My First Website
-Portfolio Website
-Future Web Project
-`;
-
-  downloadFile(
-    "Himanshu-Shekhar-Profile.txt",
-    text,
-    "text/plain"
-  );
-
-  toast("Profile downloaded");
-}
-
-function downloadPortfolio(){
-
-  const html=`
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Himanshu Shekhar Portfolio</title>
-<style>
-body{
-font-family:Arial;
-max-width:800px;
-margin:50px auto;
-padding:20px;
-line-height:1.7;
-}
-h1{color:#6c63ff}
-</style>
-</head>
-<body>
-<h1>Himanshu Shekhar</h1>
-<h2>Coding Learner • Web Developer • Future Builder</h2>
-<p>Learning coding and building web projects.</p>
-<h2>Skills</h2>
-<ul>
-<li>HTML - 70%</li>
-<li>CSS - 60%</li>
-<li>JavaScript - 30%</li>
-<li>Web Development - 40%</li>
-</ul>
-<h2>Projects</h2>
-<ul>
-<li>My First Website</li>
-<li>Portfolio Website</li>
-<li>Future Web Project</li>
-</ul>
-</body>
-</html>
-`;
-
-  downloadFile(
-    "Himanshu-Shekhar-Portfolio.html",
-    html,
-    "text/html"
-  );
-
-  toast("Portfolio exported");
 }
 
 
 /* =========================
-   BACKUP / RESTORE
+   EXAM COUNTDOWN
 ========================= */
 
-function backupData(){
+$("examDate").addEventListener(
+  "change",
+  updateExam
+);
 
-  const data={
-    theme:localStorage.getItem("theme"),
-    accent:localStorage.getItem("accent"),
-    sound,
-    xp,
-    streak,
-    lastActive,
-    goalMinutes,
-    goalProgress,
-    tasks,
-    plans,
-    favorites:favoriteProjects,
-    notes:localStorage.getItem("notes"),
-    codingSeconds
-  };
+function updateExam(){
 
-  downloadFile(
-    "Himanshu-Portfolio-Backup.json",
-    JSON.stringify(data,null,2),
-    "application/json"
+  const date = $("examDate").value;
+
+  if(!date){
+
+    $("daysLeft").textContent = "—";
+
+    return;
+
+  }
+
+  const target =
+    new Date(date + "T00:00:00");
+
+  const now = new Date();
+
+  const difference =
+    Math.ceil(
+      (target-now)/(1000*60*60*24)
+    );
+
+  $("daysLeft").textContent =
+    Math.max(0,difference);
+
+}
+
+const savedExam =
+  localStorage.getItem("bm_exam");
+
+if(savedExam){
+
+  $("examDate").value = savedExam;
+  updateExam();
+
+}
+
+$("examDate").addEventListener("change",()=>{
+
+  localStorage.setItem(
+    "bm_exam",
+    $("examDate").value
   );
 
-  toast("Backup created 💾");
-}
-
-function restoreData(event){
-
-  const file=event.target.files[0];
-
-  if(!file)return;
-
-  const reader=new FileReader();
-
-  reader.onload=function(){
-
-    try{
-
-      const data=
-        JSON.parse(reader.result);
-
-      Object.keys(data).forEach(key=>{
-
-        if(key==="notes"){
-          localStorage.setItem("notes",data[key]||"");
-        }else{
-          localStorage.setItem(
-            key,
-            JSON.stringify(data[key])
-          );
-        }
-
-      });
-
-      toast("Backup restored. Reloading...");
-
-      setTimeout(()=>{
-        location.reload();
-      },1000);
-
-    }catch{
-      toast("Invalid backup file");
-    }
-  };
-
-  reader.readAsText(file);
-}
+});
 
 
 /* =========================
-   EMAIL
+   REVISION
 ========================= */
 
-function copyEmail(){
+let revision = 35;
 
-  const email=
-    document.getElementById("emailText").textContent;
+function increaseRevision(){
 
-  navigator.clipboard.writeText(email)
-    .then(()=>{
-      toast("Email copied 📋");
-    })
-    .catch(()=>{
-      toast("Copy failed");
-    });
-}
+  revision += 5;
 
+  if(revision > 100){
+    revision = 100;
+  }
 
-/* =========================
-   SETTINGS
-========================= */
+  $("revisionProgress").style.width =
+    revision + "%";
 
-function openSettings(){
+  toast(
+    revision === 100
+      ? "🏆 Revision completed!"
+      : "📚 Revision progress updated!"
+  );
 
-  document.getElementById("settings")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
 }
 
 
@@ -2393,105 +2010,60 @@ function openSettings(){
 
 window.addEventListener("scroll",()=>{
 
-  const scrollTop=
+  const scrollTop =
     document.documentElement.scrollTop;
 
-  const height=
-    document.documentElement.scrollHeight-
+  const height =
+    document.documentElement.scrollHeight -
     document.documentElement.clientHeight;
 
-  const percent=
-    height>0?(scrollTop/height)*100:0;
+  const percent =
+    height > 0
+      ? (scrollTop / height) * 100
+      : 0;
 
-  document.getElementById("progress")
-    .style.width=percent+"%";
+  document.documentElement.style
+    .setProperty(
+      "--scroll-progress",
+      percent + "%"
+    );
 
-  document.querySelectorAll("section[id]")
-    .forEach(section=>{
-
-      const top=section.offsetTop-120;
-      const bottom=top+section.offsetHeight;
-
-      if(scrollTop>=top && scrollTop<bottom){
-
-        document.querySelectorAll(".nav-links a")
-          .forEach(a=>a.classList.remove("active"));
-
-        const link=
-          document.querySelector(
-            `.nav-links a[href="#${section.id}"]`
-          );
-
-        if(link)link.classList.add("active");
-      }
-    });
 });
 
 
 /* =========================
-   REVEAL ANIMATION
+   CLOSE MOBILE MENU
 ========================= */
 
-const observer=
-  new IntersectionObserver(
-    entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add("show");
-        }
-      });
-    },
-    {threshold:.08}
-  );
+document.querySelectorAll(
+  ".nav-links a"
+).forEach(link=>{
 
-document.querySelectorAll(".reveal")
-  .forEach(el=>observer.observe(el));
+  link.addEventListener("click",()=>{
+    $("navLinks").classList.remove("show");
+  });
 
-
-/* =========================
-   CURSOR
-========================= */
-
-document.addEventListener("mousemove",e=>{
-
-  const cursor=
-    document.getElementById("cursor");
-
-  if(window.innerWidth<900)return;
-
-  cursor.style.display="block";
-  cursor.style.left=e.clientX+"px";
-  cursor.style.top=e.clientY+"px";
 });
 
 
 /* =========================
-   KEYBOARD SHORTCUTS
+   INITIAL TIMER
+========================= */
+
+updateTimer();
+
+
+/* =========================
+   KEYBOARD SHORTCUT
 ========================= */
 
 document.addEventListener("keydown",e=>{
 
-  if(e.key==="/" &&
-     document.activeElement.tagName!=="INPUT" &&
-     document.activeElement.tagName!=="TEXTAREA"){
-
-    e.preventDefault();
-
-    document.getElementById("globalInput").focus();
-  }
-
-  if(e.key==="Escape"){
+  if(e.key === "Escape"){
     closeModal();
   }
+
 });
-
-
-/* =========================
-   INITIAL UI
-========================= */
-
-document.getElementById("soundBtn").textContent=
-  "Sound: "+(sound?"ON":"OFF");
 
 </script>
 
