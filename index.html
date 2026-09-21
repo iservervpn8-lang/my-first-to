@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>BM — Beyond Mastery</title>
 
 <style>
@@ -10,56 +10,61 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
 }
 
 :root{
-  --bg:#07090d;
-  --panel:#10141b;
-  --panel2:#151a23;
-  --border:#252d39;
-  --text:#f4f7fb;
-  --muted:#8d98a8;
-  --blue:#4da3ff;
-  --blue2:#246bff;
-  --green:#35d69a;
+  --bg:#070a0f;
+  --card:#10151d;
+  --card2:#151b25;
+  --border:#26303d;
+  --text:#f5f7fb;
+  --muted:#8994a5;
+  --blue:#4b9cff;
+  --blue2:#2368ff;
+  --green:#31d49a;
   --yellow:#ffc857;
-  --red:#ff6577;
-  --purple:#9b7cff;
+  --purple:#9a7cff;
+  --red:#ff6478;
 }
 
 body{
   background:
-    radial-gradient(circle at 10% 0%,rgba(36,107,255,.13),transparent 30%),
-    radial-gradient(circle at 90% 10%,rgba(155,124,255,.09),transparent 25%),
-    var(--bg);
+  radial-gradient(circle at 10% 0%,rgba(35,104,255,.13),transparent 28%),
+  radial-gradient(circle at 90% 10%,rgba(154,124,255,.08),transparent 25%),
+  var(--bg);
   color:var(--text);
   min-height:100vh;
 }
 
+button,input{
+  font:inherit;
+}
+
 button{
-  border:0;
   cursor:pointer;
 }
 
-.hidden{display:none!important}
+.hidden{
+  display:none!important;
+}
 
-/* SPLASH */
+/* ================= SPLASH ================= */
 
 #splash{
   position:fixed;
   inset:0;
   z-index:9999;
+  background:#05070b;
   display:flex;
   justify-content:center;
   align-items:center;
-  background:#05070a;
-  padding:25px;
+  text-align:center;
+  padding:20px;
 }
 
-.splash-box{
-  text-align:center;
-  max-width:450px;
+.splash-content{
+  max-width:440px;
 }
 
 .splash-logo{
@@ -67,58 +72,54 @@ button{
   height:145px;
   object-fit:contain;
   border-radius:50%;
-  border:2px solid rgba(77,163,255,.55);
-  box-shadow:0 0 60px rgba(77,163,255,.22);
-  margin-bottom:25px;
+  margin-bottom:22px;
+  border:2px solid rgba(75,156,255,.5);
+  box-shadow:0 0 65px rgba(75,156,255,.22);
 }
 
-.splash-box h1{
-  font-size:32px;
+.splash-content h1{
+  font-size:31px;
   letter-spacing:2px;
 }
 
-.splash-box h1 span{
+.splash-content h1 span{
   color:var(--blue);
 }
 
-.splash-box p{
+.splash-content p{
   color:var(--muted);
-  margin:10px 0 5px;
+  margin-top:8px;
 }
 
-.developer{
-  color:#fff!important;
-  font-size:14px;
+.splash-dev{
+  font-size:13px;
 }
 
-.continue-btn{
+.continue{
   margin-top:25px;
-  padding:14px 28px;
-  border-radius:14px;
   background:linear-gradient(135deg,var(--blue2),var(--blue));
   color:#fff;
+  border:0;
+  padding:14px 28px;
+  border-radius:13px;
   font-weight:700;
-  box-shadow:0 10px 35px rgba(36,107,255,.25);
+  box-shadow:0 12px 35px rgba(35,104,255,.25);
 }
 
-/* APP */
-
-#app{
-  min-height:100vh;
-}
+/* ================= TOPBAR ================= */
 
 .topbar{
   height:72px;
+  position:sticky;
+  top:0;
+  z-index:500;
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:0 30px;
-  border-bottom:1px solid var(--border);
-  background:rgba(7,9,13,.82);
+  background:rgba(7,10,15,.84);
   backdrop-filter:blur(18px);
-  position:sticky;
-  top:0;
-  z-index:100;
+  border-bottom:1px solid var(--border);
 }
 
 .brand{
@@ -128,75 +129,75 @@ button{
 }
 
 .brand img{
-  width:42px;
-  height:42px;
+  width:43px;
+  height:43px;
   object-fit:contain;
   border-radius:50%;
 }
 
-.brand-title{
+.brand-name{
   font-weight:800;
-  letter-spacing:1px;
+  letter-spacing:1.2px;
 }
 
-.brand-title small{
+.brand-name small{
   display:block;
   color:var(--muted);
-  font-size:10px;
+  font-size:9px;
   letter-spacing:2px;
+  margin-top:2px;
 }
 
 .top-actions{
   display:flex;
-  gap:10px;
+  gap:9px;
 }
 
-.icon-btn{
+.top-btn{
   width:42px;
   height:42px;
   border-radius:12px;
-  background:var(--panel);
+  background:var(--card);
   color:white;
   border:1px solid var(--border);
-  font-size:18px;
+  font-size:19px;
 }
 
-/* MAIN */
+/* ================= MAIN ================= */
 
 .main{
   max-width:1250px;
   margin:auto;
-  padding:35px 22px 70px;
+  padding:30px 22px 90px;
 }
 
-/* HOME HERO */
+/* ================= HERO ================= */
 
 .hero{
   background:
-    linear-gradient(135deg,rgba(77,163,255,.12),rgba(155,124,255,.05)),
-    var(--panel);
+    linear-gradient(135deg,rgba(75,156,255,.13),rgba(154,124,255,.05)),
+    var(--card);
   border:1px solid var(--border);
-  border-radius:24px;
+  border-radius:25px;
   padding:30px;
-  margin-bottom:28px;
   position:relative;
   overflow:hidden;
+  margin-bottom:22px;
 }
 
 .hero:after{
   content:"";
   position:absolute;
-  width:220px;
-  height:220px;
-  background:rgba(77,163,255,.08);
+  width:250px;
+  height:250px;
+  right:-100px;
+  top:-120px;
   border-radius:50%;
-  right:-70px;
-  top:-90px;
+  background:rgba(75,156,255,.08);
 }
 
 .hero h1{
   font-size:34px;
-  margin-bottom:8px;
 }
 
 .hero h1 span{
@@ -205,269 +206,362 @@ button{
 
 .hero p{
   color:var(--muted);
-  max-width:700px;
+  margin-top:8px;
   line-height:1.6;
+  max-width:700px;
 }
 
-.hero-row{
+.hero-bottom{
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   gap:20px;
+  margin-top:24px;
 }
 
-.student-pill{
-  padding:10px 14px;
-  background:#0b1018;
-  border:1px solid var(--border);
-  border-radius:12px;
+.student-info{
   color:var(--muted);
+  font-size:13px;
 }
 
-/* STATS */
+/* ================= STATS ================= */
 
 .stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:15px;
+  gap:14px;
   margin-bottom:32px;
 }
 
 .stat{
-  background:var(--panel);
+  background:var(--card);
   border:1px solid var(--border);
   border-radius:18px;
-  padding:20px;
+  padding:19px;
 }
 
 .stat-icon{
-  font-size:23px;
-  margin-bottom:12px;
+  font-size:22px;
+  margin-bottom:10px;
 }
 
 .stat strong{
-  font-size:27px;
   display:block;
+  font-size:25px;
 }
 
 .stat span{
   color:var(--muted);
-  font-size:13px;
+  font-size:12px;
 }
 
-/* SUBJECT */
+/* ================= SECTION ================= */
 
-.section-head{
+.section-title{
   display:flex;
-  align-items:end;
   justify-content:space-between;
-  margin-bottom:17px;
+  align-items:end;
+  margin:32px 0 16px;
 }
 
-.section-head h2{
-  font-size:22px;
+.section-title h2{
+  font-size:21px;
 }
 
-.section-head p{
+.section-title p{
   color:var(--muted);
-  font-size:13px;
+  font-size:12px;
+  margin-top:4px;
 }
 
-.search{
-  background:var(--panel);
-  border:1px solid var(--border);
-  color:white;
-  padding:12px 15px;
-  border-radius:12px;
-  outline:none;
-  width:230px;
-}
+/* ================= SUBJECT ================= */
 
 .subject-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:17px;
+  gap:16px;
 }
 
 .subject-card{
-  background:linear-gradient(145deg,#11161e,#0d1117);
+  position:relative;
+  min-height:185px;
+  background:linear-gradient(145deg,#121821,#0d1219);
   border:1px solid var(--border);
   border-radius:22px;
-  padding:22px;
+  padding:20px;
   cursor:pointer;
-  transition:.25s;
-  min-height:190px;
-  position:relative;
   overflow:hidden;
+  transition:.25s;
 }
 
 .subject-card:hover{
   transform:translateY(-5px);
-  border-color:rgba(77,163,255,.6);
-  box-shadow:0 18px 45px rgba(0,0,0,.35);
+  border-color:rgba(75,156,255,.6);
+  box-shadow:0 18px 45px rgba(0,0,0,.3);
 }
 
 .subject-logo{
-  width:65px;
-  height:65px;
+  width:68px;
+  height:68px;
   display:flex;
-  justify-content:center;
   align-items:center;
-  border-radius:18px;
-  background:#18202c;
-  border:1px solid #303b4b;
-  font-size:34px;
-  margin-bottom:18px;
+  justify-content:center;
+  border-radius:20px;
+  background:linear-gradient(145deg,#1a2431,#111720);
+  border:1px solid #334153;
+  font-size:35px;
+  margin-bottom:17px;
 }
 
 .subject-card h3{
-  font-size:18px;
+  font-size:17px;
 }
 
 .subject-card p{
   color:var(--muted);
-  font-size:12px;
+  font-size:11px;
   margin-top:5px;
 }
 
-.subject-bottom{
+.subject-progress{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  margin-top:20px;
+  gap:9px;
+  margin-top:18px;
 }
 
 .progress{
-  height:5px;
-  background:#202733;
-  border-radius:10px;
-  overflow:hidden;
   flex:1;
-  margin-right:10px;
+  height:5px;
+  background:#242c38;
+  border-radius:20px;
+  overflow:hidden;
 }
 
 .progress span{
   display:block;
   height:100%;
   background:linear-gradient(90deg,var(--blue2),var(--blue));
-  border-radius:10px;
 }
 
-.percent{
+.subject-percent{
   color:var(--blue);
-  font-size:12px;
-  font-weight:700;
+  font-size:11px;
 }
 
-/* EXTRA SECTIONS */
+/* ================= STUDY TOOLS ================= */
 
-.quick-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-  margin-top:35px;
-}
-
-.quick-card{
-  background:var(--panel);
+.tools-box{
+  background:
+    linear-gradient(135deg,rgba(75,156,255,.07),rgba(154,124,255,.04)),
+    var(--card);
   border:1px solid var(--border);
-  border-radius:18px;
+  border-radius:24px;
   padding:22px;
+}
+
+.tools-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.tool-card{
+  min-height:155px;
+  padding:22px;
+  border-radius:19px;
+  background:#0c1118;
+  border:1px solid var(--border);
   cursor:pointer;
   transition:.2s;
 }
 
-.quick-card:hover{
+.tool-card:hover{
   border-color:var(--blue);
   transform:translateY(-3px);
 }
 
-.quick-card .qicon{
-  font-size:26px;
-  margin-bottom:12px;
+.tool-icon{
+  width:58px;
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:17px;
+  background:#172131;
+  border:1px solid #334154;
+  font-size:28px;
+  margin-bottom:14px;
 }
 
-.quick-card h3{
+.tool-card h3{
   font-size:16px;
 }
 
-.quick-card p{
+.tool-card p{
   color:var(--muted);
-  font-size:12px;
+  font-size:11px;
+  margin-top:5px;
+  line-height:1.5;
+}
+
+/* ================= OTHER SECTIONS ================= */
+
+.other-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.other-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:20px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.other-card:hover{
+  transform:translateY(-3px);
+  border-color:var(--blue);
+}
+
+.other-icon{
+  font-size:27px;
+  margin-bottom:12px;
+}
+
+.other-card h3{
+  font-size:15px;
+}
+
+.other-card p{
+  color:var(--muted);
+  font-size:11px;
   margin-top:5px;
 }
 
-/* SUBJECT PAGE */
+/* ================= AI CENTER ================= */
 
-.subject-page{
+.ai-center{
+  margin:42px auto 10px;
+  max-width:520px;
+  text-align:center;
+}
+
+.ai-button{
+  width:92px;
+  height:92px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle,#182d50,#0c1626);
+  border:2px solid rgba(75,156,255,.65);
+  color:white;
+  font-size:39px;
+  box-shadow:
+    0 0 0 8px rgba(75,156,255,.05),
+    0 0 45px rgba(75,156,255,.18);
+  transition:.25s;
+}
+
+.ai-button:hover{
+  transform:scale(1.06);
+  box-shadow:
+    0 0 0 12px rgba(75,156,255,.05),
+    0 0 60px rgba(75,156,255,.25);
+}
+
+.ai-center h3{
+  margin-top:13px;
+  font-size:17px;
+}
+
+.ai-center p{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:4px;
+}
+
+/* ================= SUBJECT PAGE ================= */
+
+.page{
   animation:fade .25s ease;
 }
 
 @keyframes fade{
-  from{opacity:0;transform:translateY(8px)}
-  to{opacity:1;transform:translateY(0)}
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-.back-btn{
-  background:var(--panel);
-  border:1px solid var(--border);
-  color:white;
+.back{
   padding:11px 16px;
+  background:var(--card);
+  border:1px solid var(--border);
   border-radius:12px;
-  margin-bottom:22px;
+  color:white;
+  margin-bottom:20px;
 }
 
-.subject-header{
+.subject-head{
   display:flex;
   align-items:center;
   gap:20px;
-  background:linear-gradient(135deg,rgba(77,163,255,.13),rgba(155,124,255,.05)),var(--panel);
+  background:
+    linear-gradient(135deg,rgba(75,156,255,.13),rgba(154,124,255,.04)),
+    var(--card);
   border:1px solid var(--border);
-  padding:28px;
   border-radius:24px;
-  margin-bottom:22px;
+  padding:27px;
+  margin-bottom:20px;
 }
 
-.big-subject-logo{
+.big-logo{
   width:90px;
   height:90px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#17202c;
-  border:1px solid #354254;
   border-radius:25px;
-  font-size:48px;
+  background:#172130;
+  border:1px solid #344255;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:47px;
 }
 
-.subject-header h1{
-  font-size:31px;
+.subject-head h1{
+  font-size:30px;
 }
 
-.subject-header p{
+.subject-head p{
   color:var(--muted);
   margin-top:5px;
 }
 
-.subject-progress{
+.head-progress{
   margin-left:auto;
-  min-width:190px;
+  width:190px;
 }
 
-.subject-progress strong{
-  display:block;
+.head-progress strong{
   font-size:25px;
+  display:block;
   margin-bottom:7px;
 }
 
-.progress-large{
+.big-progress{
   height:8px;
-  background:#222a36;
-  border-radius:10px;
+  background:#252e3b;
+  border-radius:20px;
   overflow:hidden;
 }
 
-.progress-large span{
+.big-progress span{
   display:block;
   height:100%;
   background:linear-gradient(90deg,var(--blue2),var(--blue));
@@ -479,85 +573,188 @@ button{
   gap:15px;
 }
 
-.feature-card{
-  background:var(--panel);
+.feature{
+  background:var(--card);
   border:1px solid var(--border);
   border-radius:18px;
-  padding:22px;
+  padding:21px;
   min-height:145px;
   cursor:pointer;
   transition:.2s;
 }
 
-.feature-card:hover{
+.feature:hover{
   transform:translateY(-4px);
-  border-color:rgba(77,163,255,.6);
+  border-color:var(--blue);
 }
 
 .feature-icon{
   font-size:27px;
-  margin-bottom:14px;
+  margin-bottom:12px;
 }
 
-.feature-card h3{
-  font-size:16px;
+.feature h3{
+  font-size:15px;
 }
 
-.feature-card p{
+.feature p{
   color:var(--muted);
-  font-size:12px;
+  font-size:11px;
   line-height:1.5;
-  margin-top:6px;
+  margin-top:5px;
 }
 
-/* CONTENT PAGE */
+/* ================= CONTENT ================= */
 
 .content-box{
-  background:var(--panel);
+  background:var(--card);
   border:1px solid var(--border);
-  border-radius:20px;
+  border-radius:21px;
   padding:25px;
-  margin-top:20px;
 }
 
 .content-box h2{
-  margin-bottom:10px;
+  margin-bottom:8px;
 }
 
-.content-box p{
+.content-box>p{
   color:var(--muted);
-  line-height:1.7;
+  line-height:1.6;
 }
 
-.list-item{
-  padding:16px;
+.item{
+  background:#0c1118;
   border:1px solid var(--border);
-  border-radius:14px;
+  border-radius:13px;
+  padding:15px;
   margin-top:10px;
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  background:#0c1118;
+  gap:15px;
 }
 
-.list-item span{
+.item span{
   color:var(--muted);
-  font-size:12px;
+  font-size:11px;
 }
 
-/* FOOTER */
+/* ================= POMODORO ================= */
+
+.timer{
+  text-align:center;
+  padding:20px 0;
+}
+
+.timer-circle{
+  width:210px;
+  height:210px;
+  margin:15px auto 22px;
+  border-radius:50%;
+  border:7px solid #1d2836;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  box-shadow:0 0 45px rgba(75,156,255,.08);
+}
+
+.timer-circle strong{
+  font-size:44px;
+}
+
+.timer-circle span{
+  color:var(--muted);
+  font-size:11px;
+}
+
+.timer-controls{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+}
+
+.timer-controls button{
+  padding:11px 18px;
+  border-radius:11px;
+  background:#172131;
+  border:1px solid var(--border);
+  color:white;
+}
+
+.timer-controls .start{
+  background:linear-gradient(135deg,var(--blue2),var(--blue));
+}
+
+/* ================= DEVELOPER ================= */
+
+.developer-profile{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.profile-img{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid var(--border);
+}
+
+.dev-info h2{
+  font-size:23px;
+}
+
+.dev-info p{
+  color:var(--muted);
+  margin-top:5px;
+  font-size:13px;
+  line-height:1.5;
+}
+
+/* ================= MENU ================= */
+
+.menu{
+  position:fixed;
+  right:20px;
+  top:65px;
+  width:220px;
+  z-index:1000;
+  background:#111720;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:8px;
+  box-shadow:0 20px 50px rgba(0,0,0,.45);
+}
+
+.menu button{
+  width:100%;
+  text-align:left;
+  padding:12px;
+  border:0;
+  background:transparent;
+  color:white;
+  border-radius:10px;
+}
+
+.menu button:hover{
+  background:#1b2431;
+}
+
+/* ================= FOOTER ================= */
 
 footer{
   text-align:center;
-  color:#657080;
-  font-size:12px;
-  margin-top:60px;
+  color:#697586;
+  font-size:11px;
+  margin-top:55px;
   padding:20px;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 
-@media(max-width:950px){
+@media(max-width:1000px){
+
   .subject-grid{
     grid-template-columns:repeat(3,1fr);
   }
@@ -566,65 +763,44 @@ footer{
     grid-template-columns:repeat(3,1fr);
   }
 
-  .stats{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .quick-grid{
+  .other-grid{
     grid-template-columns:repeat(2,1fr);
   }
 }
 
-@media(max-width:650px){
+@media(max-width:700px){
+
   .topbar{
-    padding:0 15px;
+    padding:0 14px;
   }
 
   .main{
-    padding:22px 14px 50px;
+    padding:22px 13px 80px;
   }
 
-  .brand-title{
-    font-size:14px;
+  .brand-name{
+    font-size:13px;
   }
 
   .hero{
     padding:22px;
   }
 
-  .hero-row{
-    display:block;
-  }
-
   .hero h1{
-    font-size:26px;
+    font-size:27px;
   }
 
-  .student-pill{
-    display:inline-block;
-    margin-top:15px;
+  .hero-bottom{
+    display:block;
   }
 
   .stats{
     grid-template-columns:repeat(2,1fr);
-    gap:10px;
+    gap:9px;
   }
 
   .stat{
     padding:15px;
-  }
-
-  .stat strong{
-    font-size:22px;
-  }
-
-  .section-head{
-    display:block;
-  }
-
-  .search{
-    width:100%;
-    margin-top:12px;
   }
 
   .subject-grid{
@@ -638,9 +814,17 @@ footer{
   }
 
   .subject-logo{
-    width:55px;
-    height:55px;
-    font-size:27px;
+    width:57px;
+    height:57px;
+    font-size:29px;
+  }
+
+  .tools-grid{
+    grid-template-columns:1fr;
+  }
+
+  .tool-card{
+    min-height:130px;
   }
 
   .feature-grid{
@@ -648,32 +832,38 @@ footer{
     gap:10px;
   }
 
-  .feature-card{
+  .feature{
     padding:16px;
   }
 
-  .subject-header{
-    padding:20px;
+  .subject-head{
     display:block;
+    padding:20px;
   }
 
-  .big-subject-logo{
-    width:70px;
-    height:70px;
+  .big-logo{
+    width:72px;
+    height:72px;
     font-size:38px;
     margin-bottom:15px;
   }
 
-  .subject-header h1{
+  .subject-head h1{
     font-size:25px;
   }
 
-  .subject-progress{
-    margin:20px 0 0;
+  .head-progress{
+    width:100%;
+    margin-top:18px;
   }
 
-  .quick-grid{
+  .other-grid{
     grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .developer-profile{
+    align-items:flex-start;
   }
 }
 </style>
@@ -681,1072 +871,1295 @@ footer{
 
 <body>
 
-<!-- SPLASH -->
+<!-- ================= SPLASH ================= -->
 
 <div id="splash">
-  <div class="splash-box">
+
+  <div class="splash-content">
 
     <img
       class="splash-logo"
       src="file_000000004bbc821186700759679ec160.png"
-      alt="BM — Beyond Mastery"
+      alt="BM"
     >
 
     <h1>BM — <span>BEYOND MASTERY</span></h1>
 
     <p>Learn Beyond Limits</p>
 
-    <p class="developer">
+    <p class="splash-dev">
       Developed by <b>Himanshu Shekhar</b>
     </p>
 
-    <button class="continue-btn" onclick="enterApp()">
+    <button class="continue" onclick="enterApp()">
       Continue →
     </button>
 
   </div>
+
 </div>
 
 
-<!-- APP -->
+<!-- ================= APP ================= -->
 
 <div id="app" class="hidden">
 
-  <header class="topbar">
+<header class="topbar">
 
-    <div class="brand">
+  <div class="brand">
+
+    <img
+      src="file_000000004bbc821186700759679ec160.png"
+      alt="BM"
+    >
+
+    <div class="brand-name">
+      BEYOND MASTERY
+      <small>LEARN BEYOND LIMITS</small>
+    </div>
+
+  </div>
+
+  <div class="top-actions">
+
+    <button class="top-btn" onclick="showHome()">
+      ⌂
+    </button>
+
+    <button class="top-btn" onclick="toggleTheme()">
+      ◐
+    </button>
+
+    <button class="top-btn" onclick="toggleMenu()">
+      ⋮
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- 3 DOT MENU -->
+
+<div id="menu" class="menu hidden">
+
+  <button onclick="openDeveloper()">
+    👨‍💻 Developer Details
+  </button>
+
+  <button onclick="openAbout()">
+    ℹ️ About BM
+  </button>
+
+  <button onclick="toggleTheme()">
+    🌗 Change Theme
+  </button>
+
+</div>
+
+
+<main class="main">
+
+
+<!-- ================= HOME ================= -->
+
+<section id="homePage">
+
+  <div class="hero">
+
+    <h1>
+      Welcome to <span>BM</span>
+    </h1>
+
+    <p>
+      One professional study platform for Class 10, 11 & 12
+      students — Bihar Board & CBSE.
+    </p>
+
+    <div class="hero-bottom">
+
+      <div class="student-info">
+        🎓 Your personalized learning dashboard
+      </div>
+
+      <div class="student-info">
+        📚 Learn · Practice · Revise · Improve
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- STATS -->
+
+  <div class="stats">
+
+    <div class="stat">
+      <div class="stat-icon">⏱️</div>
+      <strong id="studyMinutes">0</strong>
+      <span>Study Minutes</span>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">🔥</div>
+      <strong id="streak">1</strong>
+      <span>Study Streak</span>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">⭐</div>
+      <strong id="xp">0</strong>
+      <span>XP Earned</span>
+    </div>
+
+    <div class="stat">
+      <div class="stat-icon">🎯</div>
+      <strong>0%</strong>
+      <span>Overall Progress</span>
+    </div>
+
+  </div>
+
+
+  <!-- SUBJECTS -->
+
+  <div class="section-title">
+
+    <div>
+      <h2>📚 My Subjects</h2>
+      <p>Tap any subject logo to open its complete study page.</p>
+    </div>
+
+  </div>
+
+
+  <div class="subject-grid" id="subjectGrid"></div>
+
+
+  <!-- STUDY TOOLS -->
+
+  <div class="section-title">
+
+    <div>
+      <h2>🛠️ Study Tools</h2>
+      <p>Your main study tools in one place.</p>
+    </div>
+
+  </div>
+
+
+  <div class="tools-box">
+
+    <div class="tools-grid">
+
+      <div class="tool-card" onclick="openPomodoro()">
+
+        <div class="tool-icon">⏱️</div>
+
+        <h3>Pomodoro Focus</h3>
+
+        <p>
+          25-minute focused study session with break control.
+        </p>
+
+      </div>
+
+
+      <div class="tool-card" onclick="openPlanner()">
+
+        <div class="tool-icon">📅</div>
+
+        <h3>Weekly Planner</h3>
+
+        <p>
+          Plan subjects, chapters and weekly study targets.
+        </p>
+
+      </div>
+
+
+      <div class="tool-card" onclick="openNotes()">
+
+        <div class="tool-icon">📝</div>
+
+        <h3>My Notes</h3>
+
+        <p>
+          Save important concepts, formulas and personal notes.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- OTHER SECTIONS -->
+
+  <div class="section-title">
+
+    <div>
+      <h2>🚀 BM Learning Center</h2>
+      <p>More tools for your complete preparation.</p>
+    </div>
+
+  </div>
+
+
+  <div class="other-grid">
+
+    <div class="other-card" onclick="openGeneral('Daily Important Questions')">
+      <div class="other-icon">❓</div>
+      <h3>Daily Important Questions</h3>
+      <p>Fresh practice every day.</p>
+    </div>
+
+    <div class="other-card" onclick="openGeneral('Revision Center')">
+      <div class="other-icon">🔄</div>
+      <h3>Revision Center</h3>
+      <p>Manage revision topics.</p>
+    </div>
+
+    <div class="other-card" onclick="openGeneral('Mistake Book')">
+      <div class="other-icon">❌</div>
+      <h3>Mistake Book</h3>
+      <p>Learn from your mistakes.</p>
+    </div>
+
+    <div class="other-card" onclick="openGeneral('Analytics')">
+      <div class="other-icon">📊</div>
+      <h3>Analytics</h3>
+      <p>Track your performance.</p>
+    </div>
+
+    <div class="other-card" onclick="openGeneral('Achievements')">
+      <div class="other-icon">🏆</div>
+      <h3>Achievements</h3>
+      <p>XP, badges and milestones.</p>
+    </div>
+
+    <div class="other-card" onclick="openGeneral('Exam Mode')">
+      <div class="other-icon">🎯</div>
+      <h3>Exam Mode</h3>
+      <p>Board-focused preparation.</p>
+    </div>
+
+    <div class="other-card" onclick="openGeneral('Practice Center')">
+      <div class="other-icon">🧠</div>
+      <h3>Practice Center</h3>
+      <p>MCQ, short and long answers.</p>
+    </div>
+
+    <div class="other-card" onclick="openGeneral('BM Progress')">
+      <div class="other-icon">📈</div>
+      <h3>BM Progress</h3>
+      <p>See your complete progress.</p>
+    </div>
+
+  </div>
+
+
+  <!-- AI CENTER -->
+
+  <div class="ai-center">
+
+    <button class="ai-button" onclick="openAI()">
+      🤖
+    </button>
+
+    <h3>BM AI Study Mentor</h3>
+
+    <p>
+      Ask BM AI about study plans, revision and difficult topics.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SUBJECT PAGE ================= -->
+
+<section id="subjectPage" class="page hidden">
+
+  <button class="back" onclick="showHome()">
+    ← Back to Home
+  </button>
+
+  <div class="subject-head">
+
+    <div class="big-logo" id="bigLogo">🧮</div>
+
+    <div>
+
+      <h1 id="subjectTitle">Mathematics</h1>
+
+      <p id="subjectDesc">
+        Complete subject learning center
+      </p>
+
+    </div>
+
+    <div class="head-progress">
+
+      <strong id="subjectPercent">0%</strong>
+
+      <div class="big-progress">
+        <span id="subjectBar"></span>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="feature-grid">
+
+    <div class="feature" onclick="subjectFeature('Chapters')">
+      <div class="feature-icon">📚</div>
+      <h3>Chapters</h3>
+      <p>Complete chapter-wise syllabus.</p>
+    </div>
+
+    <div class="feature" onclick="subjectFeature('Daily Questions')">
+      <div class="feature-icon">❓</div>
+      <h3>Daily Questions</h3>
+      <p>Fresh important questions.</p>
+    </div>
+
+    <div class="feature" onclick="subjectFeature('Notes')">
+      <div class="feature-icon">📝</div>
+      <h3>Notes</h3>
+      <p>Subject notes and concepts.</p>
+    </div>
+
+    <div class="feature" onclick="subjectFeature('Revision')">
+      <div class="feature-icon">🔄</div>
+      <h3>Revision</h3>
+      <p>Smart revision queue.</p>
+    </div>
+
+    <div class="feature" onclick="subjectFeature('Practice')">
+      <div class="feature-icon">🎯</div>
+      <h3>Practice</h3>
+      <p>Practice different question types.</p>
+    </div>
+
+    <div class="feature" onclick="subjectFeature('Tests')">
+      <div class="feature-icon">📋</div>
+      <h3>Tests</h3>
+      <p>Chapter and subject tests.</p>
+    </div>
+
+    <div class="feature" onclick="subjectFeature('Mistakes')">
+      <div class="feature-icon">❌</div>
+      <h3>Mistake Book</h3>
+      <p>Review incorrect questions.</p>
+    </div>
+
+    <div class="feature" onclick="subjectFeature('Weak Topics')">
+      <div class="feature-icon">⚠️</div>
+      <h3>Weak Topics</h3>
+      <p>Identify topics needing work.</p>
+    </div>
+
+    <div class="feature" onclick="subjectFeature('Important Formulas')">
+      <div class="feature-icon">📐</div>
+      <h3>Important Formulas</h3>
+      <p>Quick formula revision.</p>
+    </div>
+
+    <div class="feature" onclick="subjectFeature('Bookmarks')">
+      <div class="feature-icon">🔖</div>
+      <h3>Bookmarks</h3>
+      <p>Saved questions and topics.</p>
+    </div>
+
+    <div class="feature" onclick="subjectFeature('Question History')">
+      <div class="feature-icon">🕘</div>
+      <h3>Question History</h3>
+      <p>View attempted questions.</p>
+    </div>
+
+    <div class="feature" onclick="subjectFeature('AI Explanation')">
+      <div class="feature-icon">🤖</div>
+      <h3>AI Explanation</h3>
+      <p>Simple concept explanations.</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= CONTENT PAGE ================= -->
+
+<section id="contentPage" class="page hidden">
+
+  <button class="back" onclick="goBack()">
+    ← Back
+  </button>
+
+  <div class="hero">
+
+    <h1 id="contentTitle">BM</h1>
+
+    <p id="contentDesc"></p>
+
+  </div>
+
+  <div class="content-box" id="contentArea"></div>
+
+</section>
+
+
+<!-- ================= POMODORO PAGE ================= -->
+
+<section id="pomodoroPage" class="page hidden">
+
+  <button class="back" onclick="showHome()">
+    ← Back to Home
+  </button>
+
+  <div class="hero">
+
+    <h1>⏱️ Pomodoro Focus</h1>
+
+    <p>
+      25 minutes deep focus. Study without distraction.
+    </p>
+
+  </div>
+
+  <div class="content-box">
+
+    <div class="timer">
+
+      <div class="timer-circle">
+
+        <strong id="timerDisplay">
+          25:00
+        </strong>
+
+        <span>
+          FOCUS SESSION
+        </span>
+
+      </div>
+
+      <div class="timer-controls">
+
+        <button
+          class="start"
+          onclick="startTimer()">
+          Start
+        </button>
+
+        <button onclick="pauseTimer()">
+          Pause
+        </button>
+
+        <button onclick="resetTimer()">
+          Reset
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= DEVELOPER ================= -->
+
+<section id="developerPage" class="page hidden">
+
+  <button class="back" onclick="showHome()">
+    ← Back to Home
+  </button>
+
+  <div class="hero">
+
+    <h1>👨‍💻 Developer Details</h1>
+
+    <p>
+      The person behind BM — Beyond Mastery.
+    </p>
+
+  </div>
+
+  <div class="content-box">
+
+    <div class="developer-profile">
+
       <img
-        src="file_000000004bbc821186700759679ec160.png"
-        alt="BM"
+        class="profile-img"
+        src="IMG_20260218_125513_403.webp"
+        alt="Himanshu Shekhar"
       >
 
-      <div class="brand-title">
-        BEYOND MASTERY
-        <small>LEARN BEYOND LIMITS</small>
+      <div class="dev-info">
+
+        <h2>Himanshu Shekhar</h2>
+
+        <p>
+          Founder & Developer of BM — Beyond Mastery.
+          Building a focused study platform designed to help
+          students learn, practice and improve.
+        </p>
+
       </div>
+
     </div>
 
-    <div class="top-actions">
-      <button class="icon-btn" onclick="showHome()">⌂</button>
-      <button class="icon-btn" onclick="toggleTheme()">◐</button>
-    </div>
+  </div>
 
-  </header>
+</section>
 
 
-  <main class="main">
+<footer>
+  © 2026 BM — Beyond Mastery · Learn Beyond Limits<br>
+  Developed by Himanshu Shekhar
+</footer>
 
-    <!-- HOME -->
-
-    <section id="homePage">
-
-      <div class="hero">
-
-        <div class="hero-row">
-
-          <div>
-            <h1>Welcome to <span>BM</span></h1>
-
-            <p>
-              One powerful study platform for Class 10, 11 & 12
-              students — Bihar Board & CBSE.
-            </p>
-          </div>
-
-          <div class="student-pill">
-            🎓 Student Dashboard
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- STATS -->
-
-      <div class="stats">
-
-        <div class="stat">
-          <div class="stat-icon">⏱️</div>
-          <strong id="studyMinutes">0</strong>
-          <span>Study Minutes</span>
-        </div>
-
-        <div class="stat">
-          <div class="stat-icon">🔥</div>
-          <strong id="streak">1</strong>
-          <span>Day Streak</span>
-        </div>
-
-        <div class="stat">
-          <div class="stat-icon">⭐</div>
-          <strong id="xp">0</strong>
-          <span>XP Earned</span>
-        </div>
-
-        <div class="stat">
-          <div class="stat-icon">🎯</div>
-          <strong>0%</strong>
-          <span>Overall Progress</span>
-        </div>
-
-      </div>
-
-
-      <!-- SUBJECTS -->
-
-      <div class="section-head">
-
-        <div>
-          <h2>📚 My Subjects</h2>
-          <p>Choose a subject to open its complete study page.</p>
-        </div>
-
-        <input
-          class="search"
-          id="subjectSearch"
-          placeholder="Search subject..."
-          oninput="searchSubjects()"
-        >
-
-      </div>
-
-
-      <div class="subject-grid" id="subjectGrid"></div>
-
-
-      <!-- QUICK FEATURES -->
-
-      <div class="section-head" style="margin-top:40px;">
-        <div>
-          <h2>⚡ Quick Access</h2>
-          <p>Important BM tools</p>
-        </div>
-      </div>
-
-
-      <div class="quick-grid">
-
-        <div class="quick-card" onclick="openGeneral('Daily Important Questions')">
-          <div class="qicon">🤖</div>
-          <h3>Daily Questions</h3>
-          <p>AI-powered daily practice</p>
-        </div>
-
-        <div class="quick-card" onclick="openGeneral('Study Planner')">
-          <div class="qicon">📅</div>
-          <h3>Study Planner</h3>
-          <p>Plan your study sessions</p>
-        </div>
-
-        <div class="quick-card" onclick="openGeneral('Analytics')">
-          <div class="qicon">📊</div>
-          <h3>Analytics</h3>
-          <p>Track your performance</p>
-        </div>
-
-        <div class="quick-card" onclick="openGeneral('Achievements')">
-          <div class="qicon">🏆</div>
-          <h3>Achievements</h3>
-          <p>XP, badges & milestones</p>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- SUBJECT PAGE -->
-
-    <section id="subjectPage" class="subject-page hidden">
-
-      <button class="back-btn" onclick="showHome()">
-        ← Back to Subjects
-      </button>
-
-      <div class="subject-header">
-
-        <div class="big-subject-logo" id="bigSubjectLogo">
-          🧮
-        </div>
-
-        <div>
-          <h1 id="subjectTitle">Mathematics</h1>
-          <p id="subjectDescription">
-            Complete Mathematics study center
-          </p>
-        </div>
-
-        <div class="subject-progress">
-          <strong id="subjectPercent">0%</strong>
-
-          <div class="progress-large">
-            <span id="subjectProgressBar" style="width:0%"></span>
-          </div>
-        </div>
-
-      </div>
-
-
-      <div class="feature-grid">
-
-        <div class="feature-card" onclick="openSubjectFeature('Chapters')">
-          <div class="feature-icon">📚</div>
-          <h3>Chapters</h3>
-          <p>Complete chapter-wise syllabus and progress.</p>
-        </div>
-
-        <div class="feature-card" onclick="openSubjectFeature('Daily Important Questions')">
-          <div class="feature-icon">❓</div>
-          <h3>Daily Important Questions</h3>
-          <p>Fresh exam-oriented questions every day.</p>
-        </div>
-
-        <div class="feature-card" onclick="openSubjectFeature('Notes')">
-          <div class="feature-icon">📝</div>
-          <h3>Notes</h3>
-          <p>Save and organize important study notes.</p>
-        </div>
-
-        <div class="feature-card" onclick="openSubjectFeature('Revision')">
-          <div class="feature-icon">🔄</div>
-          <h3>Revision</h3>
-          <p>Build your revision queue and review topics.</p>
-        </div>
-
-        <div class="feature-card" onclick="openSubjectFeature('Practice')">
-          <div class="feature-icon">🎯</div>
-          <h3>Practice</h3>
-          <p>MCQ, short answer, long answer and numericals.</p>
-        </div>
-
-        <div class="feature-card" onclick="openSubjectFeature('Tests')">
-          <div class="feature-icon">📋</div>
-          <h3>Tests</h3>
-          <p>Chapter tests, subject tests and mock tests.</p>
-        </div>
-
-        <div class="feature-card" onclick="openSubjectFeature('Mistake Book')">
-          <div class="feature-icon">❌</div>
-          <h3>Mistake Book</h3>
-          <p>Store wrong questions and learn from mistakes.</p>
-        </div>
-
-        <div class="feature-card" onclick="openSubjectFeature('Weak Topics')">
-          <div class="feature-icon">⚠️</div>
-          <h3>Weak Topics</h3>
-          <p>Identify topics that need more attention.</p>
-        </div>
-
-        <div class="feature-card" onclick="openSubjectFeature('Important Formulas')">
-          <div class="feature-icon">📐</div>
-          <h3>Important Formulas</h3>
-          <p>Quick-access formula and concept board.</p>
-        </div>
-
-        <div class="feature-card" onclick="openSubjectFeature('Question History')">
-          <div class="feature-icon">🕘</div>
-          <h3>Question History</h3>
-          <p>See attempted questions and scores.</p>
-        </div>
-
-        <div class="feature-card" onclick="openSubjectFeature('Bookmarks')">
-          <div class="feature-icon">🔖</div>
-          <h3>Bookmarks</h3>
-          <p>Save important topics for later.</p>
-        </div>
-
-        <div class="feature-card" onclick="openSubjectFeature('AI Explanation')">
-          <div class="feature-icon">🤖</div>
-          <h3>AI Explanation</h3>
-          <p>Get simple explanations for difficult concepts.</p>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- GENERAL CONTENT -->
-
-    <section id="contentPage" class="subject-page hidden">
-
-      <button class="back-btn" onclick="goBack()">
-        ← Back
-      </button>
-
-      <div class="hero">
-        <h1 id="contentTitle">BM</h1>
-        <p id="contentDescription"></p>
-      </div>
-
-      <div class="content-box" id="contentArea"></div>
-
-    </section>
-
-
-    <footer>
-      © 2026 BM — Beyond Mastery · Learn Beyond Limits<br>
-      Developed by Himanshu Shekhar
-    </footer>
-
-  </main>
+</main>
 
 </div>
 
 
 <script>
 
-/* SUBJECT DATABASE */
+/* ================= SUBJECT DATA ================= */
 
 const subjects = [
 
-  {
-    name:"Mathematics",
-    icon:"🧮",
-    description:"Numbers, algebra, geometry, calculus & problem solving.",
-    progress:0
-  },
+{
+ name:"Mathematics",
+ icon:"🧮",
+ desc:"Algebra, geometry, calculus and problem solving.",
+ progress:0
+},
 
-  {
-    name:"Physics",
-    icon:"⚡",
-    description:"Mechanics, electricity, optics, waves & modern physics.",
-    progress:0
-  },
+{
+ name:"Physics",
+ icon:"⚡",
+ desc:"Mechanics, electricity, optics and modern physics.",
+ progress:0
+},
 
-  {
-    name:"Chemistry",
-    icon:"🧪",
-    description:"Physical, organic and inorganic chemistry.",
-    progress:0
-  },
+{
+ name:"Chemistry",
+ icon:"🧪",
+ desc:"Physical, organic and inorganic chemistry.",
+ progress:0
+},
 
-  {
-    name:"Biology",
-    icon:"🧬",
-    description:"Botany, zoology, genetics, ecology & human biology.",
-    progress:0
-  },
+{
+ name:"Biology",
+ icon:"🧬",
+ desc:"Botany, zoology, genetics and ecology.",
+ progress:0
+},
 
-  {
-    name:"English",
-    icon:"📖",
-    description:"Grammar, literature, writing and comprehension.",
-    progress:0
-  },
+{
+ name:"English",
+ icon:"📖",
+ desc:"Grammar, literature, writing and comprehension.",
+ progress:0
+},
 
-  {
-    name:"Hindi",
-    icon:"📝",
-    description:"Hindi literature, grammar and writing practice.",
-    progress:0
-  },
+{
+ name:"Hindi",
+ icon:"📝",
+ desc:"Literature, grammar and writing.",
+ progress:0
+},
 
-  {
-    name:"Accountancy",
-    icon:"📊",
-    description:"Accounting principles, journal, ledger and financial statements.",
-    progress:0
-  },
+{
+ name:"Accountancy",
+ icon:"📊",
+ desc:"Accounting, journal, ledger and statements.",
+ progress:0
+},
 
-  {
-    name:"Economics",
-    icon:"💰",
-    description:"Microeconomics, macroeconomics and Indian economy.",
-    progress:0
-  },
+{
+ name:"Economics",
+ icon:"💰",
+ desc:"Microeconomics, macroeconomics and Indian economy.",
+ progress:0
+},
 
-  {
-    name:"Business Studies",
-    icon:"🏢",
-    description:"Business management, finance, marketing and organization.",
-    progress:0
-  },
+{
+ name:"Business Studies",
+ icon:"🏢",
+ desc:"Management, marketing, finance and organization.",
+ progress:0
+},
 
-  {
-    name:"Geography",
-    icon:"🌍",
-    description:"Physical, human and economic geography.",
-    progress:0
-  },
+{
+ name:"Geography",
+ icon:"🌍",
+ desc:"Physical, human and economic geography.",
+ progress:0
+},
 
-  {
-    name:"History",
-    icon:"🏛️",
-    description:"Ancient, medieval and modern history.",
-    progress:0
-  },
+{
+ name:"History",
+ icon:"🏛️",
+ desc:"Ancient, medieval and modern history.",
+ progress:0
+},
 
-  {
-    name:"Political Science",
-    icon:"⚖️",
-    description:"Political theory, constitution and contemporary politics.",
-    progress:0
-  }
+{
+ name:"Political Science",
+ icon:"⚖️",
+ desc:"Political theory, constitution and governance.",
+ progress:0
+}
 
 ];
 
+let currentSubject=null;
+let previousPage="home";
 
-/* APP STATE */
+let studyMinutes=
+ Number(localStorage.getItem("bmStudyMinutes"))||0;
 
-let currentSubject = null;
-let previousPage = "home";
-
-let studyMinutes =
-  Number(localStorage.getItem("bmStudyMinutes")) || 0;
-
-let xp =
-  Number(localStorage.getItem("bmXP")) || 0;
+let xp=
+ Number(localStorage.getItem("bmXP"))||0;
 
 
-/* SPLASH */
+/* ================= SPLASH ================= */
 
 function enterApp(){
 
-  document.getElementById("splash").classList.add("hidden");
+ document.getElementById("splash")
+ .classList.add("hidden");
 
-  document.getElementById("app").classList.remove("hidden");
+ document.getElementById("app")
+ .classList.remove("hidden");
 
-  renderSubjects();
-
-  updateStats();
-
-}
-
-
-/* HOME */
-
-function showHome(){
-
-  document.getElementById("homePage").classList.remove("hidden");
-
-  document.getElementById("subjectPage").classList.add("hidden");
-
-  document.getElementById("contentPage").classList.add("hidden");
-
-  previousPage = "home";
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+ renderSubjects();
+ updateStats();
 
 }
 
 
-/* SUBJECT GRID */
+/* ================= SUBJECTS ================= */
 
-function renderSubjects(list = subjects){
+function renderSubjects(){
 
-  const grid =
-    document.getElementById("subjectGrid");
+ const grid=
+ document.getElementById("subjectGrid");
 
-  grid.innerHTML = "";
+ grid.innerHTML="";
 
-  list.forEach((subject,index)=>{
+ subjects.forEach((s,index)=>{
 
-    const card =
-      document.createElement("div");
+  const card=
+   document.createElement("div");
 
-    card.className = "subject-card";
+  card.className="subject-card";
 
-    card.innerHTML = `
+  card.innerHTML=`
 
-      <div class="subject-logo">
-        ${subject.icon}
-      </div>
+   <div class="subject-logo">
+     ${s.icon}
+   </div>
 
-      <h3>${subject.name}</h3>
+   <h3>${s.name}</h3>
 
-      <p>${subject.description}</p>
+   <p>${s.desc}</p>
 
-      <div class="subject-bottom">
+   <div class="subject-progress">
 
-        <div class="progress">
-          <span style="width:${subject.progress}%"></span>
-        </div>
+     <div class="progress">
+       <span style="width:${s.progress}%"></span>
+     </div>
 
-        <div class="percent">
-          ${subject.progress}%
-        </div>
+     <div class="subject-percent">
+       ${s.progress}%
+     </div>
 
-      </div>
-
-    `;
-
-    card.onclick = () =>
-      openSubject(index);
-
-    grid.appendChild(card);
-
-  });
-
-}
-
-
-/* SEARCH */
-
-function searchSubjects(){
-
-  const value =
-    document
-      .getElementById("subjectSearch")
-      .value
-      .toLowerCase();
-
-  const filtered =
-    subjects.filter(subject =>
-      subject.name
-        .toLowerCase()
-        .includes(value)
-    );
-
-  renderSubjects(filtered);
-
-}
-
-
-/* OPEN SUBJECT */
-
-function openSubject(index){
-
-  const subject = subjects[index];
-
-  currentSubject = subject;
-
-  document.getElementById("homePage")
-    .classList.add("hidden");
-
-  document.getElementById("contentPage")
-    .classList.add("hidden");
-
-  document.getElementById("subjectPage")
-    .classList.remove("hidden");
-
-  document.getElementById("bigSubjectLogo")
-    .textContent = subject.icon;
-
-  document.getElementById("subjectTitle")
-    .textContent = subject.name;
-
-  document.getElementById("subjectDescription")
-    .textContent = subject.description;
-
-  document.getElementById("subjectPercent")
-    .textContent = subject.progress + "%";
-
-  document.getElementById("subjectProgressBar")
-    .style.width = subject.progress + "%";
-
-  previousPage = "home";
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* SUBJECT FEATURE */
-
-function openSubjectFeature(feature){
-
-  if(!currentSubject) return;
-
-  previousPage = "subject";
-
-  document.getElementById("subjectPage")
-    .classList.add("hidden");
-
-  document.getElementById("contentPage")
-    .classList.remove("hidden");
-
-  document.getElementById("contentTitle")
-    .textContent =
-      currentSubject.icon +
-      " " +
-      currentSubject.name +
-      " — " +
-      feature;
-
-  document.getElementById("contentDescription")
-    .textContent =
-      "BM " +
-      currentSubject.name +
-      " learning center";
-
-  const area =
-    document.getElementById("contentArea");
-
-  area.innerHTML = buildFeature(feature);
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* FEATURE CONTENT */
-
-function buildFeature(feature){
-
-  const s = currentSubject.name;
-
-  if(feature === "Chapters"){
-
-    return `
-
-      <h2>📚 ${s} Chapters</h2>
-
-      <p>
-        यहाँ ${s} के chapters और उनका completion progress
-        manage किया जा सकता है।
-      </p>
-
-      ${["Chapter 1","Chapter 2","Chapter 3","Chapter 4","Chapter 5"]
-        .map((x,i)=>`
-
-          <div class="list-item">
-
-            <b>${x}</b>
-
-            <span>0% Complete</span>
-
-          </div>
-
-        `).join("")}
-
-    `;
-
-  }
-
-
-  if(feature === "Daily Important Questions"){
-
-    return `
-
-      <h2>❓ Daily Important Questions</h2>
-
-      <p>
-        ${s} के लिए daily exam-oriented practice set.
-      </p>
-
-      <div class="list-item">
-        <b>Question Set #1</b>
-        <span>Today's Practice</span>
-      </div>
-
-      <div class="list-item">
-        <b>Easy + Medium + Hard</b>
-        <span>Mixed Level</span>
-      </div>
-
-      <div class="list-item">
-        <b>MCQ + Short + Long</b>
-        <span>Practice</span>
-      </div>
-
-      <div class="list-item">
-        <b>AI Personalization</b>
-        <span>Coming with backend</span>
-      </div>
-
-    `;
-
-  }
-
-
-  if(feature === "Notes"){
-
-    return `
-
-      <h2>📝 ${s} Notes</h2>
-
-      <p>
-        अपने important notes यहाँ organize कर सकते हो।
-      </p>
-
-      <div class="list-item">
-        <b>+ Add New Note</b>
-        <span>Coming soon</span>
-      </div>
-
-    `;
-
-  }
-
-
-  if(feature === "Revision"){
-
-    return `
-
-      <h2>🔄 Revision Queue</h2>
-
-      <p>
-        जिन topics को दोबारा पढ़ना है उन्हें यहाँ रखा जाएगा।
-      </p>
-
-      <div class="list-item">
-        <b>No revision topics yet</b>
-        <span>0 pending</span>
-      </div>
-
-    `;
-
-  }
-
-
-  if(feature === "Practice"){
-
-    return `
-
-      <h2>🎯 ${s} Practice</h2>
-
-      <p>
-        अलग-अलग question formats में practice करो।
-      </p>
-
-      <div class="list-item">
-        <b>🟢 Easy</b>
-        <span>Practice</span>
-      </div>
-
-      <div class="list-item">
-        <b>🟡 Medium</b>
-        <span>Practice</span>
-      </div>
-
-      <div class="list-item">
-        <b>🔴 Hard</b>
-        <span>Practice</span>
-      </div>
-
-    `;
-
-  }
-
-
-  if(feature === "Tests"){
-
-    return `
-
-      <h2>📋 ${s} Tests</h2>
-
-      <p>
-        Chapter test, subject test और mock test यहाँ मिलेंगे।
-      </p>
-
-      <div class="list-item">
-        <b>Chapter Test</b>
-        <span>Start →</span>
-      </div>
-
-      <div class="list-item">
-        <b>Subject Test</b>
-        <span>Start →</span>
-      </div>
-
-      <div class="list-item">
-        <b>Full Mock Test</b>
-        <span>Start →</span>
-      </div>
-
-    `;
-
-  }
-
-
-  if(feature === "Mistake Book"){
-
-    return `
-
-      <h2>❌ Mistake Book</h2>
-
-      <p>
-        गलत किए गए questions यहाँ automatically save किए जा सकते हैं।
-      </p>
-
-      <div class="list-item">
-        <b>No mistakes saved</b>
-        <span>0 Questions</span>
-      </div>
-
-    `;
-
-  }
-
-
-  if(feature === "Weak Topics"){
-
-    return `
-
-      <h2>⚠️ Weak Topics</h2>
-
-      <p>
-        BM आपके performance के आधार पर weak topics identify करेगा।
-      </p>
-
-      <div class="list-item">
-        <b>No weak topics detected</b>
-        <span>Keep practicing</span>
-      </div>
-
-    `;
-
-  }
-
-
-  if(feature === "Important Formulas"){
-
-    return `
-
-      <h2>📐 Important Formulas</h2>
-
-      <p>
-        ${s} के important formulas और quick revision material.
-      </p>
-
-      <div class="list-item">
-        <b>Formula Board</b>
-        <span>Open →</span>
-      </div>
-
-    `;
-
-  }
-
-
-  if(feature === "Question History"){
-
-    return `
-
-      <h2>🕘 Question History</h2>
-
-      <p>
-        आपके attempted questions और scores यहाँ दिखाई देंगे।
-      </p>
-
-      <div class="list-item">
-        <b>No attempts yet</b>
-        <span>0 Questions</span>
-      </div>
-
-    `;
-
-  }
-
-
-  if(feature === "Bookmarks"){
-
-    return `
-
-      <h2>🔖 Bookmarks</h2>
-
-      <p>
-        Important questions और topics को save करें।
-      </p>
-
-      <div class="list-item">
-        <b>No bookmarks</b>
-        <span>0 Saved</span>
-      </div>
-
-    `;
-
-  }
-
-
-  if(feature === "AI Explanation"){
-
-    return `
-
-      <h2>🤖 BM AI Explanation</h2>
-
-      <p>
-        किसी difficult ${s} concept को simple language में समझाने
-        के लिए AI system इस्तेमाल किया जाएगा।
-      </p>
-
-      <div class="list-item">
-        <b>AI Explanation Engine</b>
-        <span>Backend required</span>
-      </div>
-
-    `;
-
-  }
-
-
-  return `
-
-    <h2>${feature}</h2>
-
-    <p>
-      यह BM learning module है।
-    </p>
+   </div>
 
   `;
 
+  card.onclick=()=>openSubject(index);
+
+  grid.appendChild(card);
+
+ });
+
 }
 
 
-/* GENERAL */
+/* ================= OPEN SUBJECT ================= */
+
+function openSubject(index){
+
+ currentSubject=subjects[index];
+
+ previousPage="home";
+
+ hideAllPages();
+
+ document.getElementById("subjectPage")
+ .classList.remove("hidden");
+
+ document.getElementById("bigLogo")
+ .textContent=currentSubject.icon;
+
+ document.getElementById("subjectTitle")
+ .textContent=currentSubject.name;
+
+ document.getElementById("subjectDesc")
+ .textContent=currentSubject.desc;
+
+ document.getElementById("subjectPercent")
+ .textContent=currentSubject.progress+"%";
+
+ document.getElementById("subjectBar")
+ .style.width=currentSubject.progress+"%";
+
+ scrollTop();
+
+}
+
+
+/* ================= SUBJECT FEATURE ================= */
+
+function subjectFeature(feature){
+
+ previousPage="subject";
+
+ hideAllPages();
+
+ document.getElementById("contentPage")
+ .classList.remove("hidden");
+
+ document.getElementById("contentTitle")
+ .textContent=
+ currentSubject.icon+" "+currentSubject.name+
+ " — "+feature;
+
+ document.getElementById("contentDesc")
+ .textContent=
+ "BM "+currentSubject.name+" learning center";
+
+ document.getElementById("contentArea")
+ .innerHTML=`
+
+ <h2>${feature}</h2>
+
+ <p>
+ This ${currentSubject.name} module is ready
+ for complete study functionality.
+ </p>
+
+ <div class="item">
+   <b>📚 ${currentSubject.name} ${feature}</b>
+   <span>BM Module</span>
+ </div>
+
+ <div class="item">
+   <b>🎯 Personalized Practice</b>
+   <span>Coming</span>
+ </div>
+
+ <div class="item">
+   <b>🤖 BM AI Support</b>
+   <span>Coming</span>
+ </div>
+
+ `;
+
+ scrollTop();
+
+}
+
+
+/* ================= POMODORO ================= */
+
+let timerSeconds=25*60;
+let timerInterval=null;
+
+function openPomodoro(){
+
+ previousPage="home";
+
+ hideAllPages();
+
+ document.getElementById("pomodoroPage")
+ .classList.remove("hidden");
+
+ resetTimer();
+
+ scrollTop();
+
+}
+
+function updateTimer(){
+
+ let min=
+ Math.floor(timerSeconds/60)
+ .toString()
+ .padStart(2,"0");
+
+ let sec=
+ (timerSeconds%60)
+ .toString()
+ .padStart(2,"0");
+
+ document.getElementById("timerDisplay")
+ .textContent=min+":"+sec;
+
+}
+
+function startTimer(){
+
+ if(timerInterval) return;
+
+ timerInterval=setInterval(()=>{
+
+   if(timerSeconds<=0){
+
+     clearInterval(timerInterval);
+     timerInterval=null;
+
+     xp+=25;
+     studyMinutes+=25;
+
+     localStorage.setItem(
+       "bmXP",xp
+     );
+
+     localStorage.setItem(
+       "bmStudyMinutes",
+       studyMinutes
+     );
+
+     updateStats();
+
+     alert(
+       "🎉 25-minute Pomodoro complete! +25 XP"
+     );
+
+     resetTimer();
+
+     return;
+   }
+
+   timerSeconds--;
+
+   updateTimer();
+
+ },1000);
+
+}
+
+function pauseTimer(){
+
+ if(timerInterval){
+
+   clearInterval(timerInterval);
+   timerInterval=null;
+
+ }
+
+}
+
+function resetTimer(){
+
+ pauseTimer();
+
+ timerSeconds=25*60;
+
+ updateTimer();
+
+}
+
+
+/* ================= PLANNER ================= */
+
+function openPlanner(){
+
+ previousPage="home";
+
+ hideAllPages();
+
+ document.getElementById("contentPage")
+ .classList.remove("hidden");
+
+ document.getElementById("contentTitle")
+ .textContent="📅 Weekly Planner";
+
+ document.getElementById("contentDesc")
+ .textContent=
+ "Plan your complete week.";
+
+ document.getElementById("contentArea")
+ .innerHTML=`
+
+ <h2>Weekly Study Planner</h2>
+
+ <p>
+ Set your weekly subjects, chapters and study targets.
+ </p>
+
+ ${[
+ "Monday",
+ "Tuesday",
+ "Wednesday",
+ "Thursday",
+ "Friday",
+ "Saturday",
+ "Sunday"
+ ].map(day=>`
+
+ <div class="item">
+
+   <b>📅 ${day}</b>
+
+   <span>
+     Add study target →
+   </span>
+
+ </div>
+
+ `).join("")}
+
+ `;
+
+ scrollTop();
+
+}
+
+
+/* ================= NOTES ================= */
+
+function openNotes(){
+
+ previousPage="home";
+
+ hideAllPages();
+
+ document.getElementById("contentPage")
+ .classList.remove("hidden");
+
+ document.getElementById("contentTitle")
+ .textContent="📝 My Notes";
+
+ document.getElementById("contentDesc")
+ .textContent=
+ "Keep your important study notes organized.";
+
+ document.getElementById("contentArea")
+ .innerHTML=`
+
+ <h2>My Study Notes</h2>
+
+ <p>
+ Save formulas, concepts, important points and revision notes.
+ </p>
+
+ <div class="item">
+   <b>➕ Create New Note</b>
+   <span>Open →</span>
+ </div>
+
+ <div class="item">
+   <b>📌 Pinned Notes</b>
+   <span>0 notes</span>
+ </div>
+
+ `;
+
+ scrollTop();
+
+}
+
+
+/* ================= AI ================= */
+
+function openAI(){
+
+ openGeneral(
+  "🤖 BM AI Study Mentor"
+ );
+
+}
+
+
+/* ================= GENERAL ================= */
 
 function openGeneral(title){
 
-  previousPage = "home";
+ previousPage="home";
 
-  document.getElementById("homePage")
-    .classList.add("hidden");
+ hideAllPages();
 
-  document.getElementById("subjectPage")
-    .classList.add("hidden");
+ document.getElementById("contentPage")
+ .classList.remove("hidden");
 
-  document.getElementById("contentPage")
-    .classList.remove("hidden");
+ document.getElementById("contentTitle")
+ .textContent=title;
 
-  document.getElementById("contentTitle")
-    .textContent = title;
+ document.getElementById("contentDesc")
+ .textContent=
+ "BM — Beyond Mastery";
 
-  document.getElementById("contentDescription")
-    .textContent =
-      "BM — Beyond Mastery";
+ document.getElementById("contentArea")
+ .innerHTML=`
 
-  document.getElementById("contentArea")
-    .innerHTML = `
+ <h2>${title}</h2>
 
-      <h2>${title}</h2>
+ <p>
+ This BM module is designed for your personalized
+ learning system.
+ </p>
 
-      <p>
-        यह BM platform का dedicated module है।
-        इसमें आगे complete functionality जोड़ी जा सकती है।
-      </p>
+ <div class="item">
+   <b>🎓 Personalized Student Data</b>
+   <span>Ready</span>
+ </div>
 
-      <div class="list-item">
-        <b>Module Ready</b>
-        <span>BM System</span>
-      </div>
+ <div class="item">
+   <b>📊 Progress Tracking</b>
+   <span>Ready</span>
+ </div>
 
-      <div class="list-item">
-        <b>Personalized Student Data</b>
-        <span>Enabled</span>
-      </div>
+ <div class="item">
+   <b>🤖 AI Integration</b>
+   <span>Backend Required</span>
+ </div>
 
-    `;
+ `;
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+ scrollTop();
 
 }
 
 
-/* BACK */
+/* ================= DEVELOPER ================= */
+
+function openDeveloper(){
+
+ closeMenu();
+
+ previousPage="home";
+
+ hideAllPages();
+
+ document.getElementById("developerPage")
+ .classList.remove("hidden");
+
+ scrollTop();
+
+}
+
+
+/* ================= ABOUT ================= */
+
+function openAbout(){
+
+ closeMenu();
+
+ openGeneral("ℹ️ About BM");
+
+}
+
+
+/* ================= HOME ================= */
+
+function showHome(){
+
+ hideAllPages();
+
+ document.getElementById("homePage")
+ .classList.remove("hidden");
+
+ previousPage="home";
+
+ scrollTop();
+
+}
+
+
+/* ================= BACK ================= */
 
 function goBack(){
 
-  if(previousPage === "subject"){
+ if(previousPage==="subject"){
 
-    document.getElementById("contentPage")
-      .classList.add("hidden");
+   hideAllPages();
 
-    document.getElementById("subjectPage")
-      .classList.remove("hidden");
+   document.getElementById("subjectPage")
+   .classList.remove("hidden");
 
-  }else{
+ }else{
 
-    showHome();
+   showHome();
 
-  }
+ }
 
 }
 
 
-/* STATS */
+/* ================= HIDE PAGES ================= */
+
+function hideAllPages(){
+
+ [
+  "homePage",
+  "subjectPage",
+  "contentPage",
+  "pomodoroPage",
+  "developerPage"
+ ].forEach(id=>{
+
+   document.getElementById(id)
+   .classList.add("hidden");
+
+ });
+
+}
+
+
+/* ================= MENU ================= */
+
+function toggleMenu(){
+
+ document.getElementById("menu")
+ .classList.toggle("hidden");
+
+}
+
+function closeMenu(){
+
+ document.getElementById("menu")
+ .classList.add("hidden");
+
+}
+
+
+/* ================= STATS ================= */
 
 function updateStats(){
 
-  document.getElementById("studyMinutes")
-    .textContent = studyMinutes;
+ document.getElementById("studyMinutes")
+ .textContent=studyMinutes;
 
-  document.getElementById("xp")
-    .textContent = xp;
+ document.getElementById("xp")
+ .textContent=xp;
 
 }
 
 
-/* THEME */
+/* ================= THEME ================= */
 
 function toggleTheme(){
 
-  const light =
-    document.body.dataset.theme === "light";
+ const light=
+ document.body.dataset.theme==="light";
 
-  if(!light){
+ if(!light){
 
-    document.body.dataset.theme = "light";
+   document.body.dataset.theme="light";
 
-    document.documentElement.style
-      .setProperty("--bg","#f4f7fb");
+   document.documentElement
+   .style.setProperty(
+    "--bg","#f3f6fa"
+   );
 
-    document.documentElement.style
-      .setProperty("--panel","#ffffff");
+   document.documentElement
+   .style.setProperty(
+    "--card","#ffffff"
+   );
 
-    document.documentElement.style
-      .setProperty("--panel2","#f0f3f7");
+   document.documentElement
+   .style.setProperty(
+    "--card2","#eef2f6"
+   );
 
-    document.documentElement.style
-      .setProperty("--border","#dce2ea");
+   document.documentElement
+   .style.setProperty(
+    "--border","#d9e0e8"
+   );
 
-    document.documentElement.style
-      .setProperty("--text","#111827");
+   document.documentElement
+   .style.setProperty(
+    "--text","#101828"
+   );
 
-    document.documentElement.style
-      .setProperty("--muted","#667085");
+   document.documentElement
+   .style.setProperty(
+    "--muted","#667085"
+   );
 
-  }else{
+ }else{
 
-    document.body.dataset.theme = "dark";
+   document.body.dataset.theme="dark";
 
-    document.documentElement.style
-      .setProperty("--bg","#07090d");
+   document.documentElement
+   .style.setProperty(
+    "--bg","#070a0f"
+   );
 
-    document.documentElement.style
-      .setProperty("--panel","#10141b");
+   document.documentElement
+   .style.setProperty(
+    "--card","#10151d"
+   );
 
-    document.documentElement.style
-      .setProperty("--panel2","#151a23");
+   document.documentElement
+   .style.setProperty(
+    "--card2","#151b25"
+   );
 
-    document.documentElement.style
-      .setProperty("--border","#252d39");
+   document.documentElement
+   .style.setProperty(
+    "--border","#26303d"
+   );
 
-    document.documentElement.style
-      .setProperty("--text","#f4f7fb");
+   document.documentElement
+   .style.setProperty(
+    "--text","#f5f7fb"
+   );
 
-    document.documentElement.style
-      .setProperty("--muted","#8d98a8");
+   document.documentElement
+   .style.setProperty(
+    "--muted","#8994a5"
+   );
 
-  }
+ }
 
 }
 
 
-/* INITIAL */
+/* ================= SCROLL ================= */
 
-window.addEventListener("load",()=>{
+function scrollTop(){
 
-  setTimeout(()=>{
+ window.scrollTo({
+   top:0,
+   behavior:"smooth"
+ });
 
-    /* Splash stays until Continue */
+}
 
-  },500);
 
-});
+/* ================= START ================= */
+
+window.addEventListener(
+ "load",
+ ()=>{
+   // Splash remains until Continue
+ }
+);
 
 </script>
 
