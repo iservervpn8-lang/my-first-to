@@ -3,1508 +3,1254 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#080b12">
 <title>BM — Beyond Mastery</title>
 
-<link rel="icon" href="file_000000004bbc821186700759679ec160.png">
-
 <style>
-:root{
-  --bg:#07090d;
-  --card:#10141b;
-  --card2:#151b24;
-  --text:#f5f7fb;
-  --muted:#8d96a5;
-  --line:#252c38;
-  --accent:#4da3ff;
-  --accent2:#7c5cff;
-  --good:#31d17c;
-  --danger:#ff5c6c;
-  --warning:#ffc857;
-  --shadow:0 15px 50px rgba(0,0,0,.35);
-}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:Inter,system-ui,Arial,sans-serif;
-  background:radial-gradient(circle at 20% 0%,#111b2c 0,#07090d 38%);
-  color:var(--text);
-  min-height:100vh;
+:root{
+ --bg:#070a10;--card:#0e131d;--card2:#121927;--text:#f5f7fb;
+ --muted:#8d98aa;--accent:#3b82f6;--border:#202a3a;
+ --good:#22c55e;--warn:#f59e0b;--danger:#ef4444;
 }
 body.light{
-  --bg:#f5f7fb;
-  --card:#fff;
-  --card2:#eef2f7;
-  --text:#10141b;
-  --muted:#687385;
-  --line:#dbe1ea;
-  background:#f5f7fb;
+ --bg:#f3f6fb;--card:#fff;--card2:#eef3fa;--text:#111827;
+ --muted:#667085;--border:#dce3ee;
+}
+html{scroll-behavior:smooth}
+body{
+ font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);
+ transition:.25s;min-height:100vh
 }
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
-a{color:inherit;text-decoration:none}
+a{text-decoration:none;color:inherit}
 
-#loader{
-  position:fixed;inset:0;background:#07090d;z-index:9999;
-  display:flex;align-items:center;justify-content:center;
-  flex-direction:column;gap:15px;
+.loader{
+ position:fixed;inset:0;background:#070a10;z-index:9999;
+ display:flex;align-items:center;justify-content:center;
+ transition:.6s
 }
-#loader img{width:90px;height:90px;object-fit:contain;border-radius:20px}
-.loader-text{color:#aaa}
+.loader.hide{opacity:0;visibility:hidden}
+.loader-box{text-align:center}
+.logo-circle{
+ width:120px;height:120px;border-radius:50%;
+ margin:auto;display:flex;align-items:center;justify-content:center;
+ background:radial-gradient(circle at 30% 20%,#273244,#080b11 70%);
+ border:3px solid #7d8796;
+ box-shadow:0 0 35px rgba(59,130,246,.35),inset 0 0 25px #000;
+ position:relative;overflow:hidden
+}
+.logo-circle:after{
+ content:"";position:absolute;width:150%;height:3px;
+ background:var(--accent);transform:rotate(-25deg);opacity:.8
+}
+.logo-bm{font-size:45px;font-weight:1000;letter-spacing:-5px;z-index:2}
+.loader h1{margin-top:18px;font-size:24px}
+.loader p{color:#8d98aa;margin-top:6px}
+.loader small{display:block;margin-top:20px;color:#667085}
 
-.nav{
-  position:sticky;top:0;z-index:100;
-  background:rgba(7,9,13,.82);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--line);
+.start-screen{
+ min-height:100vh;display:flex;align-items:center;justify-content:center;
+ padding:25px
 }
-body.light .nav{background:rgba(255,255,255,.85)}
-.nav-inner{
-  max-width:1250px;margin:auto;padding:13px 20px;
-  display:flex;align-items:center;justify-content:space-between;gap:20px;
+.start-card{
+ width:min(650px,100%);text-align:center;padding:35px 25px;
+ background:linear-gradient(145deg,var(--card),var(--card2));
+ border:1px solid var(--border);border-radius:28px;
+ box-shadow:0 25px 70px #0006
 }
-.brand{display:flex;align-items:center;gap:10px;font-weight:800}
-.brand img{width:43px;height:43px;object-fit:contain;border-radius:10px}
-.brand span{font-size:17px}
-.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.start-card .logo-circle{width:145px;height:145px}
+.quote{
+ margin:25px auto;padding:18px;border-left:3px solid var(--accent);
+ background:#ffffff08;border-radius:12px;font-size:18px;line-height:1.6
+}
+.primary{
+ border:0;background:var(--accent);color:white;padding:13px 22px;
+ border-radius:12px;font-weight:800
+}
+.secondary{
+ border:1px solid var(--border);background:var(--card2);color:var(--text);
+ padding:11px 16px;border-radius:11px;font-weight:700
+}
+
+.setup{
+ display:none;min-height:100vh;padding:30px 18px;align-items:center;
+ justify-content:center
+}
+.setup-card{width:min(800px,100%);background:var(--card);padding:30px;
+ border:1px solid var(--border);border-radius:24px}
+.setup h2{font-size:30px;margin-bottom:8px}
+.setup p{color:var(--muted);margin-bottom:22px}
+.setup-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.choice{
+ padding:18px;border:1px solid var(--border);border-radius:16px;
+ background:var(--card2);color:var(--text);text-align:left;
+ transition:.2s
+}
+.choice:hover,.choice.active{border-color:var(--accent);transform:translateY(-2px)}
+.choice strong{display:block;margin-bottom:5px}
+.choice span{color:var(--muted);font-size:13px}
+
+.app{display:none}
+nav{
+ position:sticky;top:0;z-index:100;background:#080b10eF;
+ backdrop-filter:blur(15px);border-bottom:1px solid var(--border);
+ padding:12px 5%;display:flex;align-items:center;justify-content:space-between
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900}
+.nav-logo{
+ width:42px;height:42px;border-radius:50%;display:flex;
+ align-items:center;justify-content:center;border:2px solid #6b7280;
+ background:#090c12;font-weight:1000
+}
+.nav-links{display:flex;gap:7px;flex-wrap:wrap}
 .nav-links button{
-  background:none;border:0;color:var(--muted);padding:9px 11px;border-radius:9px;
+ background:transparent;border:0;color:var(--muted);padding:9px;
+ border-radius:9px
 }
 .nav-links button:hover{background:var(--card2);color:var(--text)}
-.menu-btn{display:none;background:var(--card2);border:1px solid var(--line);color:var(--text);padding:9px;border-radius:10px}
+.nav-actions{display:flex;gap:7px}
+.icon-btn{
+ border:1px solid var(--border);background:var(--card);color:var(--text);
+ width:40px;height:40px;border-radius:10px
+}
 
-.container{max-width:1250px;margin:auto;padding:25px 18px 100px}
+main{width:min(1250px,92%);margin:auto;padding:35px 0 100px}
 .hero{
-  min-height:410px;display:grid;grid-template-columns:1.3fr .7fr;
-  gap:30px;align-items:center;
+ padding:35px;border:1px solid var(--border);border-radius:25px;
+ background:radial-gradient(circle at 85% 20%,#1b3a72 0,#0e131d 45%);
+ margin-bottom:25px
 }
+.hero h1{font-size:clamp(30px,5vw,55px);line-height:1}
+.hero h1 span{color:var(--accent)}
+.hero p{color:#aeb8c9;margin:14px 0 20px}
+.hero-meta{display:flex;gap:10px;flex-wrap:wrap}
 .badge{
-  display:inline-flex;padding:7px 12px;border:1px solid var(--line);
-  background:var(--card);border-radius:100px;color:var(--accent);font-size:13px;
-}
-h1{font-size:clamp(42px,7vw,78px);line-height:.98;margin:18px 0}
-.gradient{
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  -webkit-background-clip:text;color:transparent;
-}
-.hero p{max-width:650px;color:var(--muted);font-size:18px;line-height:1.7}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
-.btn{
-  border:1px solid var(--line);background:var(--card);
-  color:var(--text);padding:11px 16px;border-radius:11px;
-}
-.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-.btn.danger{border-color:#57232c;color:#ff8791}
-.btn.good{border-color:#1f6344;color:#59e99a}
-.btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
-
-.hero-logo{
-  display:flex;justify-content:center;align-items:center;
-}
-.hero-logo img{
-  width:min(330px,80vw);filter:drop-shadow(0 20px 35px rgba(77,163,255,.18));
+ padding:8px 11px;border-radius:99px;background:#ffffff0d;
+ border:1px solid #ffffff15;font-size:13px
 }
 
-.section{margin-top:45px}
-.section-title{display:flex;justify-content:space-between;gap:15px;align-items:end;margin-bottom:18px}
-.section-title h2{font-size:27px}
-.section-title p{color:var(--muted);font-size:13px}
-
-.grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+.section{margin-top:35px}
+.section-title{
+ display:flex;justify-content:space-between;align-items:center;
+ margin-bottom:15px;gap:10px
 }
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.section-title h2{font-size:23px}
+.muted{color:var(--muted)}
+
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 
 .card{
-  background:linear-gradient(145deg,var(--card),var(--card2));
-  border:1px solid var(--line);border-radius:17px;padding:18px;
-  box-shadow:var(--shadow);
+ background:linear-gradient(145deg,var(--card),var(--card2));
+ border:1px solid var(--border);border-radius:18px;padding:18px
 }
-.card:hover{border-color:#354052}
-.stat-number{font-size:31px;font-weight:800;margin-top:8px}
-.muted{color:var(--muted)}
-.small{font-size:12px}
-.icon{font-size:24px}
+.stat .num{font-size:29px;font-weight:900;margin-top:8px}
+.stat small{color:var(--muted)}
 
 .progress{
-  height:9px;background:#202631;border-radius:99px;overflow:hidden;margin:12px 0;
+ height:9px;background:#ffffff0c;border-radius:99px;overflow:hidden;
+ margin-top:12px
 }
-.progress span{
-  display:block;height:100%;width:0;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  transition:.4s;
+.progress i{display:block;height:100%;background:var(--accent);border-radius:99px}
+
+.subject-head{display:flex;justify-content:space-between}
+.subject-icon{
+ width:43px;height:43px;border-radius:12px;background:#ffffff0a;
+ display:flex;align-items:center;justify-content:center;font-size:21px
 }
 
 input,textarea,select{
-  width:100%;background:var(--bg);border:1px solid var(--line);
-  color:var(--text);padding:11px;border-radius:10px;outline:none;
+ width:100%;padding:12px;border-radius:11px;border:1px solid var(--border);
+ background:var(--bg);color:var(--text);outline:none
 }
-textarea{min-height:130px;resize:vertical}
-input:focus,textarea:focus,select:focus{border-color:var(--accent)}
-
-.form{display:grid;gap:10px}
-.row{display:flex;gap:9px;flex-wrap:wrap}
-.row>*{flex:1;min-width:120px}
+textarea{min-height:160px;resize:vertical}
+.form-row{display:flex;gap:10px;margin-top:10px}
+.form-row>*{flex:1}
 
 .task{
-  display:flex;align-items:center;gap:10px;
-  padding:11px 0;border-bottom:1px solid var(--line);
+ display:flex;align-items:center;gap:10px;padding:12px 0;
+ border-bottom:1px solid var(--border)
 }
-.task:last-child{border:0}
+.task:last-child{border-bottom:0}
 .task.done .task-text{text-decoration:line-through;color:var(--muted)}
-.task input{width:auto}
 .task-text{flex:1}
-
-.pill{
-  padding:4px 8px;border-radius:100px;font-size:11px;
-  border:1px solid var(--line);
+.priority{
+ padding:4px 8px;border-radius:99px;font-size:11px;font-weight:800
 }
-.high{color:#ff7c88}.medium{color:#ffc857}.low{color:#59e99a}
-
-.chart{
-  height:180px;display:flex;align-items:end;gap:7px;padding-top:15px;
-}
-.bar{
-  flex:1;background:linear-gradient(to top,var(--accent2),var(--accent));
-  border-radius:7px 7px 2px 2px;min-height:5px;position:relative;
-}
-.bar span{
-  position:absolute;bottom:-20px;width:100%;text-align:center;
-  font-size:10px;color:var(--muted);
-}
+.high{background:#ef444422;color:#f87171}
+.medium{background:#f59e0b22;color:#fbbf24}
+.low{background:#22c55e22;color:#4ade80}
 
 .timer{
-  text-align:center;font-size:64px;font-weight:800;
-  letter-spacing:2px;margin:15px 0;
+ text-align:center;padding:25px
 }
-.timer-mode{text-align:center;color:var(--muted)}
+.time{
+ font-size:64px;font-weight:1000;letter-spacing:2px;margin:10px 0
+}
+.timer-actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
 
-.search{
-  position:sticky;top:70px;z-index:50;margin-bottom:20px;
+.quote-card{
+ font-size:18px;line-height:1.6;min-height:130px;
+ display:flex;align-items:center
 }
-.search input{background:var(--card)}
 
-.subject{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:12px 0;border-bottom:1px solid var(--line);
+.mission{
+ display:flex;justify-content:space-between;gap:12px;align-items:center;
+ padding:13px 0;border-bottom:1px solid var(--border)
 }
-.subject:last-child{border:0}
-
-.badges{display:flex;flex-wrap:wrap;gap:9px}
-.badge-item{
-  padding:9px 12px;border-radius:12px;background:var(--bg);
-  border:1px solid var(--line);font-size:12px;
-}
-.badge-item.unlocked{border-color:var(--accent);color:var(--accent)}
-
-.profile{
-  display:flex;gap:18px;align-items:center;
-}
-.profile-img{
-  width:105px;height:105px;border-radius:50%;object-fit:cover;
-  border:3px solid var(--accent);
-  box-shadow:0 0 30px rgba(77,163,255,.25);
-}
+.mission:last-child{border:0}
 
 .chat{
-  height:280px;overflow:auto;background:var(--bg);
-  border:1px solid var(--line);border-radius:12px;padding:12px;
+ height:320px;overflow:auto;background:var(--bg);
+ border-radius:14px;padding:14px;border:1px solid var(--border)
 }
-.msg{padding:9px 11px;border-radius:12px;margin:7px 0;max-width:85%}
-.msg.ai{background:var(--card2);margin-right:auto}
+.msg{
+ max-width:85%;padding:10px 12px;border-radius:13px;margin-bottom:9px;
+ line-height:1.45
+}
+.msg.ai{background:var(--card2)}
 .msg.user{background:var(--accent);margin-left:auto}
+.chat-input{display:flex;gap:8px;margin-top:9px}
 
-.toast{
-  position:fixed;right:18px;bottom:18px;z-index:9998;
-  background:#151b24;color:#fff;border:1px solid var(--line);
-  padding:12px 15px;border-radius:12px;display:none;
+.roadmap{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:10px
 }
+.road{
+ padding:17px;border:1px solid var(--border);border-radius:14px;
+ background:var(--card2);text-align:center
+}
+.road.active{border-color:var(--accent)}
 
-.modal{
-  position:fixed;inset:0;background:rgba(0,0,0,.72);
-  z-index:9000;display:none;align-items:center;justify-content:center;padding:20px;
+.dev{
+ display:flex;gap:22px;align-items:center;flex-wrap:wrap
 }
-.modal-box{
-  width:min(600px,100%);background:var(--card);
-  border:1px solid var(--line);border-radius:18px;padding:22px;
-  max-height:90vh;overflow:auto;
+.profile-img{
+ width:130px;height:130px;object-fit:cover;border-radius:50%;
+ border:3px solid var(--accent);background:#111
 }
-
-.vault-lock{text-align:center}
-.vault-icon{font-size:55px;margin:10px}
+.dev h3{font-size:25px}
+.dev p{color:var(--muted);margin-top:6px}
 
 footer{
-  border-top:1px solid var(--line);padding:30px 20px;
-  text-align:center;color:var(--muted);
+ border-top:1px solid var(--border);padding:30px 5%;text-align:center;
+ color:var(--muted)
 }
 
-.mobile-bottom{
-  display:none;
+.toast{
+ position:fixed;right:18px;bottom:18px;background:#111827;color:white;
+ padding:12px 16px;border-radius:12px;z-index:9998;
+ opacity:0;transform:translateY(20px);transition:.3s
 }
+.toast.show{opacity:1;transform:translateY(0)}
+
+.mobile-nav{
+ display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;
+ background:#080b10F2;border-top:1px solid var(--border);
+ padding:8px;justify-content:space-around
+}
+.mobile-nav button{
+ background:transparent;border:0;color:var(--muted);font-size:11px
+}
+.mobile-nav b{display:block;font-size:18px;margin-bottom:3px}
 
 @media(max-width:900px){
-  .grid{grid-template-columns:repeat(2,1fr)}
-  .grid3{grid-template-columns:1fr 1fr}
-  .hero{grid-template-columns:1fr;text-align:center}
-  .hero p{margin:auto}
-  .hero-actions{justify-content:center}
-  .hero-logo{order:-1}
-  .nav-links{display:none}
-  .menu-btn{display:block}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .grid-3{grid-template-columns:repeat(2,1fr)}
+ .nav-links{display:none}
+ .mobile-nav{display:flex}
 }
 @media(max-width:600px){
-  .container{padding:18px 12px 100px}
-  .grid,.grid2,.grid3{grid-template-columns:1fr}
-  h1{font-size:47px}
-  .hero{min-height:auto;padding:25px 0}
-  .hero-logo img{width:210px}
-  .nav-inner{padding:9px 12px}
-  .mobile-bottom{
-    display:flex;position:fixed;bottom:0;left:0;right:0;z-index:500;
-    background:rgba(10,13,18,.95);backdrop-filter:blur(15px);
-    border-top:1px solid var(--line);justify-content:space-around;padding:8px;
-  }
-  .mobile-bottom button{
-    background:none;border:0;color:var(--muted);font-size:11px;
-  }
-  .mobile-bottom button b{display:block;font-size:19px}
-  .profile{align-items:flex-start}
+ main{width:94%;padding-top:20px}
+ .grid,.grid-2,.grid-3,.setup-grid,.roadmap{grid-template-columns:1fr}
+ .hero{padding:24px}
+ .time{font-size:48px}
+ .form-row{flex-direction:column}
+ nav{padding:10px 3%}
+ .brand span{display:none}
 }
 </style>
 </head>
 
 <body>
 
-<div id="loader">
-  <img src="file_000000004bbc821186700759679ec160.png">
-  <div class="loader-text">Loading BM — Beyond Mastery...</div>
+<!-- LOADER -->
+<div class="loader" id="loader">
+ <div class="loader-box">
+  <div class="logo-circle"><div class="logo-bm">BM</div></div>
+  <h1>BEYOND MASTERY</h1>
+  <p>Learn Beyond Limits</p>
+  <small>Loading your learning space...</small>
+ </div>
 </div>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="brand" href="#home">
-      <img src="file_000000004bbc821186700759679ec160.png">
-      <span>BM — Beyond Mastery</span>
-    </a>
+<!-- START -->
+<section class="start-screen" id="startScreen">
+ <div class="start-card">
+  <div class="logo-circle"><div class="logo-bm">BM</div></div>
+  <h1 style="margin-top:20px">BEYOND MASTERY</h1>
+  <p class="muted">Learn Beyond Limits</p>
 
-    <div class="nav-links">
-      <button onclick="go('home')">Home</button>
-      <button onclick="go('dashboard')">Dashboard</button>
-      <button onclick="go('study')">Study</button>
-      <button onclick="go('planner')">Planner</button>
-      <button onclick="go('analytics')">Analytics</button>
-      <button onclick="go('mentor')">AI Mentor</button>
-      <button onclick="openVault()">🔐 Vault</button>
-    </div>
-
-    <button class="menu-btn" onclick="toggleMobileMenu()">☰</button>
+  <div class="quote">
+   “हर दिन थोड़ा बेहतर बनो, क्योंकि बड़ी सफलता छोटी मेहनत से बनती है।”
   </div>
+
+  <p class="muted">Developed by <b style="color:var(--text)">Himanshu Shekhar</b></p>
+  <br>
+  <button class="primary" onclick="openSetup()">CONTINUE →</button>
+ </div>
+</section>
+
+<!-- SETUP -->
+<section class="setup" id="setup">
+ <div class="setup-card">
+  <h2>Let's Build Your Study Space 🎓</h2>
+  <p>अपना Board, Class और Stream चुनो। BM उसी हिसाब से personalize होगा।</p>
+
+  <h3>1. Select Board</h3>
+  <div class="setup-grid" id="boards">
+   <button class="choice" onclick="selectOption('board','Bihar Board',this)">
+    <strong>🇮🇳 Bihar Board</strong><span>BSEB</span>
+   </button>
+   <button class="choice" onclick="selectOption('board','CBSE',this)">
+    <strong>📘 CBSE</strong><span>Central Board of Secondary Education</span>
+   </button>
+  </div>
+
+  <br>
+  <h3>2. Select Class</h3>
+  <div class="setup-grid" id="classes">
+   <button class="choice" onclick="selectOption('class','10',this)">
+    <strong>Class 10</strong><span>Board Preparation</span>
+   </button>
+   <button class="choice" onclick="selectOption('class','11',this)">
+    <strong>Class 11</strong><span>Foundation Year</span>
+   </button>
+   <button class="choice" onclick="selectOption('class','12',this)">
+    <strong>Class 12</strong><span>Board + Career Preparation</span>
+   </button>
+  </div>
+
+  <br>
+  <h3>3. Select Stream</h3>
+  <div class="setup-grid">
+   <button class="choice" onclick="selectOption('stream','Science',this)">
+    <strong>🔬 Science</strong><span>PCM / PCB</span>
+   </button>
+   <button class="choice" onclick="selectOption('stream','Commerce',this)">
+    <strong>💼 Commerce</strong><span>Accounts / Business / Economics</span>
+   </button>
+   <button class="choice" onclick="selectOption('stream','Arts / Humanities',this)">
+    <strong>📖 Arts / Humanities</strong><span>Humanities subjects</span>
+   </button>
+  </div>
+
+  <br>
+  <button class="primary" onclick="finishSetup()">CREATE MY DASHBOARD 🚀</button>
+ </div>
+</section>
+
+<!-- APP -->
+<div class="app" id="app">
+
+<nav>
+ <div class="brand">
+  <div class="nav-logo">BM</div>
+  <span>BEYOND MASTERY</span>
+ </div>
+
+ <div class="nav-links">
+  <button onclick="go('home')">Home</button>
+  <button onclick="go('study')">Study</button>
+  <button onclick="go('planner')">Planner</button>
+  <button onclick="go('analytics')">Analytics</button>
+  <button onclick="go('focus')">Focus</button>
+  <button onclick="go('ai')">BM AI</button>
+ </div>
+
+ <div class="nav-actions">
+  <button class="icon-btn" onclick="toggleTheme()">☀️</button>
+  <button class="icon-btn" onclick="randomQuote()">💡</button>
+ </div>
 </nav>
 
-<main class="container">
+<main>
 
-<section id="home" class="hero">
-  <div>
-    <span class="badge">🎓 Learn Beyond Limits</span>
-    <h1>Build Your<br><span class="gradient">Mastery.</span></h1>
-    <p>
-      A private personal learning dashboard for study, consistency,
-      progress tracking, notes, planning and smarter learning.
-    </p>
-    <div class="hero-actions">
-      <button class="btn primary" onclick="go('dashboard')">Open Dashboard</button>
-      <button class="btn" onclick="go('study')">Start Studying</button>
-      <button class="btn" onclick="openVault()">🔐 Private Vault</button>
-    </div>
+<!-- HOME -->
+<section id="home">
+ <div class="hero">
+  <div class="badge">🎓 Personalized Student Dashboard</div>
+  <br><br>
+  <h1>Learn <span>Beyond</span> Limits.</h1>
+  <p id="studentInfo">Your personal study command center.</p>
+  <div class="hero-meta">
+   <span class="badge" id="boardBadge">Board</span>
+   <span class="badge" id="classBadge">Class</span>
+   <span class="badge" id="streamBadge">Stream</span>
   </div>
+ </div>
 
-  <div class="hero-logo">
-    <img src="file_000000004bbc821186700759679ec160.png">
-  </div>
-</section>
-
-<section id="dashboard" class="section">
-  <div class="section-title">
-    <div>
-      <h2>🏠 Command Center</h2>
-      <p>Your personal BM overview</p>
-    </div>
-  </div>
-
+ <div class="section">
+  <div class="section-title"><h2>🏠 Command Center</h2></div>
   <div class="grid">
-    <div class="card">
-      <div class="icon">⏱️</div>
-      <div class="muted small">Study Time</div>
-      <div class="stat-number" id="totalStudy">0h 0m</div>
-    </div>
-    <div class="card">
-      <div class="icon">🔥</div>
-      <div class="muted small">Current Streak</div>
-      <div class="stat-number"><span id="streak">0</span> days</div>
-    </div>
-    <div class="card">
-      <div class="icon">⭐</div>
-      <div class="muted small">XP</div>
-      <div class="stat-number" id="xp">0</div>
-    </div>
-    <div class="card">
-      <div class="icon">🏆</div>
-      <div class="muted small">Level</div>
-      <div class="stat-number" id="level">1</div>
-    </div>
+   <div class="card stat">
+    <small>Study Time</small><div class="num" id="totalTime">0h 0m</div>
+   </div>
+   <div class="card stat">
+    <small>Study Streak</small><div class="num">🔥 <span id="streak">0</span></div>
+   </div>
+   <div class="card stat">
+    <small>XP</small><div class="num">⭐ <span id="xp">0</span></div>
+   </div>
+   <div class="card stat">
+    <small>Daily Score</small><div class="num"><span id="score">0</span>/100</div>
+   </div>
   </div>
+ </div>
 
-  <div class="grid2 section">
-    <div class="card">
-      <h3>🎯 Today's Goal</h3>
-      <div class="stat-number"><span id="todayMinutes">0</span> / <span id="goalMinutes">120</span> min</div>
-      <div class="progress"><span id="goalProgress"></span></div>
-      <button class="btn" onclick="setGoal()">Change Goal</button>
-    </div>
+ <div class="section">
+  <div class="grid-2">
+   <div class="card">
+    <h3>🎯 Today's Goal</h3>
+    <p class="muted" id="goalText">Study for 2 hours today.</p>
+    <div class="progress"><i id="goalBar" style="width:0%"></i></div>
+    <br>
+    <button class="secondary" onclick="go('focus')">Start Focus</button>
+   </div>
 
-    <div class="card">
-      <h3>📅 Exam Countdown</h3>
-      <div class="stat-number" id="countdown">Set Date</div>
-      <p class="muted small" id="examDateText">No exam date set</p>
-      <button class="btn" onclick="setExam()">Set Exam Date</button>
-    </div>
+   <div class="card quote-card" id="quoteCard">
+    “Consistency beats motivation.”
+   </div>
   </div>
+ </div>
+
+ <div class="section">
+  <div class="section-title"><h2>🧩 Daily Missions</h2></div>
+  <div class="card" id="missions"></div>
+ </div>
+
+ <div class="section">
+  <div class="section-title"><h2>🗺️ Learning Roadmap</h2></div>
+  <div class="roadmap">
+   <div class="road active"><b>01</b><br>Foundation<br><small class="muted">Build Basics</small></div>
+   <div class="road"><b>02</b><br>Practice<br><small class="muted">Solve & Revise</small></div>
+   <div class="road"><b>03</b><br>Mastery<br><small class="muted">Tests & Analysis</small></div>
+  </div>
+ </div>
 </section>
 
+<!-- STUDY -->
 <section id="study" class="section">
-  <div class="section-title">
-    <div>
-      <h2>📚 Study Center</h2>
-      <p>Subject-wise learning control</p>
-    </div>
+ <div class="section-title">
+  <h2>📚 Study Center</h2>
+  <span class="muted">Your subjects</span>
+ </div>
+
+ <div class="grid-3">
+  <div class="card">
+   <div class="subject-head">
+    <div><h3>🔢 Maths</h3><small class="muted">Practice & Problems</small></div>
+    <div class="subject-icon">∑</div>
+   </div>
+   <div class="progress"><i id="mathBar"></i></div>
+   <p style="margin-top:8px"><b id="mathVal">0%</b> complete</p>
+   <br>
+   <button class="secondary" onclick="changeProgress('math')">Update</button>
   </div>
 
-  <div class="grid3">
-    <div class="card subject-card">
-      <h3>📐 Mathematics</h3>
-      <div class="progress"><span id="mathProgress"></span></div>
-      <p class="muted">Progress: <b id="mathText">0%</b></p>
-      <button class="btn" onclick="changeSubject('math')">Update</button>
-    </div>
-
-    <div class="card subject-card">
-      <h3>⚛️ Physics</h3>
-      <div class="progress"><span id="physicsProgress"></span></div>
-      <p class="muted">Progress: <b id="physicsText">0%</b></p>
-      <button class="btn" onclick="changeSubject('physics')">Update</button>
-    </div>
-
-    <div class="card subject-card">
-      <h3>🧪 Chemistry</h3>
-      <div class="progress"><span id="chemProgress"></span></div>
-      <p class="muted">Progress: <b id="chemText">0%</b></p>
-      <button class="btn" onclick="changeSubject('chem')">Update</button>
-    </div>
+  <div class="card">
+   <div class="subject-head">
+    <div><h3>⚛️ Physics</h3><small class="muted">Concepts & Numericals</small></div>
+    <div class="subject-icon">⚛</div>
+   </div>
+   <div class="progress"><i id="phyBar"></i></div>
+   <p style="margin-top:8px"><b id="phyVal">0%</b> complete</p>
+   <br>
+   <button class="secondary" onclick="changeProgress('phy')">Update</button>
   </div>
 
-  <div class="grid2 section">
-    <div class="card">
-      <h3>🧠 Weak Topic Tracker</h3>
-      <div class="form" style="margin-top:12px">
-        <input id="weakTopic" placeholder="Example: Integration">
-        <select id="weakSubject">
-          <option>Mathematics</option>
-          <option>Physics</option>
-          <option>Chemistry</option>
-          <option>English</option>
-        </select>
-        <button class="btn primary" onclick="addWeakTopic()">Add Weak Topic</button>
-      </div>
-      <div id="weakList" style="margin-top:12px"></div>
-    </div>
-
-    <div class="card">
-      <h3>📚 Chapter Tracker</h3>
-      <div class="form" style="margin-top:12px">
-        <input id="chapterName" placeholder="Chapter name">
-        <select id="chapterSubject">
-          <option>Mathematics</option>
-          <option>Physics</option>
-          <option>Chemistry</option>
-          <option>English</option>
-        </select>
-        <button class="btn primary" onclick="addChapter()">Add Chapter</button>
-      </div>
-      <div id="chapterList" style="margin-top:12px"></div>
-    </div>
+  <div class="card">
+   <div class="subject-head">
+    <div><h3>🧪 Chemistry</h3><small class="muted">Theory & Reactions</small></div>
+    <div class="subject-icon">🧪</div>
+   </div>
+   <div class="progress"><i id="chemBar"></i></div>
+   <p style="margin-top:8px"><b id="chemVal">0%</b> complete</p>
+   <br>
+   <button class="secondary" onclick="changeProgress('chem')">Update</button>
   </div>
+ </div>
+
+ <div class="grid-2" style="margin-top:14px">
+  <div class="card">
+   <h3>📚 Chapter Tracker</h3>
+   <div class="form-row">
+    <input id="chapterInput" placeholder="Chapter name">
+    <select id="chapterSubject">
+     <option>Maths</option><option>Physics</option><option>Chemistry</option>
+     <option>English</option><option>Other</option>
+    </select>
+   </div>
+   <br>
+   <button class="primary" onclick="addChapter()">Add Chapter</button>
+   <div id="chapterList"></div>
+  </div>
+
+  <div class="card">
+   <h3>🧠 Weak Topic Tracker</h3>
+   <div class="form-row">
+    <input id="weakInput" placeholder="Topic you need to improve">
+    <button class="primary" onclick="addWeak()">Add</button>
+   </div>
+   <div id="weakList"></div>
+  </div>
+ </div>
+
+ <div class="card" style="margin-top:14px">
+  <h3>📝 Important Questions</h3>
+  <textarea id="questions" placeholder="Important questions / exam points..."></textarea>
+ </div>
 </section>
 
+<!-- PLANNER -->
 <section id="planner" class="section">
-  <div class="section-title">
-    <div>
-      <h2>📅 Planner & Tasks</h2>
-      <p>Plan → Execute → Track</p>
-    </div>
+ <div class="section-title"><h2>📅 Planner & Tasks</h2></div>
+
+ <div class="grid-2">
+  <div class="card">
+   <h3>📝 Add Homework / Task</h3>
+   <input id="taskInput" placeholder="Example: Physics Chapter 2 revise">
+   <div class="form-row">
+    <select id="taskPriority">
+     <option>High</option><option>Medium</option><option>Low</option>
+    </select>
+    <select id="taskSubject">
+     <option>Maths</option><option>Physics</option><option>Chemistry</option>
+     <option>English</option><option>Other</option>
+    </select>
+   </div>
+   <br>
+   <button class="primary" onclick="addTask()">Add Task</button>
   </div>
 
-  <div class="grid2">
-    <div class="card">
-      <h3>📝 Add Task</h3>
-      <div class="form" style="margin-top:12px">
-        <input id="taskInput" placeholder="What will you study?">
-        <select id="taskPriority">
-          <option value="high">High Priority</option>
-          <option value="medium">Medium Priority</option>
-          <option value="low">Low Priority</option>
-        </select>
-        <button class="btn primary" onclick="addTask()">Add Task</button>
-      </div>
-      <div id="taskList" style="margin-top:15px"></div>
-    </div>
-
-    <div class="card">
-      <h3>📋 Weekly Planner</h3>
-      <div class="form" style="margin-top:12px">
-        <input id="planInput" placeholder="Plan for this week">
-        <button class="btn primary" onclick="addPlan()">Add Plan</button>
-      </div>
-      <div id="planList" style="margin-top:15px"></div>
-    </div>
+  <div class="card">
+   <h3>📋 My Tasks</h3>
+   <div id="taskList"></div>
   </div>
+ </div>
+
+ <div class="section">
+  <div class="card">
+   <h3>📆 Weekly Planner</h3>
+   <div class="grid-3" style="margin-top:12px">
+    <input placeholder="Monday plan" id="mon">
+    <input placeholder="Tuesday plan" id="tue">
+    <input placeholder="Wednesday plan" id="wed">
+    <input placeholder="Thursday plan" id="thu">
+    <input placeholder="Friday plan" id="fri">
+    <input placeholder="Saturday plan" id="sat">
+   </div>
+   <br>
+   <button class="primary" onclick="savePlanner()">Save Weekly Plan</button>
+  </div>
+ </div>
 </section>
 
+<!-- ANALYTICS -->
 <section id="analytics" class="section">
-  <div class="section-title">
-    <div>
-      <h2>📊 Advanced Analytics</h2>
-      <p>Your study performance</p>
-    </div>
+ <div class="section-title"><h2>📊 Analytics</h2></div>
+
+ <div class="grid">
+  <div class="card stat"><small>Overall Progress</small><div class="num" id="overall">0%</div></div>
+  <div class="card stat"><small>Tasks Done</small><div class="num" id="doneTasks">0</div></div>
+  <div class="card stat"><small>Consistency</small><div class="num" id="consistency">0%</div></div>
+  <div class="card stat"><small>Level</small><div class="num" id="level">1</div></div>
+ </div>
+
+ <div class="card" style="margin-top:14px">
+  <h3>📈 Overall Learning Progress</h3>
+  <div class="progress"><i id="overallBar"></i></div>
+  <br>
+  <p class="muted">BM combines subject progress, completed tasks and study consistency.</p>
+ </div>
+
+ <div class="grid-3" style="margin-top:14px">
+  <div class="card">
+   <h3>Maths</h3>
+   <div class="progress"><i id="aMath"></i></div>
   </div>
-
-  <div class="grid3">
-    <div class="card">
-      <h3>📈 Weekly Study</h3>
-      <div class="chart" id="studyChart"></div>
-    </div>
-
-    <div class="card">
-      <h3>📊 Subject Comparison</h3>
-      <div class="chart" id="subjectChart"></div>
-    </div>
-
-    <div class="card">
-      <h3>🎯 Performance</h3>
-      <p class="muted">Consistency</p>
-      <div class="progress"><span id="consistencyBar"></span></div>
-      <p class="muted">Task Completion</p>
-      <div class="progress"><span id="taskBar"></span></div>
-      <p class="muted">Overall Progress</p>
-      <div class="progress"><span id="overallBar"></span></div>
-    </div>
+  <div class="card">
+   <h3>Physics</h3>
+   <div class="progress"><i id="aPhy"></i></div>
   </div>
-
-  <div class="card section">
-    <h3>📋 Weekly Performance Summary</h3>
-    <p id="weeklySummary" class="muted" style="margin-top:10px"></p>
+  <div class="card">
+   <h3>Chemistry</h3>
+   <div class="progress"><i id="aChem"></i></div>
   </div>
+ </div>
+
+ <div class="card" style="margin-top:14px">
+  <h3>📥 Progress Report</h3>
+  <p class="muted" style="margin:8px 0 15px">अपने study data की report save करो।</p>
+  <button class="primary" onclick="downloadReport()">Download Report</button>
+  <button class="secondary" onclick="backupData()">Backup Data</button>
+ </div>
 </section>
 
-<section class="section">
-  <div class="section-title">
-    <div>
-      <h2>🍅 Focus Room</h2>
-      <p>Pomodoro + focus sessions</p>
-    </div>
-  </div>
+<!-- FOCUS -->
+<section id="focus" class="section">
+ <div class="section-title"><h2>⏱️ Focus Center</h2></div>
 
-  <div class="grid2">
-    <div class="card">
-      <div class="timer-mode" id="timerMode">Focus Session</div>
-      <div class="timer" id="timer">25:00</div>
-      <div class="row">
-        <button class="btn primary" onclick="startTimer()">Start</button>
-        <button class="btn" onclick="pauseTimer()">Pause</button>
-        <button class="btn" onclick="resetTimer()">Reset</button>
-        <button class="btn" onclick="breakTimer()">Break</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>⏱️ Session History</h3>
-      <div id="sessionHistory" style="margin-top:12px"></div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-title">
-    <div>
-      <h2>📝 Smart Notes</h2>
-      <p>Autosaved locally on this device</p>
-    </div>
+ <div class="grid-2">
+  <div class="card timer">
+   <h3>🍅 Pomodoro Focus</h3>
+   <div class="time" id="timer">25:00</div>
+   <div class="timer-actions">
+    <button class="primary" onclick="startTimer()">Start</button>
+    <button class="secondary" onclick="pauseTimer()">Pause</button>
+    <button class="secondary" onclick="resetTimer()">Reset</button>
+   </div>
   </div>
 
   <div class="card">
-    <textarea id="notes" placeholder="Write your study notes here..."></textarea>
-    <p class="muted small" id="saveStatus" style="margin-top:8px">Not saved</p>
+   <h3>⏱️ Focus Session History</h3>
+   <div id="history"></div>
   </div>
+ </div>
 </section>
 
+<!-- NOTES -->
 <section class="section">
-  <div class="section-title">
-    <div>
-      <h2>🏆 Achievements</h2>
-      <p>Unlock milestones</p>
-    </div>
+ <div class="section-title"><h2>📝 Quick Notes Board</h2></div>
+ <div class="grid-2">
+  <div class="card">
+   <h3>Quick Notes</h3>
+   <textarea id="notes" placeholder="Important ideas, formulas, reminders..."></textarea>
+   <br><br>
+   <button class="primary" onclick="saveNotes()">Save Notes</button>
   </div>
 
   <div class="card">
-    <div class="badges" id="badges"></div>
+   <h3>💯 Daily Score</h3>
+   <p class="muted">Tasks + focus + consistency से आपका score बनता है।</p>
+   <br>
+   <div style="font-size:60px;font-weight:1000" id="bigScore">0</div>
+   <p class="muted">out of 100</p>
   </div>
+ </div>
 </section>
 
-<section id="mentor" class="section">
-  <div class="section-title">
-    <div>
-      <h2>🤖 BM AI Study Mentor</h2>
-      <p>Personal study analysis</p>
-    </div>
-  </div>
-
-  <div class="grid2">
-    <div class="card">
-      <h3>🧠 Current Analysis</h3>
-      <p id="aiReport" class="muted" style="line-height:1.8;margin-top:12px"></p>
-      <button class="btn primary" onclick="generateReport()" style="margin-top:15px">
-        Analyze My Progress
-      </button>
-    </div>
-
-    <div class="card">
-      <h3>💬 BM Mentor Chat</h3>
-      <div class="chat" id="chat"></div>
-      <div class="row" style="margin-top:10px">
-        <input id="chatInput" placeholder="Ask your study mentor...">
-        <button class="btn primary" onclick="sendChat()">Send</button>
-      </div>
-    </div>
-  </div>
-</section>
-
+<!-- ACHIEVEMENTS -->
 <section class="section">
-  <div class="section-title">
-    <div>
-      <h2>⚙️ Settings</h2>
-      <p>Personalize your BM dashboard</p>
-    </div>
-  </div>
-
-  <div class="grid3">
-    <div class="card">
-      <h3>🌙 Appearance</h3>
-      <button class="btn" onclick="toggleTheme()" style="margin-top:12px">
-        Toggle Dark / Light
-      </button>
-    </div>
-
-    <div class="card">
-      <h3>🎨 Accent</h3>
-      <div class="row" style="margin-top:12px">
-        <button class="btn" onclick="setAccent('#4da3ff')">Blue</button>
-        <button class="btn" onclick="setAccent('#7c5cff')">Purple</button>
-        <button class="btn" onclick="setAccent('#31d17c')">Green</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>💾 Backup</h3>
-      <button class="btn good" onclick="exportData()" style="margin-top:12px">
-        Download Backup
-      </button>
-    </div>
-  </div>
+ <div class="section-title"><h2>🏆 Achievements & Milestones</h2></div>
+ <div class="grid-3" id="achievements"></div>
 </section>
 
-<section class="section">
-  <div class="section-title">
-    <div>
-      <h2>🔍 Global Search</h2>
-      <p>Search your BM dashboard</p>
-    </div>
+<!-- AI -->
+<section id="ai" class="section">
+ <div class="section-title"><h2>🤖 BM AI Study Mentor</h2></div>
+
+ <div class="grid-2">
+  <div class="card">
+   <h3>🧠 AI Performance Report</h3>
+   <p class="muted" style="margin:10px 0">आपके local study data के आधार पर BM analysis देगा।</p>
+   <button class="primary" onclick="generateAIReport()">Analyze My Progress</button>
+   <div id="aiReport" style="margin-top:15px"></div>
   </div>
 
-  <div class="search">
-    <input id="globalSearch" placeholder="Search tasks, notes, topics, chapters..." oninput="globalSearch()">
+  <div class="card">
+   <h3>💬 BM AI Chat</h3>
+   <div class="chat" id="chat">
+    <div class="msg ai">Hi! मैं BM Study Mentor हूँ। Study, revision, focus या planning के बारे में पूछ सकते हो।</div>
+   </div>
+   <div class="chat-input">
+    <input id="chatInput" placeholder="Ask BM Mentor...">
+    <button class="primary" onclick="sendChat()">Send</button>
+   </div>
   </div>
-  <div class="card" id="searchResults">
-    Start typing to search...
-  </div>
+ </div>
 </section>
 
+<!-- RESOURCES -->
 <section class="section">
-  <div class="section-title">
-    <div>
-      <h2>👨‍💻 Developer History</h2>
-      <p>About the developer</p>
-    </div>
-  </div>
-
-  <div class="card profile">
-    <img class="profile-img" id="324n3e"
-         src="IMG_20260218_125513_403.webp"
-         alt="Himanshu Shekhar">
-    <div>
-      <h2>Himanshu Shekhar</h2>
-      <p class="muted" style="margin-top:7px">
-        Student • Learner • Developer
-      </p>
-      <p class="muted small" style="margin-top:10px;line-height:1.7">
-        Building skills step by step through learning, consistency
-        and technology.
-      </p>
-    </div>
-  </div>
+ <div class="section-title"><h2>📚 Resources</h2></div>
+ <div class="grid-3">
+  <a class="card" href="https://www.khanacademy.org/" target="_blank">
+   <h3>🎓 Khan Academy</h3><p class="muted">Free learning resources</p>
+  </a>
+  <a class="card" href="https://developer.mozilla.org/" target="_blank">
+   <h3>💻 MDN</h3><p class="muted">Web development learning</p>
+  </a>
+  <a class="card" href="https://docs.github.com/" target="_blank">
+   <h3>🐙 GitHub Docs</h3><p class="muted">Learn GitHub</p>
+  </a>
+ </div>
 </section>
 
+<!-- DEVELOPER -->
 <section class="section">
-  <div class="grid3">
-    <div class="card">
-      <h3>📚 Resources</h3>
-      <p class="muted small" style="margin-top:8px">
-        Khan Academy • MDN • GitHub Docs
-      </p>
-    </div>
+ <div class="section-title"><h2>👨‍💻 Developer History</h2></div>
 
-    <div class="card">
-      <h3>📥 Progress Report</h3>
-      <button class="btn primary" onclick="downloadReport()" style="margin-top:12px">
-        Download Report
-      </button>
-    </div>
+ <div class="card dev">
+  <img class="profile-img" id="324n3e"
+       src="IMG_20260218_125513_403.webp"
+       alt="Himanshu Shekhar">
 
-    <div class="card">
-      <h3>📌 Pinned</h3>
-      <p class="muted small" style="margin-top:8px">
-        Your important learning system stays here.
-      </p>
-    </div>
+  <div>
+   <h3>Himanshu Shekhar</h3>
+   <p>Developer & Creator of BM — Beyond Mastery</p>
+   <p>Building a simple, focused and personalized learning experience for students.</p>
   </div>
+ </div>
 </section>
 
 </main>
 
-<div class="mobile-bottom">
-  <button onclick="go('home')"><b>⌂</b>Home</button>
-  <button onclick="go('dashboard')"><b>▦</b>Dashboard</button>
-  <button onclick="go('study')"><b>📚</b>Study</button>
-  <button onclick="go('analytics')"><b>📊</b>Stats</button>
-  <button onclick="openVault()"><b>🔐</b>Vault</button>
+<footer>
+ <b>BM — BEYOND MASTERY</b><br>
+ <span>Learn Beyond Limits</span><br><br>
+ Developed by <b>Himanshu Shekhar</b>
+</footer>
+
 </div>
 
-<footer>
-  <img src="file_000000004bbc821186700759679ec160.png"
-       style="width:50px;height:50px;object-fit:contain">
-  <p style="margin-top:10px">BM — Beyond Mastery</p>
-  <p class="small">Learn Beyond Limits • © <span id="year"></span></p>
-</footer>
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+ <button onclick="go('home')"><b>🏠</b>Home</button>
+ <button onclick="go('study')"><b>📚</b>Study</button>
+ <button onclick="go('planner')"><b>📅</b>Plan</button>
+ <button onclick="go('analytics')"><b>📊</b>Stats</button>
+ <button onclick="go('ai')"><b>🤖</b>AI</button>
+</div>
 
 <div class="toast" id="toast"></div>
 
-<!-- PRIVATE VAULT UI -->
-<div class="modal" id="vaultModal">
-  <div class="modal-box">
-    <div class="vault-lock">
-      <div class="vault-icon">🔐</div>
-      <h2>Private Photo Vault</h2>
-      <p class="muted" style="margin:10px 0 18px">
-        This is a private-vault interface. Real private storage requires
-        server-side authentication.
-      </p>
-
-      <input id="vaultPin" type="password" inputmode="numeric"
-             maxlength="8" placeholder="Enter vault PIN">
-
-      <div class="row" style="margin-top:12px">
-        <button class="btn primary" onclick="unlockVault()">Unlock</button>
-        <button class="btn" onclick="closeVault()">Close</button>
-      </div>
-
-      <div id="vaultContent" style="display:none;margin-top:20px">
-        <div class="card">
-          <h3>🔒 Vault Ready</h3>
-          <p class="muted small" style="margin-top:8px">
-            Secure backend storage can be connected here later.
-            Do not place a genuinely private image in this public repository.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
-/* =========================
-   BM — BEYOND MASTERY
-   LOCAL DATA ENGINE
-========================= */
+const LOGO="file_000000004bbc821186700759679ec160.png";
+const PHOTO="IMG_20260218_125513_403.webp";
+const KEY="BM_MASTER_DATA_V2";
 
-const LOGO = "file_000000004bbc821186700759679ec160.png";
-const PHOTO = "IMG_20260218_125513_403.webp";
-
-const KEY = "BM_MASTER_DATA_V1";
-
-let data = JSON.parse(localStorage.getItem(KEY)) || {
-  xp:0,
-  streak:0,
-  goal:120,
-  totalMinutes:0,
-  todayMinutes:0,
-  lastStudy:"",
-  exam:"",
-  subjects:{
-    math:0,
-    physics:0,
-    chem:0
-  },
-  tasks:[],
-  plans:[],
-  weak:[],
-  chapters:[],
-  sessions:[],
-  notes:"",
-  studyDays:{},
-  theme:"dark",
-  accent:"#4da3ff"
+let data=JSON.parse(localStorage.getItem(KEY)||"null")||{
+ board:"",
+ class:"",
+ stream:"",
+ xp:0,
+ studySeconds:0,
+ streak:0,
+ subjects:{math:0,phy:0,chem:0},
+ tasks:[],
+ chapters:[],
+ weak:[],
+ history:[],
+ notes:"",
+ questions:"",
+ planner:{},
+ quote:0
 };
 
-function save(){
-  localStorage.setItem(KEY,JSON.stringify(data));
-  updateUI();
-}
-
-function toast(msg){
-  const t=document.getElementById("toast");
-  t.textContent=msg;
-  t.style.display="block";
-  clearTimeout(window.toastTimer);
-  window.toastTimer=setTimeout(()=>t.style.display="none",2300);
-}
-
-function go(id){
-  document.getElementById(id)?.scrollIntoView({behavior:"smooth"});
-}
-
-function toggleMobileMenu(){
-  const links=document.querySelector(".nav-links");
-  if(links.style.display==="flex"){
-    links.style.display="";
-  }else{
-    links.style.display="flex";
-    links.style.flexDirection="column";
-    links.style.position="absolute";
-    links.style.top="65px";
-    links.style.left="10px";
-    links.style.right="10px";
-    links.style.padding="10px";
-    links.style.background="var(--card)";
-    links.style.border="1px solid var(--line)";
-    links.style.borderRadius="14px";
-  }
-}
-
-/* TASKS */
-
-function addTask(){
-  const input=document.getElementById("taskInput");
-  const priority=document.getElementById("taskPriority").value;
-  if(!input.value.trim())return toast("Task likho bro");
-  data.tasks.push({
-    id:Date.now(),
-    text:input.value.trim(),
-    priority,
-    done:false
-  });
-  input.value="";
-  data.xp+=5;
-  save();
-  toast("Task added +5 XP");
-}
-
-function toggleTask(id){
-  const t=data.tasks.find(x=>x.id===id);
-  if(!t)return;
-  t.done=!t.done;
-  if(t.done){
-    data.xp+=15;
-    addStudyDay();
-    toast("Task complete +15 XP 🔥");
-  }
-  save();
-}
-
-function deleteTask(id){
-  data.tasks=data.tasks.filter(x=>x.id!==id);
-  save();
-}
-
-function renderTasks(){
-  const box=document.getElementById("taskList");
-  if(!data.tasks.length){
-    box.innerHTML='<p class="muted small">No tasks yet.</p>';
-    return;
-  }
-
-  box.innerHTML=data.tasks.map(t=>`
-    <div class="task ${t.done?"done":""}">
-      <input type="checkbox" ${t.done?"checked":""}
-        onchange="toggleTask(${t.id})">
-      <div class="task-text">${escapeHTML(t.text)}</div>
-      <span class="pill ${t.priority}">${t.priority}</span>
-      <button class="btn" onclick="deleteTask(${t.id})">×</button>
-    </div>
-  `).join("");
-}
-
-/* PLANS */
-
-function addPlan(){
-  const input=document.getElementById("planInput");
-  if(!input.value.trim())return;
-  data.plans.push({id:Date.now(),text:input.value.trim()});
-  input.value="";
-  data.xp+=3;
-  save();
-}
-
-function deletePlan(id){
-  data.plans=data.plans.filter(x=>x.id!==id);
-  save();
-}
-
-function renderPlans(){
-  const box=document.getElementById("planList");
-  box.innerHTML=data.plans.length
-    ? data.plans.map(p=>`
-      <div class="task">
-        <div class="task-text">📌 ${escapeHTML(p.text)}</div>
-        <button class="btn" onclick="deletePlan(${p.id})">×</button>
-      </div>
-    `).join("")
-    : '<p class="muted small">No weekly plans.</p>';
-}
-
-/* SUBJECTS */
-
-function changeSubject(subject){
-  let current=data.subjects[subject];
-  let value=prompt("Progress kitna hai? 0-100",current);
-  if(value===null)return;
-  value=Math.max(0,Math.min(100,Number(value)));
-  data.subjects[subject]=value;
-  data.xp+=10;
-  save();
-  toast("Subject progress updated");
-}
-
-/* WEAK TOPICS */
-
-function addWeakTopic(){
-  const name=document.getElementById("weakTopic").value.trim();
-  const subject=document.getElementById("weakSubject").value;
-  if(!name)return;
-  data.weak.push({id:Date.now(),name,subject});
-  document.getElementById("weakTopic").value="";
-  save();
-}
-
-function deleteWeak(id){
-  data.weak=data.weak.filter(x=>x.id!==id);
-  save();
-}
-
-function renderWeak(){
-  const box=document.getElementById("weakList");
-  box.innerHTML=data.weak.length
-    ? data.weak.map(w=>`
-      <div class="task">
-        <div class="task-text">🧠 ${escapeHTML(w.name)}
-        <div class="small muted">${w.subject}</div></div>
-        <button class="btn" onclick="deleteWeak(${w.id})">×</button>
-      </div>
-    `).join("")
-    : '<p class="muted small">No weak topics added.</p>';
-}
-
-/* CHAPTERS */
-
-function addChapter(){
-  const name=document.getElementById("chapterName").value.trim();
-  const subject=document.getElementById("chapterSubject").value;
-  if(!name)return;
-  data.chapters.push({id:Date.now(),name,subject,done:false});
-  document.getElementById("chapterName").value="";
-  save();
-}
-
-function toggleChapter(id){
-  const c=data.chapters.find(x=>x.id===id);
-  if(!c)return;
-  c.done=!c.done;
-  if(c.done)data.xp+=10;
-  save();
-}
-
-function deleteChapter(id){
-  data.chapters=data.chapters.filter(x=>x.id!==id);
-  save();
-}
-
-function renderChapters(){
-  const box=document.getElementById("chapterList");
-  box.innerHTML=data.chapters.length
-    ? data.chapters.map(c=>`
-      <div class="task ${c.done?"done":""}">
-        <input type="checkbox" ${c.done?"checked":""}
-          onchange="toggleChapter(${c.id})">
-        <div class="task-text">${escapeHTML(c.name)}
-          <div class="small muted">${c.subject}</div>
-        </div>
-        <button class="btn" onclick="deleteChapter(${c.id})">×</button>
-      </div>
-    `).join("")
-    : '<p class="muted small">No chapters added.</p>';
-}
-
-/* STUDY DAY / STREAK */
-
-function addStudyDay(){
-  const today=new Date().toISOString().slice(0,10);
-  data.studyDays[today]=true;
-  updateStreak();
-}
-
-function updateStreak(){
-  const dates=Object.keys(data.studyDays).sort().reverse();
-  if(!dates.length){
-    data.streak=0;
-    return;
-  }
-
-  let streak=0;
-  let cursor=new Date();
-
-  for(let i=0;i<dates.length;i++){
-    const d=cursor.toISOString().slice(0,10);
-    if(data.studyDays[d]){
-      streak++;
-      cursor.setDate(cursor.getDate()-1);
-    }else{
-      break;
-    }
-  }
-  data.streak=streak;
-}
-
-/* GOAL */
-
-function setGoal(){
-  const x=prompt("Daily study goal in minutes:",data.goal);
-  if(x===null)return;
-  data.goal=Math.max(1,Number(x));
-  save();
-  toast("Goal updated 🎯");
-}
-
-/* EXAM */
-
-function setExam(){
-  const x=prompt("Exam date (YYYY-MM-DD):",data.exam||"2027-02-01");
-  if(!x)return;
-  data.exam=x;
-  save();
-}
-
-function updateCountdown(){
-  const box=document.getElementById("countdown");
-  if(!data.exam){
-    box.textContent="Set Date";
-    return;
-  }
-
-  const target=new Date(data.exam+"T00:00:00");
-  const now=new Date();
-  const diff=target-now;
-  const days=Math.ceil(diff/86400000);
-
-  box.textContent=days>0 ? days+" days" : "Exam date passed";
-  document.getElementById("examDateText").textContent=data.exam;
-}
-
-/* POMODORO */
-
+let setup={board:"",class:"",stream:""};
 let timerSeconds=25*60;
 let timerInterval=null;
 let timerRunning=false;
 
-function renderTimer(){
-  const m=Math.floor(timerSeconds/60).toString().padStart(2,"0");
-  const s=(timerSeconds%60).toString().padStart(2,"0");
-  document.getElementById("timer").textContent=m+":"+s;
+const quotes=[
+ "Consistency beats motivation.",
+ "आज की मेहनत, कल की freedom.",
+ "Small progress is still progress.",
+ "Focus on the process, not the pressure.",
+ "एक chapter रोज़ — बड़ा syllabus भी छोटा लगेगा।",
+ "Discipline creates results.",
+ "Your future self is watching."
+];
+
+function save(){
+ localStorage.setItem(KEY,JSON.stringify(data));
+ update();
+}
+
+function toast(t){
+ const x=document.getElementById("toast");
+ x.textContent=t;x.classList.add("show");
+ setTimeout(()=>x.classList.remove("show"),2200);
+}
+
+window.onload=()=>{
+ setTimeout(()=>document.getElementById("loader").classList.add("hide"),900);
+
+ if(data.board){
+  document.getElementById("startScreen").style.display="none";
+  showApp();
+ }
+ update();
+};
+
+function openSetup(){
+ document.getElementById("startScreen").style.display="none";
+ document.getElementById("setup").style.display="flex";
+}
+
+function selectOption(type,value,el){
+ setup[type]=value;
+ el.parentElement.querySelectorAll(".choice")
+   .forEach(x=>x.classList.remove("active"));
+ el.classList.add("active");
+}
+
+function finishSetup(){
+ if(!setup.board||!setup.class||!setup.stream){
+  toast("Board, Class और Stream select करो");
+  return;
+ }
+ data.board=setup.board;
+ data.class=setup.class;
+ data.stream=setup.stream;
+ save();
+ document.getElementById("setup").style.display="none";
+ showApp();
+ toast("Your BM dashboard is ready 🚀");
+}
+
+function showApp(){
+ document.getElementById("app").style.display="block";
+ update();
+}
+
+function go(id){
+ document.getElementById(id)?.scrollIntoView({behavior:"smooth"});
+}
+
+function toggleTheme(){
+ document.body.classList.toggle("light");
+ localStorage.setItem("BM_THEME",
+ document.body.classList.contains("light")?"light":"dark");
+}
+
+if(localStorage.getItem("BM_THEME")==="light")
+ document.body.classList.add("light");
+
+function randomQuote(){
+ data.quote=(data.quote+1)%quotes.length;
+ document.getElementById("quoteCard").textContent="“"+quotes[data.quote]+"”";
+ save();
+}
+
+function formatTime(sec){
+ const h=Math.floor(sec/3600);
+ const m=Math.floor((sec%3600)/60);
+ return h+"h "+m+"m";
+}
+
+function update(){
+ if(!document.getElementById("app"))return;
+
+ document.getElementById("boardBadge").textContent=data.board;
+ document.getElementById("classBadge").textContent="Class "+data.class;
+ document.getElementById("streamBadge").textContent=data.stream;
+ document.getElementById("studentInfo").textContent=
+ "Personalized learning space for "+data.board+" • Class "+data.class;
+
+ document.getElementById("totalTime").textContent=formatTime(data.studySeconds);
+ document.getElementById("streak").textContent=data.streak;
+ document.getElementById("xp").textContent=data.xp;
+
+ let done=data.tasks.filter(x=>x.done).length;
+ let taskRate=data.tasks.length?Math.round(done/data.tasks.length*100):0;
+ let sub=Math.round((data.subjects.math+data.subjects.phy+data.subjects.chem)/3);
+ let overall=Math.round((sub+taskRate)/2);
+ let score=Math.min(100,Math.round(overall*.7+Math.min(data.studySeconds/3600,2)*15));
+
+ document.getElementById("overall").textContent=overall+"%";
+ document.getElementById("overallBar").style.width=overall+"%";
+ document.getElementById("doneTasks").textContent=done;
+ document.getElementById("consistency").textContent=
+ Math.min(100,data.streak*10)+"%";
+ document.getElementById("level").textContent=
+ Math.floor(data.xp/100)+1;
+ document.getElementById("score").textContent=score;
+ document.getElementById("bigScore").textContent=score;
+
+ ["math","phy","chem"].forEach(s=>{
+  const bar=document.getElementById(s+"Bar");
+  const val=document.getElementById(s+"Val");
+  if(bar)bar.style.width=data.subjects[s]+"%";
+  if(val)val.textContent=data.subjects[s]+"%";
+
+  const a=document.getElementById("a"+s.charAt(0).toUpperCase()+s.slice(1));
+  if(a)a.style.width=data.subjects[s]+"%";
+ });
+
+ let goal=Math.min(100,(data.studySeconds/7200)*100);
+ document.getElementById("goalBar").style.width=goal+"%";
+
+ renderTasks();
+ renderChapters();
+ renderWeak();
+ renderMissions();
+ renderAchievements();
+ renderHistory();
+
+ document.getElementById("notes").value=data.notes||"";
+ document.getElementById("questions").value=data.questions||"";
+
+ const p=data.planner||{};
+ ["mon","tue","wed","thu","fri","sat"].forEach(x=>{
+  if(document.getElementById(x))
+   document.getElementById(x).value=p[x]||"";
+ });
+}
+
+function changeProgress(subject){
+ let v=prompt("Progress % enter करो (0-100):",data.subjects[subject]);
+ if(v===null)return;
+ v=Math.max(0,Math.min(100,Number(v)));
+ if(Number.isNaN(v))return;
+ data.subjects[subject]=v;
+ data.xp+=10;
+ save();
+ toast("Progress updated +10 XP");
+}
+
+function addTask(){
+ const input=document.getElementById("taskInput");
+ if(!input.value.trim())return toast("Task लिखो");
+ data.tasks.push({
+  text:input.value.trim(),
+  priority:document.getElementById("taskPriority").value,
+  subject:document.getElementById("taskSubject").value,
+  done:false,
+  pin:false
+ });
+ input.value="";
+ data.xp+=5;
+ save();
+}
+
+function toggleTask(i){
+ data.tasks[i].done=!data.tasks[i].done;
+ if(data.tasks[i].done)data.xp+=15;
+ save();
+}
+
+function deleteTask(i){
+ data.tasks.splice(i,1);save();
+}
+
+function pinTask(i){
+ data.tasks[i].pin=!data.tasks[i].pin;save();
+}
+
+function renderTasks(){
+ const box=document.getElementById("taskList");
+ if(!box)return;
+ if(!data.tasks.length){
+  box.innerHTML='<p class="muted" style="margin-top:15px">No tasks yet.</p>';
+  return;
+ }
+ let arr=[...data.tasks].sort((a,b)=>Number(b.pin)-Number(a.pin));
+ box.innerHTML=arr.map((t)=>{
+  const i=data.tasks.indexOf(t);
+  return `
+  <div class="task ${t.done?"done":""}">
+   <input type="checkbox" ${t.done?"checked":""}
+    onchange="toggleTask(${i})" style="width:18px">
+   <div class="task-text">
+    ${t.pin?"📌 ":""}<b>${escapeHTML(t.text)}</b>
+    <small class="muted"> • ${escapeHTML(t.subject)}</small>
+   </div>
+   <span class="priority ${t.priority.toLowerCase()}">${t.priority}</span>
+   <button class="secondary" onclick="pinTask(${i})">📌</button>
+   <button class="secondary" onclick="deleteTask(${i})">×</button>
+  </div>`;
+ }).join("");
+}
+
+function addChapter(){
+ const x=document.getElementById("chapterInput");
+ if(!x.value.trim())return;
+ data.chapters.push({
+  name:x.value.trim(),
+  subject:document.getElementById("chapterSubject").value,
+  done:false
+ });
+ x.value="";save();
+}
+
+function toggleChapter(i){
+ data.chapters[i].done=!data.chapters[i].done;
+ if(data.chapters[i].done)data.xp+=10;
+ save();
+}
+
+function renderChapters(){
+ const box=document.getElementById("chapterList");
+ if(!box)return;
+ box.innerHTML=data.chapters.map((c,i)=>`
+ <div class="task ${c.done?"done":""}">
+  <input type="checkbox" ${c.done?"checked":""}
+   onchange="toggleChapter(${i})" style="width:18px">
+  <div class="task-text">${escapeHTML(c.name)}
+   <small class="muted"> • ${escapeHTML(c.subject)}</small>
+  </div>
+ </div>`).join("");
+}
+
+function addWeak(){
+ const x=document.getElementById("weakInput");
+ if(!x.value.trim())return;
+ data.weak.push(x.value.trim());
+ x.value="";save();
+}
+
+function removeWeak(i){
+ data.weak.splice(i,1);save();
+}
+
+function renderWeak(){
+ const box=document.getElementById("weakList");
+ if(!box)return;
+ box.innerHTML=data.weak.map((x,i)=>`
+ <div class="task">
+  <div class="task-text">🧠 ${escapeHTML(x)}</div>
+  <button class="secondary" onclick="removeWeak(${i})">✓</button>
+ </div>`).join("");
+}
+
+function renderMissions(){
+ const box=document.getElementById("missions");
+ if(!box)return;
+
+ const missions=[
+  ["📖","Study for 30 minutes",data.studySeconds>=1800],
+  ["📝","Complete one task",data.tasks.some(x=>x.done)],
+  ["🧠","Review a weak topic",data.weak.length>0],
+  ["🎯","Update subject progress",data.subjects.math+data.subjects.phy+data.subjects.chem>0]
+ ];
+
+ box.innerHTML=missions.map(m=>`
+ <div class="mission">
+  <span>${m[0]} ${m[1]}</span>
+  <b>${m[2]?"✅":"⬜"}</b>
+ </div>`).join("");
+}
+
+function savePlanner(){
+ data.planner={};
+ ["mon","tue","wed","thu","fri","sat"].forEach(x=>{
+  data.planner[x]=document.getElementById(x).value;
+ });
+ save();toast("Weekly plan saved 📅");
 }
 
 function startTimer(){
-  if(timerRunning)return;
-  timerRunning=true;
+ if(timerRunning)return;
+ timerRunning=true;
 
-  timerInterval=setInterval(()=>{
-    timerSeconds--;
-
-    if(timerSeconds<=0){
-      clearInterval(timerInterval);
-      timerRunning=false;
-      data.totalMinutes+=25;
-      data.todayMinutes+=25;
-      data.xp+=25;
-      data.sessions.push({
-        date:new Date().toLocaleString(),
-        minutes:25
-      });
-      addStudyDay();
-      save();
-      toast("Focus session complete! +25 XP 🔥");
-      timerSeconds=25*60;
-    }
-
-    renderTimer();
-  },1000);
+ timerInterval=setInterval(()=>{
+  if(timerSeconds>0){
+   timerSeconds--;
+   data.studySeconds++;
+   if(timerSeconds%60===0){
+    data.xp+=2;
+    save();
+   }
+   renderTimer();
+  }else{
+   clearInterval(timerInterval);
+   timerRunning=false;
+   data.history.unshift({
+    date:new Date().toLocaleString(),
+    seconds:25*60
+   });
+   data.xp+=25;
+   save();
+   toast("Focus session complete! 🔥 +25 XP");
+   timerSeconds=25*60;
+   renderTimer();
+  }
+ },1000);
 }
 
 function pauseTimer(){
-  clearInterval(timerInterval);
-  timerRunning=false;
+ clearInterval(timerInterval);
+ timerRunning=false;
 }
 
 function resetTimer(){
-  pauseTimer();
-  timerSeconds=25*60;
-  document.getElementById("timerMode").textContent="Focus Session";
-  renderTimer();
+ pauseTimer();
+ timerSeconds=25*60;
+ renderTimer();
 }
 
-function breakTimer(){
-  pauseTimer();
-  timerSeconds=5*60;
-  document.getElementById("timerMode").textContent="Break Session";
-  renderTimer();
+function renderTimer(){
+ const m=Math.floor(timerSeconds/60).toString().padStart(2,"0");
+ const s=(timerSeconds%60).toString().padStart(2,"0");
+ document.getElementById("timer").textContent=m+":"+s;
 }
 
-function renderSessions(){
-  const box=document.getElementById("sessionHistory");
-  box.innerHTML=data.sessions.length
-    ? data.sessions.slice(-8).reverse().map(s=>`
-      <div class="task">
-        <div class="task-text">⏱️ ${s.minutes} minutes</div>
-        <span class="small muted">${s.date}</span>
-      </div>
-    `).join("")
-    : '<p class="muted small">No completed focus sessions.</p>';
+function renderHistory(){
+ const box=document.getElementById("history");
+ if(!box)return;
+ if(!data.history.length){
+  box.innerHTML='<p class="muted">No focus sessions yet.</p>';
+  return;
+ }
+ box.innerHTML=data.history.slice(0,6).map(x=>`
+ <div class="task">
+  <div class="task-text">🍅 Focus Session</div>
+  <small class="muted">${x.date}</small>
+ </div>`).join("");
 }
 
-/* NOTES */
-
-const notes=document.getElementById("notes");
-
-notes.addEventListener("input",()=>{
-  data.notes=notes.value;
-  localStorage.setItem(KEY,JSON.stringify(data));
-  document.getElementById("saveStatus").textContent=
-    "Autosaved • "+new Date().toLocaleTimeString();
-});
-
-/* ANALYTICS */
-
-function renderCharts(){
-  const chart=document.getElementById("studyChart");
-  const values=[
-    data.studyDays.mon||0,
-    data.studyDays.tue||0,
-    data.studyDays.wed||0,
-    data.studyDays.thu||0,
-    data.studyDays.fri||0,
-    data.studyDays.sat||0,
-    data.studyDays.sun||0
-  ];
-
-  const max=Math.max(1,...values);
-
-  chart.innerHTML=values.map((v,i)=>`
-    <div class="bar" style="height:${Math.max(7,(v/max)*140)}px">
-      <span>${["M","T","W","T","F","S","S"][i]}</span>
-    </div>
-  `).join("");
-
-  const sub=[
-    data.subjects.math,
-    data.subjects.physics,
-    data.subjects.chem
-  ];
-  const sm=Math.max(1,...sub);
-
-  document.getElementById("subjectChart").innerHTML=sub.map((v,i)=>`
-    <div class="bar" style="height:${Math.max(7,(v/sm)*140)}px">
-      <span>${["Math","Phy","Chem"][i]}</span>
-    </div>
-  `).join("");
+function saveNotes(){
+ data.notes=document.getElementById("notes").value;
+ data.questions=document.getElementById("questions").value;
+ data.xp+=5;
+ save();
+ toast("Notes saved 📝");
 }
 
-function renderPerformance(){
-  const completed=data.tasks.filter(x=>x.done).length;
-  const total=data.tasks.length;
-  const taskPercent=total?Math.round(completed/total*100):0;
+function renderAchievements(){
+ const box=document.getElementById("achievements");
+ if(!box)return;
 
-  const overall=Math.round(
-    (data.subjects.math+
-     data.subjects.physics+
-     data.subjects.chem)/3
-  );
+ const list=[
+  ["🌱","First Step",data.xp>=10],
+  ["🔥","7 Day Warrior",data.streak>=7],
+  ["⭐","100 XP",data.xp>=100],
+  ["📚","10 Chapters",data.chapters.length>=10],
+  ["🎯","10 Tasks",data.tasks.filter(x=>x.done).length>=10],
+  ["⏱️","10 Focus Sessions",data.history.length>=10]
+ ];
 
-  const consistency=Math.min(100,data.streak*10);
-
-  document.getElementById("taskBar").style.width=taskPercent+"%";
-  document.getElementById("overallBar").style.width=overall+"%";
-  document.getElementById("consistencyBar").style.width=consistency+"%";
-
-  document.getElementById("weeklySummary").textContent=
-    `You have ${data.totalMinutes} total study minutes, `+
-    `${completed} completed tasks, ${data.streak} day streak `+
-    `and ${overall}% average subject progress.`;
+ box.innerHTML=list.map(x=>`
+ <div class="card" style="opacity:${x[2]?1:.45}">
+  <div style="font-size:30px">${x[0]}</div>
+  <br><b>${x[1]}</b><br>
+  <small class="muted">${x[2]?"Unlocked":"Locked"}</small>
+ </div>`).join("");
 }
 
-/* XP */
+function generateAIReport(){
+ const done=data.tasks.filter(x=>x.done).length;
+ const total=data.tasks.length;
+ const weak=data.weak.length;
+ const avg=Math.round(
+  (data.subjects.math+data.subjects.phy+data.subjects.chem)/3
+ );
 
-function updateXP(){
-  const level=Math.floor(data.xp/100)+1;
-  document.getElementById("xp").textContent=data.xp;
-  document.getElementById("level").textContent=level;
-}
+ let advice=[];
 
-function renderBadges(){
-  const list=[
-    ["🌱","First Step",data.xp>=10],
-    ["🔥","7 Day Warrior",data.streak>=7],
-    ["📚","Study Machine",data.totalMinutes>=300],
-    ["🎯","Goal Setter",data.goal>0],
-    ["🏆","100 XP Club",data.xp>=100],
-    ["💪","500 XP Club",data.xp>=500],
-    ["🧠","Weak Topic Hunter",data.weak.length>=3],
-    ["📋","Task Master",data.tasks.filter(x=>x.done).length>=10]
-  ];
+ if(data.studySeconds<3600)
+  advice.push("आज कम से कम 60 मिनट focused study का target रखो।");
 
-  document.getElementById("badges").innerHTML=list.map(b=>`
-    <div class="badge-item ${b[2]?"unlocked":""}">
-      ${b[0]} ${b[1]} ${b[2]?"✓":"🔒"}
-    </div>
-  `).join("");
-}
+ if(total>0&&done/total<.5)
+  advice.push("Pending tasks ज्यादा हैं। पहले High Priority tasks complete करो।");
 
-/* AI MENTOR */
+ if(weak>0)
+  advice.push("Weak topics को daily revision में 20–30 मिनट दो।");
 
-function generateReport(){
-  const overall=Math.round(
-    (data.subjects.math+data.subjects.physics+data.subjects.chem)/3
-  );
+ if(avg<50)
+  advice.push("Subjects का basic concept मजबूत करने पर focus करो।");
 
-  let advice=[];
+ if(!advice.length)
+  advice.push("आप अच्छी consistency दिखा रहे हो। अब revision + practice बढ़ाओ।");
 
-  if(data.todayMinutes<data.goal)
-    advice.push("Aaj ka study goal abhi complete nahi hua.");
-
-  if(data.streak<3)
-    advice.push("Consistency improve karne ke liye daily small sessions rakho.");
-
-  if(data.weak.length)
-    advice.push(`${data.weak.length} weak topics listed hain—unhe priority do.`);
-
-  if(overall<50)
-    advice.push("Subjects ka base strong karne par focus karo.");
-  else
-    advice.push("Subject progress track ho raha hai—revision ko regular rakho.");
-
-  if(data.tasks.length && data.tasks.filter(x=>x.done).length/data.tasks.length<.5)
-    advice.push("Pending tasks ko chhote steps mein complete karo.");
-
-  document.getElementById("aiReport").innerHTML=
-    "🤖 <b>BM Mentor Report</b><br><br>"+
-    advice.map(x=>"• "+x).join("<br>")+
-    `<br><br>📊 Overall subject progress: ${overall}%`+
-    `<br>🔥 Streak: ${data.streak} days`+
-    `<br>⭐ XP: ${data.xp}`;
-
-  toast("BM Mentor analysis ready");
+ document.getElementById("aiReport").innerHTML=`
+ <div class="card" style="margin-top:10px">
+  <b>BM Analysis</b>
+  <p style="margin-top:10px">Subject average: <b>${avg}%</b></p>
+  <p>Completed tasks: <b>${done}/${total}</b></p>
+  <hr style="border-color:var(--border);margin:12px 0">
+  ${advice.map(x=>`<p>💡 ${x}</p>`).join("")}
+ </div>`;
 }
 
 function sendChat(){
-  const input=document.getElementById("chatInput");
-  const text=input.value.trim();
-  if(!text)return;
+ const input=document.getElementById("chatInput");
+ const text=input.value.trim();
+ if(!text)return;
 
-  addMessage(text,"user");
+ const chat=document.getElementById("chat");
+ chat.innerHTML+=`<div class="msg user">${escapeHTML(text)}</div>`;
 
-  let reply="Study ko small focused sessions mein divide karo aur daily progress track karo.";
+ let answer="Focus on one small task first. Then review your progress.";
 
-  const q=text.toLowerCase();
+ const q=text.toLowerCase();
 
-  if(q.includes("math"))
-    reply="Maths ke liye concept → solved examples → practice → revision cycle follow karo.";
-  else if(q.includes("physics"))
-    reply="Physics mein formula ratne ke saath concept aur numerical practice bhi rakho.";
-  else if(q.includes("chem"))
-    reply="Chemistry ko concepts, reactions/formulas aur regular revision ke blocks mein divide karo.";
-  else if(q.includes("time"))
-    reply="Aaj ka remaining time dekho aur ek realistic 25-minute focus session start karo.";
-  else if(q.includes("motivat"))
-    reply="Perfect day ka wait mat karo. Aaj ka ek focused session bhi progress hai. 🔥";
+ if(q.includes("math"))
+  answer="Maths के लिए concept → examples → questions → mistakes revision वाला cycle follow करो।";
+ else if(q.includes("physics"))
+  answer="Physics में formula याद करने के साथ उसका concept और numerical practice करो।";
+ else if(q.includes("chem"))
+  answer="Chemistry को Physical, Organic और Inorganic parts में divide करके पढ़ो।";
+ else if(q.includes("time"))
+  answer="25–5 Pomodoro से शुरू करो और धीरे-धीरे focused study duration बढ़ाओ।";
+ else if(q.includes("weak"))
+  answer="अपने weak topics को list करो और रोज़ उनमें से कम से कम एक topic revise करो।";
+ else if(q.includes("motivat"))
+  answer="Motivation का इंतजार मत करो—बस 10 मिनट शुरू करो। Momentum खुद बनता है।";
 
-  setTimeout(()=>addMessage(reply,"ai"),250);
-  input.value="";
-}
-
-function addMessage(text,type){
-  const chat=document.getElementById("chat");
-  const div=document.createElement("div");
-  div.className="msg "+type;
-  div.textContent=text;
-  chat.appendChild(div);
+ setTimeout(()=>{
+  chat.innerHTML+=`<div class="msg ai">${answer}</div>`;
   chat.scrollTop=chat.scrollHeight;
+ },250);
+
+ input.value="";
 }
 
-/* SEARCH */
-
-function globalSearch(){
-  const q=document.getElementById("globalSearch").value.toLowerCase().trim();
-  const box=document.getElementById("searchResults");
-
-  if(!q){
-    box.textContent="Start typing to search...";
-    return;
-  }
-
-  let results=[];
-
-  data.tasks.forEach(t=>{
-    if(t.text.toLowerCase().includes(q))
-      results.push("📝 Task: "+t.text);
-  });
-
-  data.weak.forEach(w=>{
-    if(w.name.toLowerCase().includes(q))
-      results.push("🧠 Weak topic: "+w.name);
-  });
-
-  data.chapters.forEach(c=>{
-    if(c.name.toLowerCase().includes(q))
-      results.push("📚 Chapter: "+c.name);
-  });
-
-  if(data.notes.toLowerCase().includes(q))
-    results.push("📓 Your notes contain this word.");
-
-  box.innerHTML=results.length
-    ? results.map(x=>`<div class="task">${escapeHTML(x)}</div>`).join("")
-    : '<span class="muted">No result found.</span>';
+function backupData(){
+ const blob=new Blob([JSON.stringify(data,null,2)],
+ {type:"application/json"});
+ const a=document.createElement("a");
+ a.href=URL.createObjectURL(blob);
+ a.download="BM-study-backup.json";
+ a.click();
+ toast("Backup downloaded 💾");
 }
-
-/* THEME */
-
-function toggleTheme(){
-  data.theme=data.theme==="dark"?"light":"dark";
-  applyTheme();
-  save();
-}
-
-function setAccent(color){
-  data.accent=color;
-  document.documentElement.style.setProperty("--accent",color);
-  save();
-}
-
-function applyTheme(){
-  document.body.classList.toggle("light",data.theme==="light");
-  document.documentElement.style.setProperty("--accent",data.accent);
-}
-
-/* BACKUP */
-
-function exportData(){
-  const blob=new Blob(
-    [JSON.stringify(data,null,2)],
-    {type:"application/json"}
-  );
-
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement("a");
-  a.href=url;
-  a.download="BM-Backup.json";
-  a.click();
-  URL.revokeObjectURL(url);
-
-  toast("Backup downloaded 💾");
-}
-
-/* REPORT */
 
 function downloadReport(){
-  const overall=Math.round(
-    (data.subjects.math+data.subjects.physics+data.subjects.chem)/3
-  );
+ const done=data.tasks.filter(x=>x.done).length;
+ const avg=Math.round(
+  (data.subjects.math+data.subjects.phy+data.subjects.chem)/3
+ );
 
-  const report=`
-BM — BEYOND MASTERY
-===================
+ const text=
+`BM — BEYOND MASTERY
+Learn Beyond Limits
 
-Study Report
+Board: ${data.board}
+Class: ${data.class}
+Stream: ${data.stream}
 
-Total Study Time:
-${data.totalMinutes} minutes
-
-Current Streak:
-${data.streak} days
-
-XP:
-${data.xp}
-
-Level:
-${Math.floor(data.xp/100)+1}
-
-Subject Progress:
-Mathematics: ${data.subjects.math}%
-Physics: ${data.subjects.physics}%
+Study Time: ${formatTime(data.studySeconds)}
+XP: ${data.xp}
+Streak: ${data.streak}
+Maths: ${data.subjects.math}%
+Physics: ${data.subjects.phy}%
 Chemistry: ${data.subjects.chem}%
+Subject Average: ${avg}%
 
-Overall Progress:
-${overall}%
+Tasks Completed: ${done}/${data.tasks.length}
 
-Tasks:
-${data.tasks.filter(x=>x.done).length}/${data.tasks.length} completed
+Developed by Himanshu Shekhar`;
 
-Weak Topics:
-${data.weak.map(x=>"- "+x.name).join("\n")||"None"}
-
-Generated:
-${new Date().toLocaleString()}
-`;
-
-  const blob=new Blob([report],{type:"text/plain"});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement("a");
-  a.href=url;
-  a.download="BM-Progress-Report.txt";
-  a.click();
-  URL.revokeObjectURL(url);
-
-  toast("Progress report downloaded 📥");
-}
-
-/* PRIVATE VAULT UI */
-
-function openVault(){
-  document.getElementById("vaultModal").style.display="flex";
-  document.getElementById("vaultPin").value="";
-  document.getElementById("vaultContent").style.display="none";
-}
-
-function closeVault(){
-  document.getElementById("vaultModal").style.display="none";
-}
-
-function unlockVault(){
-  const pin=document.getElementById("vaultPin").value;
-
-  /*
-    DEMO ONLY.
-    Never use a frontend PIN as real security.
-  */
-  if(pin.length>=4){
-    document.getElementById("vaultContent").style.display="block";
-    toast("Vault interface unlocked 🔓");
-  }else{
-    toast("PIN at least 4 digits ka rakho");
-  }
-}
-
-/* UI */
-
-function updateUI(){
-  document.getElementById("totalStudy").textContent=
-    Math.floor(data.totalMinutes/60)+"h "+(data.totalMinutes%60)+"m";
-
-  document.getElementById("todayMinutes").textContent=data.todayMinutes;
-  document.getElementById("goalMinutes").textContent=data.goal;
-  document.getElementById("goalProgress").style.width=
-    Math.min(100,(data.todayMinutes/data.goal)*100)+"%";
-
-  document.getElementById("streak").textContent=data.streak;
-
-  const subjects=[
-    ["math","mathProgress","mathText"],
-    ["physics","physicsProgress","physicsText"],
-    ["chem","chemProgress","chemText"]
-  ];
-
-  subjects.forEach(s=>{
-    document.getElementById(s[1]).style.width=data.subjects[s[0]]+"%";
-    document.getElementById(s[2]).textContent=data.subjects[s[0]]+"%";
-  });
-
-  renderTasks();
-  renderPlans();
-  renderWeak();
-  renderChapters();
-  renderSessions();
-  renderCharts();
-  renderPerformance();
-  updateXP();
-  renderBadges();
-  updateCountdown();
+ const blob=new Blob([text],{type:"text/plain"});
+ const a=document.createElement("a");
+ a.href=URL.createObjectURL(blob);
+ a.download="BM-progress-report.txt";
+ a.click();
+ toast("Report downloaded 📥");
 }
 
 function escapeHTML(str){
-  return String(str)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+ return String(str).replace(/[&<>"']/g,m=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",
+  '"':"&quot;","'":"&#039;"
+ }[m]));
 }
-
-/* INIT */
-
-window.addEventListener("load",()=>{
-  document.getElementById("year").textContent=new Date().getFullYear();
-
-  document.getElementById("notes").value=data.notes||"";
-
-  updateStreak();
-  applyTheme();
-  updateUI();
-  renderTimer();
-
-  setTimeout(()=>{
-    document.getElementById("loader").style.display="none";
-  },700);
-
-  generateReport();
-});
-
-/* Save today's study date if focus starts */
-setInterval(()=>{
-  if(timerRunning){
-    data.todayMinutes=Math.min(
-      data.goal,
-      data.todayMinutes+1/60
-    );
-    data.totalMinutes+=1/60;
-    addStudyDay();
-    localStorage.setItem(KEY,JSON.stringify(data));
-  }
-},60000);
 </script>
 
 </body>
-      </html>
+  </html>
