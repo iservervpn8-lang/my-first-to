@@ -56,6 +56,8 @@
       text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
+      border: none;
+      cursor: pointer;
     }
 
     .button.dark {
@@ -138,17 +140,32 @@
     <a href="#contact">Contact</a>
   </nav>
 
+
   <div class="hero" id="home">
+
     <h1>Himanshu Shekhar</h1>
 
     <p>Learning Coding • Trading • Building My Future</p>
 
-    <a class="button" href="#projects">My Projects</a>
-    <a class="button dark" href="#contact">Contact Me</a>
+    <a class="button" href="#projects">
+      My Projects
+    </a>
+
+    <a class="button dark" href="#contact">
+      Contact Me
+    </a>
+
+    <br>
+
+    <button class="button" onclick="showMessage()">
+      🚀 Click Me
+    </button>
+
   </div>
 
 
   <section id="about">
+
     <h2>About Me</h2>
 
     <div class="about">
@@ -157,10 +174,12 @@
       My goal is to keep learning, create useful projects
       and build my future step by step.
     </div>
+
   </section>
 
 
   <section id="projects">
+
     <h2>My Projects</h2>
 
     <div class="project-card">
@@ -183,24 +202,30 @@
         Learning market concepts, analysis and trading education.
       </p>
     </div>
+
   </section>
 
 
   <section id="skills">
+
     <h2>My Skills</h2>
 
     <div class="skill">💻 HTML</div>
     <div class="skill">🎨 CSS</div>
     <div class="skill">📱 Responsive Design</div>
     <div class="skill">📈 Trading Basics</div>
+    <div class="skill">⚡ JavaScript</div>
     <div class="skill">🚀 Learning</div>
+
   </section>
 
 
   <section id="contact">
+
     <h2>Contact Me</h2>
 
     <div class="contact-box">
+
       <p>
         Interested in my work or want to connect?
       </p>
@@ -208,13 +233,22 @@
       <a class="button" href="mailto:your@email.com">
         📧 Email Me
       </a>
+
     </div>
+
   </section>
 
 
   <footer>
-    © 2026 Himanshu Shekhar • Built with HTML & CSS
+    © 2026 Himanshu Shekhar • Built with HTML, CSS & JavaScript
   </footer>
+
+
+  <script>
+    function showMessage() {
+      alert("Welcome to Himanshu Shekhar's website! 🚀");
+    }
+  </script>
 
 </body>
 </html>
