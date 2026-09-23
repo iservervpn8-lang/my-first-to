@@ -30,9 +30,9 @@
 
 body{
   background:
-  radial-gradient(circle at 10% 0%,rgba(35,104,255,.13),transparent 28%),
-  radial-gradient(circle at 90% 10%,rgba(154,124,255,.08),transparent 25%),
-  var(--bg);
+    radial-gradient(circle at 10% 0%,rgba(35,104,255,.13),transparent 28%),
+    radial-gradient(circle at 90% 10%,rgba(154,124,255,.08),transparent 25%),
+    var(--bg);
   color:var(--text);
   min-height:100vh;
 }
@@ -61,10 +61,12 @@ button{
   align-items:center;
   text-align:center;
   padding:20px;
+  animation:splashIn .7s ease;
 }
 
 .splash-content{
   max-width:440px;
+  animation:logoEnter 1s ease;
 }
 
 .splash-logo{
@@ -74,7 +76,10 @@ button{
   border-radius:50%;
   margin-bottom:22px;
   border:2px solid rgba(75,156,255,.5);
-  box-shadow:0 0 65px rgba(75,156,255,.22);
+  box-shadow:
+    0 0 25px rgba(75,156,255,.25),
+    0 0 65px rgba(75,156,255,.18);
+  animation:logoPulse 2.2s infinite ease-in-out;
 }
 
 .splash-content h1{
@@ -104,6 +109,163 @@ button{
   border-radius:13px;
   font-weight:700;
   box-shadow:0 12px 35px rgba(35,104,255,.25);
+  transition:.25s;
+}
+
+.continue:hover{
+  transform:translateY(-2px) scale(1.02);
+}
+
+@keyframes splashIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+@keyframes logoEnter{
+  from{
+    opacity:0;
+    transform:translateY(25px) scale(.8);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+@keyframes logoPulse{
+  0%,100%{
+    transform:scale(1);
+    box-shadow:
+      0 0 25px rgba(75,156,255,.25),
+      0 0 65px rgba(75,156,255,.18);
+  }
+  50%{
+    transform:scale(1.035);
+    box-shadow:
+      0 0 35px rgba(75,156,255,.35),
+      0 0 80px rgba(75,156,255,.25);
+  }
+}
+
+/* ================= AUTH ================= */
+
+.auth-screen{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:22px;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(75,156,255,.13),transparent 32%),
+    var(--bg);
+}
+
+.auth-card{
+  width:100%;
+  max-width:430px;
+  background:rgba(16,21,29,.92);
+  border:1px solid var(--border);
+  border-radius:27px;
+  padding:35px 25px;
+  text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+  animation:authEnter .55s ease;
+}
+
+.auth-logo{
+  width:82px;
+  height:82px;
+  border-radius:50%;
+  object-fit:contain;
+  border:1px solid rgba(75,156,255,.5);
+  margin-bottom:18px;
+}
+
+.auth-card h1{
+  font-size:25px;
+}
+
+.auth-card h1 span{
+  color:var(--blue);
+}
+
+.auth-card>p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+  margin-top:8px;
+}
+
+.auth-step{
+  margin-top:27px;
+}
+
+.google-btn{
+  width:100%;
+  border:1px solid var(--border);
+  background:#fff;
+  color:#151515;
+  padding:14px 16px;
+  border-radius:13px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  transition:.2s;
+}
+
+.google-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(0,0,0,.25);
+}
+
+.google-icon{
+  width:20px;
+  height:20px;
+}
+
+.name-input{
+  width:100%;
+  padding:14px 15px;
+  border-radius:13px;
+  border:1px solid var(--border);
+  background:#0b1017;
+  color:white;
+  outline:none;
+}
+
+.name-input:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(75,156,255,.08);
+}
+
+.primary-btn{
+  width:100%;
+  margin-top:12px;
+  padding:14px;
+  border:0;
+  border-radius:13px;
+  color:white;
+  font-weight:700;
+  background:linear-gradient(135deg,var(--blue2),var(--blue));
+}
+
+.auth-small{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:15px;
+}
+
+@keyframes authEnter{
+  from{
+    opacity:0;
+    transform:translateY(20px) scale(.97);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
 }
 
 /* ================= TOPBAR ================= */
@@ -198,6 +360,8 @@ button{
 
 .hero h1{
   font-size:34px;
+  position:relative;
+  z-index:1;
 }
 
 .hero h1 span{
@@ -209,6 +373,8 @@ button{
   margin-top:8px;
   line-height:1.6;
   max-width:700px;
+  position:relative;
+  z-index:1;
 }
 
 .hero-bottom{
@@ -278,7 +444,7 @@ button{
 
 .subject-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:16px;
 }
 
@@ -349,7 +515,7 @@ button{
   font-size:11px;
 }
 
-/* ================= STUDY TOOLS ================= */
+/* ================= TOOLS ================= */
 
 .tools-box{
   background:
@@ -405,7 +571,7 @@ button{
   line-height:1.5;
 }
 
-/* ================= OTHER SECTIONS ================= */
+/* ================= OTHER ================= */
 
 .other-grid{
   display:grid;
@@ -442,7 +608,7 @@ button{
   margin-top:5px;
 }
 
-/* ================= AI CENTER ================= */
+/* ================= AI ================= */
 
 .ai-center{
   margin:42px auto 10px;
@@ -467,9 +633,6 @@ button{
 
 .ai-button:hover{
   transform:scale(1.06);
-  box-shadow:
-    0 0 0 12px rgba(75,156,255,.05),
-    0 0 60px rgba(75,156,255,.25);
 }
 
 .ai-center h3{
@@ -483,7 +646,7 @@ button{
   margin-top:4px;
 }
 
-/* ================= SUBJECT PAGE ================= */
+/* ================= PAGES ================= */
 
 .page{
   animation:fade .25s ease;
@@ -638,7 +801,7 @@ button{
   font-size:11px;
 }
 
-/* ================= POMODORO ================= */
+/* ================= TIMER ================= */
 
 .timer{
   text-align:center;
@@ -794,6 +957,10 @@ footer{
     display:block;
   }
 
+  .hero-bottom .student-info+ .student-info{
+    margin-top:7px;
+  }
+
   .stats{
     grid-template-columns:repeat(2,1fr);
     gap:9px;
@@ -865,6 +1032,10 @@ footer{
   .developer-profile{
     align-items:flex-start;
   }
+
+  .auth-card{
+    padding:30px 20px;
+  }
 }
 </style>
 </head>
@@ -874,7 +1045,6 @@ footer{
 <!-- ================= SPLASH ================= -->
 
 <div id="splash">
-
   <div class="splash-content">
 
     <img
@@ -891,12 +1061,88 @@ footer{
       Developed by <b>Himanshu Shekhar</b>
     </p>
 
-    <button class="continue" onclick="enterApp()">
+    <button class="continue" onclick="startAuth()">
       Continue →
     </button>
 
   </div>
+</div>
 
+
+<!-- ================= AUTH ================= -->
+
+<div id="authPage" class="auth-screen hidden">
+
+  <div class="auth-card">
+
+    <img
+      class="auth-logo"
+      src="file_000000004bbc821186700759679ec160.png"
+      alt="BM"
+    >
+
+    <h1>Welcome to <span>BM</span></h1>
+
+    <p>
+      Class 12 Bihar Board Science<br>
+      Learn · Practice · Revise · Improve
+    </p>
+
+
+    <!-- GOOGLE STEP -->
+
+    <div id="googleStep" class="auth-step">
+
+      <button class="google-btn" onclick="continueWithGoogle()">
+
+        <svg class="google-icon" viewBox="0 0 24 24">
+          <path fill="#4285F4"
+            d="M21.35 12.27c0-.79-.07-1.55-.22-2.27H12v4.3h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.42z"/>
+          <path fill="#34A853"
+            d="M12 21.8c2.63 0 4.84-.87 6.45-2.36l-3.14-2.45c-.87.58-1.98.93-3.31.93-2.55 0-4.71-1.72-5.49-4.04H3.27v2.53A9.74 9.74 0 0 0 12 21.8z"/>
+          <path fill="#FBBC05"
+            d="M6.51 13.88a5.86 5.86 0 0 1 0-3.76V7.59H3.27a9.8 9.8 0 0 0 0 8.82l3.24-2.53z"/>
+          <path fill="#EA4335"
+            d="M12 6.08c1.43 0 2.72.49 3.73 1.45l2.8-2.8C16.84 3.12 14.63 2.2 12 2.2a9.74 9.74 0 0 0-8.73 5.39l3.24 2.53C7.29 7.8 9.45 6.08 12 6.08z"/>
+        </svg>
+
+        Continue with Google
+
+      </button>
+
+      <div class="auth-small">
+        Google account authentication will be connected securely later.
+      </div>
+
+    </div>
+
+
+    <!-- NAME STEP -->
+
+    <div id="nameStep" class="auth-step hidden">
+
+      <p style="margin-bottom:13px;color:#f5f7fb;">
+        What should we call you?
+      </p>
+
+      <input
+        id="studentName"
+        class="name-input"
+        type="text"
+        maxlength="40"
+        placeholder="Enter your name"
+        autocomplete="name"
+      >
+
+      <button
+        class="primary-btn"
+        onclick="saveStudentName()">
+        Continue →
+      </button>
+
+    </div>
+
+  </div>
 </div>
 
 
@@ -915,31 +1161,25 @@ footer{
 
     <div class="brand-name">
       BEYOND MASTERY
-      <small>LEARN BEYOND LIMITS</small>
+      <small>CLASS 12 • BIHAR BOARD • SCIENCE</small>
     </div>
 
   </div>
 
   <div class="top-actions">
 
-    <button class="top-btn" onclick="showHome()">
-      ⌂
-    </button>
+    <button class="top-btn" onclick="showHome()">⌂</button>
 
-    <button class="top-btn" onclick="toggleTheme()">
-      ◐
-    </button>
+    <button class="top-btn" onclick="toggleTheme()">◐</button>
 
-    <button class="top-btn" onclick="toggleMenu()">
-      ⋮
-    </button>
+    <button class="top-btn" onclick="toggleMenu()">⋮</button>
 
   </div>
 
 </header>
 
 
-<!-- 3 DOT MENU -->
+<!-- ================= 3 DOT MENU ================= -->
 
 <div id="menu" class="menu hidden">
 
@@ -968,18 +1208,18 @@ footer{
   <div class="hero">
 
     <h1>
-      Welcome to <span>BM</span>
+      Welcome, <span id="homeStudentName">Student</span>
     </h1>
 
     <p>
-      One professional study platform for Class 10, 11 & 12
-      students — Bihar Board & CBSE.
+      Your Class 12 Bihar Board Science learning dashboard.
+      Learn, practice, revise and improve every day.
     </p>
 
     <div class="hero-bottom">
 
       <div class="student-info">
-        🎓 Your personalized learning dashboard
+        🎓 Class 12 • Bihar Board • Science
       </div>
 
       <div class="student-info">
@@ -1028,7 +1268,9 @@ footer{
 
     <div>
       <h2>📚 My Subjects</h2>
-      <p>Tap any subject logo to open its complete study page.</p>
+      <p>
+        Class 12 Bihar Board Science subjects.
+      </p>
     </div>
 
   </div>
@@ -1096,7 +1338,7 @@ footer{
   </div>
 
 
-  <!-- OTHER SECTIONS -->
+  <!-- LEARNING CENTER -->
 
   <div class="section-title">
 
@@ -1110,52 +1352,99 @@ footer{
 
   <div class="other-grid">
 
-    <div class="other-card" onclick="openGeneral('Daily Important Questions')">
+    <div class="other-card"
+         onclick="openGeneral('Daily Important Questions')">
+
       <div class="other-icon">❓</div>
+
       <h3>Daily Important Questions</h3>
+
       <p>Fresh practice every day.</p>
+
     </div>
 
-    <div class="other-card" onclick="openGeneral('Revision Center')">
+
+    <div class="other-card"
+         onclick="openGeneral('Revision Center')">
+
       <div class="other-icon">🔄</div>
+
       <h3>Revision Center</h3>
+
       <p>Manage revision topics.</p>
+
     </div>
 
-    <div class="other-card" onclick="openGeneral('Mistake Book')">
+
+    <div class="other-card"
+         onclick="openGeneral('Mistake Book')">
+
       <div class="other-icon">❌</div>
+
       <h3>Mistake Book</h3>
+
       <p>Learn from your mistakes.</p>
+
     </div>
 
-    <div class="other-card" onclick="openGeneral('Analytics')">
+
+    <div class="other-card"
+         onclick="openGeneral('Analytics')">
+
       <div class="other-icon">📊</div>
+
       <h3>Analytics</h3>
+
       <p>Track your performance.</p>
+
     </div>
 
-    <div class="other-card" onclick="openGeneral('Achievements')">
+
+    <div class="other-card"
+         onclick="openGeneral('Achievements')">
+
       <div class="other-icon">🏆</div>
+
       <h3>Achievements</h3>
+
       <p>XP, badges and milestones.</p>
+
     </div>
 
-    <div class="other-card" onclick="openGeneral('Exam Mode')">
+
+    <div class="other-card"
+         onclick="openGeneral('Exam Mode')">
+
       <div class="other-icon">🎯</div>
+
       <h3>Exam Mode</h3>
+
       <p>Board-focused preparation.</p>
+
     </div>
 
-    <div class="other-card" onclick="openGeneral('Practice Center')">
+
+    <div class="other-card"
+         onclick="openGeneral('Practice Center')">
+
       <div class="other-icon">🧠</div>
+
       <h3>Practice Center</h3>
+
       <p>MCQ, short and long answers.</p>
+
     </div>
 
-    <div class="other-card" onclick="openGeneral('BM Progress')">
+
+    <div class="other-card"
+         onclick="openGeneral('BM Progress')">
+
       <div class="other-icon">📈</div>
+
       <h3>BM Progress</h3>
+
       <p>See your complete progress.</p>
+
     </div>
 
   </div>
@@ -1294,7 +1583,7 @@ footer{
 </section>
 
 
-<!-- ================= CONTENT PAGE ================= -->
+<!-- ================= CONTENT ================= -->
 
 <section id="contentPage" class="page hidden">
 
@@ -1315,7 +1604,7 @@ footer{
 </section>
 
 
-<!-- ================= POMODORO PAGE ================= -->
+<!-- ================= POMODORO ================= -->
 
 <section id="pomodoroPage" class="page hidden">
 
@@ -1343,17 +1632,13 @@ footer{
           25:00
         </strong>
 
-        <span>
-          FOCUS SESSION
-        </span>
+        <span>FOCUS SESSION</span>
 
       </div>
 
       <div class="timer-controls">
 
-        <button
-          class="start"
-          onclick="startTimer()">
+        <button class="start" onclick="startTimer()">
           Start
         </button>
 
@@ -1399,7 +1684,7 @@ footer{
       <img
         class="profile-img"
         src="IMG_20260218_125513_403.webp"
-        alt="Himanshu Shekhar"
+        alt="Developer"
       >
 
       <div class="dev-info">
@@ -1422,8 +1707,7 @@ footer{
 
 
 <footer>
-  © 2026 BM — Beyond Mastery · Learn Beyond Limits<br>
-  Developed by Himanshu Shekhar
+  © 2026 BM — Beyond Mastery · Learn Beyond Limits
 </footer>
 
 </main>
@@ -1437,114 +1721,181 @@ footer{
 
 const subjects = [
 
-{
- name:"Mathematics",
- icon:"🧮",
- desc:"Algebra, geometry, calculus and problem solving.",
- progress:0
-},
+  {
+    name:"Mathematics",
+    icon:"🧮",
+    desc:"Algebra, calculus, vectors and problem solving.",
+    progress:0
+  },
 
-{
- name:"Physics",
- icon:"⚡",
- desc:"Mechanics, electricity, optics and modern physics.",
- progress:0
-},
+  {
+    name:"Physics",
+    icon:"⚡",
+    desc:"Mechanics, electricity, optics and modern physics.",
+    progress:0
+  },
 
-{
- name:"Chemistry",
- icon:"🧪",
- desc:"Physical, organic and inorganic chemistry.",
- progress:0
-},
+  {
+    name:"Chemistry",
+    icon:"🧪",
+    desc:"Physical, organic and inorganic chemistry.",
+    progress:0
+  },
 
-{
- name:"Biology",
- icon:"🧬",
- desc:"Botany, zoology, genetics and ecology.",
- progress:0
-},
+  {
+    name:"Biology",
+    icon:"🧬",
+    desc:"Botany, zoology, genetics and ecology.",
+    progress:0
+  },
 
-{
- name:"English",
- icon:"📖",
- desc:"Grammar, literature, writing and comprehension.",
- progress:0
-},
+  {
+    name:"English",
+    icon:"📖",
+    desc:"Grammar, literature, writing and comprehension.",
+    progress:0
+  },
 
-{
- name:"Hindi",
- icon:"📝",
- desc:"Literature, grammar and writing.",
- progress:0
-},
-
-{
- name:"Accountancy",
- icon:"📊",
- desc:"Accounting, journal, ledger and statements.",
- progress:0
-},
-
-{
- name:"Economics",
- icon:"💰",
- desc:"Microeconomics, macroeconomics and Indian economy.",
- progress:0
-},
-
-{
- name:"Business Studies",
- icon:"🏢",
- desc:"Management, marketing, finance and organization.",
- progress:0
-},
-
-{
- name:"Geography",
- icon:"🌍",
- desc:"Physical, human and economic geography.",
- progress:0
-},
-
-{
- name:"History",
- icon:"🏛️",
- desc:"Ancient, medieval and modern history.",
- progress:0
-},
-
-{
- name:"Political Science",
- icon:"⚖️",
- desc:"Political theory, constitution and governance.",
- progress:0
-}
+  {
+    name:"Hindi",
+    icon:"📝",
+    desc:"Literature, grammar and writing.",
+    progress:0
+  }
 
 ];
+
 
 let currentSubject=null;
 let previousPage="home";
 
-let studyMinutes=
- Number(localStorage.getItem("bmStudyMinutes"))||0;
 
-let xp=
- Number(localStorage.getItem("bmXP"))||0;
+/* ================= USER ================= */
+
+let studentName =
+  localStorage.getItem("bmStudentName") || "";
+
+let studyMinutes =
+  Number(localStorage.getItem("bmStudyMinutes")) || 0;
+
+let xp =
+  Number(localStorage.getItem("bmXP")) || 0;
 
 
-/* ================= SPLASH ================= */
+/* ================= START ================= */
 
-function enterApp(){
+function startAuth(){
 
- document.getElementById("splash")
- .classList.add("hidden");
+  document
+    .getElementById("splash")
+    .classList.add("hidden");
 
- document.getElementById("app")
- .classList.remove("hidden");
+  /*
+    If name is already saved,
+    directly open the app.
+  */
 
- renderSubjects();
- updateStats();
+  if(studentName){
+
+    openApp();
+
+  }else{
+
+    document
+      .getElementById("authPage")
+      .classList
+      .remove("hidden");
+
+  }
+
+}
+
+
+/* ================= GOOGLE UI ================= */
+
+function continueWithGoogle(){
+
+  /*
+    Temporary frontend step.
+
+    Real Google authentication will be
+    connected later with Firebase.
+  */
+
+  document
+    .getElementById("googleStep")
+    .classList
+    .add("hidden");
+
+  document
+    .getElementById("nameStep")
+    .classList
+    .remove("hidden");
+
+  setTimeout(()=>{
+
+    document
+      .getElementById("studentName")
+      .focus();
+
+  },200);
+
+}
+
+
+/* ================= SAVE NAME ================= */
+
+function saveStudentName(){
+
+  const input =
+    document.getElementById("studentName");
+
+  const name =
+    input.value.trim();
+
+  if(!name){
+
+    input.focus();
+
+    alert("Please enter your name.");
+
+    return;
+
+  }
+
+  studentName=name;
+
+  localStorage.setItem(
+    "bmStudentName",
+    studentName
+  );
+
+  openApp();
+
+}
+
+
+/* ================= OPEN APP ================= */
+
+function openApp(){
+
+  document
+    .getElementById("authPage")
+    .classList
+    .add("hidden");
+
+  document
+    .getElementById("app")
+    .classList
+    .remove("hidden");
+
+  document
+    .getElementById("homeStudentName")
+    .textContent=studentName || "Student";
+
+  renderSubjects();
+
+  updateStats();
 
 }
 
@@ -1553,47 +1904,48 @@ function enterApp(){
 
 function renderSubjects(){
 
- const grid=
- document.getElementById("subjectGrid");
+  const grid =
+    document.getElementById("subjectGrid");
 
- grid.innerHTML="";
+  grid.innerHTML="";
 
- subjects.forEach((s,index)=>{
+  subjects.forEach((s,index)=>{
 
-  const card=
-   document.createElement("div");
+    const card =
+      document.createElement("div");
 
-  card.className="subject-card";
+    card.className="subject-card";
 
-  card.innerHTML=`
+    card.innerHTML=`
 
-   <div class="subject-logo">
-     ${s.icon}
-   </div>
+      <div class="subject-logo">
+        ${s.icon}
+      </div>
 
-   <h3>${s.name}</h3>
+      <h3>${s.name}</h3>
 
-   <p>${s.desc}</p>
+      <p>${s.desc}</p>
 
-   <div class="subject-progress">
+      <div class="subject-progress">
 
-     <div class="progress">
-       <span style="width:${s.progress}%"></span>
-     </div>
+        <div class="progress">
+          <span style="width:${s.progress}%"></span>
+        </div>
 
-     <div class="subject-percent">
-       ${s.progress}%
-     </div>
+        <div class="subject-percent">
+          ${s.progress}%
+        </div>
 
-   </div>
+      </div>
 
-  `;
+    `;
 
-  card.onclick=()=>openSubject(index);
+    card.onclick =
+      ()=>openSubject(index);
 
-  grid.appendChild(card);
+    grid.appendChild(card);
 
- });
+  });
 
 }
 
@@ -1602,83 +1954,102 @@ function renderSubjects(){
 
 function openSubject(index){
 
- currentSubject=subjects[index];
+  currentSubject=subjects[index];
 
- previousPage="home";
+  previousPage="home";
 
- hideAllPages();
+  hideAllPages();
 
- document.getElementById("subjectPage")
- .classList.remove("hidden");
+  document
+    .getElementById("subjectPage")
+    .classList
+    .remove("hidden");
 
- document.getElementById("bigLogo")
- .textContent=currentSubject.icon;
+  document
+    .getElementById("bigLogo")
+    .textContent=currentSubject.icon;
 
- document.getElementById("subjectTitle")
- .textContent=currentSubject.name;
+  document
+    .getElementById("subjectTitle")
+    .textContent=currentSubject.name;
 
- document.getElementById("subjectDesc")
- .textContent=currentSubject.desc;
+  document
+    .getElementById("subjectDesc")
+    .textContent=currentSubject.desc;
 
- document.getElementById("subjectPercent")
- .textContent=currentSubject.progress+"%";
+  document
+    .getElementById("subjectPercent")
+    .textContent=currentSubject.progress+"%";
 
- document.getElementById("subjectBar")
- .style.width=currentSubject.progress+"%";
+  document
+    .getElementById("subjectBar")
+    .style.width=
+      currentSubject.progress+"%";
 
- scrollTop();
+  scrollTop();
 
 }
 
 
-/* ================= SUBJECT FEATURE ================= */
+/* ================= SUBJECT FEATURES ================= */
 
 function subjectFeature(feature){
 
- previousPage="subject";
+  previousPage="subject";
 
- hideAllPages();
+  hideAllPages();
 
- document.getElementById("contentPage")
- .classList.remove("hidden");
+  document
+    .getElementById("contentPage")
+    .classList
+    .remove("hidden");
 
- document.getElementById("contentTitle")
- .textContent=
- currentSubject.icon+" "+currentSubject.name+
- " — "+feature;
+  document
+    .getElementById("contentTitle")
+    .textContent=
+      currentSubject.icon+
+      " "+
+      currentSubject.name+
+      " — "+
+      feature;
 
- document.getElementById("contentDesc")
- .textContent=
- "BM "+currentSubject.name+" learning center";
+  document
+    .getElementById("contentDesc")
+    .textContent=
+      "BM "+
+      currentSubject.name+
+      " learning center";
 
- document.getElementById("contentArea")
- .innerHTML=`
+  document
+    .getElementById("contentArea")
+    .innerHTML=`
 
- <h2>${feature}</h2>
+      <h2>${feature}</h2>
 
- <p>
- This ${currentSubject.name} module is ready
- for complete study functionality.
- </p>
+      <p>
+        This ${currentSubject.name}
+        ${feature} module is ready for
+        complete functionality.
+      </p>
 
- <div class="item">
-   <b>📚 ${currentSubject.name} ${feature}</b>
-   <span>BM Module</span>
- </div>
+      <div class="item">
+        <b>📚 ${currentSubject.name} ${feature}</b>
+        <span>BM Module</span>
+      </div>
 
- <div class="item">
-   <b>🎯 Personalized Practice</b>
-   <span>Coming</span>
- </div>
+      <div class="item">
+        <b>🎯 Personalized Practice</b>
+        <span>Coming</span>
+      </div>
 
- <div class="item">
-   <b>🤖 BM AI Support</b>
-   <span>Coming</span>
- </div>
+      <div class="item">
+        <b>🤖 BM AI Support</b>
+        <span>Coming</span>
+      </div>
 
- `;
+    `;
 
- scrollTop();
+  scrollTop();
 
 }
 
@@ -1690,96 +2061,110 @@ let timerInterval=null;
 
 function openPomodoro(){
 
- previousPage="home";
+  previousPage="home";
 
- hideAllPages();
+  hideAllPages();
 
- document.getElementById("pomodoroPage")
- .classList.remove("hidden");
+  document
+    .getElementById("pomodoroPage")
+    .classList
+    .remove("hidden");
 
- resetTimer();
+  resetTimer();
 
- scrollTop();
+  scrollTop();
 
 }
+
 
 function updateTimer(){
 
- let min=
- Math.floor(timerSeconds/60)
- .toString()
- .padStart(2,"0");
+  const min =
+    Math.floor(timerSeconds/60)
+    .toString()
+    .padStart(2,"0");
 
- let sec=
- (timerSeconds%60)
- .toString()
- .padStart(2,"0");
+  const sec =
+    (timerSeconds%60)
+    .toString()
+    .padStart(2,"0");
 
- document.getElementById("timerDisplay")
- .textContent=min+":"+sec;
+  document
+    .getElementById("timerDisplay")
+    .textContent=
+      min+":"+sec;
 
 }
+
 
 function startTimer(){
 
- if(timerInterval) return;
+  if(timerInterval) return;
 
- timerInterval=setInterval(()=>{
+  timerInterval =
+    setInterval(()=>{
 
-   if(timerSeconds<=0){
+      if(timerSeconds<=0){
 
-     clearInterval(timerInterval);
-     timerInterval=null;
+        clearInterval(timerInterval);
 
-     xp+=25;
-     studyMinutes+=25;
+        timerInterval=null;
 
-     localStorage.setItem(
-       "bmXP",xp
-     );
+        xp+=25;
 
-     localStorage.setItem(
-       "bmStudyMinutes",
-       studyMinutes
-     );
+        studyMinutes+=25;
 
-     updateStats();
+        localStorage.setItem(
+          "bmXP",
+          xp
+        );
 
-     alert(
-       "🎉 25-minute Pomodoro complete! +25 XP"
-     );
+        localStorage.setItem(
+          "bmStudyMinutes",
+          studyMinutes
+        );
 
-     resetTimer();
+        updateStats();
 
-     return;
-   }
+        alert(
+          "25-minute Pomodoro complete! +25 XP"
+        );
 
-   timerSeconds--;
+        resetTimer();
 
-   updateTimer();
+        return;
 
- },1000);
+      }
+
+      timerSeconds--;
+
+      updateTimer();
+
+    },1000);
 
 }
+
 
 function pauseTimer(){
 
- if(timerInterval){
+  if(timerInterval){
 
-   clearInterval(timerInterval);
-   timerInterval=null;
+    clearInterval(timerInterval);
 
- }
+    timerInterval=null;
+
+  }
 
 }
 
+
 function resetTimer(){
 
- pauseTimer();
+  pauseTimer();
 
- timerSeconds=25*60;
+  timerSeconds=25*60;
 
- updateTimer();
+  updateTimer();
 
 }
 
@@ -1788,54 +2173,60 @@ function resetTimer(){
 
 function openPlanner(){
 
- previousPage="home";
+  previousPage="home";
 
- hideAllPages();
+  hideAllPages();
 
- document.getElementById("contentPage")
- .classList.remove("hidden");
+  document
+    .getElementById("contentPage")
+    .classList
+    .remove("hidden");
 
- document.getElementById("contentTitle")
- .textContent="📅 Weekly Planner";
+  document
+    .getElementById("contentTitle")
+    .textContent="📅 Weekly Planner";
 
- document.getElementById("contentDesc")
- .textContent=
- "Plan your complete week.";
+  document
+    .getElementById("contentDesc")
+    .textContent=
+      "Plan your Class 12 study week.";
 
- document.getElementById("contentArea")
- .innerHTML=`
+  document
+    .getElementById("contentArea")
+    .innerHTML=`
 
- <h2>Weekly Study Planner</h2>
+      <h2>Weekly Study Planner</h2>
 
- <p>
- Set your weekly subjects, chapters and study targets.
- </p>
+      <p>
+        Set your subjects, chapters and weekly
+        study targets.
+      </p>
 
- ${[
- "Monday",
- "Tuesday",
- "Wednesday",
- "Thursday",
- "Friday",
- "Saturday",
- "Sunday"
- ].map(day=>`
+      ${[
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ].map(day=>`
 
- <div class="item">
+        <div class="item">
 
-   <b>📅 ${day}</b>
+          <b>📅 ${day}</b>
 
-   <span>
-     Add study target →
-   </span>
+          <span>
+            Add study target →
+          </span>
 
- </div>
+        </div>
 
- `).join("")}
+      `).join("")}
 
- `;
+    `;
 
- scrollTop();
+  scrollTop();
 
 }
 
@@ -1844,42 +2235,48 @@ function openPlanner(){
 
 function openNotes(){
 
- previousPage="home";
+  previousPage="home";
 
- hideAllPages();
+  hideAllPages();
 
- document.getElementById("contentPage")
- .classList.remove("hidden");
+  document
+    .getElementById("contentPage")
+    .classList
+    .remove("hidden");
 
- document.getElementById("contentTitle")
- .textContent="📝 My Notes";
+  document
+    .getElementById("contentTitle")
+    .textContent="📝 My Notes";
 
- document.getElementById("contentDesc")
- .textContent=
- "Keep your important study notes organized.";
+  document
+    .getElementById("contentDesc")
+    .textContent=
+      "Keep your important study notes organized.";
 
- document.getElementById("contentArea")
- .innerHTML=`
+  document
+    .getElementById("contentArea")
+    .innerHTML=`
 
- <h2>My Study Notes</h2>
+      <h2>My Study Notes</h2>
 
- <p>
- Save formulas, concepts, important points and revision notes.
- </p>
+      <p>
+        Save formulas, concepts, important points
+        and revision notes.
+      </p>
 
- <div class="item">
-   <b>➕ Create New Note</b>
-   <span>Open →</span>
- </div>
+      <div class="item">
+        <b>➕ Create New Note</b>
+        <span>Open →</span>
+      </div>
 
- <div class="item">
-   <b>📌 Pinned Notes</b>
-   <span>0 notes</span>
- </div>
+      <div class="item">
+        <b>📌 Pinned Notes</b>
+        <span>0 notes</span>
+      </div>
 
- `;
+    `;
 
- scrollTop();
+  scrollTop();
 
 }
 
@@ -1888,9 +2285,9 @@ function openNotes(){
 
 function openAI(){
 
- openGeneral(
-  "🤖 BM AI Study Mentor"
- );
+  openGeneral(
+    "🤖 BM AI Study Mentor"
+  );
 
 }
 
@@ -1899,48 +2296,53 @@ function openAI(){
 
 function openGeneral(title){
 
- previousPage="home";
+  previousPage="home";
 
- hideAllPages();
+  hideAllPages();
 
- document.getElementById("contentPage")
- .classList.remove("hidden");
+  document
+    .getElementById("contentPage")
+    .classList
+    .remove("hidden");
 
- document.getElementById("contentTitle")
- .textContent=title;
+  document
+    .getElementById("contentTitle")
+    .textContent=title;
 
- document.getElementById("contentDesc")
- .textContent=
- "BM — Beyond Mastery";
+  document
+    .getElementById("contentDesc")
+    .textContent=
+      "BM — Class 12 Bihar Board Science";
 
- document.getElementById("contentArea")
- .innerHTML=`
+  document
+    .getElementById("contentArea")
+    .innerHTML=`
 
- <h2>${title}</h2>
+      <h2>${title}</h2>
 
- <p>
- This BM module is designed for your personalized
- learning system.
- </p>
+      <p>
+        This BM module is designed for your
+        personalized Class 12 learning system.
+      </p>
 
- <div class="item">
-   <b>🎓 Personalized Student Data</b>
-   <span>Ready</span>
- </div>
+      <div class="item">
+        <b>🎓 Student Profile</b>
+        <span>${studentName}</span>
+      </div>
 
- <div class="item">
-   <b>📊 Progress Tracking</b>
-   <span>Ready</span>
- </div>
+      <div class="item">
+        <b>📊 Progress Tracking</b>
+        <span>Ready</span>
+      </div>
 
- <div class="item">
-   <b>🤖 AI Integration</b>
-   <span>Backend Required</span>
- </div>
+      <div class="item">
+        <b>🤖 AI Integration</b>
+        <span>Backend Required</span>
+      </div>
 
- `;
+    `;
 
- scrollTop();
+  scrollTop();
 
 }
 
@@ -1949,16 +2351,18 @@ function openGeneral(title){
 
 function openDeveloper(){
 
- closeMenu();
+  closeMenu();
 
- previousPage="home";
+  previousPage="home";
 
- hideAllPages();
+  hideAllPages();
 
- document.getElementById("developerPage")
- .classList.remove("hidden");
+  document
+    .getElementById("developerPage")
+    .classList
+    .remove("hidden");
 
- scrollTop();
+  scrollTop();
 
 }
 
@@ -1967,9 +2371,56 @@ function openDeveloper(){
 
 function openAbout(){
 
- closeMenu();
+  closeMenu();
 
- openGeneral("ℹ️ About BM");
+  previousPage="home";
+
+  hideAllPages();
+
+  document
+    .getElementById("contentPage")
+    .classList
+    .remove("hidden");
+
+  document
+    .getElementById("contentTitle")
+    .textContent=
+      "ℹ️ About BM";
+
+  document
+    .getElementById("contentDesc")
+    .textContent=
+      "Beyond Mastery";
+
+  document
+    .getElementById("contentArea")
+    .innerHTML=`
+
+      <h2>BM — Beyond Mastery</h2>
+
+      <p>
+        A focused learning platform created
+        for Class 12 Bihar Board Science students.
+      </p>
+
+      <div class="item">
+        <b>🎓 Class</b>
+        <span>12</span>
+      </div>
+
+      <div class="item">
+        <b>📚 Board</b>
+        <span>Bihar Board</span>
+      </div>
+
+      <div class="item">
+        <b>🔬 Stream</b>
+        <span>Science</span>
+      </div>
+
+    `;
+
+  scrollTop();
 
 }
 
@@ -1978,14 +2429,16 @@ function openAbout(){
 
 function showHome(){
 
- hideAllPages();
+  hideAllPages();
 
- document.getElementById("homePage")
- .classList.remove("hidden");
+  document
+    .getElementById("homePage")
+    .classList
+    .remove("hidden");
 
- previousPage="home";
+  previousPage="home";
 
- scrollTop();
+  scrollTop();
 
 }
 
@@ -1994,18 +2447,20 @@ function showHome(){
 
 function goBack(){
 
- if(previousPage==="subject"){
+  if(previousPage==="subject"){
 
-   hideAllPages();
+    hideAllPages();
 
-   document.getElementById("subjectPage")
-   .classList.remove("hidden");
+    document
+      .getElementById("subjectPage")
+      .classList
+      .remove("hidden");
 
- }else{
+  }else{
 
-   showHome();
+    showHome();
 
- }
+  }
 
 }
 
@@ -2014,18 +2469,20 @@ function goBack(){
 
 function hideAllPages(){
 
- [
-  "homePage",
-  "subjectPage",
-  "contentPage",
-  "pomodoroPage",
-  "developerPage"
- ].forEach(id=>{
+  [
+    "homePage",
+    "subjectPage",
+    "contentPage",
+    "pomodoroPage",
+    "developerPage"
+  ].forEach(id=>{
 
-   document.getElementById(id)
-   .classList.add("hidden");
+    document
+      .getElementById(id)
+      .classList
+      .add("hidden");
 
- });
+  });
 
 }
 
@@ -2034,15 +2491,20 @@ function hideAllPages(){
 
 function toggleMenu(){
 
- document.getElementById("menu")
- .classList.toggle("hidden");
+  document
+    .getElementById("menu")
+    .classList
+    .toggle("hidden");
 
 }
 
+
 function closeMenu(){
 
- document.getElementById("menu")
- .classList.add("hidden");
+  document
+    .getElementById("menu")
+    .classList
+    .add("hidden");
 
 }
 
@@ -2051,11 +2513,13 @@ function closeMenu(){
 
 function updateStats(){
 
- document.getElementById("studyMinutes")
- .textContent=studyMinutes;
+  document
+    .getElementById("studyMinutes")
+    .textContent=studyMinutes;
 
- document.getElementById("xp")
- .textContent=xp;
+  document
+    .getElementById("xp")
+    .textContent=xp;
 
 }
 
@@ -2064,78 +2528,68 @@ function updateStats(){
 
 function toggleTheme(){
 
- const light=
- document.body.dataset.theme==="light";
+  const light =
+    document.body.dataset.theme==="light";
 
- if(!light){
+  if(!light){
 
-   document.body.dataset.theme="light";
+    document.body.dataset.theme="light";
 
-   document.documentElement
-   .style.setProperty(
-    "--bg","#f3f6fa"
-   );
+    document.documentElement
+      .style.setProperty(
+        "--bg","#f3f6fa"
+      );
 
-   document.documentElement
-   .style.setProperty(
-    "--card","#ffffff"
-   );
+    document.documentElement
+      .style.setProperty(
+        "--card","#ffffff"
+      );
 
-   document.documentElement
-   .style.setProperty(
-    "--card2","#eef2f6"
-   );
+    document.documentElement
+      .style.setProperty(
+        "--border","#d9e0e8"
+      );
 
-   document.documentElement
-   .style.setProperty(
-    "--border","#d9e0e8"
-   );
+    document.documentElement
+      .style.setProperty(
+        "--text","#101828"
+      );
 
-   document.documentElement
-   .style.setProperty(
-    "--text","#101828"
-   );
+    document.documentElement
+      .style.setProperty(
+        "--muted","#667085"
+      );
 
-   document.documentElement
-   .style.setProperty(
-    "--muted","#667085"
-   );
+  }else{
 
- }else{
+    document.body.dataset.theme="dark";
 
-   document.body.dataset.theme="dark";
+    document.documentElement
+      .style.setProperty(
+        "--bg","#070a0f"
+      );
 
-   document.documentElement
-   .style.setProperty(
-    "--bg","#070a0f"
-   );
+    document.documentElement
+      .style.setProperty(
+        "--card","#10151d"
+      );
 
-   document.documentElement
-   .style.setProperty(
-    "--card","#10151d"
-   );
+    document.documentElement
+      .style.setProperty(
+        "--border","#26303d"
+      );
 
-   document.documentElement
-   .style.setProperty(
-    "--card2","#151b25"
-   );
+    document.documentElement
+      .style.setProperty(
+        "--text","#f5f7fb"
+      );
 
-   document.documentElement
-   .style.setProperty(
-    "--border","#26303d"
-   );
+    document.documentElement
+      .style.setProperty(
+        "--muted","#8994a5"
+      );
 
-   document.documentElement
-   .style.setProperty(
-    "--text","#f5f7fb"
-   );
-
-   document.documentElement
-   .style.setProperty(
-    "--muted","#8994a5"
-   );
-
- }
+  }
 
 }
 
@@ -2144,21 +2598,45 @@ function toggleTheme(){
 
 function scrollTop(){
 
- window.scrollTo({
-   top:0,
-   behavior:"smooth"
- });
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 }
 
 
-/* ================= START ================= */
+/* ================= ENTER KEY ================= */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(
+      event.key==="Enter" &&
+      !document
+        .getElementById("nameStep")
+        .classList
+        .contains("hidden")
+    ){
+
+      saveStudentName();
+
+    }
+
+  }
+);
+
+
+/* ================= INITIAL ================= */
 
 window.addEventListener(
- "load",
- ()=>{
-   // Splash remains until Continue
- }
+  "load",
+  ()=>{
+
+    updateTimer();
+
+  }
 );
 
 </script>
