@@ -1,1 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b12">
+<title>BM — Beyond Mastery</title>
+<style>
+:root{--bg:#080b12;--panel:#101622;--panel2:#151e2d;--line:#263247;--text:#eef3ff;--muted:#9ba9bf;--accent:#7c9cff;--accent2:#8b5cf6;--good:#51d6a2;--danger:#ff7b8b;--radius:20px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 85% 0%,#1a2140 0,transparent 32%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.hidden{display:none!important}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.wrap{max-width:1180px;margin:auto;padding:0 20px}
+.topbar{position:sticky;top:0;z-index:10;background:#080b12dd;backdrop-filter:blur(16px);border-bottom:1px solid #26324788}
+.nav{height:74px;display:flex;align-items:center;gap:14px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--text);font-weight:850;letter-spacing:.2px}
+.brandmark{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:white;font-size:19px;box-shadow:0 8px 24px #7c9cff30}
+.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:1.7px;font-weight:700;margin-top:2px}
+.navspacer{flex:1}
+.iconbtn,.btn{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:13px;padding:10px 13px}
+.iconbtn{width:43px;height:43px;display:grid;place-items:center;font-size:18px}
+.btn.primary{border:0;background:linear-gradient(135deg,var(--accent),var(--accent2));font-weight:750;color:white}
+.btn:hover,.iconbtn:hover,.subject:hover,.tool:hover{transform:translateY(-2px);border-color:#667fb4}
+.btn,.iconbtn,.subject,.tool{transition:.18s ease}
+.menuwrap{position:relative}
+.dropdown{position:absolute;right:0;top:52px;width:220px;background:var(--panel2);border:1px solid var(--line);border-radius:15px;padding:8px;box-shadow:0 18px 55px #0008}
+.dropdown button{width:100%;text-align:left;border:0;background:transparent;color:var(--text);padding:12px;border-radius:9px}
+.dropdown button:hover{background:#ffffff10}
+.hero{padding:42px 0 24px}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid #52628b;background:#121a2b;border-radius:999px;padding:7px 12px;color:#cbd7ff;font-size:.8rem;font-weight:750}
+.hero h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.06;letter-spacing:-1.7px;margin:20px 0 12px}
+.gradient{background:linear-gradient(90deg,#a9bdff,#c5a6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:680px;color:var(--muted);line-height:1.7}
+.heroactions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.stats{margin:20px 0 34px}
+.stat,.panel,.subject,.tool,.sectioncard{background:linear-gradient(150deg,#141c2b,#0e1420);border:1px solid var(--line);border-radius:var(--radius)}
+.stat{padding:19px}
+.stat .number{font-size:1.7rem;font-weight:850;margin-top:8px}
+.section{padding:20px 0 28px}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:14px;margin-bottom:16px}
+.sectionhead h2{margin:0;font-size:1.45rem;letter-spacing:-.5px}
+.sectionhead p{margin:6px 0 0;color:var(--muted);font-size:.9rem}
+.subjectgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.subject{padding:20px;text-align:left;color:var(--text);cursor:pointer;min-height:168px;position:relative;overflow:hidden}
+.subject:after{content:"";position:absolute;width:110px;height:110px;border-radius:50%;right:-36px;bottom:-45px;background:var(--glow,#7c9cff);opacity:.12;filter:blur(2px)}
+.subjecticon{width:49px;height:49px;border-radius:15px;background:#ffffff0b;border:1px solid var(--line);display:grid;place-items:center;font-size:24px;margin-bottom:18px}
+.subject h3{margin:0 0 7px;font-size:1.05rem}
+.subject p{margin:0;color:var(--muted);font-size:.85rem;line-height:1.5}
+.arrow{position:absolute;right:17px;top:18px;color:var(--muted)}
+.toolsgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.tool{padding:18px;text-align:left;color:var(--text)}
+.tool .toolicon{font-size:24px;margin-bottom:12px}
+.tool strong{display:block;margin-bottom:6px}
+.tool span{color:var(--muted);font-size:.86rem;line-height:1.5}
+.panel{padding:22px}
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+.progressline{height:8px;background:#273145;border-radius:99px;overflow:hidden;margin:12px 0}
+.progressline span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0}
+.page{padding:32px 0 65px;min-height:70vh}
+.back{margin-bottom:18px}
+.page h1{font-size:clamp(1.8rem,4vw,2.6rem);margin:8px 0}
+.pageintro{color:var(--muted);line-height:1.6}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+.chip{border:1px solid var(--line);border-radius:999px;background:#111a29;color:var(--muted);padding:9px 13px}
+.chip.active{background:#243253;color:#e8eeff;border-color:#687fba}
+.chapterlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.chapter{padding:16px;border:1px solid var(--line);border-radius:15px;background:#111824;display:flex;align-items:center;gap:12px;text-align:left;color:var(--text)}
+.chapter .num{width:35px;height:35px;display:grid;place-items:center;background:#202d45;border-radius:11px;color:#c4d2ff;font-weight:800}
+.chapter small{display:block;color:var(--muted);margin-top:4px}
+.categorygrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.category{padding:16px;border:1px solid var(--line);border-radius:15px;background:#111824;text-align:left;color:var(--text)}
+.category .caticon{font-size:23px;margin-bottom:11px}
+.category strong{display:block}
+.category small{display:block;color:var(--muted);margin-top:5px;line-height:1.4}
+.field{display:grid;gap:7px;margin:12px 0}
+.field label{color:#c7d2e5;font-size:.9rem}
+.field input,.field textarea,.field select,.search{width:100%;background:#090e17;border:1px solid var(--line);border-radius:12px;color:var(--text);padding:12px 13px}
+.field textarea{min-height:120px;resize:vertical}
+.rowflex{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.timer{font-size:clamp(3rem,9vw,5.6rem);font-weight:850;letter-spacing:-3px;text-align:center;margin:24px 0}
+.timercontrols{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.task{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #263247}
+.task input{accent-color:var(--accent);width:17px;height:17px}
+.task.done span{text-decoration:line-through;color:var(--muted)}
+.chatbox{height:320px;overflow:auto;padding:14px;background:#090e17;border:1px solid var(--line);border-radius:14px;margin:14px 0}
+.bubble{max-width:90%;padding:11px 13px;border-radius:14px;margin:8px 0;line-height:1.55;white-space:pre-wrap}
+.bubble.ai{background:#182238;border:1px solid #2d3b56}
+.bubble.user{background:#354b7a;margin-left:auto}
+.footer{border-top:1px solid var(--line);padding:25px 0 38px;color:var(--muted);font-size:.85rem}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#eaf0ff;color:#111827;padding:12px 18px;border-radius:12px;box-shadow:0 8px 35px #0008;z-index:100;font-weight:700}
+.overlay{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 50% 20%,#1b2850,#080b12 65%);animation:fade .5s ease}
+.authcard{width:min(460px,100%);padding:30px;border:1px solid #34425d;background:#101725ed;border-radius:25px;box-shadow:0 30px 90px #0009;animation:rise .5s ease}
+.authbrand{display:flex;align-items:center;gap:13px;margin-bottom:28px}
+.authbrand .brandmark{width:56px;height:56px;font-size:24px}
+.authcard h1{font-size:1.8rem;margin:10px 0}
+.authcard p{color:var(--muted);line-height:1.6}
+.authstep{animation:rise .3s ease}
+.authnote{font-size:.78rem;color:#8998b0;line-height:1.5;margin-top:15px}
+.dots{display:flex;gap:6px;margin:18px 0}
+.dots i{width:24px;height:4px;border-radius:9px;background:#35415a}
+.dots i.on{background:var(--accent)}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(12px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:800px){.grid,.subjectgrid,.toolsgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}.categorygrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.wrap{padding:0 14px}.nav{height:66px}.brand small{font-size:9px}.grid,.subjectgrid,.toolsgrid,.chapterlist,.categorygrid{grid-template-columns:1fr}.hero{padding-top:30px}.hero h1{letter-spacing:-1px}.stat{padding:15px}.subject{min-height:145px}.sectionhead{align-items:start;flex-direction:column}.authcard{padding:23px}.nav .optional{display:none}}
+</style>
+</head>
+<body>
 
+<div id="authOverlay" class="overlay">
+  <div class="authcard">
+    <div class="authbrand">
+      <div class="brandmark">BM</div>
+      <div>
+        <strong style="font-size:1.15rem">Beyond Mastery</strong>
+        <div class="muted small">LEARN BEYOND LIMITS</div>
+      </div>
+    </div>
+    <div class="dots"><i class="on"></i><i></i><i></i></div>
+    <div id="authStep" class="authstep"></div>
+  </div>
+</div>
+
+<header class="topbar hidden" id="topbar">
+ <div class="wrap nav">
+  <a href="#" class="brand" onclick="goHome();return false">
+    <div class="brandmark">BM</div>
+    <div>Beyond Mastery<small>CLASS 12 • BIHAR BOARD</small></div>
+  </a>
+  <div class="navspacer"></div>
+  <button class="iconbtn" title="Home" onclick="goHome()">⌂</button>
+  <div class="menuwrap">
+   <button class="iconbtn" title="More options" onclick="toggleMenu()">⋮</button>
+   <div id="dropdown" class="dropdown hidden">
+    <button onclick="openDeveloper()">👨‍💻 Developer Details</button>
+    <button onclick="openAbout()">ⓘ About BM</button>
+    <button onclick="toggleTheme()">◐ Change Theme</button>
+    <button onclick="logout()">↪ Log out</button>
+   </div>
+  </div>
+ </div>
+</header>
+
+<main id="app" class="hidden">
+ <div id="homeView">
+  <section class="hero wrap">
+   <span class="eyebrow">✦ YOUR PERSONAL STUDY SPACE</span>
+   <h1>Welcome, <span id="studentName" class="gradient">Student</span> 👋<br><span class="gradient">Learn beyond limits.</span></h1>
+   <p>Your focused Class 12 study dashboard for Bihar Board Science. Learn chapter by chapter, organize your study time, and track your consistency.</p>
+   <div class="heroactions">
+    <button class="btn primary" onclick="scrollToId('subjects')">Explore Subjects →</button>
+    <button class="btn" onclick="openTool('pomodoro')">Start Focus Session</button>
+   </div>
+   <div class="small muted" style="margin-top:18px">🎓 Class 12 &nbsp;•&nbsp; Bihar Board &nbsp;•&nbsp; Science Stream</div>
+  </section>
+
+  <section class="wrap stats grid">
+   <div class="stat"><div class="muted small">Study minutes</div><div class="number" id="statMinutes">0</div><div class="small muted">Recorded on this device</div></div>
+   <div class="stat"><div class="muted small">Study streak</div><div class="number" id="statStreak">0 days</div><div class="small muted">Keep showing up</div></div>
+   <div class="stat"><div class="muted small">Tasks completed</div><div class="number" id="statTasks">0</div><div class="small muted">From your weekly planner</div></div>
+  </section>
+
+  <section class="section wrap" id="subjects">
+   <div class="sectionhead">
+    <div><h2>Your Subjects</h2><p>Choose a subject to open its dedicated study page.</p></div>
+    <span class="eyebrow">6 SUBJECTS</span>
+   </div>
+   <div class="subjectgrid" id="subjectGrid"></div>
+  </section>
+
+  <section class="section wrap">
+   <div class="sectionhead"><div><h2>Study Workspace</h2><p>Tools to help you study with a plan.</p></div></div>
+   <div class="toolsgrid">
+    <button class="tool" onclick="openTool('planner')"><div class="toolicon">🗓️</div><strong>Weekly Planner</strong><span>Plan tasks for the week and mark them complete.</span></button>
+    <button class="tool" onclick="openTool('pomodoro')"><div class="toolicon">⏱️</div><strong>Pomodoro Focus</strong><span>25-minute focus timer with short breaks.</span></button>
+    <button class="tool" onclick="openTool('notes')"><div class="toolicon">🗒️</div><strong>My Notes</strong><span>Save your own quick notes on this device.</span></button>
+    <button class="tool" onclick="openTool('progress')"><div class="toolicon">📈</div><strong>Progress Tracker</strong><span>Review your recorded study activity.</span></button>
+    <button class="tool" onclick="openTool('ai')"><div class="toolicon">✦</div><strong>AI Study Assistant</strong><span>Study help interface; connect an AI backend for live answers.</span></button>
+    <button class="tool" onclick="openTool('categories')"><div class="toolicon">📚</div><strong>Notes Library</strong><span>Reserved categories for handwritten notes, short notes, PYQ and more.</span></button>
+   </div>
+  </section>
+
+  <section class="section wrap">
+   <div class="panel">
+    <div class="sectionhead"><div><h2>Keep it consistent</h2><p>Small focused sessions add up over time.</p></div></div>
+    <div class="progressline"><span id="weeklyProgress"></span></div>
+    <div class="muted small" id="weeklyLabel">Complete planner tasks to build your weekly progress.</div>
+   </div>
+  </section>
+ </div>
+
+ <div id="innerView" class="hidden">
+  <div class="wrap page">
+   <button class="btn back" onclick="goHome()">← Back to Home</button>
+   <div id="innerContent"></div>
+  </div>
+ </div>
+</main>
+
+<footer id="footer" class="footer hidden">
+ <div class="wrap">© <span id="year"></span> BM — Beyond Mastery <span style="float:right">Built for focused learning.</span></div>
+</footer>
+<div id="toast" class="toast hidden"></div>
+
+<script>
+const subjects=[
+ {id:'mathematics',name:'Mathematics',icon:'🧮',color:'#7c9cff',desc:'Concepts, formulas, solved problems',chapters:['Relations and Functions','Inverse Trigonometric Functions','Matrices','Determinants','Continuity and Differentiability','Application of Derivatives','Integrals','Application of Integrals','Differential Equations','Vector Algebra','Three Dimensional Geometry','Linear Programming','Probability']},
+ {id:'physics',name:'Physics',icon:'⚡',color:'#f7b955',desc:'Theory, derivations and numericals',chapters:['Electric Charges and Fields','Electrostatic Potential and Capacitance','Current Electricity','Moving Charges and Magnetism','Magnetism and Matter','Electromagnetic Induction','Alternating Current','Electromagnetic Waves','Ray Optics and Optical Instruments','Wave Optics','Dual Nature of Radiation and Matter','Atoms','Nuclei','Semiconductor Electronics']},
+ {id:'chemistry',name:'Chemistry',icon:'🧪',color:'#51d6a2',desc:'Reactions, concepts and revision',chapters:['Solutions','Electrochemistry','Chemical Kinetics','The d- and f-Block Elements','Coordination Compounds','Haloalkanes and Haloarenes','Alcohols, Phenols and Ethers','Aldehydes, Ketones and Carboxylic Acids','Amines','Biomolecules']},
+ {id:'biology',name:'Biology',icon:'🧬',color:'#e58cff',desc:'Diagrams, definitions and key concepts',chapters:['Sexual Reproduction in Flowering Plants','Human Reproduction','Reproductive Health','Principles of Inheritance and Variation','Molecular Basis of Inheritance','Evolution','Human Health and Disease','Microbes in Human Welfare','Biotechnology: Principles and Processes','Biotechnology and its Applications','Organisms and Populations','Ecosystem','Biodiversity and Conservation']},
+ {id:'english',name:'English',icon:'📖',color:'#70d8e8',desc:'Reading, writing and literature',chapters:['Reading Comprehension','Writing Skills','Grammar and Vocabulary','Prose','Poetry','Supplementary Reader']},
+ {id:'hindi',name:'Hindi',icon:'📝',color:'#ff8d9b',desc:'गद्य, पद्य, व्याकरण और लेखन',chapters:['गद्य खंड','पद्य खंड','पूरक पाठ्यपुस्तक','व्याकरण','लेखन कौशल','अपठित गद्यांश']}
+];
+
+const categories=[
+ {id:'handwritten',name:'Handwritten Notes',icon:'✍️',desc:'Scanned or photographed handwritten pages'},
+ {id:'short',name:'Short Notes',icon:'📝',desc:'Quick summaries for fast revision'},
+ {id:'detailed',name:'Detailed Notes',icon:'📚',desc:'Full explanations and topic-wise notes'},
+ {id:'pyq',name:'PYQ',icon:'📄',desc:'Previous Year Questions'},
+ {id:'important',name:'Important Questions',icon:'🎯',desc:'High-priority practice questions'},
+ {id:'expected',name:'Most Expected Questions',icon:'🔥',desc:'Revision and exam practice set'},
+ {id:'formula',name:'Formula / Derivation',icon:'∑',desc:'Formula sheets and derivation material'},
+ {id:'mcq',name:'MCQ / Objective',icon:'☑️',desc:'Objective questions and answer keys'},
+ {id:'numerical',name:'Solved Numericals',icon:'🧮',desc:'Step-by-step numerical solutions'},
+ {id:'revision',name:'Revision Notes',icon:'🔄',desc:'Quick recap before a test'}
+];
+
+const key='bmCompleteV1';
+let data=loadData(),currentSubject=null,currentChapter=null,currentCategory=null,timerInterval=null,remaining=25*60,timerRunning=false,isLight=false;
+
+function loadData(){
+ try{return JSON.parse(localStorage.getItem(key))||{}}
+ catch(e){return {}}
+}
+function saveData(){
+ localStorage.setItem(key,JSON.stringify(data));
+ refreshStats();
+}
+function today(){return new Date().toISOString().slice(0,10)}
+function ensure(){
+ data.planner=data.planner||[];
+ data.notes=data.notes||[];
+ data.studyMinutes=data.studyMinutes||0;
+ data.studyDates=data.studyDates||[];
+ data.tasksDone=data.tasksDone||0;
+ data.library=data.library||{};
+}
+ensure();
+
+let authPage=0;
+
+function renderAuth(){
+ const box=document.getElementById('authStep');
+ const dots=document.querySelectorAll('.dots i');
+ const existing=!!(data.name&&data.email);
+ dots.forEach((d,i)=>d.classList.toggle('on',i<=(existing?2:authPage)));
+
+ if(existing){
+  box.innerHTML=`<h1>Welcome back, ${esc(data.name)}.</h1><p>Your study space is ready. Continue where you left off.</p><button class="btn primary" style="width:100%;margin-top:14px" onclick="enterApp()">Open my dashboard →</button><button class="btn" style="width:100%;margin-top:9px" onclick="startNewLogin()">Use another account</button>`;
+  return;
+ }
+
+ if(authPage===0){
+  box.innerHTML=`<h1>Study with purpose.</h1><p>A focused learning space for <b>Class 12 • Bihar Board • Science</b>.</p><button class="btn primary" style="width:100%;margin-top:12px" onclick="nextAuth()">Continue →</button><div class="authnote">This is a front-end demo. Your information is saved only in this browser.</div>`;
+ }
+
+ if(authPage===1){
+  box.innerHTML=`<h1>Continue with Gmail</h1><p>Enter your Gmail address to set up your BM student profile.</p><form onsubmit="saveEmail(event)"><div class="field"><label for="gmail">Gmail address</label><input id="gmail" type="email" placeholder="you@gmail.com" required autocomplete="email"></div><button class="btn primary" style="width:100%">Continue →</button></form><button class="btn" style="width:100%;margin-top:9px" onclick="authPage=0;renderAuth()">← Back</button><div class="authnote">This screen does not perform real Google sign-in or verify account ownership. Real Google OAuth must be connected separately.</div>`;
+ }
+
+ if(authPage===2){
+  box.innerHTML=`<h1>What should we call you?</h1><p>Your name will appear on your dashboard.</p><form onsubmit="saveName(event)"><div class="field"><label for="studentInput">Student name</label><input id="studentInput" maxlength="50" placeholder="Enter your name" required autocomplete="name"></div><button class="btn primary" style="width:100%">Create my dashboard →</button></form><button class="btn" style="width:100%;margin-top:9px" onclick="authPage=1;renderAuth()">← Back</button>`;
+ }
+}
+
+function nextAuth(){authPage=1;renderAuth()}
+function startNewLogin(){data.name='';data.email='';saveData();authPage=0;renderAuth()}
+
+function saveEmail(e){
+ e.preventDefault();
+ const v=document.getElementById('gmail').value.trim().toLowerCase();
+ if(!/^[^\s@]+@gmail\.com$/.test(v)){
+  toast('Please enter a Gmail address ending in @gmail.com');
+  return;
+ }
+ data.email=v;
+ saveData();
+ authPage=2;
+ renderAuth();
+}
+
+function saveName(e){
+ e.preventDefault();
+ data.name=document.getElementById('studentInput').value.trim();
+ if(!data.name)return;
+ saveData();
+ enterApp();
+}
+
+function enterApp(){
+ document.getElementById('authOverlay').classList.add('hidden');
+ document.getElementById('topbar').classList.remove('hidden');
+ document.getElementById('app').classList.remove('hidden');
+ document.getElementById('footer').classList.remove('hidden');
+ document.getElementById('studentName').textContent=data.name||'Student';
+ renderSubjects();
+ refreshStats();
+ goHome();
+}
+
+function logout(){
+ document.getElementById('dropdown').classList.add('hidden');
+ document.getElementById('authOverlay').classList.remove('hidden');
+ document.getElementById('topbar').classList.add('hidden');
+ document.getElementById('app').classList.add('hidden');
+ document.getElementById('footer').classList.add('hidden');
+ authPage=0;
+ renderAuth();
+}
+
+function esc(s){
+ return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function renderSubjects(){
+ document.getElementById('subjectGrid').innerHTML=subjects.map(s=>`<button class="subject" style="--glow:${s.color}" onclick="openSubject('${s.id}')"><span class="arrow">↗</span><div class="subjecticon">${s.icon}</div><h3>${s.name}</h3><p>${s.desc}</p></button>`).join('');
+}
+
+function toggleMenu(){document.getElementById('dropdown').classList.toggle('hidden')}
+function hideMenu(){document.getElementById('dropdown').classList.add('hidden')}
+
+function goHome(){
+ hideMenu();
+ stopTimer();
+ document.getElementById('homeView').classList.remove('hidden');
+ document.getElementById('innerView').classList.add('hidden');
+ window.scrollTo({top:0,behavior:'smooth'});
+ refreshStats();
+}
+
+function showInner(html){
+ document.getElementById('homeView').classList.add('hidden');
+ document.getElementById('innerView').classList.remove('hidden');
+ document.getElementById('innerContent').innerHTML=html;
+ hideMenu();
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function openSubject(id){
+ currentSubject=subjects.find(s=>s.id===id);
+ showInner(`<span class="eyebrow">${currentSubject.icon} CLASS 12 • SCIENCE</span><h1>${currentSubject.name}</h1><p class="pageintro">${currentSubject.desc}. Choose a chapter to open its notes and practice categories.</p><div class="sectionhead" style="margin-top:28px"><div><h2>Chapters</h2><p>Chapter list is an editable starter outline; match it to your current Bihar Board syllabus.</p></div></div><div class="chapterlist">${currentSubject.chapters.map((c,i)=>`<button class="chapter" onclick="openChapter(${i})"><span class="num">${String(i+1).padStart(2,'0')}</span><span><b>${esc(c)}</b><small>Open notes & study resources</small></span><span style="margin-left:auto;color:var(--muted)">→</span></button>`).join('')}</div>`);
+}
+
+function openChapter(i){
+ currentChapter={index:i,name:currentSubject.chapters[i]};
+ showInner(`<span class="eyebrow">${currentSubject.icon} ${currentSubject.name}</span><h1>${esc(currentChapter.name)}</h1><p class="pageintro">Select a resource category. Notes will appear here after they are added to the BM library.</p><div class="categorygrid" style="margin-top:22px">${categories.map(c=>`<button class="category" onclick="openCategory('${c.id}')"><div class="caticon">${c.icon}</div><strong>${c.name}</strong><small>${c.desc}</small></button>`).join('')}</div>`);
+}
+
+function libraryKey(){return `${currentSubject.id}|${currentChapter.index}|${currentCategory.id}`}
+
+function openCategory(id){
+ currentCategory=categories.find(c=>c.id===id);
+ const k=libraryKey();
+ const entries=data.library[k]||[];
+ showInner(`<span class="eyebrow">${currentSubject.icon} ${currentSubject.name} • ${currentCategory.icon} ${currentCategory.name}</span><h1>${currentCategory.name}</h1><p class="pageintro">${esc(currentChapter.name)}. New notes can be added here later; this category is ready for your material.</p><div class="panel" style="margin-top:20px"><h3>Resources</h3>${entries.length?entries.map((n,i)=>`<div class="task"><span style="font-size:1.3rem">📄</span><div style="flex:1"><b>${esc(n.title)}</b><div class="small muted">${esc(n.text||'')}</div></div><button class="iconbtn" onclick="deleteLibraryItem(${i})">×</button></div>`).join(''):'<p class="muted">No notes added yet. Your notes will be shown here once added.</p>'}<div class="field"><label>Resource title</label><input id="libTitle" placeholder="e.g. Chapter summary"></div><div class="field"><label>Text / note / link (optional)</label><textarea id="libText" placeholder="Add a short text note or a link to an authorized file..."></textarea></div><button class="btn primary" onclick="addLibraryItem()">Save resource</button></div>`);
+}
+
+function addLibraryItem(){
+ const title=document.getElementById('libTitle').value.trim();
+ const textVal=document.getElementById('libText').value.trim();
+ if(!title){toast('Enter a resource title first');return}
+ const k=libraryKey();
+ data.library[k]=data.library[k]||[];
+ data.library[k].push({title,text:textVal});
+ saveData();
+ openCategory(currentCategory.id);
+ toast('Resource saved on this device');
+}
+
+function deleteLibraryItem(i){
+ data.library[libraryKey()].splice(i,1);
+ saveData();
+ openCategory(currentCategory.id);
+}
+
+function openTool(which){
+ hideMenu();
+ if(which==='pomodoro')return renderPomodoro();
+ if(which==='planner')return renderPlanner();
+ if(which==='notes')return renderNotes();
+ if(which==='progress')return renderProgress();
+ if(which==='ai')return renderAI();
+ if(which==='categories')return renderLibraryInfo();
+}
+
+function renderPomodoro(){
+ remaining=25*60;
+ showInner(`<span class="eyebrow">⏱️ FOCUS MODE</span><h1>Pomodoro Timer</h1><p class="pageintro">A 25-minute focus session. Keep your phone aside and focus on one task.</p><div class="panel" style="max-width:620px;margin-top:20px"><div class="timer" id="timerDisplay">25:00</div><div class="timercontrols"><button class="btn primary" id="timerToggle" onclick="toggleTimer()">Start focus</button><button class="btn" onclick="resetTimer()">Reset</button><button class="btn" onclick="setBreak()">5-min break</button></div><p class="muted small" style="text-align:center;margin-top:20px">Completed focus sessions are counted locally on this device.</p></div>`);
+}
+
+function timerText(){
+ const el=document.getElementById('timerDisplay');
+ if(el)el.textContent=`${String(Math.floor(remaining/60)).padStart(2,'0')}:${String(remaining%60).padStart(2,'0')}`;
+}
+
+function toggleTimer(){
+ if(timerRunning){stopTimer();return}
+ timerRunning=true;
+ const b=document.getElementById('timerToggle');
+ if(b)b.textContent='Pause';
+ timerInterval=setInterval(()=>{
+  remaining--;
+  timerText();
+  if(remaining<=0){
+   stopTimer();
+   data.studyMinutes+=25;
+   data.studyDates=data.studyDates||[];
+   if(!data.studyDates.includes(today()))data.studyDates.push(today());
+   saveData();
+   toast('Focus session complete! Take a short break.');
+   const b=document.getElementById('timerToggle');
+   if(b)b.textContent='Start focus';
+  }
+ },1000);
+}
+
+function stopTimer(){
+ if(timerInterval){clearInterval(timerInterval);timerInterval=null}
+ timerRunning=false;
+ const b=document.getElementById('timerToggle');
+ if(b)b.textContent='Resume';
+}
+
+function resetTimer(){
+ stopTimer();
+ remaining=25*60;
+ timerText();
+ const b=document.getElementById('timerToggle');
+ if(b)b.textContent='Start focus';
+}
+
+function setBreak(){
+ stopTimer();
+ remaining=5*60;
+ timerText();
+ const b=document.getElementById('timerToggle');
+ if(b)b.textContent='Start break';
+}
+
+function renderPlanner(){
+ const tasks=data.planner||[];
+ showInner(`<span class="eyebrow">🗓️ PLAN YOUR WEEK</span><h1>Weekly Planner</h1><p class="pageintro">Add study tasks and tick them off when finished. Your tasks stay on this device.</p><div class="panel" style="margin-top:20px"><form onsubmit="addTask(event)"><div class="rowflex"><div class="field" style="flex:1;min-width:190px"><label>Study task</label><input id="taskTitle" required placeholder="e.g. Physics: Current Electricity"></div><div class="field" style="width:170px"><label>Day</label><select id="taskDay"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div><button class="btn primary" style="align-self:end;margin-bottom:12px">Add task</button></div></form><div id="taskList">${tasks.length?tasks.map((t,i)=>`<label class="task ${t.done?'done':''}"><input type="checkbox" ${t.done?'checked':''} onchange="toggleTask(${i},this.checked)"><span style="flex:1"><b>${esc(t.title)}</b><small class="muted" style="display:block">${esc(t.day)}</small></span><button type="button" class="iconbtn" onclick="deleteTask(${i})">×</button></label>`).join(''):'<p class="muted">No tasks yet. Add your first study task above.</p>'}</div></div>`);
+}
+
+function addTask(e){
+ e.preventDefault();
+ data.planner.push({title:document.getElementById('taskTitle').value.trim(),day:document.getElementById('taskDay').value,done:false});
+ saveData();
+ renderPlanner();
+ toast('Task added');
+}
+
+function toggleTask(i,v){data.planner[i].done=v;saveData();renderPlanner()}
+function deleteTask(i){data.planner.splice(i,1);saveData();renderPlanner()}
+
+function renderNotes(){
+ showInner(`<span class="eyebrow">🗒️ PERSONAL WORKSPACE</span><h1>My Notes</h1><p class="pageintro">Save reminders, questions and personal revision notes.</p><div class="panel" style="margin-top:20px"><form onsubmit="saveQuickNote(event)"><div class="field"><label>Note title</label><input id="noteTitle" required placeholder="e.g. Revise electrostatics"></div><div class="field"><label>Note</label><textarea id="noteBody" required placeholder="Write your note here..."></textarea></div><button class="btn primary">Save note</button></form><div style="margin-top:18px">${(data.notes||[]).length?data.notes.map((n,i)=>`<div class="task"><div style="flex:1"><b>${esc(n.title)}</b><p class="muted" style="white-space:pre-wrap">${esc(n.body)}</p><small class="muted">${esc(n.date)}</small></div><button class="iconbtn" onclick="deleteQuickNote(${i})">×</button></div>`).join(''):'<p class="muted">Your saved notes will appear here.</p>'}</div></div>`);
+}
+
+function saveQuickNote(e){
+ e.preventDefault();
+ data.notes.unshift({title:document.getElementById('noteTitle').value.trim(),body:document.getElementById('noteBody').value.trim(),date:today()});
+ saveData();
+ renderNotes();
+ toast('Note saved');
+}
+
+function deleteQuickNote(i){data.notes.splice(i,1);saveData();renderNotes()}
+
+function renderProgress(){
+ const total=data.planner.length,done=data.planner.filter(t=>t.done).length;
+ showInner(`<span class="eyebrow">📈 YOUR CONSISTENCY</span><h1>Progress Tracker</h1><p class="pageintro">Progress here reflects activity recorded by this browser, not verified academic marks.</p><div class="grid" style="margin-top:22px"><div class="stat"><div class="muted small">Study minutes</div><div class="number">${data.studyMinutes||0}</div></div><div class="stat"><div class="muted small">Planner tasks done</div><div class="number">${done}/${total}</div></div><div class="stat"><div class="muted small">Personal notes saved</div><div class="number">${data.notes.length}</div></div></div><div class="panel" style="margin-top:16px"><h3>Weekly task completion</h3><div class="progressline"><span style="width:${total?Math.round(done/total*100):0}%"></span></div><p class="muted small">${total?Math.round(done/total*100):0}% of your planner tasks completed.</p></div>`);
+}
+
+function renderAI(){
+ showInner(`<span class="eyebrow">✦ BM STUDY ASSISTANT</span><h1>AI Study Assistant</h1><p class="pageintro">This is the assistant interface. Live AI answers require connecting a secure backend/API; this static version does not send your messages to an AI service.</p><div class="panel" style="margin-top:20px"><div class="chatbox" id="chatbox"><div class="bubble ai">Namaste ${esc(data.name||'Student')}! Main BM Study Assistant ka demo interface hoon. Abhi live AI backend connected nahi hai. Tum yahan questions type kar sakte ho; backend connect hone ke baad AI notes aur chapters ke basis par answer de sakega.</div></div><form onsubmit="sendDemoChat(event)"><div class="rowflex"><input id="chatInput" class="search" style="flex:1;min-width:180px" placeholder="Ask a study question..." required><button class="btn primary">Send</button></div></form><div class="authnote">For real AI: connect a server-side endpoint and retrieve authorized notes from the BM knowledge library. Never put a private API key in this HTML file.</div></div>`);
+}
+
+function sendDemoChat(e){
+ e.preventDefault();
+ const inp=document.getElementById('chatInput'),box=document.getElementById('chatbox'),v=inp.value.trim();
+ if(!v)return;
+ box.insertAdjacentHTML('beforeend',`<div class="bubble user">${esc(v)}</div><div class="bubble ai">Your question has been added to this demo conversation, but live AI is not connected yet. Once a secure AI backend is added, this area can answer using the BM notes library.</div>`);
+ inp.value='';
+ box.scrollTop=box.scrollHeight;
+}
+
+function renderLibraryInfo(){
+ showInner(`<span class="eyebrow">📚 NOTES LIBRARY</span><h1>Notes Categories</h1><p class="pageintro">These categories are available inside every subject chapter. Add your notes later and they can be organized by subject, chapter and type.</p><div class="categorygrid" style="margin-top:20px">${categories.map(c=>`<div class="category"><div class="caticon">${c.icon}</div><strong>${c.name}</strong><small>${c.desc}</small></div>`).join('')}</div>`);
+}
+
+function openDeveloper(){
+ showInner(`<span class="eyebrow">DEVELOPER PROFILE</span><h1>Developer Details</h1><p class="pageintro">BM — Beyond Mastery</p><div class="panel" style="max-width:650px;margin-top:20px"><div class="subjecticon">👨‍💻</div><h2>Himanshu Shekhar</h2><p class="muted">Creator of BM — Beyond Mastery, a focused study platform concept for Class 12 Bihar Board Science students.</p><p class="small muted">This section is kept inside the three-dot menu so it does not distract from the student dashboard.</p></div>`);
+ hideMenu();
+}
+
+function openAbout(){
+ showInner(`<span class="eyebrow">ABOUT BM</span><h1>Beyond Mastery</h1><p class="pageintro">Learn Beyond Limits.</p><div class="panel" style="max-width:700px;margin-top:20px"><h3>A focused study workspace</h3><p class="muted" style="line-height:1.7">BM brings subject pages, chapter-wise resource categories, a weekly planner, a 25-minute focus timer, personal notes and a planned AI study assistant into one dashboard.</p><p class="small muted">Current version: browser-based prototype. Real Google authentication, cloud sync and live AI require backend integration.</p></div>`);
+ hideMenu();
+}
+
+function toggleTheme(){
+ isLight=!isLight;
+ document.documentElement.style.setProperty('--bg',isLight?'#edf2fa':'#080b12');
+ document.documentElement.style.setProperty('--panel',isLight?'#ffffff':'#101622');
+ document.documentElement.style.setProperty('--panel2',isLight?'#f5f7fc':'#151e2d');
+ document.documentElement.style.setProperty('--line',isLight?'#ccd5e3':'#263247');
+ document.documentElement.style.setProperty('--text',isLight?'#172033':'#eef3ff');
+ document.documentElement.style.setProperty('--muted',isLight?'#53627a':'#9ba9bf');
+ hideMenu();
+}
+
+function refreshStats(){
+ ensure();
+ const done=data.planner.filter(t=>t.done).length;
+ const dates=[...new Set(data.studyDates||[])].sort().reverse();
+ let streak=0;
+ let d=new Date();
+ if(!dates.includes(d.toISOString().slice(0,10)))d.setDate(d.getDate()-1);
+ while(dates.includes(d.toISOString().slice(0,10))){streak++;d.setDate(d.getDate()-1)}
+ const a=document.getElementById('statMinutes'),b=document.getElementById('statStreak'),c=document.getElementById('statTasks'),p=document.getElementById('weeklyProgress'),l=document.getElementById('weeklyLabel');
+ if(a)a.textContent=data.studyMinutes||0;
+ if(b)b.textContent=streak+' days';
+ if(c)c.textContent=done;
+ if(p)p.style.width=(data.planner.length?done/data.planner.length*100:0)+'%';
+ if(l)l.textContent=`${done} of ${data.planner.length} planner tasks completed.`;
+}
+
+function scrollToId(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+
+function toast(msg){
+ const t=document.getElementById('toast');
+ t.textContent=msg;
+ t.classList.remove('hidden');
+ setTimeout(()=>t.classList.add('hidden'),2400);
+}
+
+document.addEventListener('click',e=>{
+ const w=document.querySelector('.menuwrap');
+ if(w&&!w.contains(e.target))hideMenu();
+});
+
+document.getElementById('year').textContent=new Date().getFullYear();
+renderAuth();
+</script>
+</body>
+  </html>
